@@ -1,29 +1,74 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div :class="$style.root">
+        <button-demo />
+        <icon-demo />
+        <switch-demo />
+        <textfield-demo />
+        <squircle-demo />
+        <icon-button-demo />
+    </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script>
+    import { ButtonDemo } from './components/Button';
+    import { IconDemo } from './components/Icon';
+    import { SwitchDemo } from './components/Switch';
+    import { TextfieldDemo } from './components/Textfield';
+    import { SquircleDemo } from './components/Squircle';
+    import { IconButtonDemo } from './components/IconButton';
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+    export default {
+        components: { ButtonDemo, IconDemo, SwitchDemo, TextfieldDemo, SquircleDemo, IconButtonDemo }
+    }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style module>
+
+    * { box-sizing: border-box; }
+
+
+    :root {
+
+        /* Define Default Component Theme */
+        --kro-application-background: white;
+        --kro-application-foreground: #2E3440;
+        --kro-application-divider: #D8DEE9;
+
+        --kro-component-background: #E5E9F0;
+        --kro-component-foreground:  #3B4252;
+        --kro-component-accent: #5E81AC;
+        --kro-component-accent-contrast: white;
+
+        --kro-component-shadow: rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+
+        /* Define Default Dark Theme for Components */
+        --kro-application-background: #2E3440;
+        --kro-application-foreground: #ECEFF4;
+        --kro-application-divider: #4C566A;
+
+        --kro-component-background: #3B4252;
+        --kro-component-foreground:  #D8DEE9;
+        --kro-component-accent: #5E81AC;
+        --kro-component-accent-contrast: white;
+
+
+    }
+
+
+    html,
+    body {
+        margin: 0;
+        font-family: 'Rubik', sans-serif;
+
+        color: var(--kro-application-foreground);
+        background: var(--kro-application-background);
+    }
+
+    .root {
+        padding: 1rem;
+        display: grid;
+        place-items: center;
+    }
+
 </style>
