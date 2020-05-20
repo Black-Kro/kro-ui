@@ -1,8 +1,8 @@
 <template>
     <demo title="Textfield">
-        <div>
-            <kro-textfield label="Email Address" v-model="email"/>
-            {{email}}
+        <div :class="$style.container">
+            <kro-textfield :class="$style.textfield" label="Email Address" v-model="email"/>
+            <kro-textfield :class="$style.textfield" label="Password" v-model="password" type="password"/>
         </div>
     </demo>
 </template>
@@ -16,13 +16,21 @@
         components: { Demo, KroTextfield },
         setup() {
             const email = ref('');
+            const password = ref('');
             return {
-                email
+                email,
+                password
             }
         }
     }
 </script>
 
-<style>
-
+<style module lang="scss">
+    .container {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 1fr 1fr 1fr;
+        // grid-auto-columns: min-content;
+        gap: 1rem;
+    }
 </style>

@@ -1,8 +1,7 @@
 <template>
-    <demo title="Switch">
-        <div>
+    <demo title="Switch" :code="require('./Code.md').default">
+        <div :class="$style.content">
             <kro-switch v-model="checked"/>
-            <br />
             <kro-switch v-model="checked2"/>
         </div>
     </demo>
@@ -27,6 +26,15 @@
     }
 </script>
 
-<style>
+<style module lang="scss">
+
+    .content {
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-columns: min-content;
+        gap: 1rem;
+        place-content: center;
+        place-items: center;
+    }
 
 </style>

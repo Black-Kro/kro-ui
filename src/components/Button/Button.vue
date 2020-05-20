@@ -1,5 +1,4 @@
 <template>
-
     <component 
         :class="{ 
             [$style.root]: true,
@@ -12,22 +11,23 @@
         :href="href" 
         :to="to" 
         :target="target">
-        <span :class="$style.content" v-show="!loading">
+        <span :class="{[$style.content]: true, [$style.isLoading]: loading }">
             <slot></slot>
             <kro-icon 
                 v-if="href"
                 icon="external" />
         </span>
-        <span v-show="loading">Loading...</span>
+        <span :class="$style.spinner" v-show="loading"><kro-spinner /></span>
     </component>
 </template>
 
 <script lang="ts">
     import { computed } from 'vue';
     import { KroIcon } from '../Icon';
+    import { KroSpinner } from '../Spinner';
 
     export default {
-        components: { KroIcon },
+        components: { KroIcon, KroSpinner },
         props: {
 
             /**
@@ -93,6 +93,11 @@
 <style module lang="scss">
 
     .root {
+        --kro-spinner-size: 1.25rem;
+        --kro-spinner-thickness: 0.25rem; 
+        
+
+        position: relative;
         display: inline-grid;
         place-items: center;
         place-content: center;
@@ -103,17 +108,23 @@
 
         cursor: pointer;
 
+        height: 2.5rem;
+
         background: var(--kro-button-background, var(--kro-component-background));
         color: var(--kro-button-foreground, var(--kro-component-foreground));
 
-        margin: 1rem;
+        // margin: 1rem;
+        margin: 0;
 
         font-family: inherit;
         font-size: 0.875rem;
-        font-weight: 600;
+        font-weight: 500;
+        vertical-align: top;
 
         border: 1px solid var(--kro-button-border-color, transparent);
         border-radius: 0.25rem;
+
+        -webkit-appearance: none;
 
         &.isPrimary {
             background: var(--kro-button-background-primary, var(--kro-component-accent));
@@ -135,6 +146,16 @@
 
     }
 
+    .spinner {
+        position: absolute;
+        top: 0; left: 0; 
+        width: 100%; height: 100%;
+
+        display: grid;
+        place-items: center;
+        z-index: 5;
+    }
+
     .content {
         display: grid;
         grid-auto-flow: column;
@@ -142,6 +163,10 @@
         place-items: center;
 
         --icon-size: 1.25rem;
+
+        &.isLoading {
+            opacity: 0;
+        }
     }
 
 </style>

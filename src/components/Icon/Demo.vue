@@ -1,8 +1,10 @@
 <template>
     <demo title="Icons">
-        <kro-icon icon="external" />
-        <kro-icon icon="settings" />
-        <kro-icon icon="invert" />
+        <div :class="$style.grid">
+            <kro-icon icon="external" />
+            <kro-icon icon="settings" />
+            <kro-icon icon="invert" />
+        </div>
     </demo>
 </template>
 
@@ -16,6 +18,11 @@
     }
 </script>
 
-<style>
-
+<style module lang="scss">
+    .grid {
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: column;
+        grid-auto-columns: min-content;
+    }
 </style>
