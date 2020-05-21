@@ -1,47 +1,13 @@
 <template>
     <div :class="$style.root">
-        <div :class="$style.navigation">
-            <div :class="$style.logoContainer">
-                <img :class="$style.logo" src="@/assets/kro.svg" alt="">
-                <span>Krō UI</span>
-            </div>
-        </div>
-
-        <div :class="$style.content">
-            <button-demo />
-            <spinner-demo />
-            <switch-demo />
-            <textfield-demo />
-            <icon-button-demo />
-            <button-group-demo />
-            <squircle-demo />
-            <icon-demo />
-        </div>
+        
 
     </div>
 </template>
 
 <script>
-    import { ButtonDemo } from './components/Button';
-    import { IconDemo } from './components/Icon';
-    import { SwitchDemo } from './components/Switch';
-    import { TextfieldDemo } from './components/Textfield';
-    import { SquircleDemo } from './components/Squircle';
-    import { IconButtonDemo } from './components/IconButton';
-    import { SpinnerDemo } from './components/Spinner';
-    import { ButtonGroupDemo } from './components/ButtonGroup';
-
     export default {
-        components: { 
-            ButtonDemo, 
-            IconDemo, 
-            SwitchDemo, 
-            TextfieldDemo, 
-            SquircleDemo, 
-            IconButtonDemo, 
-            SpinnerDemo,
-            ButtonGroupDemo
-        }
+        
     }
 </script>
 
@@ -69,6 +35,8 @@
 
         /* Define Default Dark Theme for Components */
         --kro-application-background: #2E3440;
+        --kro-component-background-secondary: #434C5E;
+        
         --kro-application-foreground: #ECEFF4;
         --kro-application-divider: #4C566A;
 

@@ -1,6 +1,7 @@
 <template>
     <div :class="$style.root">
         <div :class="$style.header">{{title}}</div>
+        <div v-html="renderedDescription()"></div>
         <div :class="$style.content">
             <div ref="slot">
                 <slot></slot>
@@ -23,9 +24,27 @@
                 type: String,
                 default: 'Hey **I\'m bold** :)',
             },
+            description: {
+                type: String,
+            }
         },
         setup(props) {
-            return { 
+
+            const renderedDescription = () => {
+                if (props.description)
+                    return marked(props.description, { 
+                        sanitize: true,
+                        highlight: function(code, language) {
+                            const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+                            return hljs.highlight(validLanguage, code).value;
+                        }
+                    })
+
+                return '';
+            }
+
+            return {
+                renderedDescription,
                 renderedCode: marked(props.code, { 
                     sanitize: true,
                     highlight: function(code, language) {
@@ -85,6 +104,10 @@
 
     .hljs-attr {
         color: #A3BE8C;
+    }
+
+    .hljs-string {
+        color: #EBCB8B;
     }
 
 </style>

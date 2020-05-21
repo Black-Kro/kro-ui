@@ -23,10 +23,11 @@
 
 <script lang="ts">
     import { computed } from 'vue';
-    import { KroIcon } from '../Icon';
-    import { KroSpinner } from '../Spinner';
+    import KroIcon from '../Icon/Icon.vue';
+    import KroSpinner from '../Spinner/Spinner.vue';
 
     export default {
+        name: 'KroButton',
         components: { KroIcon, KroSpinner },
         props: {
 
