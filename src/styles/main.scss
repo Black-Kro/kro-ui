@@ -1,0 +1,42 @@
+// @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+
+:root {
+    /* Define Default Component Theme */
+    --kro-application-background: white;
+    --kro-application-foreground: #2E3440;
+    --kro-application-divider: #D8DEE9;
+
+    --kro-component-divider: var(--kro-application-divider);
+
+    --kro-component-background: #E5E9F0;
+    --kro-component-foreground:  #3B4252;
+    --kro-component-accent: #5E81AC;
+    --kro-component-accent-contrast: white;
+
+    --kro-component-shadow: rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+
+    /* Define Default Dark Theme for Components */
+    --kro-application-background: #2E3440;
+    --kro-component-background-secondary: #434C5E;
+    
+    --kro-application-foreground: #ECEFF4;
+    --kro-application-divider: #4C566A;
+
+    --kro-component-background: #3B4252;
+    --kro-component-foreground:  #D8DEE9;
+    --kro-component-accent: #5E81AC;
+    --kro-component-accent-contrast: white;
+
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+
+    color: var(--kro-application-foreground);
+    background: var(--kro-application-background);
+}

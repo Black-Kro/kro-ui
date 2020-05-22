@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "sourceMap": true,
+    "declaration": true,
     "baseUrl": ".",
     "types": [
       "webpack-env"
@@ -31,7 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/components/Switch"
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

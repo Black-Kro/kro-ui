@@ -27,7 +27,6 @@
     import KroSpinner from '../Spinner/Spinner.vue';
 
     export default {
-        name: 'KroButton',
         components: { KroIcon, KroSpinner },
         props: {
 
@@ -114,7 +113,6 @@
         background: var(--kro-button-background, var(--kro-component-background));
         color: var(--kro-button-foreground, var(--kro-component-foreground));
 
-        // margin: 1rem;
         margin: 0;
 
         font-family: inherit;
