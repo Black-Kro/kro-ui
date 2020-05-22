@@ -1,4 +1,10 @@
 # kro-ui
+[![npm version](https://badge.fury.io/js/kro-ui.svg)](https://badge.fury.io/js/kro-ui)
+
+## Install package
+```
+npm i kro-ui
+```
 
 ## Project setup
 ```
