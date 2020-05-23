@@ -1,4 +1,6 @@
-![Kro Logo](./src/assets/logo.png)
+<p align="center">
+    <img width="400" src="./src/assets/logo.png">
+</p>
 
 [![npm version](https://badge.fury.io/js/kro-ui.svg)](https://www.npmjs.com/package/kro-ui)
 
