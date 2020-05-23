@@ -9,10 +9,10 @@ interface KroUIOptions {
 export const KroUIPlugin = (components: any): Plugin => ({
     install(app, config: KroUIOptions) {
 
-        let icons = [ ...defaultIcons ];
+        let icons = { ...defaultIcons };
 
         if (config.icons)
-            icons = [...icons, ...config.icons];
+            icons = { ...icons, ...config.icons };
 
         /**
          * Register Components
