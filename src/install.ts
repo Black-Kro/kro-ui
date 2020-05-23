@@ -1,18 +1,34 @@
-import { App } from 'vue';
+import { App, Plugin } from 'vue';
+import { IconSymbol } from './composables/icons';
+import defaultIcons from './assets/icons';
 
-export const applyKroUIPlugin = (components: any) => (app: App) =>  {
-
-    /**
-     * Register All App Components
-     */
-    if (components) {
-        for (const key in components) {
-            const component = components[key];
-
-            if (component) 
-                app.component(key, component);
-        }
-    }
-
-
+interface KroUIOptions {
+    icons: string[];
 }
+
+export const KroUIPlugin = (components: any): Plugin => ({
+    install(app, config: KroUIOptions) {
+
+        let icons = [ ...defaultIcons ];
+
+        if (config.icons)
+            icons = [...icons, ...config.icons];
+
+        /**
+         * Register Components
+         */
+        if (components)
+            for (const key in components) {
+                const component = components[key];
+
+                if (component)
+                    app.component(key, component);
+            }
+
+        /**
+         * Register Icons
+         */
+        app.provide(IconSymbol, icons);
+
+    }
+});

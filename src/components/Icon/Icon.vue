@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import { computed } from 'vue';
-    import icons from '../../assets/icons';
+    import { useIcons } from '../../composables/icons';
 
     export default {
 
@@ -19,8 +19,15 @@
 
         setup(props) {
 
+            const { icons } = useIcons();
+
             const iconDefinition = computed(() => {
-                return icons[props.icon];
+                if (icons && icons[props.icon])
+                    return icons[props.icon];
+
+                console.error(`Kro UI Error: No Icon Named "${props.icon}". Did you register your icon in the kro ui plugin?`)
+
+                return 'M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z';
             });
 
             return {
