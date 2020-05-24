@@ -2,9 +2,7 @@
     <img width="400" src="./src/assets/logo.png">
 </p>
 
-[![npm version](https://badge.fury.io/js/kro-ui.svg)](https://www.npmjs.com/package/kro-ui)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/22371d16-1732-46f6-8adc-ad72d049066f/deploy-status)](https://app.netlify.com/sites/peaceful-lamarr-c91179/deploys)
+[![npm version](https://badge.fury.io/js/kro-ui.svg)](https://www.npmjs.com/package/kro-ui) [![Netlify Status](https://api.netlify.com/api/v1/badges/22371d16-1732-46f6-8adc-ad72d049066f/deploy-status)](https://app.netlify.com/sites/peaceful-lamarr-c91179/deploys)
 
 Kro UI is a Vue UI library that is meant to be used for all Kro apps, but is free to be used by anyone. The app currently provides the following components with more coming soon. Official docs will also be coming soon.
 
