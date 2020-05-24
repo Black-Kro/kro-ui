@@ -10,7 +10,7 @@ import KroUI from '@lib';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        ...registerRoutes(config),
+        ...config.routes,
     ]
 })
 

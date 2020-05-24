@@ -9,21 +9,35 @@ export default {
 
     title: 'Kro UI',
     description: 'Documentation for',
-    sidebar: [
+
+
+    routes: [
         {
-            title: 'Home',
             path: '/',
             component: Home,
         },
         {
-            title: 'Components',
             path: '/components',
             component: Components,
+        },
+        {
+            path: '/components/buttons',
+            component: Buttons,
+        }
+    ],
+
+    sidebar: [
+        {
+            title: 'Introduction',
+            path: '/',
+        },
+        {
+            title: 'Components',
+            path: '/components',
             children: [
                 {
                     title: 'Buttons',
                     path: '/components/buttons',
-                    component: Buttons
                 }
             ]
         }

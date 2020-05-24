@@ -1,3 +1,5 @@
+import { RouteRecordRaw } from 'vue-router';
+
 export interface SidebarGroup {
     title: string;
     path: string;
@@ -9,5 +11,6 @@ export interface SidebarGroup {
 export interface DocumentationConfiguration {
     title: string;
     description: string;
+    routes: RouteRecordRaw[];
     sidebar: SidebarGroup[];
 }
