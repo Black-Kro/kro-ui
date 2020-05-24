@@ -1,0 +1,1 @@
+export { useDocConfiguration } from './plugin';

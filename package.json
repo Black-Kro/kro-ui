@@ -22,7 +22,7 @@
     "build": "vue-cli-service build",
     "build-bundle": "vue-cli-service build --target lib --name kro-ui ./src/index.ts",
     "docs": "vue-cli-service serve docs/main.ts",
-    "build-docs": "cd ./docs && npx vitepress ./docs build",
+    "build-docs": "vue-cli-service build docs/main.ts --dest docs/dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

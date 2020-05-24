@@ -1,17 +1,22 @@
 <template>
     <div :class="$style.root">
 
-        <kro-toolbar :class="$style.toolbar"></kro-toolbar>
+        <kro-toolbar padded :class="$style.toolbar">
+            <div>
+                <div :class="$style.title">{{title}}</div>
+            </div>
+        </kro-toolbar>
 
         <div :class="$style.body">
 
             <div :class="$style.navigation">
-                Navigation
+                <app-sidebar :data="sidebar"></app-sidebar>
             </div>
 
             <div :class="$style.content">
                 <div :class="$style.output">
-                    <buttons-markdown></buttons-markdown>
+                    <router-view></router-view>
+                    <!-- <buttons-markdown></buttons-markdown> -->
                 </div>
             </div>
         </div>
@@ -19,11 +24,24 @@
 </template>
 
 <script>
+    import { useDocConfiguration } from '@docs/_internal';
+
     import ButtonsMarkdown from '../components/Buttons.md';
+    import AppSidebar from './components/AppSidebar.vue';
 
     export default {
         components: {
-            ButtonsMarkdown
+            AppSidebar,
+        },
+
+        setup() {
+            const { title, sidebar } = useDocConfiguration();
+
+
+            return {
+                title,
+                sidebar
+            }
         }
     }
 </script>
@@ -38,7 +56,8 @@
     }
     .body {
         display: grid;
-        grid-template-columns: 320px auto;
+        grid-template-columns: auto;
+        padding-left: 320px;
     }
 
 
@@ -50,12 +69,18 @@
 
     .navigation {
         border-right: 1px solid #3B4252;
+        position: absolute;
+        width: 320px;
+        top: 4rem; bottom: 0; left: 0;
+
+        display: grid;
+        align-items: center;
     }
 
     .toolbar {
         position: fixed;
         top: 0; left: 0; right: 0;
-        background: var(--kro-application-background);
+        background: var(--kro-application-background) !important;
         border-bottom: 1px solid #3B4252;
     }
 
@@ -63,6 +88,12 @@
         max-width: 820px;
         padding: 1rem;
         width: 100%;
+    }
+
+
+    .title {
+        font-size: 1.3rem;
+        font-weight: 600;
     }
 
 </style>

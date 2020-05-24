@@ -1,14 +1,13 @@
-type SidebarLink = [string, string];
-
-interface SidebarGroup {
+export interface SidebarGroup {
     title: string;
     path: string;
+    component: any;
     collapsable: boolean;
-    children: string[] | SidebarLink;
+    children: SidebarGroup[];
 }
 
 export interface DocumentationConfiguration {
     title: string;
     description: string;
-    sidebar: string[] | SidebarLink | SidebarGroup;
+    sidebar: SidebarGroup[];
 }

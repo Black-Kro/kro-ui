@@ -2,22 +2,24 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import { App } from '@docs/app/core';
-import { KroDocumentationPlugin } from './_internal/plugin';
+import { KroDocumentationPlugin, registerRoutes } from './_internal/plugin';
+import config from './config';
 
 import KroUI from '@lib';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        
+        ...registerRoutes(config),
     ]
 })
 
 createApp(App)
+    .use(router)
     .use(KroUI, {
         icons: {
 
         }
     })
-    .use(KroDocumentationPlugin)
+    .use(KroDocumentationPlugin, config)
     .mount('#app');
