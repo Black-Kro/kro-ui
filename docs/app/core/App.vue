@@ -86,6 +86,7 @@
         top: 0; left: 0; right: 0;
         background: var(--kro-application-background) !important;
         border-bottom: 1px solid #3B4252;
+        z-index: 500;
     }
 
         .toolbarContent {

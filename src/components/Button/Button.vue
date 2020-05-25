@@ -10,7 +10,7 @@
         
         :href="href" 
         :to="to" 
-        :target="target">
+        :target="href ? target : ''">
         <span :class="{[$style.content]: true, [$style.isLoading]: loading }">
             <slot></slot>
             <kro-icon 
