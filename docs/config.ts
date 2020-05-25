@@ -4,7 +4,10 @@ import Home from './app/home/index.md';
 import Installation from './app/home/install.md';
 
 import Components from './app/components/index.md';
+
 import Buttons from './app/components/Buttons.md';
+import ButtonGroups from './app/components/ButtonGroups.md';
+import Textfields from './app/components/Textfields.md';
 
 export default {
 
@@ -28,6 +31,14 @@ export default {
         {
             path: '/components/buttons',
             component: Buttons,
+        }, 
+        {
+            path: '/components/button-groups',
+            component: ButtonGroups,
+        },
+        {
+            path: '/components/textfields',
+            component: Textfields,
         }
     ],
 
