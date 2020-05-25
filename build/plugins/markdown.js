@@ -21,7 +21,7 @@ const defaultOptions = {
         linkify: true,
         typographer: true,
     },
-    preClass: '',
+    preClass: 'code-block',
     preWrapper: '',
     tableClass: '',
     tableWrapper: '',

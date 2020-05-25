@@ -1,16 +1,13 @@
 # Buttons
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a erat et est commodo pellentesque sit amet in risus. Maecenas lectus leo, ornare et diam vel, consequat pellentesque orci. Integer faucibus at orci vel pretium. Etiam dapibus hendrerit ornare. Morbi quis aliquet lectus. Fusce faucibus ante metus, et pulvinar est viverra posuere. Proin eget dignissim mauris.
+The `kro-button` is a replacement for the normal html `button`. The button can be 
+automatically converted into an external link by setting the `href` attribute 
+or it can be converted into a vue `router-link` by setting the `to` prop on the button.
 
-Phasellus nisl nibh, condimentum et ante vitae, accumsan eleifend eros. Phasellus eget maximus nulla, euismod laoreet ante. Nullam id lectus condimentum tellus tincidunt facilisis ac non risus. Sed sodales euismod nisl, in euismod ligula egestas ac. Nunc id ipsum quam. Donec vitae venenatis nisi, sit amet dignissim arcu. Fusce feugiat fringilla nisi quis sollicitudin. Cras dapibus ipsum enim, id tincidunt tortor tincidunt sit amet. Ut ut mauris ac mi condimentum ultrices.
+## Usage
 
-<kro-button>Testing</kro-button>
+<kro-button>Normal Button</kro-button>
 
 ```html
-<h1>Testign</h1>
-<kro-button>Fak</kro-button>
-```
-
-```ts
-console.log('Ah shit');
+<kro-button>Normal Button</kro-button>
 ```

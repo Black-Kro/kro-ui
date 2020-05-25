@@ -111,30 +111,65 @@
 <style lang="scss">
 
     @import '~highlight.js/scss/atom-one-dark';
+    @import './styles/markdown';
 
-    pre {
-        padding: 1rem;
-        background: #3B4252;
-        border-radius: 0.25rem;
+    // pre {
+    //     padding: 1rem;
+    //     background: #3B4252;
+    //     border-radius: 0.25rem;
 
-        font-family: 'Source Code Pro', monospace;
-        font-size: 1rem;
+    //     font-family: 'Source Code Pro', monospace;
+    //     font-size: 1rem;
 
-        code {
-            font-size: 1em;
-        }
-    }
+    //     code {
+    //         // font-size: 1em;
+    //     }
+    // }
 
-    p {
-        font-size: 1rem;
-        line-height: 1.7;
-        color: #E5E9F0;
-    }
+    // p code {
+    //     padding: 0 0.35rem;
+    //     border-radius: 0.25rem;
+    //     font-size: inherit;
+    //     font-size: 0.65em;
+    //     background: var(--kro-application-background-secondary);
+    // }
 
-    h2 {
-        text-transform: capitalize;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--kro-application-divider);
-    }
+    // p {
+    //     font-size: 1rem;
+    //     line-height: 1.7;
+    //     color: #E5E9F0;
+    // }
 
+    // h1, h2, h3, h4, h5, h6 {
+    //     font-weight: 600;
+    //     line-height: 1.25;
+
+    //     &:first-child {
+    //         margin-top: -1.5rem;
+    //         margin-bottom: 1rem;
+    //     }
+    // }
+
+    // h1 {
+    //     font-size: 2.2rem;
+    // }
+
+    // h2 {
+    //     font-size: 1.65rem;
+    //     padding-bottom: .3rem;
+    //     border-bottom: 1px solid var(--kro-application-divider);
+    // }
+
+    // h3 {
+    //     font-size: 1.35rem;
+    // }
+
+    // pre[class*=language-] {
+    //     line-height: 1.4;
+    //     padding: 1.25rem 1.5rem;
+    //     margin: .85rem 0;
+    //     background-color: #282c34;
+    //     border-radius: 6px;
+    //     overflow: auto;
+    // }
 </style>

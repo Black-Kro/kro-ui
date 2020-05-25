@@ -60,6 +60,38 @@ export default {
                     title: 'Icons',
                     path: '/components/icons'
                 },
+                {
+                    title: 'Tooltips',
+                    path: '/components/tooltips'
+                },
+                {
+                    title: 'Dialogs',
+                    path: '/components/dialogs'
+                },
+                {
+                    title: 'Alerts',
+                    path: '/components/alerts'
+                },
+                {
+                    title: 'Dividers',
+                    path: '/components/dividers'
+                },
+                {
+                    title: 'Menus',
+                    path: '/components/menus'
+                },
+                {
+                    title: 'Lists',
+                    path: '/components/lists'
+                },
+                {
+                    title: 'Treeview',
+                    path: '/components/treeview'
+                },
+                {
+                    title: 'Progress Bars',
+                    path: '/components/progress-bar'
+                }
             ]
         }
     ]
