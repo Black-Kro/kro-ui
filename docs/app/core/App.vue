@@ -118,10 +118,10 @@
         border-radius: 0.25rem;
 
         font-family: 'Source Code Pro', monospace;
-        font-size: 0.75rem;
+        font-size: 1rem;
 
         code {
-            font-size: 0.75rem;
+            font-size: 1em;
         }
     }
 

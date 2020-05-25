@@ -6,6 +6,8 @@
 
 Kro UI is a Vue UI library that is meant to be used for all Kro apps, but is free to be used by anyone. The app currently provides the following components with more coming soon. Official docs will also be coming soon.
 
+[Official Documentation & Demos](https://ui.black-kro.dev)
+
 | Component     | Name                  | Status        
 | ------------- |:---------------------:|:-------------:
 | Button        | `<kro-button>`        | Alpha 
