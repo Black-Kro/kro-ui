@@ -45,9 +45,6 @@
             id:         { type: String },
             hasError:   { type: Boolean, default: false },
             isDirty:    { type: Boolean, default: false },
-            mask:       { type: [String, Array], default: '' },
-            masked:     { type: Boolean, default: false },
-            tokens:     { type: Object }
         },
 
         setup() {

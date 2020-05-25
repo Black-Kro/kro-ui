@@ -3,7 +3,10 @@
 
         <kro-toolbar padded :class="$style.toolbar">
             <div :class="$style.toolbarContent">
-                <div :class="$style.title">{{title}}</div>
+                <div :class="$style.title">
+                    <img :class="$style.logo" src="../../../src/assets/kro.svg" />
+                    {{title}}
+                </div>
                 <div>
                     <kro-button href="https://github.com/black-kro/kro-ui">Github</kro-button>
                 </div>
@@ -103,8 +106,18 @@
 
 
     .title {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 600;
+
+        display: grid;
+        align-items: center;
+        grid-template-columns: min-content auto;
+        gap: 0.75rem;
+    }
+
+    .logo {
+        height: 3.25rem;
+        filter: drop-shadow(0.07rem 0.07rem #ff3232) drop-shadow(-0.05rem -0.05rem #00dcdc);
     }
 
 </style>
