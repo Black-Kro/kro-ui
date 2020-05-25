@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import { App } from '@docs/app/core';
-import { KroDocumentationPlugin, registerRoutes } from './_internal/plugin';
+import { KroDocumentationPlugin } from './_internal/plugin';
 import config from './config';
 
 import KroUI from '@lib';

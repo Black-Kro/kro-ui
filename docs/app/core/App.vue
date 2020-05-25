@@ -2,8 +2,11 @@
     <div :class="$style.root">
 
         <kro-toolbar padded :class="$style.toolbar">
-            <div>
+            <div :class="$style.toolbarContent">
                 <div :class="$style.title">{{title}}</div>
+                <div>
+                    <kro-button href="https://github.com/black-kro/kro-ui">Github</kro-button>
+                </div>
             </div>
         </kro-toolbar>
 
@@ -54,10 +57,11 @@
         // grid-template-rows: 4rem auto;
 
     }
+
     .body {
         display: grid;
         grid-template-columns: auto;
-        padding-left: 320px;
+        padding-left: 275px;
     }
 
 
@@ -69,8 +73,8 @@
 
     .navigation {
         border-right: 1px solid #3B4252;
-        position: absolute;
-        width: 320px;
+        position: fixed;
+        width: 275px;
         top: 4rem; bottom: 0; left: 0;
 
         display: grid;
@@ -83,6 +87,12 @@
         background: var(--kro-application-background) !important;
         border-bottom: 1px solid #3B4252;
     }
+
+        .toolbarContent {
+            display: grid;
+            align-items: center;
+            grid-template-columns: auto min-content;
+        }
 
     .output {
         max-width: 820px;
@@ -119,6 +129,12 @@
         font-size: 1rem;
         line-height: 1.7;
         color: #E5E9F0;
+    }
+
+    h2 {
+        text-transform: capitalize;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--kro-application-divider);
     }
 
 </style>

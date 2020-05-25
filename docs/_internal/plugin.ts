@@ -4,10 +4,8 @@ import { DocumentationConfiguration, SidebarGroup } from './config.interface';
 
 const ConfigurationSymbol = Symbol();
 
-
 export const useDocConfiguration = () => {
     const config = inject<DocumentationConfiguration>(ConfigurationSymbol);
-
 
     return {
         title: config?.title,
