@@ -40,8 +40,8 @@
 
 <style module lang="scss">
     .root {
-        width: var(--icon-size, 1.5rem);
-        height: var(--icon-size, 1.5rem);
+        width: var(--kro-icon-size, 1.5rem);
+        height: var(--kro-icon-size, 1.5rem);
 
         fill: currentColor;
     }

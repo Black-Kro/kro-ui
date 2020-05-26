@@ -3,7 +3,7 @@
         <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
         <Teleport to="#kro-portal">
             <div :tabindex="isOpen ? 1 : -1" :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
-                <div @click="close" :class="$style.scrim"></div>
+                <div @click="() => { if (!persistent) { close(); } }" :class="$style.scrim"></div>
                 <kro-surface raised :class="$style.content" @transitionstart="onTransitionStarted" @transitionend="onTransitionEnded">
                     <slot v-if="shouldMountContent" :open="open" :close="close" :toggle="toggle"></slot>
                 </kro-surface>
@@ -18,6 +18,9 @@
 
     export default {
         components: { KroSurface },
+        props: {
+            persistent: Boolean,
+        },
         setup(props) {
             const isOpen = ref(false);
             const shouldMountContent = ref(false);
@@ -54,7 +57,7 @@
                 window.addEventListener('keydown', close);
             };
 
-            const toggle = () => { isOpen ? close() : open(); };
+            const toggle = () => { isOpen ? close(null) : open(); };
 
             return {
                 isOpen,

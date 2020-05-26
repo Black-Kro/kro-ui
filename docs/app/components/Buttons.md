@@ -45,3 +45,9 @@ or it can be converted into a vue `router-link` by setting the `to` prop on the 
 <app-prop-definition name="type" type="String" value="undefined" description="The button type"></app-prop-definition>
 <app-prop-definition name="primary" type="Boolean" value="false" description="Styles the button as a primary button"></app-prop-definition>
 <app-prop-definition name="loading" type="Boolean" value="false" description="Shows a loader for the button"></app-prop-definition>
+
+## Styles
+<app-prop-definition name="--kro-button-background" type="color" value="--kro-component-background" description="Sets the background of the button"></app-prop-definition>
+<app-prop-definition name="--kro-button-foreground" type="color" value="--kro-component-foreground" description="Sets the foreground of the button"></app-prop-definition>
+<app-prop-definition name="--kro-button-background-primary" type="color" value="--kro-component-accent" description="Sets the background of the button for a primary button"></app-prop-definition>
+<app-prop-definition name="--kro-button-foreground-primary" type="color" value="--kro-component-accent-contrast" description="Sets the foreground of the button for a primary button"></app-prop-definition>
