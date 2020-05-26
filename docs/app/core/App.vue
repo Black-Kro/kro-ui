@@ -1,6 +1,5 @@
 <template>
     <div :class="$style.root">
-
         <kro-toolbar padded :class="$style.toolbar">
             <div :class="$style.toolbarContent">
                 <div :class="$style.title">
@@ -26,6 +25,8 @@
                 </div>
             </div>
         </div>
+
+        <div id="kro-portal"></div>
     </div>
 </template>
 

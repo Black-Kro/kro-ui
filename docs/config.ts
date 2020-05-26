@@ -8,6 +8,7 @@ import Components from './app/components/index.md';
 import Buttons from './app/components/Buttons.md';
 import ButtonGroups from './app/components/ButtonGroups.md';
 import Textfields from './app/components/Textfields.md';
+import Dialogs from './app/components/Dialog.md';
 
 export default {
 
@@ -39,6 +40,10 @@ export default {
         {
             path: '/components/textfields',
             component: Textfields,
+        },
+        {
+            path: '/components/dialogs',
+            component: Dialogs,
         }
     ],
 

@@ -1,0 +1,1 @@
+export { default as KroDialog } from './Dialog.vue';

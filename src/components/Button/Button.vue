@@ -96,7 +96,6 @@
         --kro-spinner-size: 1.25rem;
         --kro-spinner-thickness: 0.25rem; 
         
-
         position: relative;
         display: inline-grid;
         place-items: center;

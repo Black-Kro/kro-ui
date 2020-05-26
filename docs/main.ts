@@ -7,6 +7,7 @@ import config from './config';
 
 import AppPropDefinition from './app/core/components/AppPropDefinition.vue';
 import DocsTextfieldDemo from './app/components/TextfieldExample.vue';
+import DocsDialogDemo from './app/components/DialogExample.vue';
 
 import KroUI from '@lib';
 
@@ -27,4 +28,5 @@ createApp(App)
     .use(KroDocumentationPlugin, config)
     .component('app-prop-definition', AppPropDefinition)
     .component('docs-textfield-demo', DocsTextfieldDemo)
+    .component('docs-dialog-demo', DocsDialogDemo)
     .mount('#app');
