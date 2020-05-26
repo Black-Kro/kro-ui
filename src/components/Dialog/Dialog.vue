@@ -4,8 +4,8 @@
         <Teleport to="#kro-portal">
             <div :tabindex="isOpen ? 1 : -1" :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
                 <div @click="close" :class="$style.scrim"></div>
-                <kro-surface raised :class="$style.content">
-                    <slot :open="open" :close="close" :toggle="toggle"></slot>
+                <kro-surface raised :class="$style.content" @transitionstart="onTransitionStarted" @transitionend="onTransitionEnded">
+                    <slot v-if="shouldMountContent" :open="open" :close="close" :toggle="toggle"></slot>
                 </kro-surface>
             </div>
         </Teleport>
@@ -20,6 +20,23 @@
         components: { KroSurface },
         setup(props) {
             const isOpen = ref(false);
+            const shouldMountContent = ref(false);
+
+            const onTransitionStarted = (e) => {
+                if (e.propertyName === 'transform') {
+                    if (isOpen.value) {
+                        shouldMountContent.value = true;
+                    }
+                }
+            }
+
+            const onTransitionEnded = (e) => {
+                if (e.propertyName === 'transform') {
+                    if (!isOpen.value) {
+                        shouldMountContent.value = false;
+                    }
+                }
+            }
 
             const close = (e) => { 
                 if (e?.type === 'keydown') {
@@ -41,10 +58,14 @@
 
             return {
                 isOpen,
+                shouldMountContent,
 
                 open,
                 close,
                 toggle,
+
+                onTransitionStarted,
+                onTransitionEnded,
             }
         }
     }
@@ -77,8 +98,12 @@
         .scrim {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            backdrop-filter: blur(5px);
             background: rgba(0, 0, 0, .25);
+
+            // Backdrop Filters currently cause a bug in chrome on macos
+            // and are not supported on firefox. In the fureture this maybe be
+            // enabled, but for now it will stay disabled.
+            // backdrop-filter: blur(5px);
 
             transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
         }

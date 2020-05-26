@@ -9,3 +9,4 @@ export * from './Textfield';
 export * from './Toolbar';
 export * from './Dialog';
 export * from './Surface';
+export * from './Divider';

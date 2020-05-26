@@ -9,6 +9,8 @@ import Buttons from './app/components/Buttons.md';
 import ButtonGroups from './app/components/ButtonGroups.md';
 import Textfields from './app/components/Textfields.md';
 import Dialogs from './app/components/Dialog.md';
+import Icons from './app/components/Icons.md';
+import Dividers from './app/components/Dividers.md';
 
 export default {
 
@@ -44,6 +46,14 @@ export default {
         {
             path: '/components/dialogs',
             component: Dialogs,
+        },
+        {
+            path: '/components/icons',
+            component: Icons,
+        },
+        {
+            path: '/components/dividers',
+            component: Dividers,
         }
     ],
 
@@ -108,7 +118,11 @@ export default {
                     title: 'Progress Bars',
                     path: '/components/progress-bar'
                 }
-            ]
+            ].sort((a, b) => {
+                if (a.title < b.title) { return -1; }
+                if (a.title > b.title) { return 1;}
+                return 0;
+            })
         }
     ]
     

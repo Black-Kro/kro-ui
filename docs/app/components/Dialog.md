@@ -20,6 +20,7 @@
             <kro-button primary>Delete</kro-button>
         </div>
     </template>
+
 </kro-dialog>      
 ```
 
