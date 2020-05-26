@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<script>
+<script lang='ts'>
     import { ref } from 'vue';
     import { KroSurface } from '../Surface';
 
@@ -21,8 +21,22 @@
         setup(props) {
             const isOpen = ref(false);
 
-            const open = () => { isOpen.value = true; };
-            const close = () => { isOpen.value = false; };
+            const close = (e) => { 
+                if (e?.type === 'keydown') {
+                    if (e.key === 'Escape') {
+                        isOpen.value = false;
+                        window.removeEventListener('keydown', close);
+                    }
+                } else {
+                    isOpen.value = false;
+                }
+            };
+
+            const open = () => { 
+                isOpen.value = true;
+                window.addEventListener('keydown', close);
+            };
+
             const toggle = () => { isOpen ? close() : open(); };
 
             return {
