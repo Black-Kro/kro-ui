@@ -27,24 +27,17 @@
             const shouldMountContent = ref(false);
 
             const onTransitionStarted = (e) => {
-                // if (e.propertyName === 'transform') {
-                    console.log('Transition Started');
-                    console.log(e);
-
-                    if (isOpen.value) {
-                        shouldMountContent.value = true;
-                    }
-                // }
+                if (e.propertyName === 'transform') {
+                    shouldMountContent.value = true;
+                }
             }
 
             const onTransitionEnded = (e) => {
-                // if (e.propertyName === 'transform') {
-                    console.log('Transition Ended');
-                    console.log(e);``
+                if (e.propertyName === 'transform') {
                     if (!isOpen.value) {
                         shouldMountContent.value = false;
                     }
-                // }
+                }
             }
 
             const close = (e) => { 
