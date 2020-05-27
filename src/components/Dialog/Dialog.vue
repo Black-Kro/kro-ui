@@ -5,7 +5,7 @@
         <Teleport to="#kro-portal">
             <div :tabindex="isOpen ? 1 : -1" :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
                 <div @click="() => { if (!persistent) { close(); } }" :class="$style.scrim"></div>
-                <kro-surface raised :class="$style.content" @transitionstart="onTransitionStarted" @transitionend="onTransitionEnded">
+                <kro-surface raised :class="$style.content" @transitionend="onTransitionEnded">
                     <slot v-if="shouldMountContent" :open="open" :close="close" :toggle="toggle"></slot>
                 </kro-surface>
             </div>
@@ -25,17 +25,6 @@
         setup(props) {
             const isOpen = ref(false);
             const shouldMountContent = ref(false);
-
-            const onTransitionStarted = (e) => {
-                if (e.propertyName === 'transform') {
-                    console.log(shouldMountContent);
-                    console.log(shouldMountContent.value);
-                    shouldMountContent.value = true;
-                    console.log(e);
-                    console.log(shouldMountContent);
-                    console.log(shouldMountContent.value);
-                }
-            }
 
             const onTransitionEnded = (e) => {
                 if (e.propertyName === 'transform') {
@@ -63,6 +52,7 @@
 
             const open = () => { 
                 isOpen.value = true;
+                shouldMountContent.value = true;
                 window.addEventListener('keydown', close);
             };
 
@@ -76,7 +66,6 @@
                 close,
                 toggle,
 
-                onTransitionStarted,
                 onTransitionEnded,
             }
         }
