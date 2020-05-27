@@ -96,7 +96,9 @@ pre {
     margin: 0.85rem 0;
     background-color: #282c34;
     border-radius: 0.25rem;
-    overflow: auto;
+    overflow: hidden;
+
+    white-space: pre-wrap;
 
     max-width: 100%;
     width: 100%;
