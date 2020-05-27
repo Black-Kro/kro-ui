@@ -1,7 +1,7 @@
 <template>
     <div>
         <div :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
-            <app-sidebar-item v-for="item in sidebar" :key="item.path" :data="item"></app-sidebar-item>
+            <app-sidebar-item @click="close" v-for="item in sidebar" :key="item.path" :data="item"></app-sidebar-item>
         </div>
         <div @click="close" :class="{[$style.scrim]: true, [$style.isOpen]: isOpen}"></div>
     </div>
