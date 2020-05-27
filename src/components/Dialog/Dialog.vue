@@ -28,14 +28,24 @@
 
             const onTransitionStarted = (e) => {
                 if (e.propertyName === 'transform') {
+                    console.log(shouldMountContent);
+                    console.log(shouldMountContent.value);
                     shouldMountContent.value = true;
+                    console.log(e);
+                    console.log(shouldMountContent);
+                    console.log(shouldMountContent.value);
                 }
             }
 
             const onTransitionEnded = (e) => {
                 if (e.propertyName === 'transform') {
                     if (!isOpen.value) {
+                        console.log(shouldMountContent);
+                        console.log(shouldMountContent.value);
                         shouldMountContent.value = false;
+                        console.log(e);
+                        console.log(shouldMountContent);
+                        console.log(shouldMountContent.value);
                     }
                 }
             }
