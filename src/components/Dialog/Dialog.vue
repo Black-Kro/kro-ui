@@ -80,7 +80,7 @@
         z-index: 9001;
 
         display: grid;
-        place-items: center;
+        place-content: center;
 
         &:not(.isOpen) {
             pointer-events: none;
