@@ -2,6 +2,8 @@
     <div :class="$style.root">
         <kro-toolbar padded :class="$style.toolbar">
             <div :class="$style.toolbarContent">
+                <kro-icon-button @click="open" :class="$style.menuButton" icon="menu"></kro-icon-button>
+
                 <div :class="$style.title">
                     <img :class="$style.logo" src="../../../src/assets/kro.svg" />
                     {{title}}
@@ -15,13 +17,12 @@
         <div :class="$style.body">
 
             <div :class="$style.navigation">
-                <app-sidebar :data="sidebar"></app-sidebar>
+                <app-sidebar ref="sidebarRef" :data="sidebar"></app-sidebar>
             </div>
 
             <div :class="$style.content">
                 <div :class="$style.output">
                     <router-view></router-view>
-                    <!-- <buttons-markdown></buttons-markdown> -->
                 </div>
             </div>
         </div>
@@ -30,7 +31,8 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+    import { ref } from 'vue';
     import { useDocConfiguration } from '@docs/_internal';
 
     import ButtonsMarkdown from '../components/Buttons.md';
@@ -43,11 +45,19 @@
 
         setup() {
             const { title, sidebar } = useDocConfiguration();
+            const sidebarRef = ref<any>(undefined);
 
+            const open = () => {
+                console.log(sidebarRef.value);
+                sidebarRef.value.open();
+            }
 
             return {
                 title,
-                sidebar
+                sidebar,
+
+                sidebarRef,
+                open
             }
         }
     }
@@ -60,29 +70,31 @@
         padding-top: 4rem;
         // grid-template-rows: 4rem auto;
 
+        --kro-docs-sidebar-width: 275px;
+        --kro-docs-toolbar-height: 4rem;
+        --kro-docs-content-width: 820px;
     }
 
     .body {
         display: grid;
         grid-template-columns: auto;
         padding-left: 275px;
+
+        @media (max-width: 1095px) {
+            padding-left: 0;
+        }
     }
 
+    .menuButton {
+        display: none;
+        @media (max-width: 1095px) {
+            display: block;
+        }
+    }
 
     .content {
         display: grid;
         justify-items: center;
-    }
-
-
-    .navigation {
-        border-right: 1px solid #3B4252;
-        position: fixed;
-        width: 275px;
-        top: 4rem; bottom: 0; left: 0;
-
-        display: grid;
-        align-items: center;
     }
 
     .toolbar {
@@ -97,10 +109,15 @@
             display: grid;
             align-items: center;
             grid-template-columns: auto min-content;
+
+            @media(max-width: 1095px) {
+                grid-template-columns: min-content auto min-content;
+                gap: 1rem;
+            }
         }
 
     .output {
-        max-width: 820px;
+        max-width: var(--kro-docs-content-width);
         padding: 1rem;
         width: 100%;
     }
@@ -128,63 +145,4 @@
     @import '~highlight.js/scss/atom-one-dark';
     @import './styles/markdown';
 
-    // pre {
-    //     padding: 1rem;
-    //     background: #3B4252;
-    //     border-radius: 0.25rem;
-
-    //     font-family: 'Source Code Pro', monospace;
-    //     font-size: 1rem;
-
-    //     code {
-    //         // font-size: 1em;
-    //     }
-    // }
-
-    // p code {
-    //     padding: 0 0.35rem;
-    //     border-radius: 0.25rem;
-    //     font-size: inherit;
-    //     font-size: 0.65em;
-    //     background: var(--kro-application-background-secondary);
-    // }
-
-    // p {
-    //     font-size: 1rem;
-    //     line-height: 1.7;
-    //     color: #E5E9F0;
-    // }
-
-    // h1, h2, h3, h4, h5, h6 {
-    //     font-weight: 600;
-    //     line-height: 1.25;
-
-    //     &:first-child {
-    //         margin-top: -1.5rem;
-    //         margin-bottom: 1rem;
-    //     }
-    // }
-
-    // h1 {
-    //     font-size: 2.2rem;
-    // }
-
-    // h2 {
-    //     font-size: 1.65rem;
-    //     padding-bottom: .3rem;
-    //     border-bottom: 1px solid var(--kro-application-divider);
-    // }
-
-    // h3 {
-    //     font-size: 1.35rem;
-    // }
-
-    // pre[class*=language-] {
-    //     line-height: 1.4;
-    //     padding: 1.25rem 1.5rem;
-    //     margin: .85rem 0;
-    //     background-color: #282c34;
-    //     border-radius: 6px;
-    //     overflow: auto;
-    // }
 </style>

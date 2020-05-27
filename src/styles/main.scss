@@ -6,7 +6,7 @@
     /* Define Default Component Theme */
     --kro-application-background: white;
     --kro-application-foreground: #2E3440;
-    --kro-application-divider: #D8DEE9;
+    --kro-application-divider: #3B4252;
 
     --kro-application-accent: #8FBCBB;
 
@@ -26,7 +26,7 @@
     --kro-component-background-secondary: #434C5E;
     
     --kro-application-foreground: #ECEFF4;
-    --kro-application-divider: #4C566A;
+    --kro-application-divider: #3B4252;
 
     --kro-component-background: #3B4252;
     --kro-component-foreground:  #D8DEE9;
@@ -42,4 +42,16 @@ body {
 
     color: var(--kro-application-foreground);
     background: var(--kro-application-background);
+
+    overflow-x: hidden;
+}
+
+
+// Custom Scrollbars for Chrome
+::-webkit-scrollbar {
+    background: var(--kro-application-background-secondary);
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgba(0, 0, 0, .56);
 }
