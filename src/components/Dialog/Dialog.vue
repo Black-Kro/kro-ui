@@ -1,6 +1,7 @@
 <template>
     <div>
         <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
+        Contend Mounted: {{shouldMountContent}}
         <Teleport to="#kro-portal">
             <div :tabindex="isOpen ? 1 : -1" :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
                 <div @click="() => { if (!persistent) { close(); } }" :class="$style.scrim"></div>
