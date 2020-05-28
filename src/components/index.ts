@@ -10,3 +10,4 @@ export * from './Toolbar';
 export * from './Dialog';
 export * from './Surface';
 export * from './Divider';
+export * from './Alert';

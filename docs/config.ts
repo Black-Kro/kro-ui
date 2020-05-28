@@ -11,6 +11,7 @@ import Textfields from './app/components/Textfields.md';
 import Dialogs from './app/components/Dialog.md';
 import Icons from './app/components/Icons.md';
 import Dividers from './app/components/Dividers.md';
+import Alerts from './app/components/Alerts.md';
 
 export default {
 
@@ -54,7 +55,11 @@ export default {
         {
             path: '/components/dividers',
             component: Dividers,
-        }
+        },
+        {
+            path: '/components/alerts',
+            component: Alerts,
+        },
     ],
 
     sidebar: [
