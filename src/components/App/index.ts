@@ -1,0 +1,1 @@
+export { default as KroApp } from './App.vue';

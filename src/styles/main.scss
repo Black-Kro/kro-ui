@@ -33,6 +33,20 @@
     --kro-component-accent: #5E81AC;
     --kro-component-accent-contrast: white;
 
+
+    // Success, Warning, Info, and Errors Colors
+    --kro-component-success-background: #4caf50 ;
+    --kro-component-success-foreground: white;
+
+    --kro-component-warning-background: #fb8c00 ;
+    --kro-component-warning-foreground: white;
+
+    --kro-component-info-background: #2196f3;
+    --kro-component-info-foreground: white;
+
+    --kro-component-error-background: #ff5252;
+    --kro-component-error-foreground: white;
+
 }
 
 html,
@@ -49,9 +63,9 @@ body {
 
 // Custom Scrollbars for Chrome
 ::-webkit-scrollbar {
-    background: var(--kro-application-background-secondary);
+    background: rgba(0, 0, 0, .56);
 }
 
 ::-webkit-scrollbar-thumb{
-    background: rgba(0, 0, 0, .56);
+    background: var(--kro-application-background-secondary);
 }

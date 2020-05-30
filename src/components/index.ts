@@ -11,3 +11,4 @@ export * from './Dialog';
 export * from './Surface';
 export * from './Divider';
 export * from './Alert';
+export * from './App';

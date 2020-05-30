@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root">
+    <kro-app :class="$style.root">
         <kro-toolbar padded :class="$style.toolbar">
             <div :class="$style.toolbarContent">
                 <kro-icon-button @click="open" :class="$style.menuButton" icon="menu"></kro-icon-button>
@@ -26,9 +26,7 @@
                 </div>
             </div>
         </div>
-
-        <div id="kro-portal"></div>
-    </div>
+    </kro-app>
 </template>
 
 <script lang="ts">

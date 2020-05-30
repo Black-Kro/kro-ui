@@ -12,6 +12,7 @@ import Dialogs from './app/components/Dialog.md';
 import Icons from './app/components/Icons.md';
 import Dividers from './app/components/Dividers.md';
 import Alerts from './app/components/Alerts.md';
+import App from './app/components/App.md';
 
 export default {
 
@@ -60,6 +61,10 @@ export default {
             path: '/components/alerts',
             component: Alerts,
         },
+        {
+            path: '/components/app',
+            component: App,
+        },
     ],
 
     sidebar: [
@@ -75,6 +80,10 @@ export default {
             title: 'Components',
             path: '/components',
             children: [
+                {
+                    title: 'App',
+                    path: '/components/app',
+                },
                 {
                     title: 'Buttons',
                     path: '/components/buttons',
