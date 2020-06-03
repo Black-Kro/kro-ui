@@ -24,50 +24,86 @@ export default {
 
     routes: [
         {
+            meta: {
+                title: 'Home'
+            },
             path: '/',
             component: Home,
         },
         {
+            meta: {
+                title: 'Installation'
+            },
             path: '/installation',
             component: Installation, 
         },
         {
+            meta: {
+                title: 'Components'
+            },
             path: '/components',
             component: Components,
         },
         {
+            meta: {
+                title: 'Buttons'
+            },
             path: '/components/buttons',
             component: Buttons,
         }, 
         {
+            meta: {
+                title: 'Button Groups'
+            },
             path: '/components/button-groups',
             component: ButtonGroups,
         },
         {
+            meta: {
+                title: 'Textfields'
+            },
             path: '/components/textfields',
             component: Textfields,
         },
         {
+            meta: {
+                title: 'Dialogs'
+            },
             path: '/components/dialogs',
             component: Dialogs,
         },
         {
+            meta: {
+                title: 'Icons'
+            },
             path: '/components/icons',
             component: Icons,
         },
         {
+            meta: {
+                title: 'Dividers'
+            },
             path: '/components/dividers',
             component: Dividers,
         },
         {
+            meta: {
+                title: 'Alerts',
+            },
             path: '/components/alerts',
             component: Alerts,
         },
         {
+            meta: {
+                title: 'App'
+            },
             path: '/components/app',
             component: App,
         },
         {
+            meta: {
+                title: 'useDialog'
+            },
             path: '/composables/useDialog',
             component: UseDialog,
         },

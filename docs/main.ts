@@ -17,7 +17,12 @@ const router = createRouter({
     routes: [
         ...config.routes,
     ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+    document.title = `${to.meta.title} | Kro UI`;
+    next();
+});
 
 createApp(App)
     .use(router)
