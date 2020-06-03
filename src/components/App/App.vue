@@ -4,12 +4,15 @@
             <slot></slot>
         </div>
         <div id="kro-portal"></div>
+        <composable-dialogs></composable-dialogs>
     </div>
 </template>
 
 <script lang="ts">
-    export default {
+    import ComposableDialogs from './components/ComposableDialogs.vue';
 
+    export default {
+        components: { ComposableDialogs }
     }
 </script>
 

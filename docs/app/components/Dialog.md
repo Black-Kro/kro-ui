@@ -8,27 +8,24 @@ close function provided by the dialog and wiring it up to a button.
 
 ```html
 <kro-dialog>
-
-    <!-- Template for buttons to open the dialog -->
     <template #activator="{ open }">
-        <kro-button @click="open" kro-button>Open</kro-button>
+        <kro-button @click="open" kro-button>Open Dialog</kro-button>
     </template>
 
-    <!-- Template for Dialog Content -->
-    <template #default="{ close }">
-        <header :class="$style.header">Delete Account</header>
-        <p>...</p>
-        <div :class="$style.footer">
-            <kro-button @click="close">Cancel</kro-button>
-            <kro-button primary>Delete</kro-button>
-        </div>
+    <template #title>Normal Dialog</template>
+    <template #default>
+        ...
     </template>
-
-</kro-dialog>      
+    <template #controls="{ close }">
+        <kro-button @click="close">Cancel</kro-button>
+        <kro-button primary>Delete</kro-button>
+    </template>
+</kro-dialog>  
 ```
 
 
 ## Props
 <app-prop-definition name="persistent" type="Boolean" value="false" description="Prevents the dialog from closing when clicking on the overlay."></app-prop-definition>
+<app-prop-definition name="open" type="Boolean" value="false" description="Sets the initial open state of the dialog."></app-prop-definition>
 
 ## Events

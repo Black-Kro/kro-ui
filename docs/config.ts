@@ -14,6 +14,8 @@ import Dividers from './app/components/Dividers.md';
 import Alerts from './app/components/Alerts.md';
 import App from './app/components/App.md';
 
+import UseDialog from './app/composables/useDialog.md';
+
 export default {
 
     title: 'Kro UI',
@@ -65,6 +67,10 @@ export default {
             path: '/components/app',
             component: App,
         },
+        {
+            path: '/composables/useDialog',
+            component: UseDialog,
+        },
     ],
 
     sidebar: [
@@ -75,6 +81,20 @@ export default {
         {
             title: 'Introduction',
             path: '/',
+        },
+        {
+            title: 'Composables',
+            path: 'Composables',
+            children: [
+                {
+                    title: 'useToast',
+                    path: '/composables/useToast',
+                },
+                {
+                    title: 'useDialog',
+                    path: '/composables/useDialog',
+                }
+            ]
         },
         {
             title: 'Components',
