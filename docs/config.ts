@@ -16,6 +16,7 @@ import App from './app/components/App.md';
 
 import UseDialog from './app/composables/useDialog.md';
 
+// @ts-ignore
 export default {
 
     title: 'Kro UI',
