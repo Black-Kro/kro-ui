@@ -120,11 +120,6 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, .25);
 
-            // Backdrop Filters currently cause a bug in chrome on macos
-            // and are not supported on firefox. In the fureture this maybe be
-            // enabled, but for now it will stay disabled.
-            // backdrop-filter: blur(5px);
-
             transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 

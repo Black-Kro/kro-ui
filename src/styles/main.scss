@@ -1,9 +1,6 @@
-// @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
-
 * { box-sizing: border-box; }
 
 :root {
-    /* Define Default Component Theme */
     --kro-application-background: white;
     --kro-application-foreground: #2E3440;
     --kro-application-divider: #3B4252;
@@ -20,7 +17,6 @@
     --kro-component-shadow: rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 
 
-    /* Define Default Dark Theme for Components */
     --kro-application-background: #2E3440;
     --kro-application-background-secondary: #434C5E;
     --kro-component-background-secondary: #434C5E;
@@ -34,7 +30,6 @@
     --kro-component-accent-contrast: white;
 
 
-    // Success, Warning, Info, and Errors Colors
     --kro-component-success-background: #4caf50 ;
     --kro-component-success-foreground: white;
 
@@ -61,7 +56,6 @@ body {
 }
 
 
-// Custom Scrollbars for Chrome
 ::-webkit-scrollbar {
     background: rgba(0, 0, 0, .56);
 }

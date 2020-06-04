@@ -91,7 +91,6 @@
 </script>
 
 <style module lang="scss">
-
     .root {
         --kro-spinner-size: 1.25rem;
         --kro-spinner-thickness: 0.25rem; 

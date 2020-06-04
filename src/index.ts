@@ -5,5 +5,6 @@ import { KroUIPlugin } from './install';
 import './styles/main.scss';
 
 export * from './components';
+export * from './composables';
 
 export default KroUIPlugin(components);

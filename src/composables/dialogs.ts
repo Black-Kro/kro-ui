@@ -77,7 +77,3 @@ export const useDialog = () => {
     }
 
 }
-
-export const onDialog = () => {
-
-}

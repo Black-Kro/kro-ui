@@ -1,3 +1,5 @@
-src
+./src
 public
 babel.config.js
+build
+docs

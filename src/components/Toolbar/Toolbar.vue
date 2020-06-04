@@ -32,7 +32,6 @@
     }
 
         .content {
-            // Set the background for child components
             --kro-component-background: var(--kro-component-background-secondary);
             flex: 1;
         }

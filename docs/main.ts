@@ -12,6 +12,7 @@ import UseDialogExample from './app/composables/useDialogExample.vue';
 
 import KroUI from '@lib';
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
