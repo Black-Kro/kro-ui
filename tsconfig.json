@@ -12,7 +12,7 @@
     "sourceMap": true,
     "declaration": true,
     "baseUrl": ".",
-    
+    "removeComments": true,
     "types": [
       "webpack-env"
     ],
