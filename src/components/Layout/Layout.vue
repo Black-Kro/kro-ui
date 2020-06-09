@@ -37,10 +37,12 @@
 <style module lang="scss">
 
     @import '../../styles/general/breakpoints';
+    @import '../../styles/general/layers';
 
     .root {
 
         &.hasNavigation {
+            .footer,
             .content { 
                 margin-left: var(--kro-navigation-width, 275px); 
             
@@ -64,13 +66,16 @@
     }
 
     .navigation {
-        position: absolute;
+        @include useLayer(navigation);
+
+        position: fixed;
         top: 0; left: 0; bottom: 0; right: 0;
         pointer-events: none;
     }
 
     .toolbar {
-        // color: red;
+        @include useLayer(toolbar);
+
         position: fixed;
         top: 0; left: 0; right: 0;
     }

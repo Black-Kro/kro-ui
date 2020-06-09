@@ -12,12 +12,8 @@ import '@lib/styles/themes/nord.scss';
 createApp(App)
     .use(KroPressPlugin, {
         title: 'Kro UI',
-        components: {
-            ...DemoComponents,
-        },
-        routes: [
-            ...PageRoutes,
-        ],
+        components: { ...DemoComponents, },
+        routes: [ ...PageRoutes, ],
         sidebar: [
             {
                 title: 'Introduction',
@@ -52,12 +48,20 @@ createApp(App)
                     {
                         title: 'Button',
                         to: '/components/button'
-                    }
-                ].sort((a, b) => {
-                    if (a.title < b.title) { return -1; }
-                    if (a.title > b.title) { return 1;}
-                    return 0;
-                })
+                    },
+                    {
+                        title: 'Button Group',
+                        to: '/components/button-group'
+                    },
+                    {
+                        title: 'Dialog',
+                        to: '/components/dialog'
+                    },
+                    {
+                        title: 'Divider',
+                        to: '/components/divider'
+                    },
+                ]
             }
         ]
     } as KroPressPluginOptions)

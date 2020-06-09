@@ -66,8 +66,14 @@
              */
             primary: Boolean,
 
+            /**
+             * Gives the button an outline style
+             */
             outline: Boolean,
 
+            /**
+             * Apply a shadow to the button
+             */
             raised: Boolean,
 
         },
@@ -129,7 +135,7 @@
         }
 
         &.isRaised {
-            box-shadow: var(--kro-shadow);
+            box-shadow: var(--kro-button-shadow, var(--kro-shadow));
         }
 
         &.isOutlined {

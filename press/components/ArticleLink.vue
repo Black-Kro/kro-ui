@@ -25,19 +25,16 @@
         grid-template-columns: auto min-content;
         align-items: center;
 
+        text-decoration: none;
+
         border: 1px solid var(--kro-divider);
         padding: 1rem;
 
-        --kro-icon-size: 2.5rem;
+        --kro-icon-size: 2rem;
     }
 
-    .content {
-        display: grid;
-    }
-
-    .title {
-        font-size: 1.25rem;
-    }
+    .content { display: grid; }
+    .title { font-size: 1.25rem; }
 
     .subtitle {
         font-size: 0.75rem;

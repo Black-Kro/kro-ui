@@ -29,9 +29,7 @@ export default {
             minimize: true,
             use: ['sass']
         }),
-        buble({
-            objectAssign: 'Object.assign'
-        }),
+        buble({ objectAssign: 'Object.assign' }),
         terser(),
     ]
 }
