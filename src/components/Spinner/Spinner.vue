@@ -15,7 +15,7 @@ export default {
         height: var(--kro-spinner-size, 2.5rem);
 
         border-radius: 50%;
-        border: var(--kro-spinner-thickness, 0.35rem) solid var(--kro-spinner-color, var(--kro-component-foreground));
+        border: var(--kro-spinner-thickness, 0.35rem) solid var(--kro-spinner-color, var(--kro-foreground));
         border-bottom: var(--kro-spinner-thickness, 0.35rem) solid transparent;
     
         animation-name: KroSpinnerAnimation;

@@ -18,7 +18,7 @@
 
         > * {
             border-radius: 0;
-            border-left: 1px solid var(--kro-component-divider);
+            border-left: 1px solid var(--kro-divider);
 
             &:first-child { border-radius: 0.25rem 0 0 0.25rem; border-left: none; }
             &:last-child { border-radius: 0 0.25rem 0.25rem 0; }

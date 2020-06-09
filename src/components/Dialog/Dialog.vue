@@ -38,6 +38,7 @@
                 if (e.propertyName === 'transform') {
                     if (!isOpen.value) {
                         shouldMountContent.value = false;
+                        emit('close');
                     }
                 }
             }
@@ -48,12 +49,12 @@
                         if (!props.persistent) {
                             isOpen.value = false;
                             window.removeEventListener('keydown', close);
-                            emit('close');
+                            // emit('close');
                         }
                     }
                 } else {
                     isOpen.value = false;
-                    emit('close');
+                    // emit('close');
                 }
 
             };
@@ -70,7 +71,9 @@
 
             onMounted(async () => {
                 if (props.open)
-                    open();
+                    window.setTimeout(() => {
+                        open();
+                    }, 0)
             });
 
             onUnmounted(() => {

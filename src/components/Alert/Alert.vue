@@ -108,6 +108,8 @@
         align-items: center;
         align-content: center;
 
+        color: var(--kro-foreground);
+
         &.hasIcon {
             grid-template-columns: min-content auto;
         }
@@ -121,23 +123,23 @@
         }
 
         &.error {
-            background: var(--kro-component-error-background);
-            color: var(--kro-component-error-foreground);
+            background: var(--kro-error);
+            color: var(--kro-error-foreground);
         }
 
         &.warning {
-            background: var(--kro-component-warning-background);
-            color: var(--kro-component-warning-foreground);
+            background: var(--kro-warning);
+            color: var(--kro-warning-foreground);
         }
 
         &.success {
-            background: var(--kro-component-success-background);
-            color: var(--kro-component-success-foreground);
+            background: var(--kro-success);
+            color: var(--kro-success-foreground);
         }
         
         &.info {
-            background: var(--kro-component-info-background);
-            color: var(--kro-component-info-foreground);
+            background: var(--kro-info);
+            color: var(--kro-info-foreground);
         }
 
     }

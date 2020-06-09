@@ -12,3 +12,8 @@ export * from './Surface';
 export * from './Divider';
 export * from './Alert';
 export * from './App';
+export * from './List';
+export * from './Avatar';
+export * from './ProgressBar';
+export * from './Layout';
+export * from './Navigation';

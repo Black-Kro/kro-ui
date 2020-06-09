@@ -2,6 +2,7 @@
     <div :class="$style.root">
         <input
             :class="$style.input"
+            :checked="$attrs.modelValue"
             type="checkbox"
             @change="$emit('update:modelValue', $event.target.checked)"/>
     
@@ -55,14 +56,14 @@
             height: 0.875rem;
             width: 100%;
             border-radius: 0.5rem;
-            background: var(--kro-component-background);
+            background: var(--kro-background-secondary);
             overflow: hidden;
             position: relative;
         }
 
 
         .trackActive {
-            background: var(--kro-switch-track-active-background, var(--kro-component-accent));
+            background: var(--kro-switch-track-active-background, var(--kro-primary));
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             transform: translateX(-100%);
@@ -93,9 +94,9 @@
         .knob {
             width: 1.25rem;
             height: 1.25rem;
-            background: var(--kro-switch-knob-color, var(--kro-component-accent));
+            background: var(--kro-switch-knob-color, var(--kro-primary));
             border-radius: 50%;
-            box-shadow: var(--kro-component-shadow);
+            box-shadow: var(--kro-shadow);
         }
 
 </style>

@@ -1,4 +1,4 @@
-import { App, Plugin } from 'vue';
+import { Plugin } from 'vue';
 import { IconSymbol } from './composables/icons';
 import defaultIcons from './assets/icons';
 

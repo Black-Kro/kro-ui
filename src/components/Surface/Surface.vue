@@ -23,7 +23,7 @@
 <style module lang="scss">
 
     .root {
-        background: var(--kro-component-background);
+        background: var(--kro-background-secondary);
         border-radius: 0.25rem;
     }
 
@@ -32,7 +32,7 @@
         }
 
         .raised {
-            box-shadow: var(--kro-component-shadow);
+            box-shadow: var(--kro-shadow);
         }
 
 </style>

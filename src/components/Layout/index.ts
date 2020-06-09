@@ -1,0 +1,1 @@
+export { default as KroLayout } from './Layout.vue';

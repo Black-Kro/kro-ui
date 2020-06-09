@@ -19,9 +19,9 @@
     "url": "https://github.com/Black-Kro/kro-ui/issues"
   },
   "scripts": {
-    "serve": "vue-cli-service serve docs/main.ts",
+    "serve": "vue-cli-service serve docs/index.ts",
     "build": "rollup -c",
-    "docs": "vue-cli-service build docs/main.ts --dest docs/dist",
+    "docs": "vue-cli-service build docs/index.ts --dest docs/dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

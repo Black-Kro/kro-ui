@@ -1,46 +1,53 @@
+@import './general/typography';
+
+
+
 * { box-sizing: border-box; }
 
 :root {
-    --kro-application-background: white;
-    --kro-application-foreground: #2E3440;
-    --kro-application-divider: #3B4252;
+    // --kro-application-background: white;
+    // --kro-application-foreground: #2E3440;
+    // --kro-application-divider: #3B4252;
 
-    --kro-application-accent: #8FBCBB;
+    // --kro-application-accent: #8FBCBB;
 
-    --kro-component-divider: var(--kro-application-divider);
+    // --kro-component-divider: var(--kro-application-divider);
 
-    --kro-component-background: #E5E9F0;
-    --kro-component-foreground:  #3B4252;
-    --kro-component-accent: #5E81AC;
-    --kro-component-accent-contrast: white;
+    // --kro-component-background: #E5E9F0;
+    // --kro-component-foreground:  #3B4252;
+    // --kro-component-accent: #5E81AC;
+    // --kro-component-accent-contrast: white;
 
-    --kro-component-shadow: rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    // --kro-component-shadow: rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 
 
-    --kro-application-background: #2E3440;
-    --kro-application-background-secondary: #434C5E;
-    --kro-component-background-secondary: #434C5E;
+    // --kro-application-background: #2E3440;
+    // --kro-application-background-secondary: #434C5E;
+    // --kro-component-background-secondary: #434C5E;
     
-    --kro-application-foreground: #ECEFF4;
-    --kro-application-divider: #3B4252;
+    // --kro-application-foreground: #ECEFF4;
+    // --kro-application-divider: #3B4252;
 
-    --kro-component-background: #3B4252;
-    --kro-component-foreground:  #D8DEE9;
-    --kro-component-accent: #5E81AC;
-    --kro-component-accent-contrast: white;
+    // --kro-component-background: #3B4252;
+    // --kro-component-foreground:  #D8DEE9;
+    // --kro-component-foreground-secondary:  rgba(255, 255, 255, .56);
+    // --kro-component-accent: #5E81AC;
+    // --kro-component-accent-contrast: white;
 
 
-    --kro-component-success-background: #4caf50 ;
-    --kro-component-success-foreground: white;
+    // --kro-component-success-background: #4caf50 ;
+    // --kro-component-success-foreground: white;
 
-    --kro-component-warning-background: #fb8c00 ;
-    --kro-component-warning-foreground: white;
+    // --kro-component-warning-background: #fb8c00 ;
+    // --kro-component-warning-foreground: white;
 
-    --kro-component-info-background: #2196f3;
-    --kro-component-info-foreground: white;
+    // --kro-component-info-background: #2196f3;
+    // --kro-component-info-foreground: white;
 
-    --kro-component-error-background: #ff5252;
-    --kro-component-error-foreground: white;
+    // --kro-component-error-background: #ff5252;
+    // --kro-component-error-foreground: white;
+
+    --kro-content-width: 820px;
 
 }
 
@@ -49,8 +56,8 @@ body {
     margin: 0;
     font-family: 'Rubik', sans-serif;
 
-    color: var(--kro-application-foreground);
-    background: var(--kro-application-background);
+    color: var(--kro-foreground);
+    background: var(--kro-background);
 
     overflow-x: hidden;
 }
@@ -61,5 +68,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb{
-    background: var(--kro-application-background-secondary);
+    background: var(--kro-background-secondary);
+}
+
+
+// Generate Classes
+@each $name, $value in $typography {
+    .font-#{$name} {
+        font-size: map-get($value, "size");
+        font-weight: map-get($value, "weight");
+        line-height: map-get($value, "line");
+    }
+}
+
+.content-container {
+    max-width: var(--kro-content-width);
+    margin: 0 auto;
+    padding: 1rem;
 }

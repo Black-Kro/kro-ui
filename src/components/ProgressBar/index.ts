@@ -1,0 +1,1 @@
+export { default as KroProgressBar } from './ProgressBar.vue';

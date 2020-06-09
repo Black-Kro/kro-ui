@@ -1,0 +1,1 @@
+export { default as PressArticleLink } from './ArticleLink.vue'; 

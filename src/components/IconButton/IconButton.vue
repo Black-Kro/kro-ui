@@ -45,14 +45,14 @@
 
         .icon {
             position: relative;
-            color: var(--kro-icon-button-foreground, var(--kro-component-foreground));
+            color: var(--kro-icon-button-foreground, var(--kro-foreground));
         }
 
         .squircle {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             width: 100%; height: 100%;
-            color: var(--kro-icon-button-background, var(--kro-component-background));
+            color: var(--kro-icon-button-background, var(--kro-background-secondary));
         }
 
 </style>

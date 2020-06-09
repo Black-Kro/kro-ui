@@ -15,7 +15,7 @@ export default {
 
     .root {
         border: none;
-        background: var(--kro-divider-color, var(--kro-component-divider));
+        background: var(--kro-divider-color, var(--kro-divider));
 
         height: 1px;
         width: 100%;

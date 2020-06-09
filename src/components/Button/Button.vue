@@ -108,8 +108,8 @@
 
         height: 2.5rem;
 
-        background: var(--kro-button-background, var(--kro-component-background));
-        color: var(--kro-button-foreground, var(--kro-component-foreground));
+        background: var(--kro-button-background, var(--kro-background-secondary));
+        color: var(--kro-button-foreground, var(--kro-foreground));
 
         margin: 0;
 
@@ -124,17 +124,17 @@
         -webkit-appearance: none;
 
         &.isPrimary {
-            background: var(--kro-button-background-primary, var(--kro-component-accent));
-            color: var(--kro-button-foreground-primary, var(--kro-component-accent-contrast));
+            background: var(--kro-button-background-primary, var(--kro-primary));
+            color: var(--kro-button-foreground-primary, var(--kro-foreground));
         }
 
         &.isRaised {
-            box-shadow: var(--kro-component-shadow);
+            box-shadow: var(--kro-shadow);
         }
 
         &.isOutlined {
             background: transparent;
-            border: 1px solid var(--kro-button-foreground, var(--kro-component-foreground));
+            border: 1px solid var(--kro-button-foreground, var(--kro-foreground));
         }
 
         &:active {

@@ -66,14 +66,14 @@
     .container {
         display: inline-grid;
         position: relative;
-        border: 2px solid var(--kro-component-divider);
+        border: 2px solid var(--kro-divider);
         border-radius: 0.25rem;
         height: 3rem;
 
         display: flex;
         align-items: center;
 
-        &.focused { border-color: var(--kro-component-accent); }
+        &.focused { border-color: var(--kro-primary); }
     }
 
     .pseudoLabel {
@@ -83,7 +83,7 @@
         padding: 0 0.25rem;
         top: 0;
         height: 2px;
-        background: var(--kro-application-background);
+        background: var(--kro-background);
         overflow: hidden;
         color: transparent;
         pointer-events: none;
@@ -111,7 +111,7 @@
         transform-origin: left center;
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-        &.focused { color: var(--kro-component-accent); }
+        &.focused { color: var(--kro-primary); }
 
         &.hasText,
         &.focused {
@@ -129,7 +129,7 @@
         width: 100%;
         height: 100%;
 
-        color: var(--kro-component-foreground);
+        color: var(--kro-foreground);
         background: transparent;
         outline: none;
     }

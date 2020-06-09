@@ -1,0 +1,49 @@
+@import '_theme';
+
+$NordTheme: (
+    light: (
+        'background': hsl(0, 0%, 100%),
+        'background-secondary': hsl(218, 27%, 94%),
+        
+        'foreground': hsl(220, 16%, 22%),
+        'foreground-secondary': hsl(220, 16%, 36%),
+
+        'divider': rgba(0, 0, 0, .12),
+
+        'primary': hsl(213, 32%, 52%),
+        'accent': hsl(217, 100%, 75%),
+
+        'shadow': rgba(0, 0, 0, 0.24) 0px 3px 6px 0px,
+        
+        'error': hsl(0, 100%, 66%),
+        'info': hsl(207, 90%, 54%),
+        'success': hsl(122, 39%, 49%),
+        'warning': hsl(45, 100%, 51%),
+        ),
+        
+    dark: (
+        'background': hsl(220, 16%, 22%),
+        'background-secondary': #3B4252,
+        
+        'foreground': hsl(218, 27%, 94%),
+        'foreground-secondary': hsla(0, 0%, 100%, 0.56),
+        
+        'divider': rgba(255, 255, 255, .12),
+        'shadow': rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,
+            
+        'primary': hsl(213, 32%, 52%),
+        'primary-darken': hsl(213, 32%, 32%), 
+        'accent': #8fbcbb,
+
+        'error': hsl(0, 100%, 66%),
+        'error-foreground': hsl(218, 27%, 94%),
+        'info': hsl(207, 90%, 54%),
+        'info-foreground': hsl(218, 27%, 94%),
+        'success': hsl(122, 39%, 49%),
+        'success-foreground': hsl(218, 27%, 94%),
+        'warning': hsl(45, 100%, 51%),
+        'warning-foreground': hsl(45, 100%, 11%),
+    ),
+);
+
+@include CompileTheme($NordTheme, "nord");
