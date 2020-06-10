@@ -1,7 +1,7 @@
 <template>
-    <div :class="$style.root">
-        <div :class="{[$style.scrim]: true, [$style.isOpen]: $attrs.modelValue}" @click="close"></div>
-        <div :class="{[$style.navigation]: true, [$style.isOpen]: $attrs.modelValue}">
+    <div class="kro-navigation">
+        <div :class="{'kro-navigation__scrim': true, 'kro-navigation--is-open': $attrs.modelValue}" @click="close"></div>
+        <div :class="{'kro-navigation__content': true, 'kro-navigation--is-open': $attrs.modelValue}">
             <slot :close="close" :open="open"></slot>
         </div>
     </div>
@@ -30,18 +30,18 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
     @import '../../styles/general/breakpoints';
 
-    .root {
+    .kro-navigation {
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         pointer-events: none;
         z-index: 5000;
     }
 
-    .scrim {
+    .kro-navigation__scrim {
         @include useBreakpoint('small') {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -51,14 +51,14 @@
     
             transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
             
-            &.isOpen {
+            &.kro-navigation--is-open {
                 pointer-events: all;
                 opacity: 1;
             }
         }
     }
     
-    .navigation {
+    .kro-navigation__content {
         position: absolute;
         top: 0; left: 0; bottom: 0;
 
@@ -71,7 +71,7 @@
 
         @include useBreakpoint('small') {
             transform: translateX(-100%);
-            &.isOpen { transform: translateX(0); }
+            &.kro-navigation--is-open { transform: translateX(0); }
         }
 
     }

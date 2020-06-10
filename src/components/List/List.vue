@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root">
+    <div class="kro-list">
         <slot></slot>
     </div>
 </template>
@@ -98,9 +98,9 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-list {
         padding: 0.5rem 0;
         background: var(--kro-background-secondary);
     }

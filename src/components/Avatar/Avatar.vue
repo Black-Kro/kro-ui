@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root">
+    <div class="kro-avatar">
         <img src="" alt="">
     </div>
 </template>
@@ -10,9 +10,9 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-avatar {
         width: var(--kro-avatar-size, 3rem);
         height: var(--kro-avatar-size, 3rem);
 

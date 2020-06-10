@@ -1,5 +1,5 @@
 <template>
-    <hr :class="{[$style.root]: true, [$style.vertical]: vertical, [$style.inset]: inset}">
+    <hr :class="{'kro-divider': true, 'kro-divider--vertical': vertical, 'kro-divider--inset': inset}">
 </template>
 
 <script>
@@ -11,30 +11,27 @@ export default {
 }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-divider {
         border: none;
         background: var(--kro-divider-color, var(--kro-divider));
 
         height: 1px;
         width: 100%;
+    }
 
-        &.vertical {
-
+        .kro-divider--vertical {
             width: 1px;
             height: 100%;
 
-            &.inset {
+            &.kro-divider--inset {
                 margin: 0.25rem 0;
             }
-
         }
 
-        &.inset {
+        .kro-divider--inset {
             margin: 0 0.25rem;
         }
-
-    }
 
 </style>

@@ -3,12 +3,10 @@
         <div v-if="dialog">
             <kro-dialog :persistent="dialog.persistent || false" @close="dialog.successful = 0" open>
                 <template #title>
-                    <kro-icon v-if="iconType" :class="$style.icon" :icon="iconType"/>
+                    <kro-icon v-if="iconType" :icon="iconType"/>
                     {{dialog.title}}
                 </template>
-                <p>
-                    {{dialog.message}}
-                </p>
+                <div>{{dialog.message}}</div>
                 <template #controls>
                     <kro-button @click="dialog.successful = 0" v-if="dialog.canCancel">{{ dialog.cancelText || 'Cancel' }}</kro-button>
                     <kro-button @click="dialog.successful = 1" primary>{{ dialog.confirmText || 'Ok' }}</kro-button>
@@ -46,7 +44,3 @@
         }
     }
 </script>
-
-<style module lang="scss">
-
-</style>

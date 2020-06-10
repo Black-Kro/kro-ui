@@ -1,5 +1,5 @@
 <template>
-    <svg :class="$style.root" viewBox="0 0 24 24">
+    <svg class="kro-icon" viewBox="0 0 24 24">
         <path :d="iconDefinition"></path>
     </svg>
 </template>
@@ -9,14 +9,12 @@
     import { useIcons } from '../../composables/icons';
 
     export default {
-
         props: {
             icon: {
                 type: String,
                 required: true,
             },
         },
-
         setup(props) {
 
             const { icons } = useIcons();
@@ -34,12 +32,11 @@
                 iconDefinition
             }
         }
-
     }
 </script>
 
-<style module lang="scss">
-    .root {
+<style lang="scss">
+    .kro-icon {
         width: var(--kro-icon-size, 1.5rem);
         height: var(--kro-icon-size, 1.5rem);
 

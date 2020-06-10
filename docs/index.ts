@@ -46,6 +46,10 @@ createApp(App)
                         to: '/components/app'
                     },
                     {
+                        title: 'Alert',
+                        to: '/components/alert'
+                    },
+                    {
                         title: 'Button',
                         to: '/components/button'
                     },

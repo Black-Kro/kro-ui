@@ -1,25 +1,25 @@
 <template>
     <div :class="{
-        [$style.root]: true,
-        [$style.hasNavigation]: !!$slots.navigation,
-        [$style.hasToolbar]: !!$slots.toolbar,
-        [$style.hasContent]: !!$slots.content,
-        [$style.hasFooter]: !!$slots.footer,
+        'kro-layout': true,
+        'kro-layout--has-navigation': !!$slots.navigation,
+        'kro-layout--has-toolbar': !!$slots.toolbar,
+        'kro-toolbar--has-content': !!$slots.content,
+        'kro-toolbar--has-footer': !!$slots.footer,
     }">
 
-        <div :class="$style.navigation" v-if="!!$slots.navigation">
+        <div class="kro-layout__navigation" v-if="!!$slots.navigation">
             <slot name="navigation"></slot>
         </div>
 
-        <div :class="$style.toolbar" v-if="!!$slots.toolbar">
+        <div class="kro-layout__toolbar" v-if="!!$slots.toolbar">
             <slot name="toolbar"></slot>
         </div>
 
-        <div :class="$style.content" v-if="!!$slots.content">
+        <div class="kro-layout__content" v-if="!!$slots.content">
             <slot name="content"></slot>
         </div>
 
-        <div :class="$style.footer" v-if="!!$slots.footer">
+        <div class="kro-layout__footer" v-if="!!$slots.footer">
             <slot name="footer"></slot>
         </div>
 
@@ -34,38 +34,31 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
     @import '../../styles/general/breakpoints';
     @import '../../styles/general/layers';
 
-    .root {
-
-        &.hasNavigation {
-            .footer,
-            .content { 
-                margin-left: var(--kro-navigation-width, 275px); 
-            
-                @include useBreakpoint('small') {
-                    margin-left: 0;
-                }
-            }
+    .kro-layout--has-navigation {
+        .kro-layout__content,
+        .kro-layout__footer {
+            margin-left: var(--kro-navigation-width, 275px);
+            @include useBreakpoint('small') { margin-left: 0; }
         }
-
-        &.hasToolbar {
-            .navigation { 
-                top: var(--kro-toolbar-height, 4rem);
-                
-                @include useBreakpoint('small') {
-                    top: 0;
-                }
-            }
-            .content { margin-top: var(--kro-toolbar-height, 4rem); }
-        }
-
     }
 
-    .navigation {
+    .kro-layout--has-toolbar {
+        .kro-layout__navigation {
+            top: var(--kro-toolbar-height, 4rem);
+            @include useBreakpoint('small') { top: 0; }
+        }
+
+        .kro-layout__content {
+            margin-top: var(--kro-toolbar-height, 4rem);
+        }
+    }
+
+    .kro-layout__navigation {
         @include useLayer(navigation);
 
         position: fixed;
@@ -73,7 +66,7 @@
         pointer-events: none;
     }
 
-    .toolbar {
+    .kro-layout__toolbar {
         @include useLayer(toolbar);
 
         position: fixed;

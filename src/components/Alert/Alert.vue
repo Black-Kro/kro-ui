@@ -3,23 +3,23 @@
         :is="tag"
         v-show="!isHidden"
         :class="{
-            [$style.root]: true, 
-            [$style.error]: type === 'error',
-            [$style.info]: type === 'info',
-            [$style.warning]: type === 'warning',
-            [$style.success]: type === 'success',
-            [$style.hasIcon]: iconName,
-            [$style.isDismissable]: dismissible,
+            'kro-alert': true, 
+            'kro-alert--error': type === 'error',
+            'kro-alert--info': type === 'info',
+            'kro-alert--warning': type === 'warning',
+            'kro-alert--success': type === 'success',
+            'kro-alert--has-icon': iconName,
+            'kro-alert--is-dismissible': dismissible,
         }">
         
         
-        <div :class="$style.icon">
+        <div class="kro-alert__icon">
             <kro-icon v-if="iconName" :icon="iconName"></kro-icon>
         </div>
-        <div :class="$style.contentContainer">
+        <div>
             <slot></slot>
         </div>
-        <div v-if="dismissible" :class="$style.actionContainer">
+        <div v-if="dismissible">
             <kro-icon-button @click="hide" icon="close" />
         </div>
     </component>
@@ -92,10 +92,9 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
-        
+    .kro-alert {
         --kro-icon-button-background: rgba(0, 0, 0, .12);
 
         border-radius: 0.25rem;
@@ -109,42 +108,37 @@
         align-content: center;
 
         color: var(--kro-foreground);
+    }
 
-        &.hasIcon {
-            grid-template-columns: min-content auto;
-        }
+        .kro-alert--has-icon { grid-template-columns: min-content auto; }
+        .kro-alert--is-dismissible { grid-template-columns: auto min-content; }
 
-        &.isDismissable {
-            grid-template-columns: auto min-content;
-        }
-
-        &.hasIcon.isDismissable {
+        .kro-alert--has-icon,
+        .kro-alert--is-dismissible {
             grid-template-columns: min-content auto min-content;
         }
 
-        &.error {
+        .kro-alert--error {
             background: var(--kro-error);
             color: var(--kro-error-foreground);
         }
 
-        &.warning {
+        .kro-alert--warning {
             background: var(--kro-warning);
             color: var(--kro-warning-foreground);
         }
 
-        &.success {
+        .kro-alert--success {
             background: var(--kro-success);
             color: var(--kro-success-foreground);
         }
         
-        &.info {
+        .kro-alert--info {
             background: var(--kro-info);
             color: var(--kro-info-foreground);
         }
 
-    }
-
-    .icon {
+    .kro-alert__icon {
         display: grid;
         place-items: center;
         border-radius: 50%;

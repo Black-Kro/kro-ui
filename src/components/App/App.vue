@@ -1,6 +1,6 @@
 <template>
-    <div :class="$style.root">
-        <div :class="$style.container">
+    <div class="kro-app">
+        <div class="kro-app__content">
             <slot></slot>
         </div>
         <div id="kro-portal"></div>
@@ -15,7 +15,3 @@
         components: { ComposableDialogs }
     }
 </script>
-
-<style module lang="scss">
-
-</style>

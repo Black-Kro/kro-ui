@@ -2,6 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 
 import Components from './index.md';
 import App from './app.md';
+import Alert from './alert.md';
 import Button from './button.md';
 import ButtonGroup from './button-group.md';
 import Dialog from './dialog.md';
@@ -20,6 +21,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: App,
         meta: {
             title: 'App'
+        }
+    },
+    {
+        path: '/components/alert',
+        component: Alert,
+        meta: {
+            title: 'Alert'
         }
     },
     {

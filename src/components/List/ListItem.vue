@@ -1,17 +1,17 @@
 <template>
-    <component :is="tag" :class="$style.root" :tabindex="tabindex">
-        <div v-if="!!$slots.icon" :class="$style.icon">
+    <component :is="tag" class="kro-list-item" :tabindex="tabindex">
+        <div v-if="!!$slots.icon" class="kro-list-item__icon">
             <slot name="icon"></slot>
         </div>
-        <div :class="$style.content">
-            <span :class="$style.title">
+        <div class="kro-list-item__content">
+            <span class="kro-list-item__title">
                 <slot></slot>
             </span>
-            <span v-if="!!$slots.subtitle" :class="$style.subtitle">
+            <span v-if="!!$slots.subtitle" class="kro-list-item__subtitle">
                 <slot name="subtitle"></slot>
             </span>
         </div>
-        <div v-if="!!$slots.action" :class="$style.action">
+        <div v-if="!!$slots.action" class="kro-list-item__action">
             <slot name="action"></slot>
         </div>
     </component>
@@ -45,9 +45,9 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-list-item {
         // --kro-list-item-icon-size: 2.5rem;
 
         display: flex;
@@ -56,7 +56,7 @@
         align-items: center;
     }
 
-    .icon {
+    .kro-list-item__icon {
         display: grid;
         align-items: center;
         width: var(--kro-list-item-icon-size);
@@ -64,7 +64,7 @@
         color: var(--kro-list-item-icon-color, var(--kro-foreground-secondary));
     }
 
-    .content {
+    .kro-list-item__content {
         display: grid;
         grid-auto-flow: row;
         grid-auto-rows: min-content;
@@ -74,16 +74,16 @@
         flex: 1;
     }
 
-        .title {
+        .kro-list-item__title {
             font-size: 1rem;
         }
 
-        .subtitle {
+        .kro-list-item__subtitle {
             font-size: 0.75rem;
             color: var(--kro-foreground-secondary);
         }
 
-    .action {
+    .kro-liste-item__action {
         padding: 0.75rem 0;
     }
 

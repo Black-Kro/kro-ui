@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root">
+    <div class="kro-button-group">
         <slot></slot>
     </div>
 </template>
@@ -10,19 +10,18 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-button-group {
         display: inline-grid;
         grid-auto-flow: column;
 
-        > * {
+        .kro-button {
             border-radius: 0;
             border-left: 1px solid var(--kro-divider);
 
             &:first-child { border-radius: 0.25rem 0 0 0.25rem; border-left: none; }
             &:last-child { border-radius: 0 0.25rem 0.25rem 0; }
-
         }
     }
 

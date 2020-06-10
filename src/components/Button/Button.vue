@@ -1,23 +1,23 @@
 <template>
     <component 
         :class="{ 
-            [$style.root]: true,
-            [$style.isPrimary]: primary,
-            [$style.isOutlined]: outline,
-            [$style.isRaised]: raised,
+            'kro-button': true,
+            'kro-button--primary': primary,
+            'kro-button--outline': outline,
+            'kro-button--raised': raised,
         }" 
         :is="componentType" 
         
         :href="href" 
         :to="to" 
         :target="href ? target : ''">
-        <span :class="{[$style.content]: true, [$style.isLoading]: loading }">
+        <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
             <slot></slot>
             <kro-icon 
                 v-if="href"
                 icon="external" />
         </span>
-        <span :class="$style.spinner" v-show="loading"><kro-spinner /></span>
+        <span class="kro-button__spinner" v-show="loading"><kro-spinner /></span>
     </component>
 </template>
 
@@ -96,8 +96,8 @@
     }
 </script>
 
-<style module lang="scss">
-    .root {
+<style lang="scss">
+    .kro-button {
         --kro-spinner-size: 1.25rem;
         --kro-spinner-thickness: 0.25rem; 
         
@@ -129,47 +129,41 @@
 
         -webkit-appearance: none;
 
-        &.isPrimary {
+        &:active { transform: scale(0.95); }
+    }
+
+        .kro-button--primary {
             background: var(--kro-button-background-primary, var(--kro-primary));
             color: var(--kro-button-foreground-primary, var(--kro-foreground));
         }
 
-        &.isRaised {
+        .kro-button--raised {
             box-shadow: var(--kro-button-shadow, var(--kro-shadow));
         }
 
-        &.isOutlined {
+        .kro-button--outline {
             background: transparent;
             border: 1px solid var(--kro-button-foreground, var(--kro-foreground));
         }
 
-        &:active {
-            transform: scale(0.95);
-        }
 
-    }
-
-    .spinner {
+    .kro-button__spinner {
         position: absolute;
         top: 0; left: 0; 
         width: 100%; height: 100%;
 
         display: grid;
         place-items: center;
-        z-index: 5;
     }
 
-    .content {
+    .kro-button__content {
+        --icon-size: 1.25rem;
+
         display: grid;
         grid-auto-flow: column;
         gap: 0.5rem;
         place-items: center;
-
-        --icon-size: 1.25rem;
-
-        &.isLoading {
-            opacity: 0;
-        }
     }
+        .kro-button__content--is-loading { opacity: 0; }
 
 </style>

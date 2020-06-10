@@ -2,15 +2,15 @@
     <div>
         <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
         <Teleport to="#kro-portal">
-            <div :tabindex="isOpen ? 1 : -1" :class="{[$style.root]: true, [$style.isOpen]: isOpen}">
-                <div @click="() => { if (!persistent) { close(); } }" :class="$style.scrim"></div>
-                <kro-surface raised :class="$style.content" @transitionend="onTransitionEnded">
+            <div :tabindex="isOpen ? 1 : -1" :class="{'kro-dialog': true, 'kro-dialog--is-open': isOpen}">
+                <div @click="() => { if (!persistent) { close(); } }" class="kro-dialog__scrim"></div>
+                <kro-surface raised class="kro-dialog__content" @transitionend="onTransitionEnded">
                     <template v-if="shouldMountContent">
-                        <div v-if="!!$slots.title" :class="$style.title">
+                        <div v-if="!!$slots.title" class="kro-dialog__title">
                             <slot :open="open" :close="close" :toggle="toggle" name="title"></slot>
                         </div>
                         <slot :open="open" :close="close" :toggle="toggle"></slot>
-                        <div v-if="!!$slots.controls" :class="$style.controls">
+                        <div v-if="!!$slots.controls" class="kro-dialog__controls">
                             <slot :open="open" :close="close" :toggle="toggle" name="controls"></slot>
                         </div>
                     </template>
@@ -49,12 +49,10 @@
                         if (!props.persistent) {
                             isOpen.value = false;
                             window.removeEventListener('keydown', close);
-                            // emit('close');
                         }
                     }
                 } else {
                     isOpen.value = false;
-                    // emit('close');
                 }
 
             };
@@ -71,14 +69,10 @@
 
             onMounted(async () => {
                 if (props.open)
-                    window.setTimeout(() => {
-                        open();
-                    }, 0)
+                    window.setTimeout(() => open(), 0);
             });
 
-            onUnmounted(() => {
-                window.removeEventListener('keydown', close);
-            });
+            onUnmounted(() => { window.removeEventListener('keydown', close); });
 
             return {
                 isOpen,
@@ -94,11 +88,11 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
     @import '../../styles/general/layers';
 
-    .root {
+    .kro-dialog {
         @include useLayer(dialog);
 
         position: fixed;
@@ -106,41 +100,35 @@
         display: grid;
         place-content: center;
 
-        &:not(.isOpen) {
+        &:not(.kro-dialog--is-open) {
             pointer-events: none;
 
-            .scrim {
-                opacity: 0;
-            }
-
-            .content {
-                opacity: 0;
-                transform: scale(0);
-            }
+            .kro-dialog__scrim { opacity: 0; }
+            .kro-dialog__content { opacity: 0; transform: scale(0); }
         }
     }
 
-        .scrim {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, .25);
+    .kro-dialog__scrim {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, .25);
 
-            transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
+        transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
 
-        .content {
-            max-width: 600px;
+    .kro-dialog__content {
+        max-width: 600px;
 
-            display: grid;
-            gap: 1rem;
-            grid-auto-flow: row;
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: row;
 
-            position: relative;
-            transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
-                        transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
+        position: relative;
+        transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
+                    transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
 
-    .title {
+    .kro-dialog__title {
         font-size: 1.5rem;
         font-weight: 500;
         padding-top: 0.5rem;
@@ -153,7 +141,7 @@
         gap: 0.5rem;
     }
 
-    .controls {
+    .kro-dialog__controls {
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: min-content;
