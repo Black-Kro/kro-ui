@@ -6,6 +6,9 @@ import Alert from './alert.md';
 import Button from './button.md';
 import ButtonGroup from './button-group.md';
 import Dialog from './dialog.md';
+import Divider from './divider.md';
+import Icon from './icon.md';
+import Layout from './layout.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -49,6 +52,27 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: Dialog,
         meta: {
             title: 'Dialog'
+        }
+    },
+    {
+        path: '/components/divider',
+        component: Divider,
+        meta: {
+            title: 'Dividers'
+        }
+    },
+    {
+        path: '/components/icon',
+        component: Icon,
+        meta: {
+            title: 'Icons'
+        }
+    },
+    {
+        path: '/components/layout',
+        component: Layout,
+        meta: {
+            title: 'Layout'
         }
     },
 

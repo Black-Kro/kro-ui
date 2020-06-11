@@ -24,7 +24,25 @@ the information type is info.
 ```
 
 ## Props
-<app-prop-definition name="type" type="Enum(warning, error, info, success)" value="info" description="Sets the type of the alert"></app-prop-definition>
-<app-prop-definition name="dismissible" type="Boolean" value="false" description="Makes the alert dismissible"></app-prop-definition>
-<app-prop-definition name="icon" type="string" value="undefined" description="Overrides the alert icon"></app-prop-definition>
-<app-prop-definition name="tag" type="string" value="div" description="Custom tag for the element to use"></app-prop-definition>
+```ts
+// Sets the alert type. Possible options: success, info, warning, error
+type: {
+    type: String,
+    default: 'info'
+},
+
+// Makes the alert dismissable, applying a hidden state when dismissed.
+dismissible: Boolean,
+
+// Sets the icon of the alert, only used to override the default icon.
+icon: String,
+
+// Custom tag for the element
+tag: {
+    type: String,
+    default: 'div'
+}
+```
+
+## Related
+<press-article-link title="Buttons" subtitle="Using Kro Buttons" to="/components/button"></press-article-link>

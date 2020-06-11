@@ -13,4 +13,4 @@ so if you are trying to use something and it isn't working, you probably forgot 
 ```
 
 ## Related
-<press-article-link title="Buttons" subtitle="Using Kro Buttons" to="/components/button"></press-article-link>
+<press-article-link title="Alerts" subtitle="Because alerts are fun" to="/components/alert"></press-article-link>

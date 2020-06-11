@@ -19,11 +19,13 @@ export default {
 
         height: 1px;
         width: 100%;
+        margin: 1rem 0;
     }
 
         .kro-divider--vertical {
             width: 1px;
             height: 100%;
+            margin: 0 1rem;
 
             &.kro-divider--inset {
                 margin: 0.25rem 0;

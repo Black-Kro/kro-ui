@@ -65,6 +65,14 @@ createApp(App)
                         title: 'Divider',
                         to: '/components/divider'
                     },
+                    {
+                        title: 'Icon',
+                        to: '/components/icon'
+                    },
+                    {
+                        title: 'Layout',
+                        to: '/components/layout'
+                    },
                 ]
             }
         ]
