@@ -1,5 +1,5 @@
 # Button Groups
-Button groups provide a way for you to group multiple related buttons into a unified style.
+Button groups allow you to group and display multiple related buttons together.
 
 ## Usage
 <kro-button-group>

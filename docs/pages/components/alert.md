@@ -1,6 +1,6 @@
 # Alerts
 Used to convey important information. Has four possible display types, `success`, `info`, `warning`, and `error`. By default,
-the information type is info. 
+the display type is `info`. 
 
 ## Usage
 

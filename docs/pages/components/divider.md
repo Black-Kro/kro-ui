@@ -1,17 +1,17 @@
 # Dividers
-Remeber the perfectly usable `&lt;hr/&gt;` element that can easily be made presentable with a single line of CSS? Yeah me neither. Presenting `&lt;kro-divider/&gt;`.
-Just like the `&lt;hr/&gt;` elment but pretty! OH, and it can be vertical, imagine that!
+Remember the perfectly usable `&lt;hr/&gt;` element that can easily be made presentable with a single line of CSS? Yeah me neither. Presenting `&lt;kro-divider/&gt;`.
+Just like the `&lt;hr/&gt;` element, but pretty! OH, and it can be vertical! Imagine that!
 
 ## Usage
 
-let's start with a vertical divider
+Let's start with a vertical divider:
 
 <kro-toolbar class="divider-demo-toolbar" padded>
     <kro-icon-button class="divider-demo-toolbar-button" icon="menu"></kro-icon-button>
     <kro-divider vertical></kro-divider>
 </kro-toolbar>
 
-or a horizontal divider
+or a horizontal divider:
 
 <kro-divider></kro-divider>
 

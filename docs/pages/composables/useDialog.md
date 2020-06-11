@@ -1,7 +1,7 @@
 # useDialog
-`useDialog` exports three different functions, `createConfirmation`, `createAlert`, and `createDialog`. The first two, `createConfirmation` and `createAlert`
+`useDialog` exports three functions: `createConfirmation`, `createAlert`, and `createDialog`. The first two, `createConfirmation` and `createAlert`
 have been prestyled while `createDialog` has the generic dialog look, but also has the ability to change the icon of the dialog. Each dialog
-will return `Promise.resolve` if the user clicks the confirm button on the dialog or `Promise.reject` if the user clicks the cancel button. 
+will return `Promise.resolve` if the user clicks the confirm button on the dialog or `Promise.reject` if the user cancels or closes the dialog.
 
 ## Usage
 

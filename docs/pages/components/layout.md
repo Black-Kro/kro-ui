@@ -1,5 +1,5 @@
 # Layout
-`kro-layout` provides a basic layout component that will auto size the content based upon what component you decided to include in it.
+`kro-layout` provides a basic layout component that will auto size the content based upon the child component placed within it.
 You can include only the components you want as well. It is recommended to use the `kro-navigation` and `kro-toolbar` components inside of
 the navigation and toolbar slots.
 

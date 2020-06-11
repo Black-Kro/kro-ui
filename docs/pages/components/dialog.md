@@ -1,10 +1,9 @@
 # Dialogs
-Dialogs are used to force the users attention to certian content. They should only be used when there is no other option. Dialogs
-will always be shown on top of everything else. The dialog can be dismissed by clicking on the overlay, pusing the escape key, or using the custom
+Dialogs are used to display important information requiring the users immediate attention, often to confirm an action or to display an important error message, and should only be used when necessary. Dialogs will always be shown on top of everything else. The dialog can be dismissed by clicking on the overlay, pusing the escape key, or using the custom
 close function provided by the dialog and wiring it up to a button.
 
 **TODO**
-- Allow the use of v-model on the dialog to control the open/calse state of the dialog
+- Allow the use of v-model on the dialog to control the open/close state of the dialog
 
 ## Usage
 
@@ -18,7 +17,7 @@ close function provided by the dialog and wiring it up to a button.
 
     <template #title>Normal Dialog</template>
     
-    <span>Hello world, this is just a normal dialog. Make sure you don't annoy your users with these hecking things!</span>
+    <span>Hello world, this is just a normal dialog. Make sure you don't annoy your users with these heckin' things!</span>
 
     <template #controls="{ close }">
         <kro-button @click="close">Cancel</kro-button>

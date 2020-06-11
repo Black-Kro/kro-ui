@@ -1,7 +1,7 @@
 # Theming
 
-There are two ways to go about theming Kro UI. Both ways end up using CSS Custom Properties, but there are two ways to get there.
-The first way is the preferred way by using the provided SASS theming tools to build your own themes, or you can override the Custom CSS Properties
+There are two ways to go about theming in Kro UI, both of which make use of Custom Properties in CSS.
+The preferred method is using the provided SASS theming tools to build your own themes. Alternatively, you can override the custom CSS Properties
 yourself.
 
 ## Using SASS

@@ -1,6 +1,6 @@
 # Buttons
 
-The `kro-button` is a replacement for the normal html `button`. The button can be 
+The `kro-button` is a replacement for the standard html `button` element. The button can be 
 automatically converted into an external link by setting the `href` attribute 
 or it can be converted into a vue `router-link` by setting the `to` prop on the button.
 
@@ -47,7 +47,7 @@ loading: {
 },
 
 /**
- * Turns the button into a link
+ * Transforms the button into a link
  */
 href: String,
 
@@ -60,7 +60,7 @@ target: {
 },
 
 /**
- * Makes the button a router-link
+ * Transforms the button into a router-link
  */
 to: String,
 
