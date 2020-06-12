@@ -3,7 +3,7 @@
         <kro-layout :class="$style.root">
             <template #toolbar>
                 <kro-toolbar padded :class="$style.toolbar">
-                    <kro-icon-button :class="$style.menuButton" icon="menu" @click="navigation = !navigation" />
+                    <kro-button :class="$style.menuButton" icon="menu" @click="navigation = !navigation" />
                     <span :class="$style.titleContent">
                         <svg viewBox="0 0 269 193" :class="$style.logo">
                             <g transform="matrix(1,0,0,1,-7.7,-45.6454)">

@@ -20,7 +20,7 @@
             <slot></slot>
         </div>
         <div v-if="dismissible">
-            <kro-icon-button @click="hide" icon="close" />
+            <kro-button @click="hide" icon="close" />
         </div>
     </component>
 </template>
@@ -28,10 +28,10 @@
 <script lang="ts">
     import { ref, computed } from 'vue';
     import { KroIcon } from '../Icon';
-    import { KroIconButton } from '../IconButton';
+    import { KroButton } from '../Button';
 
     export default {
-        components: { KroIcon, KroIconButton },
+        components: { KroIcon, KroButton },
         props: {
             type: {
                 type: String,
@@ -95,7 +95,7 @@
 <style lang="scss">
 
     .kro-alert {
-        --kro-icon-button-background: rgba(0, 0, 0, .12);
+        --kro-button-background: rgba(0, 0, 0, .12);
 
         border-radius: 0.25rem;
         padding: 0 1rem;
@@ -124,6 +124,8 @@
         }
 
         .kro-alert--warning {
+            --kro-button-foreground: var(--kro-warning-foreground);
+
             background: var(--kro-warning);
             color: var(--kro-warning-foreground);
         }

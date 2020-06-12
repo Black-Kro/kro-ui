@@ -1,1 +1,0 @@
-export { default as KroIconButton } from './IconButton.vue';
