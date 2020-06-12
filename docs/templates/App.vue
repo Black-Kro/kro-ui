@@ -22,7 +22,7 @@
                     </span>
                     <div :class="$style.toolbox">
                         <kro-button @click="toggleThemeMode" icon="invert"></kro-button>
-                        <kro-button href="https://github.com/Black-Kro/kro-ui">Github</kro-button>
+                        <kro-button icon="github" href="https://github.com/Black-Kro/kro-ui"></kro-button>
                     </div>
                 </kro-toolbar>
             </template>

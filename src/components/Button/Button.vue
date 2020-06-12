@@ -20,7 +20,7 @@
 
             <slot></slot>
             <kro-icon 
-                v-if="href"
+                v-if="href && !(icon && !$slots.default)"
                 icon="external" />
         </span>
         <span class="kro-button__spinner" v-show="loading"><kro-spinner /></span>
