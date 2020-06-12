@@ -20,7 +20,10 @@
                         </svg>
                         <span :class="$style.title">{{title}}</span>
                     </span>
-                    <kro-button href="https://github.com/Black-Kro/kro-ui">Github</kro-button>
+                    <div :class="$style.toolbox">
+                        <kro-button @click="toggleThemeMode" icon="invert"></kro-button>
+                        <kro-button href="https://github.com/Black-Kro/kro-ui">Github</kro-button>
+                    </div>
                 </kro-toolbar>
             </template>
 
@@ -70,12 +73,14 @@
 <script lang="ts">
     import { ref } from 'vue';
     import { useConfiguration } from '@kro-press';
-import { useRouter } from 'vue-router';
+    import { useTheme } from '@lib';
+    import { useRouter } from 'vue-router';
 
     export default {
         setup() {
             const { beforeEach } = useRouter();
             const { title, sidebar } = useConfiguration();
+            const { toggleThemeMode } = useTheme();
 
             const navigation = ref(false);
 
@@ -86,7 +91,8 @@ import { useRouter } from 'vue-router';
                 title,
                 sidebar,
                 navigation,
-                open
+                open,
+                toggleThemeMode,
             }
         }
     }
@@ -141,6 +147,12 @@ import { useRouter } from 'vue-router';
     .navigation {
         padding: 1rem 0;
     }
+
+        .toolbox {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 1rem;
+        }
 
     .footer {
         @include useFont('caption');

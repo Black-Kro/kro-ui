@@ -1,5 +1,7 @@
 import { Plugin } from 'vue';
 import { IconSymbol } from './composables/icons';
+import { registerThemeWatcher } from './composables/theme';
+
 import defaultIcons from './assets/icons';
 
 interface KroUIOptions {
@@ -29,6 +31,11 @@ export const KroUIPlugin = (components: any): Plugin => ({
          * Register Icons
          */
         app.provide(IconSymbol, icons);
+
+        /**
+         * Register the theme watcher
+         */
+        registerThemeWatcher();
 
     }
 });
