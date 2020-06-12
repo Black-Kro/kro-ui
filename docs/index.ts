@@ -73,6 +73,42 @@ createApp(App)
                         title: 'Layout',
                         to: '/components/layout'
                     },
+                    {
+                        title: 'List',
+                        to: '/components/list'
+                    },
+                    {
+                        title: 'Navigation',
+                        to: '/components/navigation'
+                    },
+                    {
+                        title: 'Progress Bar',
+                        to: '/components/progress-bar'
+                    },
+                    {
+                        title: 'Spinner',
+                        to: '/components/spinner'
+                    },
+                    {
+                        title: 'Squircle',
+                        to: '/components/squircle'
+                    },
+                    {
+                        title: 'Surface',
+                        to: '/components/surface'
+                    },
+                    {
+                        title: 'Switch',
+                        to: '/components/switch'
+                    },
+                    {
+                        title: 'Textfield',
+                        to: '/components/textfield'
+                    },
+                    {
+                        title: 'Toolbar',
+                        to: '/components/toolbar'
+                    },
                 ]
             }
         ]

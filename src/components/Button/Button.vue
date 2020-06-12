@@ -5,6 +5,7 @@
             'kro-button--primary': primary,
             'kro-button--outline': outline,
             'kro-button--raised': raised,
+            'kro-button--is-icon-button': icon && !$slots.default,
         }" 
         :is="componentType" 
         
@@ -12,6 +13,11 @@
         :to="to" 
         :target="href ? target : ''">
         <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
+            
+            <kro-squircle class="kro-button__squircle" v-if="icon && !$slots.default" />
+            <kro-icon class="kro-button__icon" v-if="icon" :icon="icon" />
+
+
             <slot></slot>
             <kro-icon 
                 v-if="href"
@@ -25,9 +31,10 @@
     import { computed } from 'vue';
     import KroIcon from '../Icon/Icon.vue';
     import KroSpinner from '../Spinner/Spinner.vue';
+    import KroSquircle from '../Squircle/Squircle.vue';
 
     export default {
-        components: { KroIcon, KroSpinner },
+        components: { KroIcon, KroSpinner, KroSquircle },
         props: {
 
             /**
@@ -54,7 +61,9 @@
             /**
              * Makes the button a router-link
              */
-            to: String,
+            to: {
+                type: [String, Object]
+            },
 
             /**
              * The button type
@@ -75,6 +84,11 @@
              * Apply a shadow to the button
              */
             raised: Boolean,
+
+            /**
+             * Adds an icon to the button
+             */
+            icon: String,
 
         },
 
@@ -146,6 +160,28 @@
             border: 1px solid var(--kro-button-foreground, var(--kro-foreground));
         }
 
+        .kro-button--is-icon-button {
+            background: transparent;
+
+            width: var(--kro-icon-button-size, 2.5rem);
+            height: var(--kro-icon-button-size, 2.5rem);
+
+
+            border: none;
+            padding: 0;
+        }
+
+        .kro-button__squircle {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            color: var(--kro-button-background, var(--kro-background-secondary));
+        }
+
+        .kro-button__icon {
+            position: relative;
+        }
+
 
     .kro-button__spinner {
         position: absolute;
@@ -163,6 +199,7 @@
         grid-auto-flow: column;
         gap: 0.5rem;
         place-items: center;
+
     }
         .kro-button__content--is-loading { opacity: 0; }
 

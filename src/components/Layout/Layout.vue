@@ -15,8 +15,8 @@
             <slot name="toolbar"></slot>
         </div>
 
-        <div class="kro-layout__content" v-if="!!$slots.content">
-            <slot name="content"></slot>
+        <div class="kro-layout__content">
+            <slot></slot>
         </div>
 
         <div class="kro-layout__footer" v-if="!!$slots.footer">

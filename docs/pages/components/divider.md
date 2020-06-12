@@ -7,7 +7,7 @@ Just like the `&lt;hr/&gt;` element, but pretty! OH, and it can be vertical! Ima
 Let's start with a vertical divider:
 
 <kro-toolbar class="divider-demo-toolbar" padded>
-    <kro-icon-button class="divider-demo-toolbar-button" icon="menu"></kro-icon-button>
+    <kro-button class="divider-demo-toolbar-button" icon="menu"></kro-button>
     <kro-divider vertical></kro-divider>
 </kro-toolbar>
 
@@ -19,7 +19,7 @@ how neat is that?
 
 <style>
     .divider-demo-toolbar {
-        --kro-icon-button-background: var(--kro-background);
+        --kro-button-background: var(--kro-background);
     }
 </style>
 

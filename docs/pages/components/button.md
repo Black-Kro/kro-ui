@@ -15,25 +15,25 @@ or it can be converted into a vue `router-link` by setting the `to` prop on the 
 <div class="buttons-demo">
     <kro-button>Normal Button</kro-button>
     <kro-button raised>Raised Button</kro-button>
+    <kro-button raised icon="settings">Button with Icon</kro-button>
     <kro-button outline>Outlined Button</kro-button>
     <kro-button primary>Primary Button</kro-button>
     <kro-button loading>Loading Button</kro-button>
     <kro-button href="https://google.com">External Link Button</kro-button>
     <kro-button to="/components/button-groups">Internal Link Button</kro-button>
-    <kro-icon-button icon="settings"></kro-icon-button>
+    <kro-button icon="settings"></kro-button>
 </div>
 
 ```html
 <kro-button>Normal Button</kro-button>
 <kro-button raised>Raised Button</kro-button>
+<kro-button raised icon="settings">Button with Icon</kro-button>
 <kro-button outline>Outlined Button</kro-button>
 <kro-button primary>Primary Button</kro-button>
 <kro-button loading>Loading Button</kro-button>
 <kro-button href="https://google.com">External Link Button</kro-button>
 <kro-button to="/components/button-groups">Internal Link Button</kro-button>
-
-<!-- Icon buttons are a special button with a more rounded style -->
-<kro-icon-button icon="settings"></kro-icon-button>
+<kro-button icon="settings"></kro-button>
 ```
 
 ## Props

@@ -9,6 +9,7 @@ import Dialog from './dialog.md';
 import Divider from './divider.md';
 import Icon from './icon.md';
 import Layout from './layout.md';
+import List from './list.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -73,6 +74,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: Layout,
         meta: {
             title: 'Layout'
+        }
+    },
+    {
+        path: '/components/list',
+        component: List,
+        meta: {
+            title: 'List'
         }
     },
 
