@@ -10,6 +10,7 @@ import Divider from './divider.md';
 import Icon from './icon.md';
 import Layout from './layout.md';
 import List from './list.md';
+import Navigation from './navigation.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -81,6 +82,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: List,
         meta: {
             title: 'List'
+        }
+    },
+    {
+        path: '/components/navigation',
+        component: Navigation,
+        meta: {
+            title: 'Navigation'
         }
     },
 

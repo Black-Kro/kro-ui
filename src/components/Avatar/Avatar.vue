@@ -1,12 +1,14 @@
 <template>
     <div class="kro-avatar">
-        <img src="" alt="">
+        <img :src="src" alt="">
     </div>
 </template>
 
 <script lang="ts">
     export default {
-
+        props: {
+            src: String,
+        }
     }
 </script>
 
@@ -17,7 +19,14 @@
         height: var(--kro-avatar-size, 3rem);
 
         border-radius: 50%;
-        background: black;
+        // background: black;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     }
 
 </style>

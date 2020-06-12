@@ -26,20 +26,9 @@
                 type: String,
                 default: 'div'
             },
-
-            to: {
-                type: String,
-                default: null,
-            }
         },
         setup(props) {
-
-            const tabindex = ref(-1);
-
-            const setTabIndex = (value: number) => tabindex.value = value;
-
             return {
-                setTabIndex,
             }
         }
     }
