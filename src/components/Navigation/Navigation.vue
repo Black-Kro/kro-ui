@@ -61,6 +61,9 @@
     .kro-navigation__content {
         position: absolute;
         top: 0; left: 0; bottom: 0;
+        overflow: auto;
+
+        -webkit-overflow-scrolling: touch;
 
         width: var(--kro-navigation-width, 275px);
         background: var(--kro-background);
