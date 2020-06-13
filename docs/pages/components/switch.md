@@ -1,5 +1,5 @@
 # Switch
-TODO
+Simple toggle switch, useful for replacing checkboxes in forms, settings dialogs, etc.
 
 ## Usage
 <switch-demo></switch-demo>

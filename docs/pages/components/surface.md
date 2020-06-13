@@ -1,5 +1,5 @@
 # Surface
-TODO
+Similar to Cards in material design, used to display content raised off of the background.
 
 ## Usage
 

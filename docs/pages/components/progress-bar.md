@@ -1,6 +1,7 @@
 # Progress Bar
-TODO
+Used to inform the user of the progress of current actions in realtime, Kro UI provides a progressbar that can display either a percentage value or, if needed, an indeterminate loader for actions that don't have a defined progress value.
 
+Our progress bars also provide a buffer value for use cases such as audio or video playback bars.
 ## Usage
 
 <progress-bar-demo></progress-bar-demo>

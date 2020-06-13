@@ -1,5 +1,5 @@
 # Textfield
-TODO
+Kro UI's replacement for the standard HTML textfield with a placeholder label that is repositioned on focus.
 
 ## Usage
 <textfield-demo></textfield-demo>
