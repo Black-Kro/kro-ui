@@ -7,11 +7,14 @@
         'kro-toolbar--has-footer': !!$slots.footer,
     }">
 
-        <div class="kro-layout__navigation" v-if="!!$slots.navigation">
+        <div :class="{
+            'kro-layout__navigation': true,
+            'fixed': fixed,
+        }" v-if="!!$slots.navigation">
             <slot name="navigation"></slot>
         </div>
 
-        <div class="kro-layout__toolbar" v-if="!!$slots.toolbar">
+        <div :class="{ 'kro-layout__toolbar': true, 'fixed': fixed }" v-if="!!$slots.toolbar">
             <slot name="toolbar"></slot>
         </div>
 
@@ -30,7 +33,10 @@
     import { KroToolbar } from '../Toolbar';
 
     export default {
-        components: { KroToolbar }
+        components: { KroToolbar },
+        props: {
+            fixed: Boolean
+        }
     }
 </script>
 
@@ -58,10 +64,17 @@
         }
     }
 
+    .kro-layout--fixed {
+        .kro-layout__toolbar,
+        .kro-layout__navigation {
+            position: fixed;
+        }
+    }
+
     .kro-layout__navigation {
         @include useLayer(navigation);
 
-        position: fixed;
+        position: absolute;
         top: 0; left: 0; bottom: 0; right: 0;
         pointer-events: none;
     }
@@ -69,7 +82,7 @@
     .kro-layout__toolbar {
         @include useLayer(toolbar);
 
-        position: fixed;
+        position: absolute;
         top: 0; left: 0; right: 0;
     }
 

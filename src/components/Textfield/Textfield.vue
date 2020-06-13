@@ -43,8 +43,6 @@
             maxlength:  { type: Number },
             name:       { type: String },
             id:         { type: String },
-            hasError:   { type: Boolean, default: false },
-            isDirty:    { type: Boolean, default: false },
         },
 
         setup() {

@@ -1,6 +1,6 @@
 <template>
     <kro-app>
-        <kro-layout :class="$style.root">
+        <kro-layout fixed :class="$style.root">
             <template #toolbar>
                 <kro-toolbar padded :class="$style.toolbar">
                     <kro-button :class="$style.menuButton" icon="menu" @click="navigation = !navigation" />

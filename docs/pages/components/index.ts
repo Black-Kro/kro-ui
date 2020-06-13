@@ -11,6 +11,13 @@ import Icon from './icon.md';
 import Layout from './layout.md';
 import List from './list.md';
 import Navigation from './navigation.md';
+import ProgressBar from './progress-bar.md';
+import Spinner from './spinner.md';
+import Squircle from './squircle.md';
+import Surface from './surface.md';
+import Switch from './switch.md';
+import Textfield from './textfield.md';
+import Toolbar from './toolbar.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -89,6 +96,55 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: Navigation,
         meta: {
             title: 'Navigation'
+        }
+    },
+    {
+        path: '/components/progress-bar',
+        component: ProgressBar,
+        meta: {
+            title: 'Progress Bar'
+        }
+    },
+    {
+        path: '/components/spinner',
+        component: Spinner,
+        meta: {
+            title: 'Spinner'
+        }
+    },
+    {
+        path: '/components/squircle',
+        component: Squircle,
+        meta: {
+            title: 'Squircle'
+        }
+    },
+    {
+        path: '/components/surface',
+        component: Surface,
+        meta: {
+            title: 'Surface'
+        }
+    },
+    {
+        path: '/components/switch',
+        component: Switch,
+        meta: {
+            title: 'Switch'
+        }
+    },
+    {
+        path: '/components/textfield',
+        component: Textfield,
+        meta: {
+            title: 'Textfield'
+        }
+    },
+    {
+        path: '/components/toolbar',
+        component: Toolbar,
+        meta: {
+            title: 'Toolbar'
         }
     },
 

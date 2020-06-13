@@ -1,7 +1,13 @@
 <template>
     <div class="kro-navigation">
-        <div :class="{'kro-navigation__scrim': true, 'kro-navigation--is-open': $attrs.modelValue}" @click="close"></div>
-        <div :class="{'kro-navigation__content': true, 'kro-navigation--is-open': $attrs.modelValue}">
+        <div :class="{
+            'kro-navigation__scrim': true, 
+            'kro-navigation--is-open': $attrs.modelValue,
+            'kro-navigation--is-temporary': temporary, }" @click="close"></div>
+        <div :class="{
+            'kro-navigation__content': true, 
+            'kro-navigation--is-open': $attrs.modelValue, 
+            'kro-navigation--is-temporary': temporary}">
             <slot :close="close" :open="open"></slot>
         </div>
     </div>
@@ -13,6 +19,10 @@
     export default {
         props: {
             value: {
+                type: Boolean,
+                default: false,
+            },
+            temporary: {
                 type: Boolean,
                 default: false,
             }

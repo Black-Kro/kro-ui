@@ -1,5 +1,5 @@
 <template>
-    <div :class="{[$style.root]: true, [$style.padded]: padded, [$style.raised]: raised}">
+    <div :class="{'kro-surface': true, 'kro-surface--padded': padded, 'kro-surface--raised': raised}">
         <slot></slot>
     </div>
 </template>
@@ -20,18 +20,18 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-surface {
         background: var(--kro-background-secondary);
         border-radius: 0.25rem;
     }
 
-        .padded {
+        .kro-surface--padded {
             padding: 1rem;
         }
 
-        .raised {
+        .kro-surface--raised {
             box-shadow: var(--kro-shadow);
         }
 

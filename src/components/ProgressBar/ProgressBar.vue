@@ -1,17 +1,17 @@
 <template>
     <div :class="{
-        [$style.root]: true,
-        [$style.isActive]: active,
-        [$style.isStream]: stream,
-        [$style.isIndeterminate]: indeterminate,
-        [$style.rounded]: rounded,
+        'kro-progress-bar': true,
+        'kro-progress-bar--is-active': active,
+        'kro-progress-bar--is-stream': stream,
+        'kro-progress-bar--is-indeterminate': indeterminate,
+        'kro-progress-bar--rounded': rounded,
     }">
-        <div :class="$style.stream">
-            <div :class="$style.streamContent"></div>
+        <div class="kro-progress-bar__stream">
+            <div class="kro-progress-bar__stream-content"></div>
         </div>
-        <div :class="$style.buffer" :style="{ '--kro-progress-bar-buffer-value': bufferValue }"></div>
-        <div :class="$style.progress" :style="{ '--kro-progress-bar-value': value }"></div>
-        <div></div>
+        <div class="kro-progress-bar__buffer" :style="{ '--kro-progress-bar-buffer-value': bufferValue }"></div>
+        <div class="kro-progress-bar__progress" :style="{ '--kro-progress-bar-value': value }"></div>
+        <div class="kro-progress-bar__indeterminate"></div>
     </div>
 </template>
 
@@ -34,7 +34,6 @@
                 type: Number,
                 default: 100,
             }
-
         },
         setup() {
             return {
@@ -44,10 +43,11 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-progress-bar {
         --kro-progress-bar-height: 0.5rem;
+        --kro-progress-bar-stream-size: 0.3rem;
 
         position: relative;
         overflow: hidden;
@@ -62,36 +62,42 @@
         margin: 1rem 0;
 
         transition: .2s cubic-bezier(.4,0,.6,1);
+    }
 
-        --kro-progress-bar-stream-size: 0.3rem;
-
-        &.rounded {
+        .kro-progress-bar--rounded {
             border-radius: calc(var(--kro-progress-bar-height) / 2);
         }
 
-        &.isIndeterminate {
-            .stream,
-            .progress,
-            .buffer {
+        .kro-progress-bar--is-indeterminate {
+
+            .kro-progress-bar__indeterminate {
+                opacity: 1;
+            }
+
+            .kro-progress-bar__stream,
+            .kro-progress-bar__progress {
                 opacity: 0;
             }
         }
 
-        &.isStream .stream {
-            display: block;
+        .kro-progress-bar--is-stream {
+            .kro-progress-bar__stream {
+                 display: block;
+            }
         }
-    }
 
-    .stream,
-    .buffer,
-    .progress {
+    .kro-progress-bar__stream,
+    .kro-progress-bar__buffer,
+    .kro-progress-bar__indeterminate,
+    .kro-progress-bar__progress {
         position: absolute;
         top: 0; left: 0;
         height: 100%;
         width: 100%;
     }
 
-    .stream {
+
+    .kro-progress-bar__stream {
         height: var(--kro-progress-bar-stream-size);
         top: 50%;
         transform: translateY(-50%);
@@ -99,37 +105,51 @@
         display: none;
     }
 
-        .streamContent {
+        .kro-progress-bar__stream-content {
             height: 0;
-            border-top: var(--kro-progress-bar-stream-size) dotted var(--kro-progress-stream-color, var(--kro-primary-darken));
+            border-top: var(--kro-progress-bar-stream-size) dotted var(--kro-progress-stream-color, var(--kro-primary-lighten));
 
             animation: KroProgressStreamAnimation 0.25s linear infinite;
             opacity: 0.3;
         }
 
-    .buffer {
-        background: var(--kro-progress-buffer-color, var(--kro-primary-darken));
+    .kro-progress-bar__buffer {
+        background: var(--kro-progress-buffer-color, var(--kro-primary-lighten));
         transform-origin: left center;
         transform: scaleX(calc( var(--kro-progress-bar-buffer-value) / 100 ));
 
         transition: inherit;
     }
 
-    .progress {
-        background: var(--kro-progress-progress-color, var(--kro-primary));
+    .kro-progress-bar__progress {
+        background: var(--kro-progress-bar-progress-color, var(--kro-primary));
         transform-origin: left center;
         transform: scaleX(calc( var(--kro-progress-bar-value) / 100 ));
 
         transition: inherit;
     }
 
+    .kro-progress-bar__indeterminate {
+        opacity: 0;
+        width: 25%;
+        border-radius: calc(var(--kro-progress-bar-height) / 2);
+        background: var(--kro-progress-bar-progress-color, var(--kro-primary));
+
+        transform: translateX(-100%);
+
+        animation: KroProgressIndeterminateAnimation 1.5s linear infinite;
+    }
 
     @keyframes KroProgressStreamAnimation {
-        
         100% {
             transform: translateX(calc(var(--kro-progress-bar-stream-size) * -2));
         }
+    }
 
+    @keyframes KroProgressIndeterminateAnimation {
+        100% {
+            transform: translateX(400%);
+        }
     }
 
 </style>
