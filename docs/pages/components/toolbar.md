@@ -1,5 +1,5 @@
 # Toolbar
-TODO
+Similar to the Surface, the Toolbar is a container component for housing content. Unlike the Surface, it is fixed height. Best use for toolbar applicable components, such as button groups.
 
 ## Usage
 <kro-toolbar>Normal Toolbar</kro-toolbar>
