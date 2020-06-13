@@ -18,13 +18,16 @@
             <slot name="toolbar"></slot>
         </div>
 
-        <div class="kro-layout__content">
-            <slot></slot>
+        <div class="kro-layout__container">
+            <div class="kro-layout__content">
+                <slot></slot>
+            </div>
+
+            <div class="kro-layout__footer" v-if="!!$slots.footer">
+                <slot name="footer"></slot>
+            </div>
         </div>
 
-        <div class="kro-layout__footer" v-if="!!$slots.footer">
-            <slot name="footer"></slot>
-        </div>
 
     </div>
 </template>
@@ -46,20 +49,21 @@
     @import '../../styles/general/layers';
 
     .kro-layout--has-navigation {
-        .kro-layout__content,
-        .kro-layout__footer {
+        .kro-layout__container {
             margin-left: var(--kro-navigation-width, 275px);
             @include useBreakpoint('small') { margin-left: 0; }
         }
     }
 
     .kro-layout--has-toolbar {
+        min-height: calc(100vh - var(--kro-toolbar-height, 4rem));
+
         .kro-layout__navigation {
             top: var(--kro-toolbar-height, 4rem);
             @include useBreakpoint('small') { top: 0; }
         }
 
-        .kro-layout__content {
+        .kro-layout__container {
             margin-top: var(--kro-toolbar-height, 4rem);
         }
     }
@@ -69,6 +73,14 @@
         .kro-layout__navigation {
             position: fixed;
         }
+    }
+
+    .kro-layout__container {
+        position: relative;
+        min-height: inherit;
+
+        display: grid;
+        grid-template-rows: 1fr auto;
     }
 
     .kro-layout__navigation {
