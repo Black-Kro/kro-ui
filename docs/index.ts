@@ -66,6 +66,32 @@ createApp(App)
                         to: '/components/divider'
                     },
                     {
+                        title: 'Form Inputs & Controls',
+                        to: '/components/forms',
+                        children: [
+                            {
+                                title: 'Textfield',
+                                to: '/components/textfield'
+                            },
+                            {
+                                title: 'Select',
+                                to: '/components/select',
+                            },
+                            {
+                                title: 'Switch',
+                                to: '/components/switch',
+                            },
+                            {
+                                title: 'Radio',
+                                to: '/components/radio',
+                            },
+                            {
+                                title: 'Checkbox',
+                                to: '/components/checkbox',
+                            }
+                        ]
+                    },
+                    {
                         title: 'Icon',
                         to: '/components/icon'
                     },
@@ -76,6 +102,10 @@ createApp(App)
                     {
                         title: 'List',
                         to: '/components/list'
+                    },
+                    {
+                        title: 'Menu',
+                        to: '/components/menu'
                     },
                     {
                         title: 'Navigation',
@@ -96,14 +126,6 @@ createApp(App)
                     {
                         title: 'Surface',
                         to: '/components/surface'
-                    },
-                    {
-                        title: 'Switch',
-                        to: '/components/switch'
-                    },
-                    {
-                        title: 'Textfield',
-                        to: '/components/textfield'
                     },
                     {
                         title: 'Toolbar',

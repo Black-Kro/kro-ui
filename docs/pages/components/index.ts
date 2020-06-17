@@ -18,6 +18,8 @@ import Surface from './surface.md';
 import Switch from './switch.md';
 import Textfield from './textfield.md';
 import Toolbar from './toolbar.md';
+import Menu from './menu.md';
+import Select from './select.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -92,6 +94,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         }
     },
     {
+        path: '/components/menu',
+        component: Menu,
+        meta: {
+            title: 'Menu'
+        }
+    },
+    {
         path: '/components/navigation',
         component: Navigation,
         meta: {
@@ -145,6 +154,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: Toolbar,
         meta: {
             title: 'Toolbar'
+        }
+    },
+    {
+        path: '/components/select',
+        component: Select,
+        meta: {
+            title: 'Select'
         }
     },
 

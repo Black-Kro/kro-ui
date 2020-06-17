@@ -5,3 +5,5 @@ export { default as IconDemo } from './IconDemo.vue';
 export { default as NavigationDemo } from './NavigationDemo.vue';
 export { default as ProgressBarDemo } from './ProgressBarDemo.vue';
 export { default as SwitchDemo } from './SwitchDemo.vue';
+export { default as MenuDemo } from './MenuDemo.vue';
+export { default as SelectDemo } from './SelectDemo.vue';

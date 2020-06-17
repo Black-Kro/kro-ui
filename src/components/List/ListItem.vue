@@ -1,5 +1,5 @@
 <template>
-    <component :is="tag" class="kro-list-item" :tabindex="tabindex">
+    <component :is="tag" class="kro-list-item">
         <div v-if="!!$slots.icon" class="kro-list-item__icon">
             <slot name="icon"></slot>
         </div>

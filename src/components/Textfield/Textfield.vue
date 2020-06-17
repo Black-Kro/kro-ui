@@ -1,10 +1,10 @@
 <template>
-    <div :class="$style.root">
-        <div :class="{[$style.container]: true, [$style.focused]: focused, [$style.hasText]: $attrs.modelValue }">
-            <label :class="{[$style.label]: true, [$style.focused]: focused, [$style.hasText]: $attrs.modelValue }" :for="id">{{label}}</label>
-            <span :class="{[$style.pseudoLabel]: true, [$style.focused]: focused, [$style.hasText]: $attrs.modelValue }">{{label}}</span>
+    <div class="kro-textfield">
+        <div :class="{'kro-textfield__container': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }">
+            <label :class="{'kro-textfield__label': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }" :for="id">{{label}}</label>
+            <span :class="{'kro-textfield__pseudo-label': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }">{{label}}</span>
             <input
-                :class="$style.input"
+                class="kro-textfield__input"
                 :disabled="disabled"
                 :required="required"
                 :readonly="readonly"
@@ -55,13 +55,13 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-textfield {
         display: inline-block;
     }
 
-    .container {
+    .kro-textfield__container {
         display: inline-grid;
         position: relative;
         border: 2px solid var(--kro-divider);
@@ -71,10 +71,10 @@
         display: flex;
         align-items: center;
 
-        &.focused { border-color: var(--kro-primary); }
+        &.kro-textfield--focused { border-color: var(--kro-primary); }
     }
 
-    .pseudoLabel {
+    .kro-textfield__pseudo-label {
         font-size: 0.75rem;
         font-weight: 500;
         position: absolute;
@@ -86,15 +86,16 @@
         color: transparent;
         pointer-events: none;
         margin-left: calc(-0.25rem / 2);
+        white-space: nowrap;
 
         transform: translateX(0.75rem) translateY(-2px) scaleX(0);
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-        &.hasText,
-        &.focused { transform: translateX(0.75rem) translateY(-2px) scaleX(1); }
+        &.kro-textfield--has-text,
+        &.kro-textfield--focused { transform: translateX(0.75rem) translateY(-2px) scaleX(1); }
     }
 
-    .label {
+    .kro-textfield__label {
         font-size: 1rem;
         font-weight: 500;
         position: absolute;
@@ -105,19 +106,20 @@
         display: flex;
         align-items: center;
         z-index: 1;
+        white-space: nowrap;
 
         transform-origin: left center;
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-        &.focused { color: var(--kro-primary); }
+        &.kro-textfield--focused { color: var(--kro-primary); }
 
-        &.hasText,
-        &.focused {
+        &.kro-textfield--has-text,
+        &.kro-textfield--focused {
             transform: scale(0.75) translateY(calc(-50% - 0.6rem));
         }
     }
 
-    .input {
+    .kro-textfield__input {
         border: none;
         font-size: 1rem;
         font-weight: 500;
