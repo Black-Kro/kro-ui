@@ -2,6 +2,7 @@ import vuePlugin from 'rollup-plugin-vue';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import buble from '@rollup/plugin-buble';
+import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
@@ -19,6 +20,13 @@ export default {
         typescript({
             rollupCommonJSResolveHack: false,
             clean: true,
+            tsconfigOverride: {
+                include: [
+                    "src/**/*.ts",
+                    "src/**/*.tsx",
+                    "src/**/*.vue",
+                ]
+            }
         }),
         vuePlugin({
             target: 'browser',
@@ -31,5 +39,8 @@ export default {
         }),
         buble({ objectAssign: 'Object.assign' }),
         terser(),
+        copy({
+            targets: [{ src: 'src/styles/themes', dest: 'dist/' }]
+        })
     ]
 }
