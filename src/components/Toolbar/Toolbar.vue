@@ -1,9 +1,9 @@
 <template>
     <div :class="{
-        [$style.root]: true,
-        [$style.small]: small,
-        [$style.raised]: raised,
-        [$style.padded]: padded }">
+        'kro-toolbar': true,
+        'kro-toolbar--small': small,
+        'kro-toolbar--raised': raised,
+        'kro-toolbar--padded': padded }">
         <slot></slot>
     </div>
 </template>
@@ -18,9 +18,9 @@
     }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-toolbar {
         height: var(--kro-toolbar-height, 4rem);
         background: var(--kro-toolbar-background, var(--kro-background-secondary));
 
@@ -29,8 +29,8 @@
 
     }
 
-    .small { height: 3.5rem; }
-    .padded { padding: 0 1rem; }
-    .raised { box-shadow: var(--kro-shadow); }
+    .kro-toolbar--small { height: 3.5rem; }
+    .kro-toolbar--padded { padding: 0 1rem; }
+    .kro-toolbar--raised { box-shadow: var(--kro-shadow); }
 
 </style>

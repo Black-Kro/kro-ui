@@ -64,11 +64,11 @@
     }
 
         .kro-list-item__title {
-            font-size: 1rem;
+            font-size: 1em;
         }
 
         .kro-list-item__subtitle {
-            font-size: 0.75rem;
+            font-size: 0.75em;
             color: var(--kro-foreground-secondary);
         }
 

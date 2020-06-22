@@ -7,3 +7,4 @@ export { default as ProgressBarDemo } from './ProgressBarDemo.vue';
 export { default as SwitchDemo } from './SwitchDemo.vue';
 export { default as MenuDemo } from './MenuDemo.vue';
 export { default as SelectDemo } from './SelectDemo.vue';
+export { default as SurfaceDemo } from './SurfaceDemo.vue';

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="select-demo__root">
         <kro-select v-model="favoriteFood" label="Favorite Food">
             <option value="Pizza">Pizza</option>
             <option value="Tacos">Tacos</option>
@@ -30,6 +30,12 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+
+    .select-demo__root {
+        .kro-select {
+            margin-right: 1rem;
+        }
+    }
 
 </style>

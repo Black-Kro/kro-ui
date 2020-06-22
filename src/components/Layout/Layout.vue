@@ -48,6 +48,10 @@
     @import '../../styles/general/breakpoints';
     @import '../../styles/general/layers';
 
+    .kro-layout {
+        min-height: 100vh;
+    }
+
     .kro-layout--has-navigation {
         .kro-layout__container {
             margin-left: var(--kro-navigation-width, 275px);

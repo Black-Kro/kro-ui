@@ -73,7 +73,7 @@
         display: inline-block;
         width: 300px;
         cursor: pointer;
-        padding-right: 2rem;
+        // padding-right: 2rem;
     }
 
     .kro-select__icon {
@@ -88,6 +88,8 @@
         border: 2px solid var(--kro-divider);
         border-radius: 0.25rem;
         height: 3rem;
+
+        padding-right: 2rem;
 
         display: flex;
         align-items: center;

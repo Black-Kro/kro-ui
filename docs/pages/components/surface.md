@@ -3,7 +3,7 @@ Similar to Cards in material design, used to display content raised off of the b
 
 ## Usage
 
-<kro-surface>Hey this is a surface</kro-surface>
+<surface-demo></surface-demo>
 
 ```html
 <kro-surface>Hey this is a surface</kro-surface>
