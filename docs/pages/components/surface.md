@@ -6,7 +6,17 @@ Similar to Cards in material design, used to display content raised off of the b
 <surface-demo></surface-demo>
 
 ```html
-<kro-surface>Hey this is a surface</kro-surface>
+<kro-surface>
+    This is a surface
+</kro-surface>
+
+<kro-surface outline label="Settings">
+    This is an outlined surface with a label
+</kro-surface>
+
+<kro-surface outline label="Settings" icon="settings">
+    This is an outlined surface with a label
+</kro-surface>
 ```
 
 ## Props
@@ -19,7 +29,16 @@ padded: {
 raised: {
     type: Boolean,
     default: true,
-}
+},
+
+outline: {
+    type: Boolean,
+    default: false,
+},
+
+icon: String,
+
+label: String,
 ```
 
 ## Related

@@ -1,3 +1,3 @@
 export { useDialog, DialogType } from './dialogs';
 export { useIcons } from './icons';
-export { useTheme } from './theme';
+export { useTheme, ThemeMode } from './theme';
