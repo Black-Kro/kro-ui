@@ -16,7 +16,7 @@
                 :name="name"
                 :id="id"
                 
-                :value="value"
+                :value="$attrs.modelValue"
 
                 @input="$emit('update:modelValue', $event.target.value)"
                 @focus="focused = true"

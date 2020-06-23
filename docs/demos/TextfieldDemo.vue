@@ -15,7 +15,7 @@
 
     export default {
         setup() {
-            const email = ref('');
+            const email = ref('bruh');
             const password = ref('');
 
             return {
