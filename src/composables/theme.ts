@@ -1,7 +1,7 @@
-export enum ThemeMode {
-    LIGHT = 'light',
-    DARK = 'dark',
-    UNSET = 'unset'
+export const ThemeMode = {
+    LIGHT: 'light',
+    DARK: 'dark',
+    UNSET: 'unset'
 }
 
 const applyThemeMode = (mode) => {
@@ -12,10 +12,14 @@ export const useTheme = () => {
 
     const setTheme = (theme: string) => {}
 
+    const getThemeMode = () : string => {
+        return localStorage.getItem('kro.theme.mode') || ThemeMode.UNSET;
+    }
+
     /**
      * Returns the theme mode.
      */
-    const getThemeMode = () : ThemeMode => {
+    const getActiveThemeMode = () : string => {
         if (!localStorage.getItem('kro.theme.mode')) {
             if ('matchMedia' in window) {
                 return window.matchMedia('(prefers-color-scheme: light)').matches ? ThemeMode.LIGHT : ThemeMode.DARK;
@@ -24,20 +28,20 @@ export const useTheme = () => {
             }
         }
 
-        return localStorage.getItem('kro.theme.mode') as ThemeMode || ThemeMode.UNSET;
+        return localStorage.getItem('kro.theme.mode') || ThemeMode.UNSET;
     }
 
     /**
      * Toggles the theme
      */
     const toggleThemeMode = () => {
-        getThemeMode() === ThemeMode.LIGHT ? setThemeMode(ThemeMode.DARK) : setThemeMode(ThemeMode.LIGHT);
+        getActiveThemeMode() === ThemeMode.LIGHT ? setThemeMode(ThemeMode.DARK) : setThemeMode(ThemeMode.LIGHT);
     }
 
     /**
      * Sets the classname and local storage variable for the theme.
      */
-    const setThemeMode = (mode: ThemeMode) => {
+    const setThemeMode = (mode) => {
         if (mode === ThemeMode.UNSET) {
             localStorage.removeItem('kro.theme.mode');
         } else {
@@ -50,17 +54,18 @@ export const useTheme = () => {
         setTheme,
         setThemeMode,
         toggleThemeMode,
+        getActiveThemeMode,
         getThemeMode,
     }
 
 };
 
 export const registerThemeWatcher = () => {
-    const { getThemeMode } = useTheme();
+    const { getActiveThemeMode } = useTheme();
     
     /**
      * Apply the initial theme of the page.
      */
-    applyThemeMode(getThemeMode());
+    applyThemeMode(getActiveThemeMode());
 }
 
