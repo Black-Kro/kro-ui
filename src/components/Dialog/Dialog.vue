@@ -26,6 +26,7 @@
     import { useWindow } from '../../composables/common';
 
     export default {
+        name: 'KroDialog',
         components: { KroSurface },
         props: {
             open: Boolean,

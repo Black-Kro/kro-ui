@@ -15,9 +15,9 @@
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        name: 'SurfaceDemo',
+    }
 </script>
 
 <style>

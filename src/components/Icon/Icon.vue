@@ -9,6 +9,7 @@
     import { useIcons } from '../../composables/icons';
 
     export default {
+        name: 'KroIcon',
         props: {
             icon: {
                 type: String,

@@ -10,6 +10,7 @@
 
 <script lang="ts">
     export default {
+        name: 'KroToolbar',
         props: {
             small: Boolean,
             padded: Boolean,

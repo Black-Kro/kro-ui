@@ -31,6 +31,7 @@
     import { KroButton } from '../Button';
 
     export default {
+        name: 'KroAlert',
         components: { KroIcon, KroButton },
         props: {
             type: {

@@ -30,6 +30,7 @@
     import { ref, onMounted } from 'vue';
 
     export default {
+        name: 'KroSelect',
         props: {
             value:      { type: String, default: '' },
             label:      { type: String },

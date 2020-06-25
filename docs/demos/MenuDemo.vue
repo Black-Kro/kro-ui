@@ -27,9 +27,9 @@
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        name: 'MenuDemo',
+    }
 </script>
 
 <style>

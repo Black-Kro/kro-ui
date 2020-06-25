@@ -10,6 +10,7 @@
 
 <script>
     export default {
+        name: 'KroSurface',
         props: {
             padded: {
                 type: Boolean,

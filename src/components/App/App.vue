@@ -12,6 +12,7 @@
     import ComposableDialogs from './components/ComposableDialogs.vue';
 
     export default {
+        name: 'KroApp',
         components: { ComposableDialogs }
     }
 </script>

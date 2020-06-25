@@ -11,6 +11,7 @@
     import { useIcons } from '@lib';
 
     export default {
+        name: 'IconDemo',
         setup() {
             const { icons } = useIcons();
 

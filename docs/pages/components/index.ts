@@ -61,6 +61,7 @@ export const ComponentRoutes : RouteRecordRaw[] = [
     {
         path: '/components/dialog',
         component: Dialog,
+        name: 'DialogPage',
         meta: {
             title: 'Dialog'
         }

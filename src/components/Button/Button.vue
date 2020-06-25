@@ -34,6 +34,7 @@
     import KroSquircle from '../Squircle/Squircle.vue';
 
     export default {
+        name: 'KroButton',
         components: { KroIcon, KroSpinner, KroSquircle },
         props: {
 

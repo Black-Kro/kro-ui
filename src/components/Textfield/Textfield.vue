@@ -29,6 +29,7 @@
     import { ref } from 'vue';
 
     export default {
+        name: 'KroTextfield',
         props: {
             value:      { type: String, default: '' },
             label:      { type: String },

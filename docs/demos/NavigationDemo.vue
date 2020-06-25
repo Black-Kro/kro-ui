@@ -19,6 +19,7 @@
 <script lang="ts">
     import { ref } from 'vue';
     export default {
+        name: 'NavigationDemo',
         setup() {
             const isOpen = ref(false);
 

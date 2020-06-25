@@ -12,6 +12,7 @@
     import { ref, Component } from 'vue';
 
     export default {
+        name: 'KroMenu',
         props: { 
             offsetX: Boolean,
             offsetY: Boolean,

@@ -11,6 +11,7 @@
     import { ref } from 'vue';
     
     export default {
+        name: 'ProgressBarDemo',
         setup() {
             const progressValue = ref(0);
             const bufferValue = ref(10);

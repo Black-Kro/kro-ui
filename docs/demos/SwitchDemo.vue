@@ -9,6 +9,7 @@
     import { ref } from 'vue';
 
     export default {
+        name: 'SwitchDemo',
         setup() {
             const isActive = ref(false);
             const isActive2 = ref(false);

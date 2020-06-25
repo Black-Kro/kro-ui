@@ -14,6 +14,7 @@
     import { ref } from 'vue';
 
     export default {
+        name: 'TextfieldDemo',
         setup() {
             const email = ref('bruh');
             const password = ref('');

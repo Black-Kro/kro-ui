@@ -17,6 +17,7 @@
 
 <script lang="ts">
     export default {
+        name: 'KroProgressBar',
         props: {
             stream: Boolean,
             indeterminate: Boolean,

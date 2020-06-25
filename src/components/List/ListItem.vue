@@ -21,6 +21,7 @@
     import { computed, ref } from 'vue';
 
     export default {
+        name: 'KroListItem',
         props: {
             tag: {
                 type: String,

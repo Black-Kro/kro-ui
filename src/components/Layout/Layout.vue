@@ -36,6 +36,7 @@
     import { KroToolbar } from '../Toolbar';
 
     export default {
+        name: 'KroLayout',
         components: { KroToolbar },
         props: {
             fixed: Boolean

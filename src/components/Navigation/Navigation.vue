@@ -17,6 +17,7 @@
     import { ref } from 'vue';
 
     export default {
+        name: 'KroNavigation',
         props: {
             value: {
                 type: Boolean,

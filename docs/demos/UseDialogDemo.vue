@@ -8,6 +8,7 @@
     import { useDialog } from '@lib/composables/dialogs';
 
     export default {
+        name: 'UseDialogDemo',
         setup() {
             const { createConfirmation } = useDialog();
         

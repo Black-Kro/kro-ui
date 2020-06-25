@@ -9,6 +9,7 @@
     import KroListItem from './ListItem.vue';
 
     export default {
+        name: 'KroList',
         props: {
             disabled: Boolean,
             dense: Boolean,

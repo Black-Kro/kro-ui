@@ -6,6 +6,7 @@
 
 <script>
     export default {
+        name: 'KroLayoutHelper',
         props: {
             layout: String,
             gap: {

@@ -18,6 +18,7 @@
     import { ref } from 'vue';
 
     export default {
+        name: 'SelectDemo',
         setup() {
             const favoriteFood = ref();
             const favoriteLibrary = ref('VueJS');
