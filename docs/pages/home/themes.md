@@ -26,15 +26,17 @@ $NordTheme: (
         'divider': rgba(0, 0, 0, .12),
 
         'primary': hsl(213, 32%, 52%),
-        'accent': hsl(217, 100%, 75%),
+        'primary-lighten': hsl(213, 32%, 70%),
+        'primary-foreground': white,
+        'accent': hsl(179, 25%, 45%),
 
-        'shadow': rgba(0, 0, 0, 0.24) 0px 3px 6px 0px,
+        'shadow': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
         
         'error': hsl(0, 100%, 66%),
         'info': hsl(207, 90%, 54%),
         'success': hsl(122, 39%, 49%),
         'warning': hsl(45, 100%, 51%),
-        ),
+    ),
         
     dark: (
         // All the same properties as the light version,
@@ -60,6 +62,8 @@ For example, if we wanted to recreate the nord theme, we would do the following.
     --kro-foreground-secondary: #4d576a;
     --kro-divider: rgba(0, 0, 0, 0.12);
     --kro-primary: #5d81ac;
+    --kro-primary-lighten: hsl(213, 32%, 70%);
+    --kro-primary-foreground: white; 
     --kro-accent: #80b0ff;
     --kro-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px 0px;
     --kro-error: #ff5252;
