@@ -19,12 +19,12 @@ body {
     color: var(--kro-foreground);
     background: var(--kro-background);
 
+    position: relative;
     overflow-x: hidden;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 
 ::-webkit-scrollbar {
     background: rgba(0, 0, 0, .56);

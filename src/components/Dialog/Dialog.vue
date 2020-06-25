@@ -23,6 +23,7 @@
 <script lang='ts'>
     import { ref, onMounted, nextTick, onUnmounted } from 'vue';
     import { KroSurface } from '../Surface';
+    import { useWindow } from '../../composables/common';
 
     export default {
         components: { KroSurface },
@@ -34,6 +35,8 @@
             const isOpen = ref(false);
             const shouldMountContent = ref(false);
 
+            const { disableDocumentScroll, enableDocumentScroll } = useWindow();
+
             const onTransitionEnded = (e) => {
                 if (e.propertyName === 'transform') {
                     if (!isOpen.value) {
@@ -43,20 +46,26 @@
                 }
             }
 
-            const close = (e) => { 
+            const canCloseDialog = (e) => {
                 if (e?.type === 'keydown') {
                     if (e.key === 'Escape') {
                         if (!props.persistent) {
-                            isOpen.value = false;
-                            window.removeEventListener('keydown', close);
-                            document.documentElement.classList.remove('kro-helper--prevent-scroll');
+                            return true;
                         }
                     }
                 } else {
-                    document.documentElement.classList.remove('kro-helper--prevent-scroll');
-                    isOpen.value = false;
+                    return true;
                 }
 
+                return false;
+            }
+
+            const close = (e) => { 
+                if (canCloseDialog(e)) {
+                    isOpen.value = false;
+                    window.removeEventListener('keydown', close);
+                    enableDocumentScroll();
+                }
             };
 
             const open = () => { 
@@ -65,7 +74,7 @@
                 window.addEventListener('keydown', close);
 
                 // Prevent window from scrolling.
-                document.documentElement.classList.add('kro-helper--prevent-scroll');
+                disableDocumentScroll();
 
                 emit('open');
             };
