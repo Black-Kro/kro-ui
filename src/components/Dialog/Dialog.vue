@@ -49,9 +49,11 @@
                         if (!props.persistent) {
                             isOpen.value = false;
                             window.removeEventListener('keydown', close);
+                            document.documentElement.classList.remove('kro-helper--prevent-scroll');
                         }
                     }
                 } else {
+                    document.documentElement.classList.remove('kro-helper--prevent-scroll');
                     isOpen.value = false;
                 }
 
@@ -61,6 +63,9 @@
                 isOpen.value = true;
                 shouldMountContent.value = true;
                 window.addEventListener('keydown', close);
+
+                // Prevent window from scrolling.
+                document.documentElement.classList.add('kro-helper--prevent-scroll');
 
                 emit('open');
             };

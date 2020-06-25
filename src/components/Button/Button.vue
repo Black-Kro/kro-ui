@@ -148,7 +148,7 @@
 
         .kro-button--primary {
             background: var(--kro-button-background-primary, var(--kro-primary));
-            color: var(--kro-button-foreground-primary, var(--kro-foreground));
+            color: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
         }
 
         .kro-button--raised {
