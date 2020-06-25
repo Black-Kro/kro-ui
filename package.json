@@ -1,6 +1,6 @@
 {
   "name": "kro-ui",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": false,
   "main": "./dist/kro-ui.common.js",
   "types": "./dist/index.d.ts",
