@@ -5,7 +5,7 @@
             <option value="Tacos">Tacos</option>
             <option value="Cake">Cake</option>
         </kro-select>
-
+        {{favoriteFood}}
         <kro-select v-model="favoriteLibrary" label="Favorite Library">
             <option>React</option>
             <option>VueJS</option>

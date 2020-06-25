@@ -17,7 +17,7 @@
                 @change="$emit('update:modelValue', $event.target.value)"
                 @focus="focused = true"
                 @blur="focused = false">
-                <option selected disabled hidden value="KRO_EMPTY"></option>
+                <option selected hidden></option>
                 <slot></slot>
 
             </select>
@@ -49,13 +49,8 @@
             onMounted(() => {
                 if (select.value) {
                     Array.from(select.value.options).forEach(option => {
-                        if (attrs.modelValue === null) {
-                            if (option.value === 'KRO_EMPTY')
-                                option.selected = true;
-                        } else {
-                            if (option.value === attrs.modelValue)
-                                option.selected = true;
-                        }
+                        if (option.value === attrs.modelValue)
+                            option.selected = true;
                     })
                 }
             });
