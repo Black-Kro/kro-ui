@@ -52,6 +52,8 @@
         position: relative;
         overflow: hidden;
 
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+
         display: flex;
         align-items: center;
         justify-content: center;
