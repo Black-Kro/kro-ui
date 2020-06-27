@@ -7,9 +7,11 @@
             'kro-button--raised': raised,
             'kro-button--is-icon-button': icon && !$slots.default,
         }" 
-        :is="componentType" 
+        :is="componentType"
+         
+        rel="noreferrer"
         
-        :href="href" 
+        :href="href"
         :to="to" 
         :target="href ? target : ''">
         <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
