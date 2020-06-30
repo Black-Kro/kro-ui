@@ -2,8 +2,8 @@
     <div>
         <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
         <Teleport to="#kro-portal">
-            <div :tabindex="isOpen ? 1 : -1" :class="{'kro-dialog': true, 'kro-dialog--is-open': isOpen}">
-                <div @click="() => { if (!persistent) { close(); } }" class="kro-dialog__scrim"></div>
+            <div ref="dialog" :tabindex="-1" :class="{'kro-dialog': true, 'kro-dialog--is-open': isOpen}">
+                <div tabindex="-1" @click="() => { if (!persistent) { close(); } }" class="kro-dialog__scrim"></div>
                 <kro-surface raised class="kro-dialog__content" @transitionend="onTransitionEnded">
                     <template v-if="shouldMountContent">
                         <div v-if="!!$slots.title" class="kro-dialog__title">
@@ -35,6 +35,7 @@
         setup(props, { emit }) {
             const isOpen = ref(false);
             const shouldMountContent = ref(false);
+            const dialog = ref<HTMLElement>();
 
             const { disableDocumentScroll, enableDocumentScroll } = useWindow();
 
@@ -77,6 +78,12 @@
                 // Prevent window from scrolling.
                 disableDocumentScroll();
 
+                // Focus dialog
+                if (dialog.value) {
+                    console.log(dialog.value);
+                    dialog.value.focus();
+                }
+
                 emit('open');
             };
 
@@ -99,6 +106,8 @@
                 open,
                 close,
                 toggle,
+
+                dialog,
 
                 onTransitionEnded,
             }
