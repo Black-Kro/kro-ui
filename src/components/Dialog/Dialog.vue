@@ -87,7 +87,10 @@
                     window.setTimeout(() => open(), 0);
             });
 
-            onUnmounted(() => { window.removeEventListener('keydown', close); });
+            onUnmounted(() => { 
+                window.removeEventListener('keydown', close); 
+                enableDocumentScroll();
+            });
 
             return {
                 isOpen,
