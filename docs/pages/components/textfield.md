@@ -7,7 +7,7 @@ Kro UI's replacement for the standard HTML textfield with a placeholder label th
 ```html
 <kro-textfield v-model="email" label="Email" />
 <kro-textfield v-model="password" label="Password" type="password" />
-<kro-textfield v-model="bio" label="Biography"></kro-textfield>
+<kro-textfield v-model="bio" label="Biography" multiline />
 ```
 
 ```ts
