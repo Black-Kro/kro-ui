@@ -34,6 +34,11 @@ body {
     background: var(--kro-background-secondary);
 }
 
+::-webkit-resizer {
+    // background: red;
+    padding: 1rem;
+}
+
 
 // Generate Classes
 @each $name, $value in $typography {

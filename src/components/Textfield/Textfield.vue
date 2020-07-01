@@ -1,9 +1,11 @@
 <template>
-    <div class="kro-textfield">
-        <div :class="{'kro-textfield__container': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }">
+    <div class="kro-textfield" :class="{ 'kro-textfield--is-textarea': multiline }">
+        <div :class="{'kro-textfield__container': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue , 'kro-textfield--is-textarea': multiline}">
             <label :class="{'kro-textfield__label': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }" :for="id">{{label}}</label>
             <span :class="{'kro-textfield__pseudo-label': true, 'kro-textfield--focused': focused, 'kro-textfield--has-text': $attrs.modelValue }">{{label}}</span>
             <input
+                v-if="!multiline"
+
                 class="kro-textfield__input"
                 :disabled="disabled"
                 :required="required"
@@ -15,12 +17,29 @@
                 :maxlength="maxlength"
                 :name="name"
                 :id="id"
-                
                 :value="$attrs.modelValue"
 
                 @input="$emit('update:modelValue', $event.target.value)"
                 @focus="focused = true"
                 @blur="focused = false" />
+
+            <textarea
+                v-else
+                ref="inputRef"
+                class="kro-textfield__input"
+                :disabled="disabled"
+                :required="required"
+                :readonly="readonly"
+                :autofocus="autofocus"
+                :maxlength="maxlength"
+                :name="name"
+                :id="id"
+                :value="$attrs.modelValue"
+
+                @input="($event) => { $emit('update:modelValue', $event.target.value); runAutoResize(); }"
+                @focus="focused = true"
+                @blur="focused = false"></textarea>
+
         </div>
     </div>
 </template>
@@ -44,13 +63,26 @@
             maxlength:  { type: Number },
             name:       { type: String },
             id:         { type: String },
+            autoResize: { type: Boolean, default: true }
         },
 
-        setup() {
+        setup(props) {
             const focused = ref(false);
+            const inputRef = ref<HTMLElement | null>();
+
+            const runAutoResize = () => {
+                if (props.autoResize) {
+                    if (inputRef.value) {
+                        inputRef.value.style.height = `auto`;
+                        inputRef.value.style.height = `${inputRef.value.scrollHeight}px`;
+                    }
+                }
+            };
 
             return {
-                focused
+                focused,
+                runAutoResize,
+                inputRef,
             }
         }
     }
@@ -60,6 +92,10 @@
 
     .kro-textfield {
         display: inline-block;
+    
+        &.kro-textfield--is-textarea {
+            display: block;
+        }
     }
 
     .kro-textfield__container {
@@ -73,7 +109,13 @@
         align-items: center;
 
         &.kro-textfield--focused { border-color: var(--kro-primary); }
+        
+        &.kro-textfield--is-textarea {
+            height: auto;
+            min-height: var(--kro-textfield-min-height, 3.5rem);
+        }
     }
+
 
     .kro-textfield__pseudo-label {
         font-size: 0.75rem;
@@ -100,7 +142,7 @@
         font-size: 1rem;
         font-weight: 500;
         position: absolute;
-        height: 100%;
+        height: calc(3rem - 0.25rem);
         padding: 0 0.25rem;
         margin-left: 0.75rem;
         pointer-events: none;
@@ -108,6 +150,7 @@
         align-items: center;
         z-index: 1;
         white-space: nowrap;
+        top: 0;
 
         transform-origin: left center;
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -125,10 +168,12 @@
         font-size: 1rem;
         font-weight: 500;
         font-family: inherit;
-        padding: 0 1rem;
+        padding: 1rem;
         display: block;
         width: 100%;
         height: 100%;
+
+        resize: none;
 
         color: var(--kro-foreground);
         background: transparent;

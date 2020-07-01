@@ -5,13 +5,9 @@ Kro UI's replacement for the standard HTML textfield with a placeholder label th
 <textfield-demo></textfield-demo>
 
 ```html
-<kro-textfield class="field" v-model="email" label="Email" />
-<kro-textfield class="field" v-model="password" label="Password" type="password" />
-
-<div>
-    <div>Email: {{email}}</div>
-    <div>Password: {{password}}</div>
-</div>
+<kro-textfield v-model="email" label="Email" />
+<kro-textfield v-model="password" label="Password" type="password" />
+<kro-textfield v-model="bio" label="Biography"></kro-textfield>
 ```
 
 ```ts
@@ -21,10 +17,12 @@ export default {
     setup() {
         const email = ref('');
         const password = ref('');
+        const bio = ref('');
 
         return {
             email,
             password,
+            bio, 
         }
     }
 }
@@ -45,6 +43,7 @@ max:        { type: Number },
 maxlength:  { type: Number },
 name:       { type: String },
 id:         { type: String },
+autoResize: { type: Boolean, default: true }
 ```
 
 ## Related

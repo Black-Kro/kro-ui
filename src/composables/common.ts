@@ -58,7 +58,6 @@ export const useElement = (target) => {
     const throttledFn = useThrottleFn(() => {
         const ele = target.value || document.body;
         updateRefs(ele);
-        console.log('bruh')
     }, 250)
 
     useEventListener('resize', throttledFn);

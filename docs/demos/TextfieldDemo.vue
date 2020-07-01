@@ -3,10 +3,7 @@
         <kro-textfield class="field" v-model="email" label="Email" />
         <kro-textfield class="field" v-model="password" label="Password" type="password" />
 
-        <div>
-            <div>Email: {{email}}</div>
-            <div>Password: {{password}}</div>
-        </div>
+        <kro-textfield v-model="bio" label="Biography" multiline></kro-textfield>
     </div>
 </template>
 
@@ -16,12 +13,14 @@
     export default {
         name: 'TextfieldDemo',
         setup() {
-            const email = ref('bruh');
+            const email = ref('');
             const password = ref('');
+            const bio = ref('');
 
             return {
                 email,
                 password,
+                bio, 
             }
         }
     }
