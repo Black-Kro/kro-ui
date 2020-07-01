@@ -209,7 +209,6 @@
                         display: block;
                         position: relative;
                         margin-top: 0.45rem;
-                        margin-left: 0.15rem;
                         font-size: 0.75rem;
                         font-weight: 500;
                         text-align: center;
