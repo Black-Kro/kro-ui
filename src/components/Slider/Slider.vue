@@ -1,23 +1,30 @@
 <template>
-    <div class="kro-slider" :style="{'--kro-slider-progress': `${value - 100}%`}">
-        <div ref="sliderRef" @touchstart.passive="enableEditing" @mousedown="enableEditing" class="kro-slider__track">
-            <div class="kro-slider__markers">
-                <div v-for="n in 100 / (step) - 1" :key="n"></div>
+        <div 
+            class="kro-slider"
+            @touchstart.passive="enableEditing" 
+            @mousedown="enableEditing" 
+            :style="{'--kro-slider-progress': `${($attrs.modelValue - min) / (max - min) * 100 - 100}%`}">
+
+            <div class="kro-slider__track-container">
+                <div ref="sliderRef" class="kro-slider__track">
+                    <div v-if="ticks" class="kro-slider__markers">
+                        <div v-for="n in Math.ceil((max - min) / (step)) - 1" :key="n"></div>
+                    </div>
+                    <div class="kro-slider__progress"></div>
+                </div>
+                <div class="kro-slider__knob-container">
+                    <div class="kro-slider__knob"></div>
+                    <div class="kro-slider__preview-value" :class="{ 'kro-slider__preview-value--is-active': isEditing }">
+                        <div class="kro-slider__bloop"></div>
+                        <span>{{$attrs.modelValue}}</span>
+                    </div>
+                </div>
             </div>
-            <div class="kro-slider__progress"></div>
         </div>
-        <div class="kro-slider__knob-container">
-            <div  @touchstart.passive="enableEditing" @mousedown="enableEditing" class="kro-slider__knob"></div>
-            <div class="kro-slider__preview-value">
-                <div class="kro-slider__bloop"></div>
-                <span>{{value}}</span>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script lang="ts">
-    import { computed, ref, watchEffect } from 'vue';
+    import { computed, ref, watchEffect, onMounted } from 'vue';
     import { useMouseInElement, useEventListener } from '@vueuse/core';
     import { useWindow } from '../../composables';
 
@@ -25,12 +32,28 @@
 
     export default {
         props: {
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
             step: {
                 type: Number,
-                default: 10,
+                default: 1,
+            },
+            ticks: {
+                default: false,
+                type: [Boolean, String],
+            },
+            min: {
+                type: Number,
+                default: 0
+            },
+            max: {
+                type: Number,
+                default: 100,
             }
         },
-        setup(props) {
+        setup(props, { emit, attrs }) {
 
             /**
              * General Setup
@@ -62,9 +85,16 @@
                 addEventListener('mouseup', disableEditing);                
             }
 
+            onMounted(() => {
+                /**
+                 * Ensure the inital value is within the constratins of the slider
+                 */
+                emit('update:modelValue', Math.max(props.min, Math.min(((attrs.modelValue as number) || 0), props.max)))
+            });
+
             watchEffect(() => {
                 if (isEditing.value) {
-                    value.value = Math.round(targetPercentage.value * 100 / props.step) * props.step;
+                    emit('update:modelValue', Math.max(props.min, Math.min(Math.round(targetPercentage.value * (props.max - props.min) / props.step) * props.step + props.min, props.max)));
                 }
             });
 
@@ -84,11 +114,17 @@
 <style lang="scss">
 
     .kro-slider {
-        display: block;
-        // width: 500px;
+        display: flex;
         position: relative;
-        height: 0.5rem;
+        height: 1.5rem;
+        align-items: center;
+        cursor: pointer;
     }
+
+        .kro-slider__track-container {
+            width: 100%;
+            height: 0.5rem;
+        }
 
         .kro-slider__track {
             flex: 1;
@@ -97,6 +133,7 @@
             height: 100%;
             overflow: hidden;
             border-radius: 1rem;
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
             .kro-slider__progress {
@@ -155,13 +192,18 @@
                 .kro-slider__preview-value {
                     position: absolute;
                     right: 0;
-                    transform: translateX(50%) translateY(-110%);
+                    transform: translateX(50%) translateY(-50%);
                     top: -100%;
 
                     width: 2rem;
                     height: 2rem;
 
                     text-align: center;
+
+                    opacity: 0;
+                    transform-origin: center bottom;
+                    transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+                    transform: translateX(50%) translateY(-50%) scale(0);
 
                     span {
                         display: block;
@@ -173,6 +215,11 @@
                         text-align: center;
                     }
                 }
+
+                    .kro-slider__preview-value--is-active {
+                        opacity: 1;
+                        transform: translateX(50%) translateY(-50%) scale(1);
+                    }
 
                     .kro-slider__bloop {
                         width: 2rem;

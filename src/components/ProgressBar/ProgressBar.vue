@@ -35,11 +35,6 @@
                 type: Number,
                 default: 100,
             }
-        },
-        setup() {
-            return {
-
-            }
         }
     }
 </script>

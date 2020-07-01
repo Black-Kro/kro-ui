@@ -1,14 +1,22 @@
 <template>
     <div>
         Slider Demo
-        <kro-slider></kro-slider>
+        <kro-slider v-model="value"></kro-slider>
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+    import { ref } from 'vue';
 
-}
+    export default {
+        setup() {
+            const value = ref(0);
+
+            return {
+                value,
+            }
+        }
+    }
 </script>
 
 <style>
