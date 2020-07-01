@@ -1,16 +1,17 @@
 <template>
-    <div>
-        <div class="kro-slider" :style="{'--kro-slider-progress': `${value * 100 - 100}%`}">
-            <div ref="sliderRef" @mousedown="enableEditing" class="kro-slider__track">
-                <div class="kro-slider__progress">
-                </div>
+    <div class="kro-slider" :style="{'--kro-slider-progress': `${value - 100}%`}">
+        <div ref="sliderRef" @mousedown="enableEditing" class="kro-slider__track">
+            <div class="kro-slider__markers">
+                <div v-for="n in 100 / (step) - 1" :key="n"></div>
             </div>
-            <div class="kro-slider__knob-container">
-                <div @mousedown="enableEditing" class="kro-slider__knob"></div>
-            </div>
+            <div class="kro-slider__progress"></div>
         </div>
-        <div>
-        Value: {{(value * 100).toFixed(0)}}
+        <div class="kro-slider__knob-container">
+            <div @mousedown="enableEditing" class="kro-slider__knob"></div>
+            <div class="kro-slider__preview-value">
+                <div class="kro-slider__bloop"></div>
+                <span>{{value}}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -23,7 +24,13 @@
     import { useSliderContainer } from './composables/slider';
 
     export default {
-        setup() {
+        props: {
+            step: {
+                type: Number,
+                default: 10,
+            }
+        },
+        setup(props) {
 
             /**
              * General Setup
@@ -53,7 +60,7 @@
 
             watchEffect(() => {
                 if (isEditing.value) {
-                    value.value = targetPercentage.value;
+                    value.value = Math.round(targetPercentage.value * 100 / props.step) * props.step;
                 }
             });
 
@@ -76,7 +83,7 @@
         display: block;
         width: 500px;
         position: relative;
-        height: 0.75rem;
+        height: 0.5rem;
     }
 
         .kro-slider__track {
@@ -99,6 +106,23 @@
                 height: 100%;
             }
 
+            .kro-slider__markers {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                div {
+                    width: 4px;
+                    height: 100%;
+                    background: rgba(0, 0, 0, .24);
+                }
+            }
+
         .kro-slider__knob-container {
             position: absolute;
             // background: red;
@@ -110,12 +134,12 @@
         }
 
                 .kro-slider__knob {
-                    width: 1.5rem;
-                    height: 1.5rem;
+                    width: 1.25rem;
+                    height: 1.25rem;
                     cursor: pointer;
 
-                    top: -50%;
-                    transform: translateX(50%);
+                    top: 50%;
+                    transform: translateX(50%) translateY(-50%);
                     right: 0;
 
                     background: var(--kro-accent);
@@ -123,5 +147,37 @@
                     position: absolute;
                     border-radius: 50%;
                 }
+
+                .kro-slider__preview-value {
+                    position: absolute;
+                    right: 0;
+                    transform: translateX(50%) translateY(-110%);
+                    top: -100%;
+
+                    width: 2rem;
+                    height: 2rem;
+
+                    text-align: center;
+
+                    span {
+                        display: block;
+                        position: relative;
+                        margin-top: 0.4rem;
+                        margin-left: 0.15rem;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        text-align: center;
+                    }
+                }
+
+                    .kro-slider__bloop {
+                        width: 2rem;
+                        height: 2rem;
+
+                        background: var(--kro-primary);
+                        position: absolute;
+                        border-radius: 50% 50% 0;
+                        transform: rotate(45deg);
+                    }
 
 </style>
