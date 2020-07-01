@@ -1,13 +1,13 @@
 <template>
     <div class="kro-slider" :style="{'--kro-slider-progress': `${value - 100}%`}">
-        <div ref="sliderRef" @mousedown="enableEditing" class="kro-slider__track">
+        <div ref="sliderRef" @touchstart.passive="enableEditing" @mousedown="enableEditing" class="kro-slider__track">
             <div class="kro-slider__markers">
                 <div v-for="n in 100 / (step) - 1" :key="n"></div>
             </div>
             <div class="kro-slider__progress"></div>
         </div>
         <div class="kro-slider__knob-container">
-            <div @mousedown="enableEditing" class="kro-slider__knob"></div>
+            <div  @touchstart.passive="enableEditing" @mousedown="enableEditing" class="kro-slider__knob"></div>
             <div class="kro-slider__preview-value">
                 <div class="kro-slider__bloop"></div>
                 <span>{{value}}</span>
@@ -49,12 +49,16 @@
             const disableEditing = () => {
                 isEditing.value = false;
                 enableDocumentSelect();
+                removeEventListener('touchcancel', disableEditing);
+                removeEventListener('touchend', disableEditing);
                 removeEventListener('mouseup', disableEditing);
             }
 
             const enableEditing = () => {
                 isEditing.value = true;
                 disableDocumentSelect();
+                addEventListener('touchcancel', disableEditing);
+                addEventListener('touchend', disableEditing);
                 addEventListener('mouseup', disableEditing);                
             }
 
@@ -81,7 +85,7 @@
 
     .kro-slider {
         display: block;
-        width: 500px;
+        // width: 500px;
         position: relative;
         height: 0.5rem;
     }
