@@ -1,0 +1,1 @@
+export { default as KroSlider } from './Slider.vue';

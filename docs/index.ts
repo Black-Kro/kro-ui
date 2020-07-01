@@ -88,6 +88,10 @@ createApp(App)
                             {
                                 title: 'Checkbox',
                                 to: '/components/checkbox',
+                            },
+                            {
+                                title: 'Slider',
+                                to: '/components/slider',
                             }
                         ]
                     },

@@ -20,6 +20,7 @@ import Textfield from './textfield.md';
 import Toolbar from './toolbar.md';
 import Menu from './menu.md';
 import Select from './select.md';
+import Slider from './slider.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 
@@ -162,6 +163,13 @@ export const ComponentRoutes : RouteRecordRaw[] = [
         component: Select,
         meta: {
             title: 'Select'
+        }
+    },
+    {
+        path: '/components/slider',
+        component: Slider,
+        meta: {
+            title: 'Slider'
         }
     },
 

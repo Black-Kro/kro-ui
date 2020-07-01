@@ -18,3 +18,4 @@ export * from './ProgressBar';
 export * from './Layout';
 export * from './Navigation';
 export * from './Select';
+export * from './Slider';
