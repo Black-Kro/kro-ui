@@ -7,9 +7,7 @@
 
             <div class="kro-slider__track-container">
                 <div ref="sliderRef" class="kro-slider__track">
-                    <div v-if="ticks" class="kro-slider__markers">
-                        <div v-for="n in Math.ceil((max - min) / (step)) - 1" :key="n"></div>
-                    </div>
+                    <div v-if="ticks" :style="{ '--kro-slider-tick-spacing': `${trackSpacing}px` }" class="kro-slider__markers"></div>
                     <div class="kro-slider__progress"></div>
                 </div>
                 <div class="kro-slider__knob-container">
@@ -26,11 +24,12 @@
 <script lang="ts">
     import { computed, ref, watchEffect, onMounted } from 'vue';
     import { useMouseInElement, useEventListener } from '@vueuse/core';
-    import { useWindow } from '../../composables';
+    import { useWindow, useElement } from '../../composables';
 
     import { useSliderContainer } from './composables/slider';
 
     export default {
+        name: 'KroSlider',
         props: {
             disabled: {
                 type: Boolean,
@@ -61,6 +60,7 @@
             const value = ref(0);
             const sliderRef = ref();
             const { targetPercentage } = useSliderContainer(sliderRef);
+            const { elementWidth } = useElement(sliderRef);
 
 
             /**
@@ -85,6 +85,8 @@
                 addEventListener('mouseup', disableEditing);                
             }
 
+            const trackSpacing = computed(() => elementWidth.value / Math.ceil((props.max - props.min) / (props.step)));
+
             onMounted(() => {
                 /**
                  * Ensure the inital value is within the constratins of the slider
@@ -105,6 +107,7 @@
                 value,
                 enableEditing,
 
+                trackSpacing,
                 isEditing,
             }
         }
@@ -157,11 +160,9 @@
                 flex-direction: row;
                 justify-content: space-evenly;
 
-                div {
-                    width: 4px;
-                    height: 100%;
-                    background: rgba(0, 0, 0, .24);
-                }
+                background-repeat: no-repeat;
+                background-image: repeating-linear-gradient(90deg, var(--kro-slider-tick-color, rgba(0, 0, 0, .24)), var(--kro-slider-tick-color, rgba(0, 0, 0, .24)) 3px, transparent 3px, transparent var(--kro-slider-tick-spacing, 100px));
+                
             }
 
         .kro-slider__knob-container {

@@ -2,6 +2,8 @@
     <div>
         <kro-slider v-model="value1"></kro-slider>
         <br />
+        <kro-slider v-model="value1" :step="20" ticks></kro-slider>
+        <br />
         <kro-slider v-model="value3" :step="0.5"></kro-slider>
         <br />
         <kro-slider v-model="value2" :min="-50" :max="200" :step="10" ticks></kro-slider>

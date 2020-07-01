@@ -1,3 +1,6 @@
+import { ref, watch } from 'vue';
+import { useThrottleFn, useEventListener } from '@vueuse/core';
+
 export const useWindow = () => {
 
     /**
@@ -30,4 +33,40 @@ export const useWindow = () => {
         enableDocumentSelect,
     }
 
-}
+};
+
+export const useElement = (target) => {
+    const elementWidth = ref(0);
+    const elementHeight = ref(0);
+    const elementLeft = ref(0);
+    const elementTop = ref(0);
+
+    const updateRefs = (el: HTMLElement) => {
+        const { left, top, width, height } = el.getBoundingClientRect();
+    
+        elementWidth.value = width;
+        elementHeight.value = height;
+        elementLeft.value = left;
+        elementTop.value = top;
+    }
+
+    watch(target, (el: HTMLElement) => {
+        const ele = el || document.body;
+        updateRefs(ele);
+    });
+
+    const throttledFn = useThrottleFn(() => {
+        const ele = target.value || document.body;
+        updateRefs(ele);
+        console.log('bruh')
+    }, 250)
+
+    useEventListener('resize', throttledFn);
+
+    return {
+        elementWidth,
+        elementHeight,
+        elementLeft,
+        elementTop,
+    }
+};

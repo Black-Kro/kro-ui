@@ -10,6 +10,7 @@ export const useSliderContainer = (target?: Ref<HTMLElement | null>) => {
     })
 
     return {
+        elementWidth,
         targetPercentage,
     }
 
