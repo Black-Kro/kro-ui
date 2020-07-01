@@ -1,7 +1,10 @@
 <template>
     <div>
-        Slider Demo
-        <kro-slider v-model="value"></kro-slider>
+        <kro-slider v-model="value1"></kro-slider>
+        <br />
+        <kro-slider v-model="value3" :step="0.5"></kro-slider>
+        <br />
+        <kro-slider v-model="value2" :min="-50" :max="200" :step="10" ticks></kro-slider>
     </div>
 </template>
 
@@ -10,10 +13,14 @@
 
     export default {
         setup() {
-            const value = ref(0);
+            const value1 = ref(0);
+            const value2 = ref(20);
+            const value3 = ref(30);
 
             return {
-                value,
+                value1,
+                value2,
+                value3,
             }
         }
     }

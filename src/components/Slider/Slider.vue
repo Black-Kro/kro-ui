@@ -166,12 +166,12 @@
 
         .kro-slider__knob-container {
             position: absolute;
-            // background: red;
             height: 100%;
             width: 100%;
             top: 0; left: 0;
             pointer-events: none;
             transform: translateX(var(--kro-slider-progress, 0));
+
         }
 
                 .kro-slider__knob {
@@ -208,11 +208,12 @@
                     span {
                         display: block;
                         position: relative;
-                        margin-top: 0.4rem;
+                        margin-top: 0.45rem;
                         margin-left: 0.15rem;
-                        font-size: 0.875rem;
+                        font-size: 0.75rem;
                         font-weight: 500;
                         text-align: center;
+                        color: var(--kro-primary-foreground);
                     }
                 }
 
@@ -229,6 +230,7 @@
                         position: absolute;
                         border-radius: 50% 50% 0;
                         transform: rotate(45deg);
+                        box-shadow: var(--kro-shadow);
                     }
 
 </style>
