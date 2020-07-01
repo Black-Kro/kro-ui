@@ -2,3 +2,7 @@
     overflow: hidden;
     height: 100%;
 }
+
+.kro-helper--prevent-select {
+    user-select: none;
+}
