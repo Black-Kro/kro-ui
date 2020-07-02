@@ -21,8 +21,8 @@
       "@lib": ["src"],
       "@docs/*": ["docs/*"],
       "@docs": ["docs"],
-      "@kro-press/*": ["press/*"],
-      "@kro-press": ["press"],
+      "@kro-press/*": ["packages/press/*"],
+      "@kro-press": ["packages/press"],
     },
     "lib": [
       "esnext",

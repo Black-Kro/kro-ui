@@ -9,7 +9,7 @@ module.exports = {
             alias: {
                 '@lib': path.resolve(__dirname, 'src/'),
                 '@docs': path.resolve(__dirname, 'docs/'),
-                '@kro-press': path.resolve(__dirname, 'press/'),
+                '@kro-press': path.resolve(__dirname, 'packages/press/'),
             }
         },
 
