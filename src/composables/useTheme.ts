@@ -5,7 +5,7 @@ export const ThemeMode = {
 }
 
 const applyThemeMode = (mode) => {
-    document.documentElement.className = `kro-theme__nord-${mode}`;
+    document.documentElement.className = `kro-theme__default-${mode}`;
 }
 
 export const useTheme = () => {

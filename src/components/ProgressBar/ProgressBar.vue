@@ -9,8 +9,8 @@
         <div class="kro-progress-bar__stream">
             <div class="kro-progress-bar__stream-content"></div>
         </div>
-        <div class="kro-progress-bar__buffer" :style="{ '--kro-progress-bar-buffer-value': bufferValue }"></div>
-        <div class="kro-progress-bar__progress" :style="{ '--kro-progress-bar-value': value }"></div>
+        <div class="kro-progress-bar__buffer" :style="{ '--kro-progress-bar-buffer-value': `${bufferValue - 100}%` }"></div>
+        <div class="kro-progress-bar__progress" :style="{ '--kro-progress-bar-value': `${value - 100}%` }"></div>
         <div class="kro-progress-bar__indeterminate"></div>
     </div>
 </template>
@@ -111,20 +111,22 @@
             opacity: 0.3;
         }
 
+    .kro-progress-bar__buffer,
+    .kro-progress-bar__progress {
+        width: 100%;
+        transform-origin: left center;
+        transition: inherit;
+        border-radius: calc(var(--kro-progress-bar-height) / 2);
+    }
+
     .kro-progress-bar__buffer {
         background: var(--kro-progress-buffer-color, var(--kro-primary-lighten));
-        transform-origin: left center;
-        transform: scaleX(calc( var(--kro-progress-bar-buffer-value) / 100 ));
-
-        transition: inherit;
+        transform: translateX(var(--kro-progress-bar-buffer-value));
     }
 
     .kro-progress-bar__progress {
         background: var(--kro-progress-bar-progress-color, var(--kro-primary));
-        transform-origin: left center;
-        transform: scaleX(calc( var(--kro-progress-bar-value) / 100 ));
-
-        transition: inherit;
+        transform: translateX(var(--kro-progress-bar-value));
     }
 
     .kro-progress-bar__indeterminate {
@@ -139,15 +141,11 @@
     }
 
     @keyframes KroProgressStreamAnimation {
-        100% {
-            transform: translateX(calc(var(--kro-progress-bar-stream-size) * -2));
-        }
+        100% { transform: translateX(calc(var(--kro-progress-bar-stream-size) * -2)); }
     }
 
     @keyframes KroProgressIndeterminateAnimation {
-        100% {
-            transform: translateX(400%);
-        }
+        100% { transform: translateX(400%); }
     }
 
 </style>

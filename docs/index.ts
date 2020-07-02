@@ -7,7 +7,7 @@ import { PageRoutes } from './pages';
 import * as DemoComponents from './demos';
 
 // Use Nord Theme
-import '@lib/styles/themes/nord.scss';
+import '@lib/styles/themes/default.scss';
 
 createApp(App)
     .use(KroPressPlugin, {

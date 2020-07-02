@@ -84,12 +84,11 @@
         }
 
         .kro-switch__track-active {
-            background: var(--kro-switch-track-active-background, var(--kro-primary));
+            background: var(--kro-switch-track-active-background, var(--kro-primary-darken));
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             transform: translateX(-100%);
             transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
-            opacity: 0.35;
         }
 
             .kro-switch__track-active--is-active { transform: none; }

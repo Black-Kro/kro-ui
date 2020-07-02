@@ -184,7 +184,7 @@
                     transform: translateX(50%) translateY(-50%);
                     right: 0;
 
-                    background: var(--kro-accent);
+                    background: var(--kro-primary-lighten);
                     box-shadow: var(--kro-shadow);
                     position: absolute;
                     border-radius: 50%;

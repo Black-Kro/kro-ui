@@ -1,0 +1,54 @@
+@import '_theme';
+
+$DefaultTheme: (
+    light: (
+        'background': hsl(0, 0%, 100%),
+        'background-secondary': hsl(218, 27%, 94%),
+        
+        'foreground': hsl(220, 16%, 22%),
+        'foreground-secondary': hsl(220, 16%, 36%),
+
+        'divider': rgba(0, 0, 0, .12),
+
+        'primary': #2D8F79,
+        'primary-lighten': hsl(167, 52%, 77%),
+        'primary-darken': hsl(167, 52%, 27%),
+        'primary-foreground': white,
+        'accent': #8fbcbb,
+
+        'shadow': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+        
+        'error': hsl(0, 100%, 66%),
+        'info': hsl(207, 90%, 54%),
+        'success': hsl(122, 39%, 49%),
+        'warning': hsl(45, 100%, 51%),
+    ),
+        
+    dark: (
+        'background': hsl(220, 16%, 22%),
+        'background-secondary': #3B4252,
+        
+        'foreground': hsl(218, 27%, 94%),
+        'foreground-secondary': hsla(0, 0%, 100%, 0.56),
+        
+        'divider': rgba(255, 255, 255, .075),
+        'shadow': rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,
+            
+        'primary': #2D8F79,
+        'primary-lighten': hsl(167, 52%, 57%),
+        'primary-darken': hsl(167, 52%, 27%),
+        'primary-foreground': white,
+        'accent': #8fbcbb,
+
+        'error': hsl(0, 100%, 66%),
+        'error-foreground': hsl(218, 27%, 94%),
+        'info': hsl(207, 90%, 54%),
+        'info-foreground': hsl(218, 27%, 94%),
+        'success': hsl(122, 39%, 49%),
+        'success-foreground': hsl(218, 27%, 94%),
+        'warning': hsl(45, 100%, 51%),
+        'warning-foreground': hsl(45, 100%, 11%),
+    ),
+);
+
+@include CompileTheme($DefaultTheme, "default");

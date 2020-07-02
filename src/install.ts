@@ -1,6 +1,6 @@
 import { Plugin } from 'vue';
 import { IconSymbol } from './composables/icons';
-import { registerThemeWatcher } from './composables/theme';
+import { registerThemeWatcher } from './composables/useTheme';
 
 import defaultIcons from './assets/icons';
 
