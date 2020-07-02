@@ -29,7 +29,7 @@
 
 <style module lang="scss">
 
-    @import '../../src/styles/general/typography';
+    @import '../../../src/styles/general/typography';
 
     .root {        
         // @include useFont('body-1');

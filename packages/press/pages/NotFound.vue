@@ -18,7 +18,7 @@
 
 <style module lang="scss">
 
-    @import '../../src/styles/general/typography';
+    @import '../../../src/styles/general/typography';
 
     .root {
         display: grid;
