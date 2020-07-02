@@ -3,11 +3,9 @@
 </p>
 
 <p align="center">
-
-[![npm version](https://badge.fury.io/js/%40black-kro%2Fui.svg)](https://badge.fury.io/js/%40black-kro%2Fui) [![Netlify Status](https://api.netlify.com/api/v1/badges/22371d16-1732-46f6-8adc-ad72d049066f/deploy-status)](https://app.netlify.com/sites/peaceful-lamarr-c91179/deploys)
-
+<a href="https://www.npmjs.com/package/@black-kro/ui"><img src="https://badge.fury.io/js/%40black-kro%2Fui.svg" alt="npm version" height="18"></a>
+<a href="https://app.netlify.com/sites/peaceful-lamarr-c91179/deploys"><img src="https://api.netlify.com/api/v1/badges/22371d16-1732-46f6-8adc-ad72d049066f/deploy-status" alt="npm version" height="18"></a>
 </p>
-
 
 <h2 align="center">Getting Started</h2>
 Kro UI is an MIT-licensed open source Vue UI library for building web applications.
