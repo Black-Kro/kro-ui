@@ -10,7 +10,7 @@ Kro UI is a Vue UI library that is meant to be used for all Kro apps, but is fre
 
 ## Install Kro UI
 ```
-npm i --save kro-ui
+npm i --save @black-kro/ui
 ```
 
 ## Using Kro UI
@@ -20,7 +20,13 @@ import { createApp } from 'vue';
 import App from 'your-app-component';
 
 // Import Kro UI Library
-import KroUI from 'kro-ui';
+import KroUI from '@black-kro/ui';
+
+// Base Styles for Kro UI
+import '@black-kro/ui/dist/kro-ui.common.css';
+
+// If using the Nord theme, import it from the package.
+import '@black-kro/ui/dist/themes/nord.scss';
 
 // Create New Vue App
 createApp(App)

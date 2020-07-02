@@ -7,7 +7,7 @@ Next you will need to create a new vue project and install the [vue-next CLI plu
 ## Download
 
 ```bash
-npm install --save kro-ui
+npm install --save @black-kro/ui
 ```
 
 ## Usage
@@ -15,7 +15,15 @@ npm install --save kro-ui
 import { createApp } from 'vue';
 
 import App from './App.vue';
-import KroUI from 'kro-ui';
+
+// Import Kro UI Library
+import KroUI from '@black-kro/ui';
+
+// Base Styles for Kro UI
+import '@black-kro/ui/dist/kro-ui.common.css';
+
+// If using the Nord theme, import it from the package.
+import '@black-kro/ui/dist/themes/nord.scss';
 
 createApp(App)
     .use(KroUI, {
