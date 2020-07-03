@@ -10,10 +10,6 @@ const MarkdownItOptions = {
     html: true,
     linkify: true,
     typographer: true,
-    // highlight(src, lang) {
-    //     console.log(src);
-    //     return hljs.highlight(lang, src).value;
-    // }
 };
 
 const CheerioOptions = {
@@ -61,7 +57,5 @@ module.exports = function markdownToVueLoader(source, map) {
         $code.html(hljs.highlight(language, $code.html().toString()).value);
     });
     
-    console.log($template('body').html())
-
     this.callback(null, $template('body').html(), map);
 };

@@ -24,7 +24,6 @@ or it can be converted into a vue `router-link` by setting the `to` prop on the 
 </div>
 
 ```html
-<button>Hello World</button>
 <kro-button>Normal Button</kro-button>
 <kro-button raised>Raised Button</kro-button>
 <kro-button raised icon="settings">Button with Icon</kro-button>
