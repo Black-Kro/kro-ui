@@ -10,9 +10,10 @@ const MarkdownItOptions = {
     html: true,
     linkify: true,
     typographer: true,
-    highlight(src, lang) {
-        return hljs.highlight(lang, src).value;
-    }
+    // highlight(src, lang) {
+    //     console.log(src);
+    //     return hljs.highlight(lang, src).value;
+    // }
 };
 
 const CheerioOptions = {
@@ -50,8 +51,17 @@ module.exports = function markdownToVueLoader(source, map) {
 
         $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
         $heading.attr('id', text);
-    })
+    });
 
+    $template('pre code').each((i, el) => {
+        const $code = $template(el);
+
+        const language = $code.attr('class').split('-')[1];
+
+        $code.html(hljs.highlight(language, $code.html().toString()).value);
+    });
+    
+    console.log($template('body').html())
 
     this.callback(null, $template('body').html(), map);
 };

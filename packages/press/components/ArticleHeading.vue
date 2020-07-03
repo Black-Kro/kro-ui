@@ -4,9 +4,20 @@
     </div>
 </template>
 
+<script lang="ts">
+    import { useElementVisibility } from '@vueuse/core';
+
+    export default {
+        setup() {
+            return {}
+        }
+    }
+</script>
+
 <style lang="scss">
 
     .kro-press-article-heading {
+        display: block;
         position: relative;
 
         &:hover {
