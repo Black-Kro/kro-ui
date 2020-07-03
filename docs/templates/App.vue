@@ -42,8 +42,9 @@
             </template>
             
             <template #default>
-                <div class="content-container">
+                <div class="content-container" :class="$style.pressContent">
                     <router-view></router-view>
+                    <!-- <div :class="$style.articleNavigation"></div> -->
                 </div>
             </template>
 
@@ -155,6 +156,7 @@
             gap: 1rem;
         }
 
+
     .footer {
         @include useFont('caption');
         padding: 1rem;
@@ -165,6 +167,17 @@
         grid-template-columns: min-content auto min-content;
         place-items: center;
         white-space: nowrap;
+    }
+
+    .pressContent {
+        // display: grid;
+        // width: 100%;
+        // grid-template-columns: 2fr 1fr;
+    }
+
+    .articleNavigation {
+        width: 200px;
+        background: red;
     }
 
 </style>

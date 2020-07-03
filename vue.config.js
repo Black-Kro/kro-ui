@@ -21,7 +21,7 @@ module.exports = {
                     use: [
                         'vue-loader',
                         {
-                            loader: './build/plugins/markdown',
+                            loader: './build/plugins/press',
                             options: {
                                     configureMarkdownIt(md) {
                                       md.use(require('markdown-it-anchor'));
