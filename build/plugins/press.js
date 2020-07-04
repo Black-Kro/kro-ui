@@ -26,6 +26,31 @@ module.exports = function markdownToVueLoader(source, map) {
     const $template = Cheerio.load(`<template></template>`);
     const $target = $template('body');
 
+    
+
+    /**
+     * Replace Header Elements with Custom KroPress Header
+     */
+    $source('template h1, template h2, template h3').each((i, el) => {
+        const $heading = $source(el);
+        const text = encodeURIComponent($heading.text().toLowerCase().replace(' ', '-'));
+
+        $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
+        $heading.attr('id', text);
+    });
+
+    $source('pre').each((i, pre) => {
+        const $pre = $source(pre);
+
+        $pre.children('code').each((i, code) => {
+            const $code = $source(code);
+        
+            const language = $code.attr('class').split('-')[1];
+            console.log(`\n------------------------------\n ${language}\n------------------------------\n`);
+            $code.text(hljs.highlight(language, $code.text()).value);
+        });
+    });
+
     $target.append($template('head').children());
 
     /**
@@ -38,24 +63,7 @@ module.exports = function markdownToVueLoader(source, map) {
      */
     $template('template').append(`<div>${$source('body').html()}</div>`);
 
-    /**
-     * Replace Header Elements with Custom KroPress Header
-     */
-    $template('template h1, template h2, template h3').each((i, el) => {
-        const $heading = $template(el);
-        const text = encodeURIComponent($heading.text().toLowerCase().replace(' ', '-'));
-
-        $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
-        $heading.attr('id', text);
-    });
-
-    $template('pre code').each((i, el) => {
-        const $code = $template(el);
-
-        const language = $code.attr('class').split('-')[1];
-
-        $code.html(hljs.highlight(language, $code.html().toString()).value);
-    });
     
+
     this.callback(null, $template('body').html(), map);
 };
