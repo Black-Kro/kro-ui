@@ -26,19 +26,11 @@ module.exports = function markdownToVueLoader(source, map) {
     const $template = Cheerio.load(`<template></template>`);
     const $target = $template('body');
 
-    
 
     /**
-     * Replace Header Elements with Custom KroPress Header
+     * Replace code in source before moving it to template as doing 
+     * it after moving it to the template causes rendering issues.
      */
-    $source('template h1, template h2, template h3').each((i, el) => {
-        const $heading = $source(el);
-        const text = encodeURIComponent($heading.text().toLowerCase().replace(' ', '-'));
-
-        $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
-        $heading.attr('id', text);
-    });
-
     $source('pre').each((i, pre) => {
         const $pre = $source(pre);
 
@@ -62,6 +54,17 @@ module.exports = function markdownToVueLoader(source, map) {
      * Append the content to the template.
      */
     $template('template').append(`<div>${$source('body').html()}</div>`);
+
+    /**
+     * Replace Header Elements with Custom KroPress Header
+     */
+    $template('template h1, template h2, template h3').each((i, el) => {
+        const $heading = $template(el);
+        const text = encodeURIComponent($heading.text().toLowerCase().replace(' ', '-'));
+
+        $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
+        $heading.attr('id', text);
+    });
 
     
 
