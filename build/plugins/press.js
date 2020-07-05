@@ -27,6 +27,12 @@ module.exports = function markdownToVueLoader(source, map) {
     const $target = $template('body');
 
 
+    const meta = {
+        headings: [
+
+        ]
+    }
+
     /**
      * Replace code in source before moving it to template as doing 
      * it after moving it to the template causes rendering issues.
@@ -38,7 +44,6 @@ module.exports = function markdownToVueLoader(source, map) {
             const $code = $source(code);
         
             const language = $code.attr('class').split('-')[1];
-            console.log(`\n------------------------------\n ${language}\n------------------------------\n`);
             $code.text(hljs.highlight(language, $code.text()).value);
         });
     });
@@ -54,19 +59,44 @@ module.exports = function markdownToVueLoader(source, map) {
      * Append the content to the template.
      */
     $template('template').append(`<div>${$source('body').html()}</div>`);
+    $template('script').append('alert("Hello world");');
 
     /**
      * Replace Header Elements with Custom KroPress Header
      */
     $template('template h1, template h2, template h3').each((i, el) => {
         const $heading = $template(el);
-        const text = encodeURIComponent($heading.text().toLowerCase().replace(' ', '-'));
+        const text = encodeURIComponent($heading.text().toLowerCase().replace(/\s/g, '-'));
+
+        if (el.tagName !== 'h1')
+            meta.headings.push({
+                name: el.tagName,
+                text: $heading.text(),
+                hash: text,
+            });
 
         $heading.wrap('<press-article-heading></press-article-heading>').prepend(`<a href="#${text}">#</a>`);
         $heading.attr('id', text);
     });
 
-    
+    $template('body').append(`
+        <script>
+            import { useMeta } from '@kro-press/composables/useMeta'
+
+            export default {
+                setup(props, { emit }) {
+                    const { meta } = useMeta();
+                    const metaData = JSON.parse('${JSON.stringify(meta)}');
+
+                    meta.value = metaData;
+                    
+                    return {
+                        metaData
+                    }
+                }
+            }
+        </script>
+    `);
 
     this.callback(null, $template('body').html(), map);
 };

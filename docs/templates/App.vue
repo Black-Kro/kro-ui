@@ -42,9 +42,18 @@
             </template>
             
             <template #default>
-                <div class="content-container" :class="$style.pressContent">
-                    <router-view></router-view>
-                    <!-- <div :class="$style.articleNavigation"></div> -->
+                <div :class="$style.container">
+                    <div class="content-container" :class="$style.pressContent">
+                        <router-view></router-view>
+                    </div>
+                    <div v-if="meta && meta.headings" :class="$style.articleNavigation">
+                        <div :class="$style.navigationContent">
+                            <span :class="$style.navigationContentHeading">On This Page</span>
+                            <div v-for="(heading, i) in meta.headings" :key="i">
+                                <a :class="{[$style.isActive]: $route.hash === `#${heading.hash}`}" :href="`#${heading.hash}`">{{heading.text}}</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </template>
 
@@ -75,17 +84,19 @@
     import { ref } from 'vue';
     import { useConfiguration } from '@kro-press';
     import { useTheme } from '@lib';
-    import { useRouter } from 'vue-router';
+    import { useRouter, useRoute } from 'vue-router';
+    import { useMeta } from '@kro-press/composables/useMeta';
 
     export default {
         name: 'App',
         setup() {
-            const { beforeEach } = useRouter();
+            const { beforeEach, afterEach, currentRoute,  } = useRouter();
             const { title, sidebar } = useConfiguration();
             const { toggleThemeMode } = useTheme();
+            const { meta } = useMeta();
 
             const navigation = ref(false);
-
+            
             // Close navigation when navigating to new page.
             beforeEach((to, from, next) => { navigation.value = false; next(); });
 
@@ -95,6 +106,7 @@
                 navigation,
                 open,
                 toggleThemeMode,
+                meta
             }
         }
     }
@@ -175,10 +187,52 @@
         // grid-template-columns: 2fr 1fr;
     }
 
-    .articleNavigation {
-        width: 200px;
-        background: red;
+    .container {
+        display: grid;
+        grid-template-columns: auto 300px;
+        justify-content: center;
+        gap: 1rem;
+
+        @include useBreakpoint('medium') {
+            grid-template-columns: 100%;
+        }
     }
+
+    .articleNavigation {
+        width: 100%;
+        @include useBreakpoint('medium') {
+            display: none;
+        }
+    }
+
+    .navigationContentHeading {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--kro-foreground-secondary);
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .navigationContent {
+        position: fixed;
+        width: 300px;
+        bottom: 0;
+        top: var(--kro-toolbar-height);
+        overflow: auto;
+        padding: 2.5rem 1rem;
+
+        a {
+            color: var(--kro-foreground-secondary);
+            display: block;
+            padding: 0.25rem 0;
+            font-size: 0.875rem;
+
+            &.isActive {
+                color: var(--kro-primary);
+            }
+        }
+    }
+
 
 </style>
 
