@@ -18,7 +18,7 @@
 
 <script lang='ts'>
     import { computed } from 'vue';
-    import { dialog, DialogType } from '../../../composables/dialogs';
+    import { dialog, DialogType } from '../../../composables/useDialog';
 
     export default {
         setup() {

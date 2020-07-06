@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-    import { useDialog } from '@lib/composables/dialogs';
+    import { useDialog } from '@lib/composables/useDialog';
 
     export default {
         name: 'UseDialogDemo',
