@@ -20,7 +20,6 @@
         height: var(--kro-avatar-size, 3rem);
 
         border-radius: 50%;
-        // background: black;
 
         img {
             object-fit: cover;

@@ -237,6 +237,8 @@
 </style>
 
 <style lang="scss">
+    
+    @import './styles/util';
     @import './markdown';
     @import '~highlight.js/scss/nord';
 </style>

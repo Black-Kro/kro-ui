@@ -1,28 +1,42 @@
 <template>
     <div>
-        <!-- <kro-menu>
-            <template #activator="{ open }">
-                <kro-button icon="menu" @click="open" />
-            </template>
+        <kro-toolbar padded raised style="--kro-button-background: var(--kro-background)">
+            <kro-button icon="menu"/>
+            <div class="flex-1"></div>
+            <kro-menu style="--kro-menu-width: 300px" left bottom>
+                <template #activator="{ open }">
+                    <kro-avatar class="cursor-pointer" src="https://cdn.discordapp.com/avatars/124211772465872899/c2512635e5b0c1bfadc20fd219ec9ed0.png?size=128" @click="open" icon="menu" /> 
+                </template>
 
-            Hello World, this is just a menu
-        </kro-menu> -->
+                <div>
+                    <img class="object-cover block h-32 w-full" src="../assets/profile-header.jpg" />
+                    <div class="p-2 flex flex-row">
+                        <kro-button>View Profile</kro-button>
+                        <div class="flex-1"></div>
+                        <kro-button icon="settings" />
+                    </div>
+                </div>
+            </kro-menu>
+        </kro-toolbar>
 
         <br />
 
-        <kro-menu offset-y>
-            <template #activator="{ open }">
-                <kro-button @click="open">Open Menu</kro-button>
-            </template>
+        <div class="menu-demo-container">
+            <kro-menu bottom offset-y>
+                <template #activator="{ open }">
+                    <kro-button @click="open">Open Menu</kro-button>
+                </template>
 
-           <kro-list>
-               <kro-list-item>Item 1</kro-list-item>
-               <kro-list-item>Item 2</kro-list-item>
-               <kro-list-item>Item 3</kro-list-item>
-               <kro-list-item>Item 4</kro-list-item>
-               <kro-list-item>Item 5</kro-list-item>
-           </kro-list>
-        </kro-menu>
+            <kro-list>
+                <kro-list-item>Item 1</kro-list-item>
+                <kro-list-item>Item 2</kro-list-item>
+                <kro-list-item>Item 3</kro-list-item>
+                <kro-list-item>Item 4</kro-list-item>
+                <kro-list-item>Item 5</kro-list-item>
+            </kro-list>
+            </kro-menu>
+        </div>
+
     </div>
 </template>
 
@@ -31,7 +45,3 @@
         name: 'MenuDemo',
     }
 </script>
-
-<style>
-
-</style>
