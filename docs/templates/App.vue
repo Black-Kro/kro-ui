@@ -35,9 +35,9 @@
                     </div>
                     <div v-if="meta && meta.headings" class="hidden md:block lg:block xl:block p-4 pt-8">
                         <div class="sticky py-4" style="top: 4rem">
-                            <span class="block text-xs font-bold pb-2">On This Page</span>
+                            <span class="block text-xs font-bold mb-4">On This Page</span>
                             <a  v-for="(heading, i) in meta.headings" :key="i"
-                                class="block my-1" 
+                                class="block mb-2 font-medium transition-fast hover:translate-r-2px text-sm"
                                 :style="{'color':  $route.hash === `#${heading.hash}` ? 'var(--kro-primary)' : 'var(--kro-foreground-secondary)'}" 
                                 :href="`#${heading.hash}`">{{heading.text}}</a>
                             <kro-button href="https://github.com/Black-Kro/kro-ui/tree/master/src/components" class="block my-4 w-full">Source</kro-button>

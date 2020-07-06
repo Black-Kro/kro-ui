@@ -8,12 +8,12 @@ yourself.
 Kro UI comes with a few themes by default. The current theme on the page is called Nord. You can easily import the premade themes in 
 your `main.ts` or `main.js` file by doing the following
 ```ts
-import '~kro-ui/themes/nord.scss';
+import '~@black-kro/ui/themes/nord.scss';
 ```
 
 To create your own theme, you will need to create a new sass file and import the theme tools from Kro UI.
 ```scss
-@import '~kro-ui/themes/tools';
+@import '~@black-kro/ui/themes/tools';
 
 $NordTheme: (
     light: (

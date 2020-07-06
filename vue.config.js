@@ -1,7 +1,5 @@
 /** eslint-disable */
-
 const path = require('path');
-const hljs = require('highlight.js');
 
 module.exports = {
     configureWebpack: {
@@ -22,12 +20,6 @@ module.exports = {
                         'vue-loader',
                         {
                             loader: './build/plugins/press',
-                            options: {
-                                    configureMarkdownIt(md) {
-                                      md.use(require('markdown-it-anchor'));
-                                    }
-                                
-                            }
                         },
                     ],
                 },

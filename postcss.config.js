@@ -5,7 +5,7 @@ const purgecss = require('@fullhuman/postcss-purgecss');
 module.exports = {
     plugins: [
         tailwindcss(),
-        purgecss({
+        process.env.NODE_ENV === "production" ? purgecss({
             
             content: [ `./src/**/*.scss`, `./public/**/*.html`, `./src/**/*.vue`, './docs/**/*.vue', './packages/**/*.vue', './packages/**/*.scss', './docs/**/*.scss', './docs/**/*.md' ],
             defaultExtractor (content) {
@@ -14,7 +14,7 @@ module.exports = {
             },
             whitelist: ['html'],
             whitelistPatterns: [ /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/, /data-v-.*/, /kro/, /hljs/, /-webkit-scrollbar/ ],
-        }),
+        }) : '',
         autoprefixer(),
     ]
 }
