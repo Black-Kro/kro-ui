@@ -7,13 +7,13 @@ module.exports = {
         tailwindcss(),
         purgecss({
             
-            content: [ `./public/**/*.html`, `./src/**/*.vue`, './docs/**/*.vue', './packages/**/*.vue', './packages/**/*.scss', './docs/**/*.scss', './docs/**/*.md' ],
+            content: [ `./src/**/*.scss`, `./public/**/*.html`, `./src/**/*.vue`, './docs/**/*.vue', './packages/**/*.vue', './packages/**/*.scss', './docs/**/*.scss', './docs/**/*.md' ],
             defaultExtractor (content) {
                 const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '')
                 return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []
             },
             whitelist: ['html'],
-            whitelistPatterns: [ /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/, /data-v-.*/, /kro/, /hljs/ ],
+            whitelistPatterns: [ /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/, /data-v-.*/, /kro/, /hljs/, /-webkit-scrollbar/ ],
         }),
         autoprefixer(),
     ]

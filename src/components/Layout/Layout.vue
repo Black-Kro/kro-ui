@@ -83,7 +83,7 @@
     .kro-layout__container {
         position: relative;
         min-height: inherit;
-        overflow: hidden;
+        // overflow: hidden;
 
         display: grid;
         grid-template-rows: 1fr auto;

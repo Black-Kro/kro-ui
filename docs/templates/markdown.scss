@@ -92,6 +92,8 @@ code {
     border-radius: 0.25rem;
 
     font-family: 'Source Code Pro', monospace;
+
+    width: -webkit-max-content;
 }
 
 pre {
@@ -100,9 +102,6 @@ pre {
     margin: 0.85rem 0;
     background-color: #282c34;
     border-radius: 0.25rem;
-    overflow: hidden;
-
-    // white-space: pre-wrap;
 
     overflow: auto;
 

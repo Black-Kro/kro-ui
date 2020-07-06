@@ -4,6 +4,7 @@ import { KroPressPlugin, KroPressPluginOptions } from '@kro-press';
 import { App } from './templates';
 import { PageRoutes } from './pages';
 
+import * as DocComponents from './templates/components';
 import * as DemoComponents from './demos';
 
 // Use Nord Theme
@@ -12,7 +13,7 @@ import '@lib/styles/themes/default.scss';
 createApp(App)
     .use(KroPressPlugin, {
         title: 'Kro UI',
-        components: { ...DemoComponents, },
+        components: { ...DemoComponents, ...DocComponents },
         routes: [ ...PageRoutes, ],
         sidebar: [
             {

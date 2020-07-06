@@ -8,19 +8,19 @@
 }
 
 :root {
-    --kro-content-width: 820px;
+    // --kro-content-width: 820px;
 }
 
 html,
 body {
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: var(--kro-font-family, 'Rubik'), sans-serif;
 
     color: var(--kro-foreground);
     background: var(--kro-background);
 
     position: relative;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -30,7 +30,7 @@ body {
     background: rgba(0, 0, 0, .56);
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: var(--kro-background-secondary);
 }
 
@@ -47,13 +47,6 @@ body {
         font-weight: map-get($value, "weight");
         line-height: map-get($value, "line");
     }
-}
-
-.content-container {
-    max-width: var(--kro-content-width);
-    margin: 0 auto;
-    padding: 1rem 1rem 0 1rem;
-    width: 100%;
 }
 
 a {

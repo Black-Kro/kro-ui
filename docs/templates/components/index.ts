@@ -1,0 +1,1 @@
+export { default as DocsLogo } from './DocsLogo.vue';

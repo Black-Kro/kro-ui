@@ -202,6 +202,7 @@
         grid-auto-flow: column;
         gap: 0.5rem;
         place-items: center;
+        justify-content: center;
 
     }
         .kro-button__content--is-loading { opacity: 0; }
