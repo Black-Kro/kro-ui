@@ -1,3 +1,8 @@
+---
+title: Lists
+for: /components/List
+---
+
 # Lists
 Kro UI provides a material design style List as a responsive flexbox alternative to HTML tables for displaying lists of information.
 

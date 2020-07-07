@@ -1,3 +1,8 @@
+---
+title: Textfields
+for: /components/Textfield
+---
+
 # Textfield
 Kro UI's replacement for the standard HTML textfield with a placeholder label that is repositioned on focus.
 
@@ -28,23 +33,7 @@ export default {
 }
 ```
 
-## Props
-```ts
-value:      { type: String, default: '' },
-label:      { type: String },
-type:       { type: String, default: 'text' },
-required:   { type: Boolean },
-disabled:   { type: Boolean },
-multiline:  { type: Boolean },
-readonly:   { type: Boolean },
-autofocus:  { type: Boolean },
-min:        { type: Number },
-max:        { type: Number },
-maxlength:  { type: Number },
-name:       { type: String },
-id:         { type: String },
-autoResize: { type: Boolean, default: true }
-```
+<docs-component-metadata :metadata="metadata.options.component"></docs-component-metadata>
 
 ## Related
 <press-article-link title="Toolbar" subtitle="Toolbar stuff" to="/components/toolbar"></press-article-link>

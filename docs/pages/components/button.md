@@ -1,3 +1,8 @@
+---
+title: Button
+for: /components/Button
+---
+
 # Buttons
 The `kro-button` is a replacement for the standard html `button` element. The button can be 
 automatically converted into an external link by setting the `href` attribute 

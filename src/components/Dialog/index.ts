@@ -37,17 +37,22 @@ export const Metadata: ComponentMetadata = {
         {
             name: '#activator',
             description: 'Slots the button that can be used to open the dialog',
-            props: ['open: function', 'close: function', 'toggle: function'],
+            props: ['open', 'close', 'toggle'],
         },
         {
             name: '#title',
             description: 'Slot for the title of the dialog',
-            props: ['open: function', 'close: function', 'toggle: function'],
+            props: ['open', 'close', 'toggle'],
         },
         {
             name: '#controls',
             description: 'Slot for the controls of the dialog',
-            props: ['open: function', 'close: function', 'toggle: function'],
+            props: ['open', 'close', 'toggle'],
+        },
+        {
+            name: '#default',
+            description: 'Slot for the content of the dialog',
+            props: [],
         },
     ],
 };

@@ -1,3 +1,8 @@
+---
+title: Toolbars
+for: /components/Toolbar
+---
+
 # Toolbar
 Similar to the Surface, the Toolbar is a container component for housing content. Unlike the Surface, it is fixed height. Best use for toolbar applicable components, such as button groups.
 

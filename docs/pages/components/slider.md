@@ -1,3 +1,8 @@
+---
+title: Sliders
+for: /components/Slider
+---
+
 # Slider
 
 ## Usage

@@ -1,3 +1,8 @@
+---
+title: Squircles
+for: /components/Squircle
+---
+
 # Squircle
 Look... it is mostly just a visual thing
 

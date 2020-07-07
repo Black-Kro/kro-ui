@@ -1,3 +1,8 @@
+---
+title: Progress Bars
+for: /components/ProgressBar
+---
+
 # Progress Bar
 Used to inform the user of the progress of current actions in realtime, Kro UI provides a progressbar that can display either a percentage value or, if needed, an indeterminate loader for actions that don't have a defined progress value.
 

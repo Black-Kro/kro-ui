@@ -3,6 +3,8 @@ const Cheerio = require('cheerio');
 const hljs = require('highlight.js');
 const loaderUtils = require('loader-utils');
 
+const MATCH_METADATA  = /---\n(.|\n)*\n---/mi;;
+
 /**
  * @returns MarkdownIt.MarkdownItConstructor
  */
@@ -18,7 +20,33 @@ const CheerioOptions = {
     lowerCaseTags: false,
 };
 
+/**
+ * 
+ * @param {string} source 
+ * @param {*} map 
+ */
 module.exports = function markdownToVueLoader(source, map) {
+    
+    // const md = source.match(MATCH_METADATA);
+
+
+    const metadataRaw = source.match(MATCH_METADATA);
+    let options = {};
+
+    if (metadataRaw) {
+        const metaDataOptions = metadataRaw[metadataRaw.index].replace(/(---\n|---)/mig, '').split(/\n/);
+
+        options = metaDataOptions
+            .filter(option => option)
+            .reduce((obj, option) => {
+                const [key, value] = option.split(/:(.+)/);
+                obj[key.trim().toLowerCase()] = value.trim();
+                return obj;
+            }, {});
+
+        source = source.replace(MATCH_METADATA, '');
+    }
+
 
     const markdown = new MarkdownIt(MarkdownItOptions);
     const $source = Cheerio.load(markdown.render(source), CheerioOptions);
@@ -28,9 +56,12 @@ module.exports = function markdownToVueLoader(source, map) {
 
 
     const meta = {
+        options: {
+            ...options,
+        },
         headings: [
 
-        ]
+        ],
     }
 
     /**
@@ -79,24 +110,33 @@ module.exports = function markdownToVueLoader(source, map) {
         $heading.attr('id', text);
     });
 
-    $template('body').append(`
+    const script = `
         <script>
-            import { useMeta } from '@kro-press/composables/useMeta'
+            let componentMetadata;
+            import { useMeta } from '@kro-press/composables/useMeta';
 
+            ${ meta.options.for ? `componentMetadata = require("@lib/${meta.options.for}").Metadata` : '' }
+    
             export default {
                 setup(props, { emit }) {
-                    const { meta } = useMeta();
-                    const metaData = JSON.parse('${JSON.stringify(meta)}');
+                    let metadata = JSON.parse('${JSON.stringify(meta)}');
 
-                    meta.value = metaData;
-                    
+                    if (componentMetadata)
+                        metadata['options']['component'] = componentMetadata;
+
+                    const { meta } = useMeta();
+                        
+                    meta.value = metadata;
+                        
                     return {
-                        metaData
+                        metadata
                     }
                 }
             }
         </script>
-    `);
+    `;
+
+    $template('body').append(script);
 
     this.callback(null, $template('body').html(), map);
 };

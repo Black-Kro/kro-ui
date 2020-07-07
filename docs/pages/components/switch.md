@@ -1,4 +1,9 @@
-# Switch
+---
+title: Switches
+for: /components/Switch
+---
+
+# {{metadata.options.title}}
 Simple toggle switch, useful for replacing checkboxes in forms, settings dialogs, etc.
 
 ## Usage
@@ -8,6 +13,8 @@ Simple toggle switch, useful for replacing checkboxes in forms, settings dialogs
 <kro-switch v-model="isActive">Switch 1 {{isActive}}</kro-switch>
 <kro-switch v-model="isActive2">Switch 2 {{isActive2}}</kro-switch>
 ```
+
+{{metadata}}
 
 ```ts
 import { ref } from 'vue';

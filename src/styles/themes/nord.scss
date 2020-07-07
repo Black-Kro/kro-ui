@@ -7,6 +7,7 @@ $NordTheme: (
         
         'foreground': hsl(220, 16%, 22%),
         'foreground-secondary': hsl(220, 16%, 36%),
+        'foreground-disabled': hsla(220, 16%, 36%, .24),
 
         'divider': rgba(0, 0, 0, .12),
 
@@ -29,6 +30,7 @@ $NordTheme: (
         
         'foreground': hsl(218, 27%, 94%),
         'foreground-secondary': hsla(0, 0%, 100%, 0.56),
+        'foreground-disabled': hsla(0, 0%, 100%, 0.24),
         
         'divider': rgba(255, 255, 255, .075),
         'shadow': rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,

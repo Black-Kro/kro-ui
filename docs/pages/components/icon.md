@@ -1,3 +1,8 @@
+---
+title: Icons
+for: /components/Icon
+---
+
 # Icons
 There are only a few icons provided by Kro UI out of the box. This is to prevent the UI library from becoming
 too bloated. You can register your own icons in the configuration when registering the plugin. Icons should be of the

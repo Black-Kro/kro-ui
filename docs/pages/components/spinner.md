@@ -1,3 +1,8 @@
+---
+title: Spinners
+for: /components/Spinner
+---
+
 # Spinner
 Used to indicate in-progress background loading or actions that don't provide specific progress values more suited to our progress bar.
 

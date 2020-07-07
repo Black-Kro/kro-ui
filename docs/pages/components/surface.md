@@ -1,3 +1,8 @@
+---
+title: Surfaces
+for: /components/Surface
+---
+
 # Surface
 Similar to Cards in material design, used to display content raised off of the background.
 

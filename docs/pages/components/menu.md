@@ -1,3 +1,8 @@
+---
+title: Menu
+for: /components/Menu
+---
+
 # Menus
 
 ## Usage

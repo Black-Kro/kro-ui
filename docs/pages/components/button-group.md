@@ -1,3 +1,8 @@
+---
+title: Button Groups
+for: /components/ButtonGroup
+---
+
 # Button Groups
 Button groups allow you to group and display multiple related buttons together.
 

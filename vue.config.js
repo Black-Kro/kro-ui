@@ -2,6 +2,9 @@
 const path = require('path');
 
 module.exports = {
+    devServer: {
+        progress: false,
+    },
     configureWebpack: {
         resolve: {
             alias: {

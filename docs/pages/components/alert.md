@@ -1,3 +1,8 @@
+---
+title: Alert
+for: /components/Alert
+---
+
 # Alerts
 Used to convey important information. Has four possible display types, `success`, `info`, `warning`, and `error`. By default,
 the display type is `info`. 

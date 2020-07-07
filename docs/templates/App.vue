@@ -40,7 +40,7 @@
                                 class="block mb-2 font-medium transition-fast hover:translate-r-2px text-sm"
                                 :style="{'color':  $route.hash === `#${heading.hash}` ? 'var(--kro-primary)' : 'var(--kro-foreground-secondary)'}" 
                                 :href="`#${heading.hash}`">{{heading.text}}</a>
-                            <kro-button href="https://github.com/Black-Kro/kro-ui/tree/master/src/components" class="block my-4 w-full">Source</kro-button>
+                            <kro-button v-if="meta.options.for" :href="`https://github.com/Black-Kro/kro-ui/tree/master/src/${meta.options.for}`" class="block my-4 w-full">Source</kro-button>
                         </div>
                     </div>
                 </div>
