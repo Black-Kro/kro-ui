@@ -27,13 +27,13 @@
                     <kro-button @click="open">Open Menu</kro-button>
                 </template>
 
-            <kro-list>
+            <div>
                 <kro-list-item>Item 1</kro-list-item>
                 <kro-list-item>Item 2</kro-list-item>
                 <kro-list-item>Item 3</kro-list-item>
                 <kro-list-item>Item 4</kro-list-item>
                 <kro-list-item>Item 5</kro-list-item>
-            </kro-list>
+            </div>
             </kro-menu>
         </div>
 

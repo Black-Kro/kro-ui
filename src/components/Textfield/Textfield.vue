@@ -50,7 +50,6 @@
     export default {
         name: 'KroTextfield',
         props: {
-            value:      { type: String, default: '' },
             label:      { type: String },
             type:       { type: String, default: 'text' },
             required:   { type: Boolean },
@@ -101,14 +100,14 @@
     .kro-textfield__container {
         display: inline-grid;
         position: relative;
-        border: 2px solid var(--kro-divider);
+        border: 2px solid var(--kro-textfield-border-color, var(--kro-divider));
         border-radius: 0.25rem;
         height: 3rem;
 
         display: flex;
         align-items: center;
 
-        &.kro-textfield--focused { border-color: var(--kro-primary); }
+        &.kro-textfield--focused { border-color: var(--kro-textifled-focused-border-color, var(--kro-primary)); }
         
         &.kro-textfield--is-textarea {
             height: auto;
@@ -155,7 +154,7 @@
         transform-origin: left center;
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-        &.kro-textfield--focused { color: var(--kro-primary); }
+        &.kro-textfield--focused { color: var(--kro-textifled-focused-border-color, var(--kro-primary)) }
 
         &.kro-textfield--has-text,
         &.kro-textfield--focused {

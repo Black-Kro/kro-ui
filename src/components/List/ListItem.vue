@@ -38,8 +38,6 @@
 <style lang="scss">
 
     .kro-list-item {
-        // --kro-list-item-icon-size: 2.5rem;
-
         display: flex;
         padding: 0 1rem;
         flex-direction: row;

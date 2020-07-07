@@ -25,12 +25,6 @@
 <script lang="ts">
     export default {
         name: 'KroSwitch',
-        props: {
-            value: {
-                type: Boolean,
-                default: false
-            }
-        },
     }
 </script>
 
@@ -78,7 +72,7 @@
             height: 0.875rem;
             width: 100%;
             border-radius: 0.5rem;
-            background: var(--kro-background-secondary);
+            background: var(--kro-switch-track-background, var(--kro-background-secondary));
             overflow: hidden;
             position: relative;
         }
@@ -114,7 +108,7 @@
             height: 1.25rem;
             background: var(--kro-switch-knob-color, var(--kro-primary));
             border-radius: 50%;
-            box-shadow: var(--kro-shadow);
+            box-shadow: var(--kro-switch-knob-shadow, var(--kro-shadow));
         }
 
 </style>

@@ -1,7 +1,6 @@
 <template>
     <div :class="{
         'kro-progress-bar': true,
-        'kro-progress-bar--is-active': active,
         'kro-progress-bar--is-stream': stream,
         'kro-progress-bar--is-indeterminate': indeterminate,
         'kro-progress-bar--rounded': rounded,
@@ -21,10 +20,9 @@
         props: {
             stream: Boolean,
             indeterminate: Boolean,
-            active: Boolean,
             rounded: {
                 type: Boolean,
-                default: false,
+                default: true,
             },
 
             value: {

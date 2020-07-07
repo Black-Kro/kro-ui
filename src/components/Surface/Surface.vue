@@ -43,7 +43,7 @@
 
         &:not(.kro-surface--outline) {
             &.kro-surface--padded { padding: 1rem; }
-            &.kro-surface--raised { box-shadow: var(--kro-shadow); }
+            &.kro-surface--raised { box-shadow: var(--kro-surface-shadow, var(--kro-shadow)); }
         }
 
         &.kro-surface--outline {

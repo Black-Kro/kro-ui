@@ -19,10 +19,6 @@
     export default {
         name: 'KroNavigation',
         props: {
-            value: {
-                type: Boolean,
-                default: false,
-            },
             temporary: {
                 type: Boolean,
                 default: false,

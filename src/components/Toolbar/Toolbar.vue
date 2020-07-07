@@ -32,6 +32,6 @@
 
     .kro-toolbar--small { height: 3.5rem; }
     .kro-toolbar--padded { padding: 0 1rem; }
-    .kro-toolbar--raised { box-shadow: var(--kro-shadow); }
+    .kro-toolbar--raised { box-shadow: var(--kro-toolbar-shadow, var(--kro-shadow)); }
 
 </style>

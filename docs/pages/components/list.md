@@ -5,13 +5,13 @@ Using the icon, subtitle and action templates as showcased below, you can create
 
 ## Usage
 
-<kro-list>
+<kro-surface>
     <kro-list-item>List Item 1</kro-list-item>
     <kro-list-item>List Item 2</kro-list-item>
     <kro-list-item>List Item 3</kro-list-item>
-</kro-list>
+</kro-surface>
 <br />
-<kro-list>
+<kro-surface>
     <kro-list-item>
         <template #icon><kro-avatar src="https://cdn.discordapp.com/avatars/124211772465872899/c2512635e5b0c1bfadc20fd219ec9ed0.png?size=128" /></template>
         wheat.js
@@ -27,9 +27,9 @@ Using the icon, subtitle and action templates as showcased below, you can create
         cyanboy
         <template #subtitle>@cyanboy</template>
     </kro-list-item>
-</kro-list>
+</kro-surface>
 <br />
-<kro-list>
+<kro-surface>
     <kro-list-item>
         <template #icon><kro-icon icon="settings" /></template>
         General
@@ -42,7 +42,7 @@ Using the icon, subtitle and action templates as showcased below, you can create
         <template #subtitle>Account settings</template>
         <template #action><kro-icon icon="arrow-right"/></template>
     </kro-list-item>
-</kro-list>
+</kro-surface>
 
 ```html
 <kro-list>

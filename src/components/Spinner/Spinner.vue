@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root"></div>
+    <div class="kro-spinner"></div>
 </template>
 
 <script>
@@ -8,9 +8,9 @@ export default {
 }
 </script>
 
-<style module lang="scss">
+<style lang="scss">
 
-    .root {
+    .kro-spinner {
         width: var(--kro-spinner-size, 2.5rem);
         height: var(--kro-spinner-size, 2.5rem);
 

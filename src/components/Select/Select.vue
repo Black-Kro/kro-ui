@@ -32,7 +32,6 @@
     export default {
         name: 'KroSelect',
         props: {
-            value:      { type: String, default: '' },
             label:      { type: String },
             required:   { type: Boolean },
             disabled:   { type: Boolean },

@@ -26,7 +26,7 @@ export default {
 ```
 
 ## Styles
-```scss
+```css
 --kro-switch-track-active-background: var(--kro-primary);
 --kro-switch-knob-color: var(--kro-primary);
 ```

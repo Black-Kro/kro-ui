@@ -131,7 +131,7 @@
 
         .kro-slider__track {
             flex: 1;
-            background: var(--kro-background-secondary);
+            background: var(--kro-slider-track-color, var(--kro-background-secondary));
             cursor: pointer;
             height: 100%;
             overflow: hidden;
@@ -142,7 +142,7 @@
             .kro-slider__progress {
                 transform: translateX(var(--kro-slider-progress, 0));
                 transform-origin: left;
-                background: var(--kro-primary);
+                background: var(--kro-slider-progress-color, var(--kro-primary));
                 width: 100%;
 
                 will-change: transform;
@@ -184,7 +184,7 @@
                     transform: translateX(50%) translateY(-50%);
                     right: 0;
 
-                    background: var(--kro-primary-lighten);
+                    background: var(--kro-slider-knob-color, var(--kro-primary-lighten));
                     box-shadow: var(--kro-shadow);
                     position: absolute;
                     border-radius: 50%;
