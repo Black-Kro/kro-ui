@@ -58,6 +58,8 @@
                 const { offsetX, offsetY, left, right, top, bottom } = props;
                 const { canFit } = usePositioning(container, menu, { offsetX, offsetY })
             
+                console.log(canFit);
+
                 /**
                  * Handle the vertical positioning of the menu.
                  */

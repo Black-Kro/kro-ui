@@ -39,14 +39,17 @@
                 default: 'info'
             },
 
-            dismissible: Boolean,
-
-            icon: String,
+            dismissible: {
+                type: Boolean,
+                default: false,
+            },
 
             tag: {
                 type: String,
-                default: 'div'
-            }
+                default: 'div',
+            },
+
+            icon: String,
         },
 
         setup(props) {

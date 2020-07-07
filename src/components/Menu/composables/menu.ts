@@ -12,17 +12,18 @@ export const usePositioning = (containerEl: Ref<HTMLElement | null>, targetEl: R
 
     const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
 
+
     const container = containerEl.value.getBoundingClientRect();
-    const target = targetEl.value.getBoundingClientRect();
+    const target = targetEl.value;
 
     const offsetX = options.offsetX ? container.width : 0;
     const offsetY = options.offsetY ? container.height : 0;
 
     const canFit = {
-        bottom: (target.height + container.top + offsetY) < windowHeight,
-        top: target.height < container.top,
-        left: target.width < container.left,
-        right: (target.width + container.left + offsetX) < windowWidth,
+        bottom: (target.offsetHeight + container.top + offsetY) < windowHeight,
+        top: target.offsetHeight < container.top,
+        left: target.offsetTop < container.left,
+        right: (target.offsetWidth + container.left + offsetX) < windowWidth,
     };
 
     return {

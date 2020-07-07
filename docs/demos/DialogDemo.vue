@@ -1,6 +1,6 @@
 <template>
     <div>
-        <kro-dialog>
+        <kro-dialog v-model="isOpen">
             <template #activator="{ open }">
                 <kro-button @click="open">Open Normal Dialog</kro-button>
             </template>
@@ -18,8 +18,18 @@
 </template>
 
 <script>
+    import { ref } from 'vue';
+
     export default {
         name: 'DialogDemo',
+        setup() {
+            const isOpen = ref(false);
+
+            return {
+                isOpen,
+            }
+        }
+    
     }
 </script>
 

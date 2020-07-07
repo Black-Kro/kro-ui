@@ -2,7 +2,7 @@
     <div>
         <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
         <Teleport to="#kro-portal">
-            <div ref="dialog" :tabindex="-1" :class="{'kro-dialog': true, 'kro-dialog--is-open': isOpen}">
+            <div ref="dialog" :tabindex="-1" :class="{'kro-dialog': true, 'kro-dialog--is-open': $attrs.modelValue}">
                 <div tabindex="-1" @click="() => { if (!persistent) { close(); } }" class="kro-dialog__scrim"></div>
                 <kro-surface raised class="kro-dialog__content" @transitionend="onTransitionEnded">
                     <template v-if="shouldMountContent">
@@ -29,11 +29,9 @@
         name: 'KroDialog',
         components: { KroSurface },
         props: {
-            open: Boolean,
             persistent: Boolean,
         },
-        setup(props, { emit }) {
-            const isOpen = ref(false);
+        setup(props, { emit, attrs }) {
             const shouldMountContent = ref(false);
             const dialog = ref<HTMLElement>();
 
@@ -41,7 +39,7 @@
 
             const onTransitionEnded = (e) => {
                 if (e.propertyName === 'transform') {
-                    if (!isOpen.value) {
+                    if (!attrs.modelValue) {
                         shouldMountContent.value = false;
                         emit('close');
                     }
@@ -64,14 +62,14 @@
 
             const close = (e) => { 
                 if (canCloseDialog(e)) {
-                    isOpen.value = false;
+                    emit('update:modelValue', false);
                     window.removeEventListener('keydown', close);
                     enableDocumentScroll();
                 }
             };
 
             const open = () => { 
-                isOpen.value = true;
+                emit('update:modelValue', true);
                 shouldMountContent.value = true;
                 window.addEventListener('keydown', close);
 
@@ -80,17 +78,16 @@
 
                 // Focus dialog
                 if (dialog.value) {
-                    console.log(dialog.value);
                     dialog.value.focus();
                 }
 
                 emit('open');
             };
 
-            const toggle = () => { isOpen ? close(null) : open(); };
+            const toggle = () => { attrs.modelValue ? close(null) : open(); };
 
             onMounted(async () => {
-                if (props.open)
+                if (attrs.modelValue)
                     window.setTimeout(() => open(), 0);
             });
 
@@ -100,7 +97,6 @@
             });
 
             return {
-                isOpen,
                 shouldMountContent,
 
                 open,
