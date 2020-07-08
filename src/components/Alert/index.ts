@@ -34,5 +34,31 @@ export const Metadata: ComponentMetadata = {
                 values: '-',
                 default: 'div',
             },
+            {
+                name: 'outline',
+                description: 'Give the alert an outline style.',
+                type: 'bool',
+                values: '-',
+                default: 'false',
+            },
         ],
+        events: [
+            {
+                name: '@dismissed',
+                description: 'Fires when the alert is dismissed',
+                parameters: [],
+            },
+            {
+                name: '@show',
+                description: 'Fires when the alert is shown after being dismissed',
+                parameters: [],
+            }
+        ],
+        slots: [
+            {
+                name: '#default',
+                description: 'Slot for the text content of the alert.',
+                props: [],
+            }
+        ]
 };

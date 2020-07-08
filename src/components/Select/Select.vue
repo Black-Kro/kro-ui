@@ -66,7 +66,7 @@
 
     .kro-select {
         display: inline-block;
-        width: 300px;
+        // width: 300px;
         cursor: pointer;
         // padding-right: 2rem;
     }

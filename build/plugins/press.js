@@ -7,6 +7,7 @@ const path = require('path');
 
 const MATCH_METADATA    = /---\n(.|\n)*\n---/mi;
 const MATCH_USAGE       = /<usage (.*) \/>/gmi;
+const MATCH_UP_NEXT     = /<up-next (.*) \/>/gmi;
 
 /**
  * @returns MarkdownIt.MarkdownItConstructor
@@ -34,6 +35,7 @@ module.exports = function markdownToVueLoader(source, map) {
     const rawRequsetPath = rawRequset.substring(0, rawRequset.lastIndexOf('/'));    
     
     source = source.replace(MATCH_USAGE, (x, attrs) => `<usage ${attrs}></usage>`);
+    source = source.replace(MATCH_UP_NEXT, (x, attrs) => `<up-next ${attrs}></up-next>`);
 
     const metadataRaw = source.match(MATCH_METADATA);
     let options = {};

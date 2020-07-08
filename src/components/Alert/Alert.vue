@@ -8,6 +8,7 @@
             'kro-alert--info': type === 'info',
             'kro-alert--warning': type === 'warning',
             'kro-alert--success': type === 'success',
+            'kro-alert--outline': outline,
             'kro-alert--has-icon': iconName,
             'kro-alert--is-dismissible': dismissible,
         }">
@@ -50,17 +51,24 @@
             },
 
             icon: String,
+
+            outline: {
+                type: Boolean,
+                default: false,
+            }
         },
 
-        setup(props) {
+        setup(props, { emit }) {
 
             const isHidden = ref(false);
 
             const hide = () => {
+                emit('dismissed');
                 isHidden.value = true;
             };
 
             const show = () => {
+                emit('show');
                 isHidden.value = false;
             }
 
@@ -100,6 +108,7 @@
 
     .kro-alert {
         --kro-button-background: rgba(0, 0, 0, .12);
+        --kro-button-foreground: var(--kro-alert-foreground);
 
         border-radius: 0.25rem;
         padding: 0 1rem;
@@ -111,7 +120,8 @@
         align-items: center;
         align-content: center;
 
-        color: var(--kro-foreground);
+        background: var(--kro-alert-background, var(--kro-background-secondary));
+        color: var(--kro-alert-foreground, var(--kro-foreground));
     }
 
         .kro-alert--has-icon { grid-template-columns: min-content auto; }
@@ -123,25 +133,29 @@
         }
 
         .kro-alert--error {
-            background: var(--kro-error);
-            color: var(--kro-error-foreground);
+            --kro-alert-background: var(--kro-error);
+            --kro-alert-foreground: var(--kro-error-foreground);
         }
 
         .kro-alert--warning {
-            --kro-button-foreground: var(--kro-warning-foreground);
-
-            background: var(--kro-warning);
-            color: var(--kro-warning-foreground);
+            --kro-alert-background: var(--kro-warning);
+            --kro-alert-foreground: var(--kro-warning-foreground);
         }
 
         .kro-alert--success {
-            background: var(--kro-success);
-            color: var(--kro-success-foreground);
+            --kro-alert-background: var(--kro-success);
+            --kro-alert-foreground: var(--kro-success-foreground);
         }
         
         .kro-alert--info {
-            background: var(--kro-info);
-            color: var(--kro-info-foreground);
+            --kro-alert-background: var(--kro-info);
+            --kro-alert-foreground: var(--kro-info-foreground);
+        }
+
+        .kro-alert--outline {
+            background: transparent;
+            --kro-alert-foreground: var(--kro-alert-background);
+            border: 1px solid var(--kro-alert-background);
         }
 
     .kro-alert__icon {
