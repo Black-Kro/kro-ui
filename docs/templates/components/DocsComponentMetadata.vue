@@ -81,6 +81,8 @@
     .metadata-tabs {
 
         border-bottom: 1px solid var(--kro-divider);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
 
         [disabled="true"] {
             color: var(--kro-foreground-disabled);
