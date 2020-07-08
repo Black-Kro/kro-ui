@@ -21,7 +21,6 @@
 
 <script>
     import { ref } from 'vue';
-    import { useTheme } from '@lib/composables/useTheme';
 
     export default {
         props: {
@@ -29,8 +28,7 @@
             source: String,
         },
         setup() {
-            const { getThemeMode } = useTheme();
-            const theme = ref(getThemeMode());
+            const theme = ref('dark');
 
             const displayCode = ref(false);
 
