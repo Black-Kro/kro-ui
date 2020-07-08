@@ -2,6 +2,7 @@
     <div class="kro-select">
         <div :class="{'kro-select__container': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">
             <label :class="{'kro-select__label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }" :for="id">{{label}}</label>
+            <div class="kro-select__hidden-label">{{label}}</div>
             <span :class="{'kro-select__pseudo-label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">{{label}}</span>
             <select
                 class="kro-select__input"
@@ -66,7 +67,6 @@
 
     .kro-select {
         display: inline-block;
-        // width: 300px;
         cursor: pointer;
         // padding-right: 2rem;
     }
@@ -84,12 +84,22 @@
         border-radius: 0.25rem;
         height: 3rem;
 
-        padding-right: 2rem;
-
         display: flex;
-        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
         &.kro-select--focused { border-color: var(--kro-primary); }
+    }
+
+    .kro-select__hidden-label {
+         font-size: 1rem;
+        font-weight: 500;
+        height: 0;
+        opacity: 0;
+        padding: 0 0.25rem;
+        margin-left: 0.75rem;
+        white-space: nowrap;
+        pointer-events: none;
     }
 
     .kro-select__pseudo-label {
@@ -152,8 +162,9 @@
         outline: none;
         cursor: pointer;
         appearance: none;
+        // background: red;
         
-        padding-right: 2rem;
+        padding-right: 6.5rem;
 
         option {
             outline: none;
