@@ -9,7 +9,7 @@ close function provided by the dialog and wiring it up to a button.
 
 ## Usage
 
-
+## API
 
 <!-- <dialog-demo></dialog-demo>
 

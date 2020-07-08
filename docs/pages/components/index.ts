@@ -5,7 +5,7 @@ import App from './app.md';
 import Alert from './alert.md';
 import Button from './button.md';
 import ButtonGroup from './button-group.md';
-import Dialog from './dialog.md';
+import Dialog from './dialog/index.md';
 import Divider from './divider.md';
 import Icon from './icon.md';
 import Layout from './layout.md';

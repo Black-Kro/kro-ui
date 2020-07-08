@@ -22,7 +22,7 @@
 
             <slot></slot>
             <kro-icon 
-                v-if="href && !(icon && !$slots.default)"
+                v-if="href && !(icon && !$slots.default) && !hideExternalIcon"
                 icon="external" />
         </span>
         <span class="kro-button__spinner" v-show="loading"><kro-spinner /></span>
@@ -92,6 +92,11 @@
              * Adds an icon to the button
              */
             icon: String,
+
+            /**
+             * Hide the external icon
+             */
+            hideExternalIcon: Boolean,
 
         },
 
