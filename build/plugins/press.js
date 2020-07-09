@@ -8,6 +8,7 @@ const path = require('path');
 const MATCH_METADATA    = /---\n(.|\n)*\n---/mi;
 const MATCH_USAGE       = /<usage (.*) \/>/gmi;
 const MATCH_UP_NEXT     = /<up-next (.*) \/>/gmi;
+const MATCH_API         = /<api \/>/gmi;
 
 /**
  * @returns MarkdownIt.MarkdownItConstructor
@@ -32,10 +33,11 @@ const CheerioOptions = {
  */
 module.exports = function markdownToVueLoader(source, map) {
     const rawRequset = loaderUtils.getCurrentRequest(this).split('!')[1].split('?')[0];
-    const rawRequsetPath = rawRequset.substring(0, rawRequset.lastIndexOf('/'));    
+    const rawRequsetPath = rawRequset.substring(0, rawRequset.lastIndexOf('/'));
     
     source = source.replace(MATCH_USAGE, (x, attrs) => `<usage ${attrs}></usage>`);
     source = source.replace(MATCH_UP_NEXT, (x, attrs) => `<up-next ${attrs}></up-next>`);
+    source = source.replace(MATCH_API, (x, attrs) => `<docs-component-metadata :metadata="metadata.options.component"></docs-component-metadata>`)
 
     const metadataRaw = source.match(MATCH_METADATA);
     let options = {};

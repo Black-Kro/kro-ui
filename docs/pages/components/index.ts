@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import Components from './index.md';
 import App from './app.md';
 import Alert from './alert/index.md';
-import Button from './button.md';
+import Button from './button/index.md';
 import ButtonGroup from './button-group.md';
 import Dialog from './dialog/index.md';
 import Divider from './divider.md';

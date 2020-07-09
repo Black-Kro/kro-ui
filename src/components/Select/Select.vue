@@ -162,7 +162,6 @@
         outline: none;
         cursor: pointer;
         appearance: none;
-        // background: red;
         
         padding-right: 6.5rem;
 

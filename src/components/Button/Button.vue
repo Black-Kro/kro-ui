@@ -14,9 +14,9 @@
         :href="href"
         :to="to" 
         :target="href ? target : ''">
+        <kro-squircle class="kro-button__squircle" v-if="icon && !$slots.default" />
         <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
             
-            <kro-squircle class="kro-button__squircle" v-if="icon && !$slots.default" />
             <kro-icon class="kro-button__icon" v-if="icon" :icon="icon" />
 
 
@@ -155,8 +155,10 @@
     }
 
         .kro-button--primary {
-            background: var(--kro-button-background-primary, var(--kro-primary));
-            color: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
+            --kro-button-background: var(--kro-button-background-primary, var(--kro-primary));
+            --kro-button-foreground: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
+            // background: var(--kro-button-background-primary, var(--kro-primary));
+            // color: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
         }
 
         .kro-button--raised {
@@ -168,6 +170,11 @@
             border: 1px solid var(--kro-button-foreground, var(--kro-foreground));
         }
 
+        .kro-button--outline.kro-button--primary {
+            --kro-button-foreground: var(--kro-button-background);
+            border: 1px solid var(--kro-button-background);
+        }
+
         .kro-button--is-icon-button {
             background: transparent;
 
@@ -177,6 +184,15 @@
 
             border: none;
             padding: 0;
+
+            &.kro-button--outline {
+                --kro-button-background: transparent;
+
+                .kro-button__squircle {
+                    stroke: var(--kro-button-foreground, var(--kro-foreground));
+                    stroke-width: 2px;
+                }
+            }
         }
 
         .kro-button__squircle {

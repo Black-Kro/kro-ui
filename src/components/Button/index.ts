@@ -8,28 +8,28 @@ export const Metadata: ComponentMetadata = {
     props: [
         {
             name: 'loading',
-            description: '',
+            description: 'Displays a loading indicator over the button',
             type: 'bool',
             values: '-',
             default: 'false',
         },
         {
             name: 'href',
-            description: '',
+            description: 'Convers the button into an external link',
             type: 'string',
             values: '-',
             default: 'undefined',
         },
         {
             name: 'target',
-            description: '',
+            description: 'Sets the target attribute if the button is a link.',
             type: 'string',
             values: ['_blank', '_self', '_parent', '_top'],
             default: '_blank',
         },
         {
             name: 'to',
-            description: '',
+            description: 'Converts the button into a vue-router `router-link` component',
             type: 'string | object',
             values: '-',
             default: 'undefined',
@@ -69,5 +69,12 @@ export const Metadata: ComponentMetadata = {
             values: '-',
             default: 'undefined',
         },
+        {
+            name: 'hideExternalIcon',
+            description: 'Hides the external link icon for buttons that are links.',
+            type: 'bool',
+            values: '-',
+            default: 'false',
+        }
     ]
 };
