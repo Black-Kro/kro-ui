@@ -3,16 +3,16 @@
         <div class="kro-switch__container">
             <input
                 class="kro-switch__input"
-                :checked="$attrs.modelValue"
+                :checked="Array.isArray($attrs.modelValue) ? $attrs.modelValue.indexOf(value) > -1 : !!$attrs.modelValue"
                 type="checkbox"
-                @change="$emit('update:modelValue', $event.target.checked)"/>
+                @change="update"/>
         
         
             <div class="kro-switch__track">
                 <div :class="{
-                    'kro-switch__track-active': true, 'kro-switch__track-active--is-active': $attrs.modelValue}"></div>
+                    'kro-switch__track-active': true, 'kro-switch__track-active--is-active': Array.isArray($attrs.modelValue) ? $attrs.modelValue.indexOf(value) > -1 : !!$attrs.modelValue}"></div>
             </div>
-            <div :class="{'kro-switch__knob-container': true, 'kro-switch__knob-container--is-active': $attrs.modelValue}">
+            <div :class="{'kro-switch__knob-container': true, 'kro-switch__knob-container--is-active': Array.isArray($attrs.modelValue) ? $attrs.modelValue.indexOf(value) > -1 : !!$attrs.modelValue}">
                 <div class="kro-switch__knob"></div>
             </div>
         </div>
@@ -23,8 +23,40 @@
 </template>
 
 <script lang="ts">
+    import { ref, computed, watch, toRefs, reactive } from 'vue';
+
     export default {
         name: 'KroSwitch',
+        props: {
+            value: String,
+        },
+        setup(props, { emit, attrs }) {
+
+            const update = (e) => {
+                // Check if removing or adding state.
+                if (e.target.checked) {
+                    // Add item
+                    if (props.value) {
+                        if (Array.isArray(attrs.modelValue))
+                            emit('update:modelValue', [...attrs.modelValue, props.value]);
+                    } else {
+                        emit('update:modelValue', true);
+                    }
+                } else {
+                    // Remove item
+                    if (props.value) {
+                        if (Array.isArray(attrs.modelValue))
+                            emit('update:modelValue', attrs.modelValue.filter(value => value != props.value));
+                    } else {
+                        emit('update:modelValue', false);
+                    }
+                }
+            };
+
+            return {
+                update,
+            }
+        }
     }
 </script>
 
@@ -42,6 +74,7 @@
 
     .kro-switch__label {
         @include useFont(body-1);
+        color: var(--kro-label-color, var(--kro-foreground-secondary));
         white-space: nowrap;
     }
 

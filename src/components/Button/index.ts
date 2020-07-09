@@ -1,5 +1,5 @@
-import { ComponentMetadata } from '../types';
-
+import { ComponentMetadata } from '../../types';
+import { RoutablePropsMetadata } from '../../composables/useRoutable';
 export { default as KroButton } from './Button.vue';
 
 export const Metadata: ComponentMetadata = {
@@ -12,27 +12,6 @@ export const Metadata: ComponentMetadata = {
             type: 'bool',
             values: '-',
             default: 'false',
-        },
-        {
-            name: 'href',
-            description: 'Convers the button into an external link',
-            type: 'string',
-            values: '-',
-            default: 'undefined',
-        },
-        {
-            name: 'target',
-            description: 'Sets the target attribute if the button is a link.',
-            type: 'string',
-            values: ['_blank', '_self', '_parent', '_top'],
-            default: '_blank',
-        },
-        {
-            name: 'to',
-            description: 'Converts the button into a vue-router `router-link` component',
-            type: 'string | object',
-            values: '-',
-            default: 'undefined',
         },
         {
             name: 'type',
@@ -75,6 +54,8 @@ export const Metadata: ComponentMetadata = {
             type: 'bool',
             values: '-',
             default: 'false',
-        }
+        },
+
+        ...RoutablePropsMetadata,
     ]
 };

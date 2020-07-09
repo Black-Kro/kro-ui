@@ -15,7 +15,7 @@ import ProgressBar from './progress-bar.md';
 import Spinner from './spinner.md';
 import Squircle from './squircle.md';
 import Surface from './surface.md';
-import Switch from './switch.md';
+import Switch from './switch/index.md';
 import Textfield from './textfield.md';
 import Toolbar from './toolbar.md';
 import Menu from './menu.md';

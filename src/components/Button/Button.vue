@@ -31,6 +31,9 @@
 
 <script lang="ts">
     import { computed } from 'vue';
+
+    import { useRoutable, RoutableProps } from '../../composables/useRoutable';
+
     import KroIcon from '../Icon/Icon.vue';
     import KroSpinner from '../Spinner/Spinner.vue';
     import KroSquircle from '../Squircle/Squircle.vue';
@@ -39,6 +42,7 @@
         name: 'KroButton',
         components: { KroIcon, KroSpinner, KroSquircle },
         props: {
+            ...RoutableProps,
 
             /**
              * Adds loading icon to the button
@@ -46,26 +50,6 @@
             loading: {
                 type: Boolean,
                 default: false
-            },
-
-            /**
-             * Turns the button into a link
-             */
-            href: String,
-
-            /**
-             * If the button is a link, then this will set the target
-             */
-            target: {
-                type: String,
-                default: '_blank'    
-            },
-
-            /**
-             * Makes the button a router-link
-             */
-            to: {
-                type: [String, Object]
             },
 
             /**
@@ -101,14 +85,10 @@
         },
 
         setup(props) {
+            const { tag } = useRoutable(props);
             
             const componentType = computed(() => {
-                const { to, href } = props;
-                
-                if (to) return 'router-link';
-                if (href) return 'a';
-
-                return 'button';
+                return tag ? tag : 'button'
             });
 
             return {

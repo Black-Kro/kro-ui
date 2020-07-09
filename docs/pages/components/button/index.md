@@ -27,4 +27,5 @@ or it can be converted into a vue `router-link` by setting the `to` prop on the 
 
 
 ## Up Next
-<up-next title="Button Groups" subtitle="Combine mutliple buttons intoa  group" to="/components/button-group" />
+
+<up-next title="Button Groups" subtitle="Combine mutliple buttons into a group" to="/components/button-group" />

@@ -1,4 +1,4 @@
-import { ComponentMetadata } from '../types';
+import { ComponentMetadata } from '../../types';
 
 export { default as KroSwitch } from './Switch.vue';
 
