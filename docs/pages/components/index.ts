@@ -20,7 +20,7 @@ import Textfield from './textfield.md';
 import Toolbar from './toolbar.md';
 import Menu from './menu.md';
 import Select from './select.md';
-import Slider from './slider.md';
+import Slider from './slider/index.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [
 

@@ -36,8 +36,14 @@
             </div>
         </div>
         <div v-if="selected === 3">
-            CSS
-            {{selected}}
+            <div @click="copyCSS(css)" class="prop-card" v-for="css in metadata.css" :key="css.name">
+                <div class="flex">
+                    <span class="flex-1 prop-card__name">{{css.name}}</span>
+                    <span class="bubble">type: {{css.type}}</span>
+                    <span class="bubble">default: {{css.default}}</span>
+                </div>
+                <div class="description">{{css.description}}</div>
+            </div>
         </div>
 
         <!-- Component Metadata Here
@@ -64,13 +70,15 @@
             const copyProp = (prop) => { copy(`${prop.name === 'v-model' ? '' : ':' }${prop.name}=""`); };
             const copyEvent = (prop) => { copy(`${prop.name}=""`); };
             const copySlot = (prop) => { copy(`${prop.name}${ (!!prop.props && prop.props.length > 0) ? `="{ ${prop.props.join(', ')} }"` : '' }`); };
+            const copyCSS = (prop) => { copy(`${prop.name}: `) };
 
             return {
                 selected,
                 select,
                 copyProp,
                 copyEvent,
-                copySlot
+                copySlot,
+                copyCSS,
             }
         }
     }

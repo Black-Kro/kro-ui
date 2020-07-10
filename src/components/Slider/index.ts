@@ -49,6 +49,13 @@ export const Metadata : ComponentMetadata = {
             default: '100',
         },
     ],
+    slots: [
+        {
+            name: '#thumb',
+            description: 'A slot to replace the default value of the thumb.',
+            props: ['value']
+        }
+    ],
     css: [
         {
             name: '--kro-slider-tick-color',
@@ -73,6 +80,18 @@ export const Metadata : ComponentMetadata = {
             description: 'The color of the knob on the slider.',
             type: 'color',
             default: '--kro-primary-lighten',
+        },
+        {
+            name: '--kro-slider-thumb-foreground',
+            description: 'The foreground color of the thumb.',
+            type: 'color',
+            default: '--kro-primary-foreground',
+        },
+        {
+            name: '--kro-slider-thumb-background',
+            description: 'The background color of the thumb.',
+            type: 'color',
+            default: '--kro-primary',
         },
     ],
 }

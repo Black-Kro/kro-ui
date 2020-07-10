@@ -2,7 +2,7 @@
         <div 
             class="kro-slider"
             @touchstart.passive="enableEditing" 
-            @mousedown="enableEditing" 
+            @mousedown="onSliderClick"
             :style="{'--kro-slider-progress': `${($attrs.modelValue - min) / (max - min) * 100 - 100}%`}">
 
             <div class="kro-slider__track-container">
@@ -11,10 +11,11 @@
                     <div class="kro-slider__progress"></div>
                 </div>
                 <div class="kro-slider__knob-container">
-                    <div class="kro-slider__knob"></div>
+                    <button ref="knobRef" class="kro-slider__knob" tabindex="0" @keydown="incrementValue" ></button>
                     <div class="kro-slider__preview-value" :class="{ 'kro-slider__preview-value--is-active': isEditing }">
-                        <div class="kro-slider__bloop"></div>
-                        <span>{{$attrs.modelValue}}</span>
+                        <div class="kro-slider__thumb"></div>
+                        <span v-if="!$slots.thumb">{{$attrs.modelValue}}</span>
+                        <span v-else><slot :value="$attrs.modelValue" name="thumb"/></span>
                     </div>
                 </div>
             </div>
@@ -57,8 +58,8 @@
             /**
              * General Setup
              */
-            const value = ref(0);
             const sliderRef = ref();
+            const knobRef = ref();
             const { targetPercentage } = useSliderContainer(sliderRef);
             const { elementWidth } = useElement(sliderRef);
 
@@ -87,6 +88,24 @@
 
             const trackSpacing = computed(() => elementWidth.value / Math.ceil((props.max - props.min) / (props.step)));
 
+            const subtractValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) - props.step))); };
+            const addValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) + props.step))); };
+
+            const incrementValue = (e: KeyboardEvent) => {
+                if (e.key === 'ArrowLeft')
+                    subtractValue();
+
+                if (e.key === 'ArrowRight')
+                    addValue();
+            }
+
+            const onSliderClick = () => {
+                setTimeout(() => {
+                    knobRef.value.focus();
+                }, 0);
+                enableEditing();
+            }
+
             onMounted(() => {
                 /**
                  * Ensure the inital value is within the constratins of the slider
@@ -101,14 +120,20 @@
             });
 
             return {
+                knobRef,
                 sliderRef,
                 targetPercentage,
 
-                value,
                 enableEditing,
 
                 trackSpacing,
                 isEditing,
+
+                onSliderClick,
+
+                incrementValue,
+                subtractValue,
+                addValue,
             }
         }
     }
@@ -184,10 +209,17 @@
                     transform: translateX(50%) translateY(-50%);
                     right: 0;
 
+                    -webkit-appearance: none;
+                    border: none;
                     background: var(--kro-slider-knob-color, var(--kro-primary-lighten));
                     box-shadow: var(--kro-shadow);
                     position: absolute;
                     border-radius: 50%;
+
+                    &:focus {
+                        outline: none;
+                        box-shadow: var(--kro-shadow), 0 0 0 0.5rem rgba(255, 255, 255, .12);
+                    }
                 }
 
                 .kro-slider__preview-value {
@@ -196,8 +228,8 @@
                     transform: translateX(50%) translateY(-50%);
                     top: -100%;
 
-                    width: 2rem;
-                    height: 2rem;
+                    width: 2.25rem;
+                    height: 2.25rem;
 
                     text-align: center;
 
@@ -205,15 +237,15 @@
                     transform-origin: center bottom;
                     transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
                     transform: translateX(50%) translateY(-50%) scale(0);
+                    color: var(--kro-slider-thumb-foreground, var(--kro-primary-foreground));
 
                     span {
                         display: block;
                         position: relative;
-                        margin-top: 0.45rem;
+                        margin-top: 0.6rem;
                         font-size: 0.75rem;
                         font-weight: 500;
                         text-align: center;
-                        color: var(--kro-primary-foreground);
                     }
                 }
 
@@ -222,11 +254,11 @@
                         transform: translateX(50%) translateY(-50%) scale(1);
                     }
 
-                    .kro-slider__bloop {
-                        width: 2rem;
-                        height: 2rem;
+                    .kro-slider__thumb {
+                        width: 2.25rem;
+                        height: 2.25rem;
 
-                        background: var(--kro-primary);
+                        background: var(--kro-slider-thumb-background, var(--kro-primary));
                         position: absolute;
                         border-radius: 50% 50% 0;
                         transform: rotate(45deg);
