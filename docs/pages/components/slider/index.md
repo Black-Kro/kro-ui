@@ -12,6 +12,7 @@ TODO
 <usage name="BasicSlider" title="Basic Slider" />
 
 ## API
+
 <api />
 
 ## Example
@@ -23,3 +24,4 @@ TODO
 <usage name="Thermostat" title="Advanced Example: Thermostat" />
 
 ## Up Next
+
