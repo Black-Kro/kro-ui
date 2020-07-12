@@ -14,7 +14,7 @@ the display type is `info`.
 
 ## API
 
-<docs-component-metadata :metadata="metadata.options.component"></docs-component-metadata>
+<api />
 
 ## Examples
 

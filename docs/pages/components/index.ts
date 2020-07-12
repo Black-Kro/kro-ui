@@ -16,10 +16,10 @@ import Spinner from './spinner.md';
 import Squircle from './squircle.md';
 import Surface from './surface.md';
 import Switch from './switch/index.md';
-import Textfield from './textfield.md';
+import Textfield from './textfield/index.md';
 import Toolbar from './toolbar.md';
 import Menu from './menu.md';
-import Select from './select.md';
+import Select from './select/index.md';
 import Slider from './slider/index.md';
 
 export const ComponentRoutes : RouteRecordRaw[] = [

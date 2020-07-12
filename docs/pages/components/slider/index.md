@@ -25,3 +25,4 @@ TODO
 
 ## Up Next
 
+<up-next title="Icons" subtitle="Icons! Icons! Icons!" to="/components/icon" />

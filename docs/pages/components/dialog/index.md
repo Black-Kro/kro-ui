@@ -13,7 +13,9 @@ close function provided by the dialog and wiring it up to a button.
 
 
 ## API
-<docs-component-metadata :metadata="metadata.options.component"></docs-component-metadata>
 
-## Related
-<press-article-link title="Button Groups" subtitle="Combine mutliple buttons intoa  group" to="/components/button-group"></press-article-link>
+<api />
+
+## Up Next
+
+<up-next title="Dividers" subtitle="Dividers to divide the content" to="/components/divider" />

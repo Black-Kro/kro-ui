@@ -18,6 +18,11 @@ Just like the `&lt;hr/&gt;` element, but pretty! OH, and it can be vertical! Ima
 
 ## Examples
 
+<usage name="VerticalDivider" title="Vertical Divider" />
+
+<usage name="AdvancedDivider" title="Advanced Example" />
 
 ## Up Next
+
+<up-next title="Form Inputs & Controls" subtitle="Textfields, Selects, Sliders, Switchs, and more!" to="/components/forms" />
 
