@@ -54,10 +54,10 @@ createApp(App)
                         title: 'Button',
                         to: '/components/button'
                     },
-                    {
-                        title: 'Button Group',
-                        to: '/components/button-group'
-                    },
+                    // {
+                    //     title: 'Button Group',
+                    //     to: '/components/button-group'
+                    // },
                     {
                         title: 'Dialog',
                         to: '/components/dialog'

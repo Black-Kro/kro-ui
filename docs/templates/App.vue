@@ -38,7 +38,7 @@
                             <span class="block text-xs font-bold mb-4">On This Page</span>
                             <a  v-for="(heading, i) in meta.headings" :key="i"
                                 class="block mb-2 font-medium transition-fast hover:translate-r-2px text-sm"
-                                :style="{'color':  $route.hash === `#${heading.hash}` ? 'var(--kro-primary)' : 'var(--kro-foreground-secondary)'}" 
+                                 :style="{'color':  $route.hash === `#${heading.hash}` ? 'var(--kro-primary)' : 'var(--kro-foreground-secondary)'}" 
                                 :href="`#${heading.hash}`">{{heading.text}}</a>
                             <kro-button hide-external-icon icon="bug" v-if="meta.options.for" :href="`https://github.com/Black-Kro/kro-ui/issues/new?assignees=&labels=bug&template=bug_report.md&title=${meta.options.for.split('/')[2]}:`" class="block my-2 mt-4 w-full">Report Bug</kro-button>
                             <kro-button hide-external-icon icon="github" v-if="meta.options.for" :href="`https://github.com/Black-Kro/kro-ui/tree/master/src/${meta.options.for}`" class="block my-2 w-full">Source</kro-button>

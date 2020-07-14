@@ -1,15 +1,15 @@
 import { RouteRecordRaw } from 'vue-router';
 
 import Components from './index.md';
-import App from './app.md';
+import App from './app/index.md';
 import Alert from './alert/index.md';
 import Button from './button/index.md';
 import ButtonGroup from './button-group.md';
 import Dialog from './dialog/index.md';
 import Divider from './divider/index.md';
-import Icon from './icon.md';
-import Layout from './layout.md';
-import List from './list.md';
+import Icon from './icon/index.md';
+import Layout from './layout/index.md';
+import List from './list/index.md';
 import Navigation from './navigation.md';
 import ProgressBar from './progress-bar.md';
 import Spinner from './spinner.md';
