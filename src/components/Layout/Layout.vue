@@ -76,12 +76,6 @@
         }
     }
 
-
-    .kro-layout__navigation--fixed,
-    .kro-layout__toolbar--fixed {
-        position: fixed;
-    }
-
     .kro-layout__container {
         position: relative;
         min-height: inherit;
@@ -96,6 +90,8 @@
         position: absolute;
         top: 0; left: 0; bottom: 0; right: 0;
         pointer-events: none;
+
+        &--fixed { position: fixed; }
     }
 
     .kro-layout__toolbar {
@@ -103,6 +99,8 @@
 
         position: absolute;
         top: 0; left: 0; right: 0;
+
+        &--fixed { position: fixed; }
     }
 
 </style>
