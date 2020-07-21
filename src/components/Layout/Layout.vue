@@ -9,12 +9,12 @@
 
         <div :class="{
             'kro-layout__navigation': true,
-            'fixed': fixed,
+            'kro-layout__navigation--fixed': fixed,
         }" v-if="!!$slots.navigation">
             <slot name="navigation"></slot>
         </div>
 
-        <div :class="{ 'kro-layout__toolbar': true, 'fixed': fixed }" v-if="!!$slots.toolbar">
+        <div :class="{ 'kro-layout__toolbar': true, 'kro-layout__toolbar--fixed': fixed }" v-if="!!$slots.toolbar">
             <slot name="toolbar"></slot>
         </div>
 
@@ -39,7 +39,10 @@
         name: 'KroLayout',
         components: { KroToolbar },
         props: {
-            fixed: Boolean
+            fixed: {
+                type: Boolean,
+                default: true,
+            }
         }
     }
 </script>
@@ -73,11 +76,10 @@
         }
     }
 
-    .kro-layout--fixed {
-        .kro-layout__toolbar,
-        .kro-layout__navigation {
-            position: fixed;
-        }
+
+    .kro-layout__navigation--fixed,
+    .kro-layout__toolbar--fixed {
+        position: fixed;
     }
 
     .kro-layout__container {
