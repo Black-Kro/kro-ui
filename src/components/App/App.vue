@@ -3,7 +3,6 @@
         <div class="kro-app__content">
             <slot></slot>
         </div>
-        <div id="kro-portal"></div>
         <composable-dialogs></composable-dialogs>
     </div>
 </template>

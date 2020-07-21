@@ -1,39 +1,47 @@
-import vuePlugin from 'rollup-plugin-vue';
+/**
+ * This file is just meant to generate types since Vite does not output type definition files by deafult.
+ */
+
+import vue from 'rollup-plugin-vue';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import buble from '@rollup/plugin-buble';
-import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
-
+import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
+import clean from 'rollup-plugin-clean';
+import path from 'path';
+
 
 export default {
     input: 'src/index.ts',
-    output: {
-        file: pkg.main,
-        format: 'cjs',
-        sourcemap: true,
-        exports: 'named',
-    },
+    output: [
+        {
+            format: 'esm',
+            file: 'dist/index.esm.js'
+        },
+        {
+            format: 'cjs',
+            file: 'dist/index.common.js'
+        },
+    ],
     external: ['vue'],
     plugins: [
+        clean(),
         typescript({
-            rollupCommonJSResolveHack: false,
-            clean: true,
+            useTsconfigDeclarationDir: true,
+            rollupCommonJSResolveHack: true,
             tsconfigOverride: {
-                include: [
-                    "src/**/*.ts",
-                    "src/**/*.tsx",
-                    "src/**/*.vue",
-                ]
+                emit: false,
+                emitDeclarationOnly: true,
             }
         }),
-        vuePlugin({
+        vue({
             target: 'browser',
             preprocessStyles: true,
         }),
         postcss({
-            extract: true,
+            extract: path.resolve('dist/index.css'),
             minimize: true,
             use: ['sass']
         }),

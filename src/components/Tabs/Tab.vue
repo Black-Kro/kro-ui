@@ -4,8 +4,9 @@
     </div>
 </template>
 
-<script>
+<script lang="ts" setup>
     export default {
+        name: 'KroTab',
         props: {
             icon: String,
         }

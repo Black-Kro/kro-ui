@@ -1,12 +1,8 @@
-import * as components from './components';
-import { KroUIPlugin } from './install';
-
-// Import CSS
+/**
+ * Import Base Styles
+ */
 import './styles/main.scss';
 
+export { KroUIPlugin, KroUIBaseConfigurationPlugin } from './install';
+export { useTheme, useIcons, useDialog, DialogType } from './composables';
 export * from './components';
-export * from './composables';
-
-export { ConfigureKroUIPluign } from './install';
-
-export default KroUIPlugin(components);

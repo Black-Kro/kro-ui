@@ -19,4 +19,3 @@ export { KroLayout } from './Layout';
 export { KroNavigation } from './Navigation';
 export { KroSelect } from './Select';
 export { KroSlider } from './Slider';
-export { KroItemGroup, KroItem } from './ItemGroup';

@@ -4,6 +4,8 @@ import { registerThemeWatcher } from './composables/useTheme';
 
 import defaultIcons from './assets/icons';
 
+import * as KroComponents from './components';
+
 interface KroUIOptions {
     icons: string[];
 }
@@ -13,11 +15,11 @@ interface KroUIConfiguration {
     components: any,
 };
 
-export const ConfigureKroUIPluign = (): Plugin => ({
+export const KroUIBaseConfigurationPlugin = (): Plugin => ({
     install(app, config: KroUIConfiguration) {
         let icons = { ...defaultIcons };
         
-        if (config.icons)
+        if (config && config.hasOwnProperty('icons'))
             icons = { ...icons, ...config.icons };
 
         if (config.components && Array.isArray(config.components))
@@ -34,12 +36,12 @@ export const ConfigureKroUIPluign = (): Plugin => ({
     }
 });
 
-export const KroUIPlugin = (components: any): Plugin => ({
+const KroUIPluginBase = (components: any): Plugin => ({
     install(app, config: KroUIOptions) {
 
         let icons = { ...defaultIcons };
 
-        if (config.icons)
+        if (config && config.hasOwnProperty('icons'))
             icons = { ...icons, ...config.icons };
 
         /**
@@ -65,3 +67,5 @@ export const KroUIPlugin = (components: any): Plugin => ({
 
     }
 });
+
+export const KroUIPlugin = KroUIPluginBase(KroComponents);
