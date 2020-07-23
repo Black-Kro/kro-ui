@@ -3,7 +3,7 @@ import { ComponentMetadata } from '../../types';
 export { default as KroAlert } from './Alert.vue';
 
 export const Metadata: ComponentMetadata = {
-        title: 'KroMetadata',
+        title: 'KroAlert',
         description: '',
         props: [
             {
