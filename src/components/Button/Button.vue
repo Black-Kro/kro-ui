@@ -96,6 +96,7 @@
             }
         }
     }
+
 </script>
 
 <style lang="scss">

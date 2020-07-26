@@ -1,5 +1,5 @@
 <template>
-    <component :is="tag" class="kro-list-item">
+    <component :is="componentType" :href="href" :to="to" class="kro-list-item">
         <div v-if="!!$slots.icon" class="kro-list-item__icon">
             <slot name="icon"></slot>
         </div>
@@ -27,9 +27,27 @@
                 type: String,
                 default: 'div'
             },
+            href: {
+                type: String,
+            },
+            to: {
+                type: [String, Object],
+            }
         },
         setup(props) {
+
+            const componentType = computed(() => {
+                if (props.href)
+                    return 'a';
+
+                if (props.to)
+                    return 'router-link';
+
+                return props.tag;
+            });
+
             return {
+                componentType
             }
         }
     }
@@ -60,6 +78,7 @@
         line-height: 1.5;
         padding: 0.75rem 0;
         flex: 1;
+        color: var(--kro-list-item-foreground, var(--kro-foreground))
     }
 
         .kro-list-item__title {

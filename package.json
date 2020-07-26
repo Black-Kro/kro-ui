@@ -21,18 +21,18 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c && node ./build/vetur.js",
+    "build": "rm -rf ./dist && rollup -c && node ./build/vetur.js",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@vueuse/core": "^4.0.0-beta.2",
-    "vue": "^3.0.0-rc.1",
-    "vue-router": "4.0.0-beta.2"
+    "vue": "3.0.0-rc.4",
+    "vue-router": "4.0.0-beta.3"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-buble": "^0.21.3",
-    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "@vue/compiler-sfc": "^3.0.0-rc.4",
     "autoprefixer": "^9.8.5",
     "rollup-plugin-clean": "^1.0.0",
     "rollup-plugin-copy": "^3.3.0",
@@ -45,7 +45,7 @@
     "tailwindcss": "^1.5.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.7",
-    "vite": "^1.0.0-rc.1"
+    "vite": "^1.0.0-rc.3"
   },
   "vetur": {
     "tags": "./dist/vetur/tags.json",
