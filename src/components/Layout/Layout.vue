@@ -19,21 +19,22 @@
 </template>
 
 <script lang="ts" setup="props, { slots, emit }">
-    import { watchEffect, computed } from 'vue';
+    import { watchEffect, computed, ref } from 'vue';
     import { KroToolbar } from '../Toolbar';
     import { useMediaQuery } from '@vueuse/core';
 
     export const isSmallScreen = useMediaQuery(`(max-width: ${props.responsiveWidth || 768}px)`);
 
-    export const drawerWidth = computed(() => props.drawerWidth || props.mini ? '6rem' : '16rem');
-    export const contentOffsetLeft = computed(() => (isSmallScreen.value || props.temporary || !slots.drawer) ? '0' : 'var(--drawerWidth)');
-    export const toolbarHeight = computed(() => props.toolbarHeight || '4rem');
-    export const toolbarLeftOffset = computed(() => props.clipToolbar ? 'var(--contentOffsetLeft)' : '0');
-    export const drawerOffsetTop = computed(() => props.clipToolbar || isSmallScreen.value || props.temporary ? '0' : 'var(--toolbarHeight)');
+    export const drawerWidth = computed(() => props.mini ? '6rem' : '16rem') as unknown as string;
+    export const contentOffsetLeft = computed(() => (isSmallScreen.value || props.temporary || !slots.drawer) ? '0' : 'var(--drawerWidth)')  as unknown as string;;
+    export const toolbarHeight = computed(() => props.toolbarHeight || '4rem') as unknown as string;;
+    export const toolbarLeftOffset = computed(() => props.clipToolbar ? 'var(--contentOffsetLeft)' : '0') as unknown as string;;
+    export const drawerOffsetTop = computed(() => props.clipToolbar || isSmallScreen.value || props.temporary ? '0' : 'var(--toolbarHeight)') as unknown as string;;
 
     watchEffect(() => {
         emit('update:is-drawer-open', !(isSmallScreen.value || props.temporary));
         emit('update:is-drawer-hidden', isSmallScreen.value || props.temporary);
+
     })
 
     export default {
@@ -47,7 +48,6 @@
         temporary?: boolean;
         right?: boolean;
 
-        drawerWidth?: string;
         toolbarHeight?: string;
         clipToolbar?: boolean;
         mini?: boolean;
