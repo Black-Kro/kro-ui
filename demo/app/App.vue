@@ -7,10 +7,12 @@
                 <kro-toolbar padded>
                     <kro-button v-if="isDrawerHidden" @click="isDrawerOpen = !isDrawerOpen" icon="menu" />
                     App
+
+                    <kro-switch v-model="hasNavBar" />
                 </kro-toolbar>
             </template>
 
-            <template #drawer>
+            <template #drawer v-if="hasNavBar">
                 <kro-list-item to="/">
                     <template #icon><kro-icon icon="home"/></template>
                     Home
@@ -23,6 +25,7 @@
 
             <template #default>
                 Layout Content
+
                 <router-view></router-view>
                 <router-link to="/">Bruh Moment</router-link>
             </template>
@@ -39,6 +42,8 @@
 
     export const isDrawerOpen = ref(false);
     export const isDrawerHidden = ref(false);
+
+    export const hasNavBar = ref(true);
 
     export default {
         name: 'App',

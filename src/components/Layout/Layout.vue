@@ -18,24 +18,29 @@
     </div>
 </template>
 
-<script lang="ts" setup="props, { slots, emit }">
-    import { watchEffect, computed, ref } from 'vue';
+<script lang="ts" setup="props, context">
+    import { watchEffect, watch, computed, ref, isReactive, onRenderTriggered, toRefs, onUpdated } from 'vue';
     import { KroToolbar } from '../Toolbar';
     import { useMediaQuery } from '@vueuse/core';
 
-    export const isSmallScreen = useMediaQuery(`(max-width: ${props.responsiveWidth || 768}px)`);
+    export const hasDrawer = ref(!!context.slots.drawer);
 
+    export const isSmallScreen = useMediaQuery(`(max-width: ${props.responsiveWidth || 768}px)`);
     export const drawerWidth = computed(() => props.mini ? '6rem' : '16rem') as unknown as string;
-    export const contentOffsetLeft = computed(() => (isSmallScreen.value || props.temporary || !slots.drawer) ? '0' : 'var(--drawerWidth)')  as unknown as string;;
-    export const toolbarHeight = computed(() => props.toolbarHeight || '4rem') as unknown as string;;
-    export const toolbarLeftOffset = computed(() => props.clipToolbar ? 'var(--contentOffsetLeft)' : '0') as unknown as string;;
-    export const drawerOffsetTop = computed(() => props.clipToolbar || isSmallScreen.value || props.temporary ? '0' : 'var(--toolbarHeight)') as unknown as string;;
+    export const contentOffsetLeft = computed(() => (isSmallScreen.value || props.temporary || !hasDrawer.value) ? '0' : 'var(--drawerWidth)')  as unknown as string;
+    export const toolbarHeight = computed(() => props.toolbarHeight || '4rem') as unknown as string;
+    export const toolbarLeftOffset = computed(() => props.clipToolbar ? 'var(--contentOffsetLeft)' : '0') as unknown as string;
+    export const drawerOffsetTop = computed(() => props.clipToolbar || isSmallScreen.value || props.temporary ? '0' : 'var(--toolbarHeight)') as unknown as string;
+
+    // Since slots are not reactive this is a fix to respond to the toolbar being changed
+    onUpdated(() => { hasDrawer.value = !!context.slots.drawer; })
+
 
     watchEffect(() => {
-        emit('update:is-drawer-open', !(isSmallScreen.value || props.temporary));
-        emit('update:is-drawer-hidden', isSmallScreen.value || props.temporary);
-
+        context.emit('update:is-drawer-open', !(isSmallScreen.value || props.temporary));
+        context.emit('update:is-drawer-hidden', isSmallScreen.value || props.temporary);
     })
+
 
     export default {
         name: 'KroLayout',
@@ -53,8 +58,9 @@
         mini?: boolean;
     }
 
-    declare const emit: any;
-    declare const slots: any;
+    // declare const emit: any;
+    // declare const slots: any;
+    declare const context: any;
 </script>
 
 <style lang="scss" vars="{ drawerWidth, toolbarHeight, toolbarLeftOffset, drawerOffsetTop, contentOffsetLeft }">
