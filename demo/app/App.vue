@@ -11,6 +11,10 @@
             </template>
 
             <template #drawer>
+                <kro-list-item to="/">
+                    <template #icon><kro-icon icon="home"/></template>
+                    Home
+                </kro-list-item>
                 <kro-list-item href="/settings">
                     <template #icon><kro-icon icon="settings"/></template>
                     Settings
@@ -19,6 +23,8 @@
 
             <template #default>
                 Layout Content
+                <router-view></router-view>
+                <router-link to="/">Bruh Moment</router-link>
             </template>
 
             <template #footer>

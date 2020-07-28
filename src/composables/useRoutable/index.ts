@@ -1,4 +1,4 @@
-import { ComponentPropsOptions, PropType } from 'vue';
+import { ComponentPropsOptions, PropType, computed } from 'vue';
 import { RouteLocationRaw } from 'vue-router';
 import { ComponentProp } from '../../types';
 
@@ -73,10 +73,20 @@ export const RoutableProps = {
 
 export const useRoutable = (props) => {
     const tag = props.to ? 'router-link' : props.href ? 'a' : null;
+    const componentProps = computed(() => {
+        if (props.to)
+            return { to: props.to }
+
+        if (props.href)
+            return { href: props.href }
+
+        return {}
+    });
     const routeData = props;
 
     return {
         tag,
+        componentProps,
         routeData,
     }
 

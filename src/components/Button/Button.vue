@@ -11,8 +11,7 @@
          
         rel="noreferrer"
         
-        :href="href"
-        :to="to" 
+        v-bind="componentProps"
         :target="href ? target : ''">
         <kro-squircle class="kro-button__squircle" v-if="icon && !$slots.default" />
         <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
@@ -85,13 +84,14 @@
         },
 
         setup(props) {
-            const { tag } = useRoutable(props);
-            
+            const { tag, componentProps } = useRoutable(props);
+
             const componentType = computed(() => {
                 return tag ? tag : 'button'
             });
 
             return {
+                componentProps,
                 componentType
             }
         }

@@ -1,6 +1,7 @@
 import { ComponentMetadata } from '../../types';
 
 export { default as KroListItem } from './ListItem.vue';
+import { RoutablePropsMetadata } from '../../composables/useRoutable';
 
 export const Metadata: ComponentMetadata = {
     title: 'KroListItem',
@@ -12,7 +13,9 @@ export const Metadata: ComponentMetadata = {
             type: 'string',
             values: '-',
             default: 'div',
-        }
+        },
+
+        ...RoutablePropsMetadata,
     ],
     slots: [
         {

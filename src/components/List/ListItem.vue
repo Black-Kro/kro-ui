@@ -1,5 +1,8 @@
 <template>
-    <component :is="componentType" :href="href" :to="to" class="kro-list-item">
+    <component 
+        :is="componentType" 
+        v-bind="componentProps"
+        class="kro-list-item">
         <div v-if="!!$slots.icon" class="kro-list-item__icon">
             <slot name="icon"></slot>
         </div>
@@ -19,34 +22,31 @@
 
 <script lang="ts">
     import { computed, ref } from 'vue';
+    import { useRoutable, RoutableProps } from '../../composables/useRoutable';
 
     export default {
         name: 'KroListItem',
         props: {
+            ...RoutableProps,
             tag: {
                 type: String,
                 default: 'div'
             },
             href: {
                 type: String,
+                default: undefined
             },
             to: {
                 type: [String, Object],
             }
         },
         setup(props) {
+            const { tag, componentProps } = useRoutable(props);
 
-            const componentType = computed(() => {
-                if (props.href)
-                    return 'a';
-
-                if (props.to)
-                    return 'router-link';
-
-                return props.tag;
-            });
+            const componentType = computed(() => { return tag ? tag : 'div' });
 
             return {
+                componentProps,
                 componentType
             }
         }
