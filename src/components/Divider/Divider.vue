@@ -37,6 +37,7 @@
             padding: 0 0.5rem;
             background: var(--kro-divider-label-background, var(--kro-background));
             margin-top: -0.125rem;
+            user-select: none;
         }
     }
 
