@@ -22,6 +22,8 @@
 <style lang="scss">
 
     .kro-toolbar {
+        --kro-button-background: var(--kro-background);
+
         height: var(--kro-toolbar-height, 4rem);
         background: var(--kro-toolbar-background, var(--kro-background-secondary));
 
