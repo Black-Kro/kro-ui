@@ -8,7 +8,7 @@
                     <kro-button v-if="isDrawerHidden" @click="isDrawerOpen = !isDrawerOpen" icon="menu" />
                     App
 
-                    <kro-switch v-model="hasNavBar" />
+                    <kro-button icon="invert" @click="toggleThemeMode()"/>
                 </kro-toolbar>
             </template>
 
@@ -39,6 +39,9 @@
 
 <script lang="ts" setup>
     import { ref } from 'vue';
+    import { useTheme } from '../../src';
+
+    export const { toggleThemeMode } = useTheme();
 
     export const isDrawerOpen = ref(false);
     export const isDrawerHidden = ref(false);

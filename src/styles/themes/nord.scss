@@ -51,4 +51,4 @@ $NordTheme: (
     ),
 );
 
-@include CompileTheme($NordTheme, "nord");
+@include CompileTheme($NordTheme);

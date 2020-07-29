@@ -2,27 +2,30 @@
 
 $DefaultTheme: (
     light: (
-        'background': hsl(0, 0%, 100%),
-        'background-secondary': hsl(218, 27%, 94%),
+        'background': white,
+        'background-secondary': #f7f7f7,
         
-        'foreground': hsl(220, 16%, 22%),
-        'foreground-secondary': hsl(220, 16%, 36%),
-        'foreground-disabled': hsla(220, 16%, 36%, .24),
-
-        'divider': rgba(0, 0, 0, .12),
-
-        'primary': #2D8F79,
-        'primary-lighten': hsl(167, 52%, 77%),
+        'foreground': hsla(0, 0%, 0%, 0.72),
+        'foreground-secondary': hsla(0, 0%, 0%, 0.56),
+        'foreground-disabled': hsla(0, 0%, 100%, 0.24),
+        
+        'divider': #eaeaea,
+        'shadow': 0 0 0 1px #eaeaea,
+            
+        'primary': hsl(167, 52%, 50%),
+        'primary-lighten': hsl(167, 52%, 57%),
         'primary-darken': hsl(167, 52%, 27%),
-        'primary-foreground': white,
+        'primary-foreground': hsl(167, 52%, 15%),
         'accent': #8fbcbb,
 
-        'shadow': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-        
         'error': hsl(0, 100%, 66%),
+        'error-foreground': hsl(218, 27%, 94%),
         'info': hsl(207, 90%, 54%),
+        'info-foreground': hsl(218, 27%, 94%),
         'success': hsl(122, 39%, 49%),
+        'success-foreground': hsl(218, 27%, 94%),
         'warning': hsl(45, 100%, 51%),
+        'warning-foreground': hsl(45, 100%, 11%),
     ),
         
     dark: (

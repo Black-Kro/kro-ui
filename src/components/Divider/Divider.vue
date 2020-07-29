@@ -1,15 +1,18 @@
 <template>
-    <hr :class="{'kro-divider': true, 'kro-divider--vertical': vertical, 'kro-divider--inset': inset}">
+    <div class="kro-divider" :class="{ 'kro-divider--vertical': vertical, 'kro-divider--inset': inset, }">
+        <span v-if="label">{{label}}</span>
+    </div>
 </template>
 
 <script>
-export default {
-    name: 'KroDivider',
-    props: {
-        vertical: Boolean,
-        inset: Boolean,
+    export default {
+        name: 'KroDivider',
+        props: {
+            vertical: Boolean,
+            inset: Boolean,
+            label: String,
+        }
     }
-}
 </script>
 
 <style lang="scss">
@@ -21,6 +24,20 @@ export default {
         height: 1px;
         width: 100%;
         margin: 1rem 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--kro-foreground-secondary);
+        font-weight: 700;
+        font-size: 0.875rem;
+
+        span {
+            padding: 0 0.5rem;
+            background: var(--kro-divider-label-background, var(--kro-background));
+            margin-top: -0.125rem;
+        }
     }
 
         .kro-divider--vertical {

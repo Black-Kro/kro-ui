@@ -43,6 +43,7 @@
 
         &:not(.kro-surface--outline) {
             --kro-button-background: var(--kro-background);
+            --kro-divider-label-background: var(--kro-background-secondary);
 
             &.kro-surface--padded { padding: 1rem; }
             &.kro-surface--raised { box-shadow: var(--kro-surface-shadow, var(--kro-shadow)); }
