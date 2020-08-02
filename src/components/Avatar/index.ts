@@ -8,10 +8,31 @@ export const Metadata: ComponentMetadata = {
     props: [
         {
             name: 'src',
-            description: '',
+            description: 'Sets the image of the avatar',
             type: 'string',
             values: '-',
             default: 'undefined',
+        },
+        {
+            name: 'color',
+            description: 'Sets the color of the avatar.',
+            type: 'string',
+            values: '-',
+            default: 'undefined'
+        },
+        {
+            name: 'small',
+            description: 'Makes the avatar smaller.',
+            type: 'bool',
+            values: '-',
+            default: 'false',
+        },
+        {
+            name: 'large',
+            description: 'Makes the avatar larger.',
+            type: 'bool',
+            values: '-',
+            default: 'false',
         },
     ],
     css: [

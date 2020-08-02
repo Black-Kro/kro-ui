@@ -5,6 +5,9 @@
             'kro-button--primary': primary,
             'kro-button--outline': outline,
             'kro-button--raised': raised,
+            'kro-button--warning': warning,
+            'kro-button--success': success,
+            'kro-button--error': error,
             'kro-button--is-icon-button': icon && !$slots.default,
         }" 
         :is="componentType"
@@ -81,6 +84,12 @@
              */
             hideExternalIcon: Boolean,
 
+            warning: Boolean,
+
+            error: Boolean,
+
+            success: Boolean,
+
         },
 
         setup(props) {
@@ -129,9 +138,37 @@
 
         border: 1px solid var(--kro-button-border-color, transparent);
         border-radius: 0.25rem;
+        transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
+                    filter 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
         -webkit-appearance: none;
 
+        &--warning {
+            --kro-button-background: var(--kro-warning);
+            --kro-button-foreground: var(--kro-warning-foreground);
+        }
+
+        &--success {
+            --kro-button-background: var(--kro-success);
+            --kro-button-foreground: var(--kro-success-foreground);
+        }
+
+        &--error {
+            --kro-button-background: var(--kro-error);
+            --kro-button-foreground: var(--kro-error-foreground);
+        }
+
+        &:disabled {
+            pointer-events: none;
+            opacity: 0.75;
+            color: var(--kro-foreground-disabled)
+        }
+
+        &:focus,
+        &:hover {
+            outline: none; 
+            filter: brightness(calc(1.15 - (var(--kro-theme-bool) / 3 )));
+        }
         &:active { transform: scale(0.95); }
     }
 

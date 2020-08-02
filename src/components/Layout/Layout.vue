@@ -80,7 +80,7 @@
         }
 
         &__drawer {
-            @include useLayer(drawer);
+            
 
             position: fixed;
             top: var(--drawerOffsetTop); left: 0; bottom: 0;
@@ -93,6 +93,7 @@
 
             &--hidden {
                 transform: translateX(-100%);
+                @include useLayer(drawer);
             }
 
             &--is-open {

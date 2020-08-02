@@ -1,176 +1,172 @@
 <template>
-    <div>
-        <slot :open="open" :close="close" :toggle="toggle" name="activator"></slot>
-        <Teleport to="#kro-portal">
-            <div ref="dialog" :tabindex="-1" :class="{'kro-dialog': true, 'kro-dialog--is-open': $attrs.modelValue}">
-                <div tabindex="-1" @click="() => { if (!persistent) { close(); } }" class="kro-dialog__scrim"></div>
-                <kro-surface raised class="kro-dialog__content" @transitionend="onTransitionEnded">
-                    <template v-if="shouldMountContent">
-                        <div v-if="!!$slots.title" class="kro-dialog__title">
-                            <slot :open="open" :close="close" :toggle="toggle" name="title"></slot>
-                        </div>
-                        <slot :open="open" :close="close" :toggle="toggle"></slot>
-                        <div v-if="!!$slots.controls" class="kro-dialog__controls">
-                            <slot :open="open" :close="close" :toggle="toggle" name="controls"></slot>
-                        </div>
-                    </template>
+    <slot 
+        name="activator" 
+        :close="close" 
+        :open="open" 
+        :toggle="toggle"></slot>
+
+    <teleport to="#kro-portal">
+        <transition appear name="kro-dialog-scrim">
+            <div 
+                v-if="$attrs.modelValue"
+                @click="() => { if (!persistent) { close(); } }"
+                class="kro-dialog__scrim fixed inset-0"></div>
+        </transition>
+        <div tabindex="-1" ref="dialog" class="kro-dialog__container p-4 fixed inset-0 grid items-center justify-center pointer-events-none">
+            <transition appear name="kro-dialog" @after-leave="onDialogLeaveAnimationComplete">
+                <kro-surface
+                    v-if="$attrs.modelValue"
+                    class="kro-dialog pointer-events-auto max-w-xl" 
+                    v-bind="$attrs" >
+
+                        <focus-trap v-model="$attrs.modelValue">
+                            <div class="grid grid-row gap-4">
+                                <div 
+                                    class="kro-dialog__header text-lg"
+                                    v-if="!!$slots.header">
+                                    <slot
+                                        name="header"
+                                        :open="open" 
+                                        :close="close" 
+                                        :toggle="toggle"/> 
+                                </div>
+
+                                <div class="kro-dialog__body">
+                                    <slot 
+                                        :open="open" 
+                                        :close="close" 
+                                        :toggle="toggle"/> 
+                                </div>
+
+                                <div 
+                                    class="kro-dialog__footer flex flex-row align-middle gap-4"
+                                    v-if="!!$slots.footer">
+                                    <slot 
+                                        name="footer"
+                                        :open="open" 
+                                        :close="close" 
+                                        :toggle="toggle"/> 
+                                </div>
+                            </div>
+                    </focus-trap>
                 </kro-surface>
-            </div>
-        </Teleport>
-    </div>
+            </transition>
+        </div>
+    </teleport>
 </template>
 
-<script lang='ts'>
-    import { ref, onMounted, nextTick, onUnmounted } from 'vue';
+<script lang="ts" setup="props, { emit, attrs }">
+    import { ref, onMounted, onUnmounted, nextTick } from 'vue';
     import { KroSurface } from '../Surface';
-    import { useWindow } from '../../composables/common';
+    import { FocusTrap } from '../FocusTrap';
+    import { useWindow } from '../../composables';
+
+    const { disableDocumentScroll, enableDocumentScroll } = useWindow();
+
+    export const dialog = ref<HTMLElement | null>(null);
+
+    /**
+     * Handle Controls for opening and closing the dialog.
+     */
+
+    const canCloseDialog = (e) => {
+        if (e?.type === 'keydown') {
+            if (e.key === 'Escape') {
+                if (!props.persistent) {
+                    return true;
+                }
+            }
+        } else {
+            return true;
+        }
+
+        return false;
+    };
+    
+
+    /**
+     * Handle Dialog Animation Events
+     */
+
+    export const onDialogLeaveAnimationComplete = () => {
+        emit('close-animation-end');
+    }
+
+    /**
+     * Dialog Controls
+     */
+    export const open = () => {
+        emit('update:modelValue', true);
+        disableDocumentScroll();
+        window.addEventListener('keydown', close);
+
+        if (dialog.value)
+            dialog.value.focus();
+            
+    };
+
+    export const close = (e) => {
+        if (canCloseDialog(e)) {
+            emit('update:modelValue', false);
+            window.removeEventListener('keydown', close);
+            enableDocumentScroll();
+        }
+
+    };
+
+    export const toggle = () => {
+        attrs.modelValue ? close(null) : open();
+    };
 
     export default {
         name: 'KroDialog',
-        components: { KroSurface },
-        props: {
-            persistent: Boolean,
-        },
-        setup(props, { emit, attrs }) {
-            const shouldMountContent = ref(false);
-            const dialog = ref<HTMLElement>();
+        inheritAttrs: false,
+        components: { KroSurface, FocusTrap }
+    };
 
-            const { disableDocumentScroll, enableDocumentScroll } = useWindow();
+    declare const props: {
+        persistent?: Boolean
+    };
 
-            const onTransitionEnded = (e) => {
-                if (e.propertyName === 'transform') {
-                    if (!attrs.modelValue) {
-                        shouldMountContent.value = false;
-                        emit('close');
-                    }
-                }
-            }
-
-            const canCloseDialog = (e) => {
-                if (e?.type === 'keydown') {
-                    if (e.key === 'Escape') {
-                        if (!props.persistent) {
-                            return true;
-                        }
-                    }
-                } else {
-                    return true;
-                }
-
-                return false;
-            }
-
-            const close = (e) => { 
-                if (canCloseDialog(e)) {
-                    emit('update:modelValue', false);
-                    window.removeEventListener('keydown', close);
-                    enableDocumentScroll();
-                }
-            };
-
-            const open = () => { 
-                emit('update:modelValue', true);
-                shouldMountContent.value = true;
-                window.addEventListener('keydown', close);
-
-                // Prevent window from scrolling.
-                disableDocumentScroll();
-
-                // Focus dialog
-                if (dialog.value) {
-                    dialog.value.focus();
-                }
-
-                emit('open');
-            };
-
-            const toggle = () => { attrs.modelValue ? close(null) : open(); };
-
-            onMounted(async () => {
-                if (attrs.modelValue)
-                    window.setTimeout(() => open(), 0);
-            });
-
-            onUnmounted(() => { 
-                window.removeEventListener('keydown', close); 
-                enableDocumentScroll();
-            });
-
-            return {
-                shouldMountContent,
-
-                open,
-                close,
-                toggle,
-
-                dialog,
-
-                onTransitionEnded,
-            }
-        }
-    }
+    declare const emit: any;
+    declare const attrs: any;
 </script>
 
 <style lang="scss">
 
     @import '../../styles/general/layers';
-
+    
     .kro-dialog {
-        @include useLayer(dialog);
 
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        display: grid;
-        place-content: center;
-        padding: 1rem;
-
-        &:not(.kro-dialog--is-open) {
-            pointer-events: none;
-
-            .kro-dialog__scrim { opacity: 0; }
-            .kro-dialog__content { opacity: 0; transform: scale(0); }
+        &__scrim {
+            @include useLayer(dialog);
+            background: rgba(0, 0, 0, .24);
         }
+
+        &__container {
+            @include useLayer(dialog);
+        }
+
     }
 
-    .kro-dialog__scrim {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, .25);
+    .kro-dialog-enter-active,
+    .kro-dialog-leave-active {
+        transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
 
+    .kro-dialog-enter-from,
+    .kro-dialog-leave-to {
+        transform: scale(0);
+    }
+
+    .kro-dialog-scrim-enter-active,
+    .kro-dialog-scrim-leave-active {
         transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
     }
 
-    .kro-dialog__content {
-        max-width: 600px;
-
-        display: grid;
-        gap: 1rem;
-        grid-auto-flow: row;
-
-        position: relative;
-        transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
-                    transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-
-    .kro-dialog__title {
-        font-size: 1.5rem;
-        font-weight: 500;
-        padding-top: 0.5rem;
-
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: min-content;
-        white-space: nowrap;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .kro-dialog__controls {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: min-content;
-        gap: 1rem;
-        justify-content: flex-end;
+    .kro-dialog-scrim-enter-from,
+    .kro-dialog-scrim-leave-to {
+        opacity: 0;
     }
 
 </style>

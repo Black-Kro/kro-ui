@@ -1,14 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './general/typography';
 @import './general/layout';
 @import './general/helpers';
 
+
 * {
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
-}
-
-:root {
-    // --kro-content-width: 820px;
 }
 
 html,

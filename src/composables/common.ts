@@ -25,12 +25,23 @@ export const useWindow = () => {
         document.documentElement.classList.remove('kro-helper--prevent-select');
     };
 
+    const disableAppFocus = () => {
+        document.querySelector('#app')?.setAttribute('tabindex', '-1');
+    };
+    
+    const enableAppFocus = () => {
+        document.querySelector('#app')?.removeAttribute('tabindex');
+    };
+
     return {
         disableDocumentScroll,
         enableDocumentScroll,
 
         disableDocumentSelect,
         enableDocumentSelect,
+
+        enableAppFocus,
+        disableAppFocus,
     }
 
 };

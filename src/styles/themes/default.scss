@@ -3,14 +3,16 @@
 $DefaultTheme: (
     light: (
         'background': white,
-        'background-secondary': #f7f7f7,
+        'background-secondary': white,
         
         'foreground': hsla(0, 0%, 0%, 0.72),
         'foreground-secondary': hsla(0, 0%, 0%, 0.56),
-        'foreground-disabled': hsla(0, 0%, 100%, 0.24),
+        'foreground-disabled': hsla(0, 0%, 0%, 0.56),
+
+        'theme-bool': 1,
         
         'divider': #eaeaea,
-        'shadow': 0 0 0 1px #eaeaea,
+        'shadow': 0 0 0 1px rgba(0, 0, 0, .12),
             
         'primary': hsl(167, 52%, 50%),
         'primary-lighten': hsl(167, 52%, 57%),
@@ -36,6 +38,8 @@ $DefaultTheme: (
         'foreground-secondary': hsla(0, 0%, 100%, 0.56),
         'foreground-disabled': hsla(0, 0%, 100%, 0.24),
         
+        'theme-bool': 0,
+
         'divider': rgba(255, 255, 255, .075),
         'shadow': rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,
             

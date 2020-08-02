@@ -60,6 +60,7 @@
         padding: 0 1rem;
         flex-direction: row;
         align-items: center;
+        color: inherit;
     }
 
     .kro-list-item__icon {
@@ -90,8 +91,9 @@
             color: var(--kro-foreground-secondary);
         }
 
-    .kro-liste-item__action {
+    .kro-list-item__action {
         padding: 0.75rem 0;
+        color: var(--kro-list-item-icon-color, var(--kro-foreground-secondary));
     }
 
 </style>
