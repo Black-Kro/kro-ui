@@ -1,3 +1,7 @@
-exports.default = {
-    purge: false,
+module.exports = {
+    purge: [
+        './src/**/*.html',
+        './src/**/*.vue',
+        './src/**/*.jsx',
+    ],
 }
