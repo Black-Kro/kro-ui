@@ -95,7 +95,7 @@
     }
 
     onUpdated(() => {
-        if (!openedThroughMethod) {
+        if (!openedThroughMethod && attrs.modelValue === true) {
             emit('update:modelValue', true);
             disableDocumentScroll();
             window.addEventListener('keydown', close);
