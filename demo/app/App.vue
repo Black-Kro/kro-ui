@@ -28,7 +28,7 @@
 
             <template #default>
 
-                <kro-button @click="testDialog">Open Dialog</kro-button>
+                <kro-button v-tooltip="'Hello World'" @click="testDialog">Open Dialog</kro-button>
                 
                 <kro-dialog v-model="isOpen">
                     <template #activator="{ open }">
@@ -83,13 +83,15 @@
         await createConfirmationDialog({
             title: 'Delete World?',
             message: 'Ipsum proident consequat excepteur nisi laboris nostrud. Id sunt voluptate sit tempor deserunt aute pariatur mollit nisi. Mollit officia et in elit non.',
+            style: 'centered',
+            icon: 'error',
+            iconColor: 'red',
             resolveButton: {
                 text: 'Delete World',
                 attributes: {
                     error: true,
                 }
             }
-            
         });
         console.log('done');
     };

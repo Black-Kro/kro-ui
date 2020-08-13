@@ -5,6 +5,7 @@ interface DialogConfiguration {
     message: string;
     style?: string;
     icon?: string;
+    iconColor?: string;
     persistent?: boolean;
     
     resolveButton?: {

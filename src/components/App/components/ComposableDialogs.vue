@@ -3,7 +3,12 @@
         <kro-dialog v-model="instance.isOpen" @close-animation-end="instance.destroy()" :class="{'kro-composable-dialog--centered': instance.style === 'centered'}">
             <template #header>
                 <div class="flex items-center" :class="{ 'flex-col': instance.style === 'centered' }">
-                    <kro-icon :class="{ 'kro-composable-dialog__icon--large': instance.style === 'centered'  }" v-if="instance.icon" class="mr-4" :icon="instance.icon"/>
+                    <kro-icon 
+                        :style="{ color: instance.iconColor ? instance.iconColor : '', }" 
+                        :class="{ 'kro-composable-dialog__icon--large': instance.style === 'centered'  }" 
+                        class="mr-4" 
+                        v-if="instance.icon" 
+                        :icon="instance.icon"/>
                     {{instance.title}}
                 </div>
             </template>

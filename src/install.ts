@@ -5,6 +5,7 @@ import { registerThemeWatcher } from './composables/useTheme';
 import defaultIcons from './assets/icons';
 
 import * as KroComponents from './components';
+import * as KroDirectives from './directives';
 
 interface KroUIOptions {
     icons: string[];
@@ -36,7 +37,7 @@ export const KroUIBaseConfigurationPlugin = (): Plugin => ({
     }
 });
 
-const KroUIPluginBase = (components: any): Plugin => ({
+const KroUIPluginBase = (components: any, directives): Plugin => ({
     install(app, config: KroUIOptions) {
 
         let icons = { ...defaultIcons };
@@ -56,6 +57,18 @@ const KroUIPluginBase = (components: any): Plugin => ({
             }
 
         /**
+         * Register Directives
+         */
+        if (directives)
+            for (const key in directives) {
+                const directive = directives[key];
+
+                if (directive)
+                    app.directive(key, directive);
+            }
+                
+
+        /**
          * Register Icons
          */
         app.provide(IconSymbol, icons);
@@ -68,4 +81,4 @@ const KroUIPluginBase = (components: any): Plugin => ({
     }
 });
 
-export const KroUIPlugin = KroUIPluginBase(KroComponents);
+export const KroUIPlugin = KroUIPluginBase(KroComponents, KroDirectives);
