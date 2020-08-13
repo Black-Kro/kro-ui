@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts" setup="props, { emit, attrs }">
-    import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+    import { ref, onMounted, onUnmounted, nextTick, onUpdated } from 'vue';
     import { KroSurface } from '../Surface';
     import { FocusTrap } from '../FocusTrap';
     import { useWindow } from '../../composables';
@@ -64,6 +64,8 @@
     const { disableDocumentScroll, enableDocumentScroll } = useWindow();
 
     export const dialog = ref<HTMLElement | null>(null);
+    
+    let openedThroughMethod = false;
 
     /**
      * Handle Controls for opening and closing the dialog.
@@ -92,10 +94,22 @@
         emit('close-animation-end');
     }
 
+    onUpdated(() => {
+        if (!openedThroughMethod) {
+            emit('update:modelValue', true);
+            disableDocumentScroll();
+            window.addEventListener('keydown', close);
+
+            if (dialog.value)
+                dialog.value.focus();
+        }
+    })
+
     /**
      * Dialog Controls
      */
     export const open = () => {
+        openedThroughMethod = true;
         emit('update:modelValue', true);
         disableDocumentScroll();
         window.addEventListener('keydown', close);
@@ -110,8 +124,8 @@
             emit('update:modelValue', false);
             window.removeEventListener('keydown', close);
             enableDocumentScroll();
+            openedThroughMethod = false;
         }
-
     };
 
     export const toggle = () => {
