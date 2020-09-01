@@ -31,7 +31,7 @@
             bottom: Boolean,
 
         },
-        setup(props) {
+        setup(props, { emit }) {
             const isOpen = ref(false);
 
             const container = ref<HTMLElement | null>(null);
@@ -87,10 +87,12 @@
 
                 }
             
+                emit('open');
                 isOpen.value = true;
             }
 
             const close = () => { 
+                emit('close');
                 isOpen.value = false; 
             }
 

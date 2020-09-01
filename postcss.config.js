@@ -1,20 +1,6 @@
-const autoprefixer = require('autoprefixer');
-const tailwindcss = require('tailwindcss');
-const purgecss = require('@fullhuman/postcss-purgecss');
-
 module.exports = {
     plugins: [
-        tailwindcss(),
-        process.env.NODE_ENV === "production" ? purgecss({
-            
-            content: [ `./src/**/*.scss`, `./public/**/*.html`, `./src/**/*.vue`, './docs/**/*.vue', './packages/**/*.vue', './packages/**/*.scss', './docs/**/*.scss', './docs/**/*.md' ],
-            defaultExtractor (content) {
-                const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '')
-                return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []
-            },
-            whitelist: ['html'],
-            whitelistPatterns: [ /-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/, /data-v-.*/, /kro/, /cropper/, /hljs/, /-webkit-scrollbar/ ],
-        }) : '',
-        autoprefixer(),
-    ]
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ],
 }

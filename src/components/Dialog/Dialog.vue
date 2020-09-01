@@ -12,7 +12,7 @@
                 @click="() => { if (!persistent) { close(); } }"
                 class="kro-dialog__scrim fixed inset-0"></div>
         </transition>
-        <div tabindex="-1" ref="dialog" class="kro-dialog__container p-4 fixed inset-0 grid grid-flow-col items-center justify-center pointer-events-none">
+        <div tabindex="-1" ref="dialog" class="kro-dialog__container p-4 fixed inset-0 grid grid-cols-1 items-center justify-center pointer-events-none">
             <transition appear name="kro-dialog" @after-leave="onDialogLeaveAnimationComplete">
                 <kro-surface
                     v-if="$attrs.modelValue"
