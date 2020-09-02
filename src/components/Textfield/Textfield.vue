@@ -40,6 +40,14 @@
                 @focus="focused = true"
                 @blur="focused = false"></textarea>
 
+            <div class="block pr-2">
+                <kro-spinner v-if="loading" class="kro-textfield__spinner" />
+                <kro-icon v-else-if="success" class="kro-textfield__success-icon" icon="success" />
+                <kro-icon v-else-if="error" class="kro-textfield__error-icon" icon="error" />
+            </div>
+        </div>
+        <div class="pl-4 text-xs font-medium">
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -62,7 +70,11 @@
             maxlength:  { type: Number },
             name:       { type: String },
             id:         { type: String },
-            autoResize: { type: Boolean, default: true }
+            autoResize: { type: Boolean, default: true },
+            loading:    { type: Boolean },
+            success:    { type: Boolean },
+            error:      { type: Boolean },
+            message:    { type: String }
         },
 
         setup(props) {
@@ -94,6 +106,10 @@
     
         &.kro-textfield--is-textarea {
             display: block;
+        }
+
+        &__spinner {
+            --kro-spinner-size: 1.5rem;
         }
     }
 
@@ -177,6 +193,14 @@
         color: var(--kro-foreground);
         background: transparent;
         outline: none;
+    }
+
+    .kro-textfield__success-icon {
+        color: var(--kro-success);
+    }
+
+    .kro-textfield__error-icon {
+        color: var(--kro-error);
     }
 
 </style>

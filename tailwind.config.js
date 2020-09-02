@@ -6,6 +6,7 @@ module.exports = {
             './src/**/*.vue',
             './src/**/*.js',
             './src/**/*.ts',
+            './demo/**/*.vue',
         ]
     },
     future: {

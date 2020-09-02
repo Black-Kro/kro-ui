@@ -1,11 +1,11 @@
 <template>
     <kro-surface class="the-surface">
 
-        some content
-        <kro-divider label="or" />
-        Some more conent
-
-        <kro-divider vertical label="or" />
+        <kro-textfield label="bruh moment" loading>
+            Loading
+        </kro-textfield>
+        <kro-textfield label="bruh moment" success message="Username Works">Success</kro-textfield>
+        <kro-textfield label="bruh moment" error message="Username taken">Ok</kro-textfield>
 
     </kro-surface>
 </template>
