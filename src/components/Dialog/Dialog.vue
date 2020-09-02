@@ -97,6 +97,7 @@
     onUpdated(() => {
         if (!openedThroughMethod && attrs.modelValue === true) {
             emit('update:modelValue', true);
+            emit('open');
             disableDocumentScroll();
             window.addEventListener('keydown', close);
 
@@ -111,6 +112,7 @@
     export const open = () => {
         openedThroughMethod = true;
         emit('update:modelValue', true);
+        emit('open');
         disableDocumentScroll();
         window.addEventListener('keydown', close);
 
@@ -122,6 +124,7 @@
     export const close = (e) => {
         if (canCloseDialog(e)) {
             emit('update:modelValue', false);
+            emit('close');
             window.removeEventListener('keydown', close);
             enableDocumentScroll();
             openedThroughMethod = false;
