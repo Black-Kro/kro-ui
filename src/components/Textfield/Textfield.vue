@@ -40,13 +40,13 @@
                 @focus="focused = true"
                 @blur="focused = false"></textarea>
 
-            <div class="block pr-2">
+            <div v-if="loading || success || error" class="block pr-2">
                 <kro-spinner v-if="loading" class="kro-textfield__spinner" />
                 <kro-icon v-else-if="success" class="kro-textfield__success-icon" icon="success" />
                 <kro-icon v-else-if="error" class="kro-textfield__error-icon" icon="error" />
             </div>
         </div>
-        <div class="pl-4 text-xs font-medium">
+        <div v-if="!!$slots.default" class="pl-4 text-xs font-medium">
             <slot></slot>
         </div>
     </div>
