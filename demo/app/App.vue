@@ -9,6 +9,17 @@
                     App
                     <span class="flex-1"></span>
                     <kro-button icon="invert" @click="toggleThemeMode()"/>
+                    <kro-menu>
+            <template #activator="{ open }">
+                <kro-button @click="open">Open Menu</kro-button>
+            </template>
+            <div>
+                <kro-list-item>This is a menu item</kro-list-item>
+                <kro-list-item>This is a menu item</kro-list-item>
+                <kro-list-item>This is a menu item</kro-list-item>
+                <kro-list-item>This is a menu item</kro-list-item>
+            </div>
+        </kro-menu>
                 </kro-toolbar>
             </template>
 
