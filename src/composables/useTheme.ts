@@ -1,71 +1,35 @@
-export const ThemeMode = {
-    LIGHT: 'light',
-    DARK: 'dark',
-    UNSET: 'unset'
+import { watch } from 'vue';
+import { useLocalStorage } from '@vueuse/core';
+
+const applyTheme = () => {
+    document.documentElement.className = `kro-theme__${theme.value}`;
 }
 
-const applyThemeMode = (mode) => {
-    document.documentElement.className = `kro-theme__default-${mode}`;
-}
+const theme = useLocalStorage('kro.theme', 'default-dark');
 
 export const useTheme = () => {
 
-    const setTheme = (theme: string) => {}
+    const setTheme = (schema: string) => {
+        theme.value = schema;
+    };
 
-    const getThemeMode = () : string => {
-        return localStorage.getItem('kro.theme.mode') || ThemeMode.UNSET;
-    }
-
-    /**
-     * Returns the theme mode.
-     */
-    const getActiveThemeMode = () : string => {
-        if (!localStorage.getItem('kro.theme.mode')) {
-            if ('matchMedia' in window) {
-                return window.matchMedia('(prefers-color-scheme: light)').matches ? ThemeMode.LIGHT : ThemeMode.DARK;
-            } else {
-                return ThemeMode.LIGHT;
-            }
-        }
-
-        return localStorage.getItem('kro.theme.mode') || ThemeMode.UNSET;
-    }
-
-    /**
-     * Toggles the theme
-     */
-    const toggleThemeMode = () => {
-        getActiveThemeMode() === ThemeMode.LIGHT ? setThemeMode(ThemeMode.DARK) : setThemeMode(ThemeMode.LIGHT);
-    }
-
-    /**
-     * Sets the classname and local storage variable for the theme.
-     */
-    const setThemeMode = (mode) => {
-        if (mode === ThemeMode.UNSET) {
-            localStorage.removeItem('kro.theme.mode');
-        } else {
-            localStorage.setItem('kro.theme.mode', mode);
-            applyThemeMode(mode);
-        }
+    const getTheme = () => {
+        return theme.value;
     }
 
     return {
         setTheme,
-        setThemeMode,
-        toggleThemeMode,
-        getActiveThemeMode,
-        getThemeMode,
+        getTheme,
+        theme,
     }
 
 };
 
 export const registerThemeWatcher = () => {
-    const { getActiveThemeMode } = useTheme();
-    
-    /**
-     * Apply the initial theme of the page.
-     */
-    applyThemeMode(getActiveThemeMode());
+    watch(() => theme.value, () => {
+        applyTheme();
+    }, {
+        immediate: true
+    });
 }
 

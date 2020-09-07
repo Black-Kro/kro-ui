@@ -8,18 +8,16 @@
                     <kro-button v-if="isDrawerHidden" @click="isDrawerOpen = !isDrawerOpen" icon="menu" />
                     App
                     <span class="flex-1"></span>
-                    <kro-button icon="invert" @click="toggleThemeMode()"/>
                     <kro-menu>
-            <template #activator="{ open }">
-                <kro-button @click="open">Open Menu</kro-button>
-            </template>
-            <div>
-                <kro-list-item>This is a menu item</kro-list-item>
-                <kro-list-item>This is a menu item</kro-list-item>
-                <kro-list-item>This is a menu item</kro-list-item>
-                <kro-list-item>This is a menu item</kro-list-item>
-            </div>
-        </kro-menu>
+                        <template #activator="{ open }">
+                            <kro-button icon="invert" @click="open"/>
+                        </template>
+                        <template #default>
+                            <kro-list-item @click="setTheme('light')">Light</kro-list-item>
+                            <kro-list-item @click="setTheme('dark')">Dark</kro-list-item>
+                            <kro-list-item>Black</kro-list-item>
+                        </template>
+                    </kro-menu>
                 </kro-toolbar>
             </template>
 
@@ -79,7 +77,12 @@
     import { ref } from 'vue';
     import { useTheme, useDialog } from '../../src';
 
-    export const { toggleThemeMode } = useTheme();
+    export const { theme } = useTheme();
+
+    export const setTheme = (schema) => {
+        console.log(schema);
+        theme.value = `default-${schema}`;
+    }
 
     export const isDrawerOpen = ref(false);
     export const isDrawerHidden = ref(false);
