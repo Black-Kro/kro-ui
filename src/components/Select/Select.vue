@@ -32,6 +32,7 @@
 
     export default {
         name: 'KroSelect',
+        emits: ['update:modeValue'],
         props: {
             label:      { type: String },
             required:   { type: Boolean },

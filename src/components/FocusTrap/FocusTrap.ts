@@ -10,6 +10,7 @@ import {
   import createFocusTrap, { FocusTrap as FocusTrapI } from 'focus-trap'
   
   const FocusTrap = defineComponent({
+    emits: ['update:active', 'activate', 'deactivate'],
     props: {
       active: {
         // TODO: could be options for activate

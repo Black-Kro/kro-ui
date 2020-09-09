@@ -26,6 +26,10 @@ export default {
         },
     ],
     external: ['vue'],
+    globals: {
+        window: 'window',
+        localStorage: 'localStorage'
+    },
     plugins: [
         clean(),
         typescript({

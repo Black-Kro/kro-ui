@@ -5,7 +5,7 @@ const applyTheme = () => {
     document.documentElement.className = `kro-theme__${theme.value}`;
 }
 
-const theme = useLocalStorage('kro.theme', 'default-dark');
+let theme;
 
 export const useTheme = () => {
 
@@ -26,6 +26,8 @@ export const useTheme = () => {
 };
 
 export const registerThemeWatcher = () => {
+    theme = useLocalStorage('kro.theme', 'default-dark');
+
     watch(() => theme.value, () => {
         applyTheme();
     }, {

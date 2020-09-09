@@ -18,6 +18,7 @@
 
     export default {
         name: 'KroNavigation',
+        emits: ['update:modelValue'],
         props: {
             temporary: {
                 type: Boolean,

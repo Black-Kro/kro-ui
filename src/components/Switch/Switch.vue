@@ -27,6 +27,7 @@
 
     export default {
         name: 'KroSwitch',
+        emits: ['update:modelValue'],
         props: {
             value: String,
         },

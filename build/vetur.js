@@ -1,3 +1,8 @@
+global.window = {};
+global.localStorage = {
+    getItem() {}
+};
+
 const fs = require('fs');
 const path = require('path');
 const { Metadata } = require('../dist/index.common');

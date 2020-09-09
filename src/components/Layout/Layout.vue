@@ -45,6 +45,7 @@
     export default {
         name: 'KroLayout',
         components: { KroToolbar },
+        emits: ['update:is-drawer-open', 'update:is-drawer-hidden'],
     };
 
     declare const props: {

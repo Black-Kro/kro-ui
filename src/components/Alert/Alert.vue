@@ -34,6 +34,7 @@
     export default {
         name: 'KroAlert',
         components: { KroIcon, KroButton },
+        emits: ['dismissed', 'show'],
         props: {
             type: {
                 type: String,

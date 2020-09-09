@@ -15,6 +15,7 @@
 
     export default {
         name: 'KroMenu',
+        emits: ['open', 'close'],
         props: { 
             offsetX: {
                 type: Boolean,

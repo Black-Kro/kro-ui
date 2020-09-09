@@ -138,6 +138,7 @@
     export default {
         name: 'KroDialog',
         inheritAttrs: false,
+        emits: ['update:modelValue', 'close', 'open', 'close-animation-end'],
         components: { KroSurface, FocusTrap }
     };
 

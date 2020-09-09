@@ -57,6 +57,7 @@
 
     export default {
         name: 'KroTextfield',
+        emits: ['update:modelValue'],
         props: {
             label:      { type: String },
             type:       { type: String, default: 'text' },

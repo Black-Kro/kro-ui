@@ -31,6 +31,7 @@
 
     export default {
         name: 'KroSlider',
+        emits: ['update:modelValue'],
         props: {
             disabled: {
                 type: Boolean,
