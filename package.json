@@ -22,6 +22,7 @@
   "scripts": {
     "serve": "vue-cli-service serve docs/index.ts",
     "build": "rm -rf ./dist && rollup -c && node ./build/vetur.js",
+    "docs": "vue-cli-service build docs/index.ts --dest docs/dist",
     "lint": "vue-cli-service lint",
     "prepublishOnly": "yarn build"
   },
