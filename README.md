@@ -29,31 +29,23 @@ yarn add @black-kro/ui
 ## Using Kro UI
 ```ts
 import { createApp } from 'vue';
-import App from 'your-app-component';
+import App from 'App.vue';
 
 // Import Kro UI Library
-import KroUI from '@black-kro/ui';
+import { KroUIPlugin } from '@black-kro/ui';
 
-// Base Styles for Kro UI
+// Base Styles and theme for Kro UI
 import '@black-kro/ui/dist/kro-ui.common.css';
-
-// If using the Nord theme, import it from the package.
-import '@black-kro/ui/dist/themes/nord.scss';
+import '@black-kro/ui/dist/themes/default.scss';
 
 // Create New Vue App
 createApp(App)
-    .use(KroUI, {
-
-        // Register Your Icons Here
+    .use(KroUIPlugin, {
         icons: {
-            // Icons use SVG path definitions
             'menu': 'M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z',
         }
-
     })
     .mount('#app');
-
-
 ```
 ## Contributing
 Feel free to contirbue to the project. You can request new features by creating an issue or you can contribute your own features by creating a pull request. Before working on a feature it is a good idea to open an issue to ensure the feature fits the project.
@@ -84,7 +76,6 @@ $ npm run docs
 - `build`: Contains build scripts for the project and docs.
 - `dist`: Contains built files for distribution.
 - `docs`: Contains docs for the UI library.
-- `packages`: Contains various libraries used in project. Main packages of interst will be `press` which handles the docs.
 - `src`: Contains the source code for the UI components.
     - `components`: Contains folders which each represent a different component.
     - `styles`: Contains the base styles needed for the Kro UI library.
