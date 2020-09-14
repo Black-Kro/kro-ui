@@ -7,10 +7,14 @@ module.exports = {
             './src/**/*.js',
             './src/**/*.ts',
             './demo/**/*.vue',
+            './docs/**/*.vue',
+            './docs/**/*.ts',
+            './docs/**/*.js',
         ]
     },
     future: {
         removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
     },
     experimental: {
         applyComplexClasses: true,

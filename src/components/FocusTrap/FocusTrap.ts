@@ -7,7 +7,7 @@ import {
     onUnmounted,
     PropType
   } from 'vue'
-  import createFocusTrap, { FocusTrap as FocusTrapI } from 'focus-trap'
+  import { createFocusTrap, FocusTrap as FocusTrapI } from 'focus-trap'
   
   const FocusTrap = defineComponent({
     emits: ['update:active', 'activate', 'deactivate'],

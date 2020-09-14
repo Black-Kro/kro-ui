@@ -1,6 +1,6 @@
 <template>
     <component 
-        :is="tag"
+        :is="tag || 'div'"
         v-show="!isHidden"
         :class="{
             'kro-alert': true, 
@@ -15,7 +15,7 @@
         
         
         <div class="kro-alert__icon">
-            <kro-icon v-if="iconName" :icon="iconName"></kro-icon>
+            <kro-icon v-if="icon || type" :icon="icon || type"></kro-icon>
         </div>
         <div>
             <slot></slot>
@@ -26,7 +26,7 @@
     </component>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup="props, { emit }">
     import { ref, computed } from 'vue';
     import { KroIcon } from '../Icon';
     import { KroButton } from '../Button';
@@ -35,73 +35,13 @@
         name: 'KroAlert',
         components: { KroIcon, KroButton },
         emits: ['dismissed', 'show'],
-        props: {
-            type: {
-                type: String,
-                default: 'info'
-            },
+    }
 
-            dismissible: {
-                type: Boolean,
-                default: false,
-            },
-
-            tag: {
-                type: String,
-                default: 'div',
-            },
-
-            icon: String,
-
-            outline: {
-                type: Boolean,
-                default: false,
-            }
-        },
-
-        setup(props, { emit }) {
-
-            const isHidden = ref(false);
-
-            const hide = () => {
-                emit('dismissed');
-                isHidden.value = true;
-            };
-
-            const show = () => {
-                emit('show');
-                isHidden.value = false;
-            }
-
-            const iconName = computed(() => {
-                const { type, icon } = props;
-
-                if (icon)
-                    return icon;
-
-                if (type === 'warning')
-                    return 'warning';
-
-                if (type === 'info')
-                    return 'info';
-
-                if (type === 'error')
-                    return 'error';
-
-                if (type === 'success')
-                    return 'success';
-
-                return null;
-            });
-
-            return {
-                iconName,
-                isHidden,
-
-                hide,
-                show,
-            }
-        }
+    declare const props: {
+        tag: string;
+        type: string;
+        icon: string;
+        outline: boolean;
     }
 </script>
 

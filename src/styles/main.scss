@@ -12,6 +12,9 @@
     box-sizing: border-box;
 }
 
+body {
+    padding-left: calc(100vw - 100%);
+}
 html,
 body {
     margin: 0;

@@ -1,41 +1,46 @@
 {
-    "compilerOptions": {
-      "target": "ES5",
-      "module": "esnext",
-      "strict": true,
-      "jsx": "preserve",
-      "importHelpers": true,
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "noImplicitAny": false,
-      "sourceMap": true,
-      "declaration": true,
-      "baseUrl": ".",
-      "declarationDir": "./dist",
-      "removeComments": true,
-      "paths": {
-        "@lib/*": ["src/*"],
-        "@lib": ["src"],
-        "@docs/*": ["docs/*"],
-        "@docs": ["docs"],
-        "@kro-press/*": ["packages/press/*"],
-        "@kro-press": ["packages/press"],
-      },
-      "lib": [
-        "esnext",
-        "dom",
-        "dom.iterable",
-        "scripthost"
-      ]
-    },
-    "include": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "src/**/*.vue",
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "removeComments": true,
+    "types": [
+      "webpack-env"
     ],
-    "exclude": [
-      "node_modules"
+    "paths": {
+      "@lib/*": ["src/*"],
+      "@lib": ["src"],
+      "@docs/*": ["docs/*"],
+      "@docs": ["docs"],
+      "@kro-press/*": ["packages/press/*"],
+      "@kro-press": ["packages/press"],
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
-  }
-  
+  },
+  "include": [
+    "press/**/*.ts",
+    "docs/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
