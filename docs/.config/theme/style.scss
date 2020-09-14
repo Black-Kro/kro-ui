@@ -1,0 +1,67 @@
+.text-primary {
+    color: var(--kro-foreground);
+}
+
+.text-secondary {
+    color: var(--kro-foreground-secondary);
+}
+
+.bg-secondary {
+    background: var(--kro-background-secondary);
+}
+
+.markdown>h1, .markdown>h2, h1.markdown, h2.markdown {
+    line-height: 1;
+    letter-spacing: -.025em;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: 500;
+    margin-bottom: .25rem;
+    margin-top: 1rem;
+}
+
+h2 {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+    color: var(--kro-foreground-secondary);
+}
+
+.markdown > * + * {
+    margin-top: 1.5rem;
+}
+
+pre {
+    color: white;
+    background: #272a33;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+code[class*=language-], pre[class*=language-] {
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*=language-] {
+    padding: 1rem;
+    overflow: auto;
+}

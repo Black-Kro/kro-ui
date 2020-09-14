@@ -92,7 +92,6 @@
 
     export const onDialogLeaveAnimationComplete = () => {
         emit('close-animation-end');
-        enableDocumentScroll();
     }
 
     onUpdated(() => {
@@ -127,6 +126,7 @@
             emit('update:modelValue', false);
             emit('close');
             window.removeEventListener('keydown', close);
+            enableDocumentScroll();
             openedThroughMethod = false;
         }
     };
@@ -134,10 +134,6 @@
     export const toggle = () => {
         attrs.modelValue ? close(null) : open();
     };
-
-    onUnmounted(() => {
-        enableDocumentScroll();
-    });
 
     export default {
         name: 'KroDialog',
@@ -159,7 +155,6 @@
     @import '../../styles/general/layers';
     
     .kro-dialog {
-        padding-left: calc(100vw - 100%);
 
         &__scrim {
             @include useLayer(dialog);

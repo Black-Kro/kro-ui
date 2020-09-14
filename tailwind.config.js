@@ -1,6 +1,6 @@
 module.exports = {
     purge: {
-        enabled: true,
+        enabled: false,
         content: [
             './index.html',
             './src/**/*.vue',
@@ -8,13 +8,11 @@ module.exports = {
             './src/**/*.ts',
             './demo/**/*.vue',
             './docs/**/*.vue',
-            './docs/**/*.ts',
-            './docs/**/*.js',
+            './docs/.config/**/*.vue',
         ]
     },
     future: {
         removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true,
     },
     experimental: {
         applyComplexClasses: true,
