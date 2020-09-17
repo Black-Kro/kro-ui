@@ -27,7 +27,7 @@ devDependencies:
   tslib: 2.0.1
   typescript: 3.9.7
   vite: 1.0.0-rc.4
-  vite-plugin-purge-icons: 0.4.1
+  vite-plugin-purge-icons: 0.4.0
   vite-plugin-voie: 0.4.0_fbff184c98fb564ca1f302d5574ea7d6
   voie-pages: 0.4.0_vue@3.0.0-rc.12
 lockfileVersion: 5.1
@@ -3931,14 +3931,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
-  /vite-plugin-purge-icons/0.4.1:
+  /vite-plugin-purge-icons/0.4.0:
     dependencies:
       '@purge-icons/core': 0.4.1
-      '@purge-icons/generated': 0.4.1
+      '@purge-icons/generated': 0.4.0
       rollup-plugin-purge-icons: 0.4.1
     dev: true
     resolution:
-      integrity: sha512-Qra5Jzd3PI0E/vD5iehmn39dH/U9sghQ7mDJykzn6VbSJl9wL4HXSacvmyxQtswWue8bsyTo/C9d+Bkq9pEK5g==
+      integrity: sha512-s+uKUQqazflup4WuqBo9xsRRi7bXxowuURItzO5Gesr5gfpdzoKxKU+cVxZcwckUAUmQg4Jak2/30vOtmbaJJg==
   /vite-plugin-voie/0.4.0_fbff184c98fb564ca1f302d5574ea7d6:
     dependencies:
       fast-glob: 3.2.4
@@ -4117,7 +4117,7 @@ specifiers:
   tslib: ^2.0.0
   typescript: ^3.9.7
   vite: 1.0.0-rc.4
-  vite-plugin-purge-icons: ^0.4.1
+  vite-plugin-purge-icons: 0.4.0
   vite-plugin-voie: ^0.4.0
   voie-pages: ^0.4.0
   vue: 3.0.0-rc.12
