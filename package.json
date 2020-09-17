@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "vite",
     "build": "rm -rf ./dist && rollup -c && node ./build/vetur.js",
-    "docs": "vitepress dev docs",
+    "docs": "NODE_ENV=production vite build",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
