@@ -7,7 +7,7 @@
                 <kro-toolbar class="the-app-toolbar prevent-scrollbar-shift">
                     <div class="container mx-auto flex flex-row items-center px-4">
                         <div class="grid grid-flow-col gap-2">
-                            <kro-button class="lg:hidden" @click="isDrawerOpen = true" icon="menu" />
+                            <kro-button class="lg:hidden" @click="isDrawerOpen = true" icon="mdi:menu" />
                             <kro-logo class="h-10"></kro-logo>
                         </div>
                         <span class="flex-1"></span>

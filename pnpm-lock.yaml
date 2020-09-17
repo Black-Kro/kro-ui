@@ -6,7 +6,6 @@ dependencies:
   vue-router: 4.0.0-beta.6_vue@3.0.0-rc.12
 devDependencies:
   '@black-kro/vite-plugin-markdown': 0.0.1_vite@1.0.0-rc.4
-  '@fullhuman/postcss-purgecss': 2.3.0
   '@iconify/json': 1.1.226
   '@purge-icons/generated': 0.4.1
   '@rollup/plugin-buble': 0.21.3
@@ -30,6 +29,7 @@ devDependencies:
   vite: 1.0.0-rc.4
   vite-plugin-purge-icons: 0.4.1
   vite-plugin-voie: 0.4.0_fbff184c98fb564ca1f302d5574ea7d6
+  voie-pages: 0.4.0_vue@3.0.0-rc.12
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.10.4:
@@ -4087,7 +4087,6 @@ packages:
       integrity: sha512-faQrqNMzcPCHGVC2aaOINk13K+aaBDUPjGWl0teOXywElLjyVAB6Oe2jj62jHYtwsU49jXhScYbvPENK+6zAvQ==
 specifiers:
   '@black-kro/vite-plugin-markdown': ^0.0.1
-  '@fullhuman/postcss-purgecss': ^2.3.0
   '@iconify/iconify': 2.0.0-rc.1
   '@iconify/json': ^1.1.224
   '@purge-icons/generated': ^0.4.1
@@ -4114,5 +4113,6 @@ specifiers:
   vite: 1.0.0-rc.4
   vite-plugin-purge-icons: ^0.4.1
   vite-plugin-voie: ^0.4.0
+  voie-pages: ^0.4.0
   vue: 3.0.0-rc.12
   vue-router: 4.0.0-beta.6
