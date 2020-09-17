@@ -16,6 +16,5 @@ export { Metadata as MenuMetadata } from './Menu';
 export { Metadata as AvatarMetadata } from './Avatar';
 export { Metadata as ProgressBarMetadata } from './ProgressBar';
 export { Metadata as LayoutMetadata } from './Layout';
-export { Metadata as NavigationMetadata } from './Navigation';
 export { Metadata as SelectMetadata } from './Select';
 export { Metadata as SliderMetadata } from './Slider';

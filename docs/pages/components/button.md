@@ -11,7 +11,12 @@ or it can be converted into a vue `router-link` by setting the `to` prop on the 
 
 ## Usage
 
-<usage name="BasicButton" title="Basic Buttons" />
+<!-- <usage name="BasicButton" title="Basic Buttons" /> -->
+
+<kro-button>Hello World</kro-button>
+<kro-button primary>Hello World</kro-button>
+<kro-button loading>Hello World</kro-button>
+<kro-button icon="mdi:menu">Hello World</kro-button>
 
 ## API
 

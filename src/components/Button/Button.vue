@@ -112,36 +112,22 @@
     .kro-button {
         --kro-spinner-size: 1.25rem;
         --kro-spinner-thickness: 0.25rem; 
-        
-        position: relative;
-        display: inline-grid;
-        place-items: center;
-        place-content: center;
-        padding: 0.5rem 0.875rem;
 
-        text-decoration: none;
-        text-transform: uppercase;
+        @apply relative inline-grid items-center content-center;
+        @apply px-4 py-2 rounded-sm appearance-none text-sm;
+        @apply uppercase no-underline cursor-pointer h-10 m-0;
+        @apply font-medium align-top;
 
-        cursor: pointer;
-
-        height: 2.5rem;
+        font-family: inherit;
 
         background: var(--kro-button-background, var(--kro-background-secondary));
         color: var(--kro-button-foreground, var(--kro-foreground));
 
-        margin: 0;
-
-        font-family: inherit;
-        font-size: 0.875rem;
-        font-weight: 500;
-        vertical-align: top;
-
         border: 1px solid var(--kro-button-border-color, transparent);
-        border-radius: 0.25rem;
+        
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
                     filter 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-        -webkit-appearance: none;
 
         &--warning {
             --kro-button-background: var(--kro-warning);
@@ -159,14 +145,13 @@
         }
 
         &:disabled {
-            pointer-events: none;
-            opacity: 0.75;
+            @apply opacity-75 pointer-events-none;
             color: var(--kro-foreground-disabled)
         }
 
         &:focus,
         &:hover {
-            outline: none; 
+            @apply outline-none;
             filter: brightness(calc(1.15 - (var(--kro-theme-bool) / 3 )));
         }
         &:active { transform: scale(0.95); }
@@ -175,8 +160,6 @@
         .kro-button--primary {
             --kro-button-background: var(--kro-button-background-primary, var(--kro-primary));
             --kro-button-foreground: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
-            // background: var(--kro-button-background-primary, var(--kro-primary));
-            // color: var(--kro-button-foreground-primary, var(--kro-primary-foreground));
         }
 
         .kro-button--raised {
@@ -184,7 +167,7 @@
         }
 
         .kro-button--outline {
-            background: transparent;
+            @apply bg-transparent;
             border: 1px solid var(--kro-button-foreground, var(--kro-foreground));
         }
 
@@ -194,14 +177,12 @@
         }
 
         .kro-button--is-icon-button {
-            background: transparent;
+            @apply bg-transparent;
 
             width: var(--kro-icon-button-size, 2.5rem);
             height: var(--kro-icon-button-size, 2.5rem);
 
-
-            border: none;
-            padding: 0;
+            @apply border-none p-0;
 
             &.kro-button--outline {
                 --kro-button-background: transparent;
@@ -214,36 +195,25 @@
         }
 
         .kro-button__squircle {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 100%; height: 100%;
+            @apply absolute inset-0 w-full h-full;
             color: var(--kro-button-background, var(--kro-background-secondary));
         }
 
         .kro-button__icon {
-            position: relative;
+            @apply relative;
         }
 
 
     .kro-button__spinner {
-        position: absolute;
-        top: 0; left: 0; 
-        width: 100%; height: 100%;
-
-        display: grid;
-        place-items: center;
+        @apply absolute top-0 left-0 w-full h-full;
+        @apply grid items-center justify-center;
     }
 
     .kro-button__content {
         --icon-size: 1.25rem;
 
-        display: grid;
-        grid-auto-flow: column;
-        gap: 0.5rem;
-        place-items: center;
-        justify-content: center;
-
+        @apply grid grid-flow-col gap-2 items-center justify-center;
     }
-        .kro-button__content--is-loading { opacity: 0; }
+        .kro-button__content--is-loading { @apply opacity-0; }
 
 </style>

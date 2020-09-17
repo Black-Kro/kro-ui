@@ -20,9 +20,9 @@
     "url": "https://github.com/Black-Kro/kro-ui/issues"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "rm -rf ./dist && rollup -c && node ./build/vetur.js",
-    "docs": "NODE_ENV=production vite build",
+    "docs": "cross-env NODE_ENV=production vite build",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
     "@rollup/plugin-buble": "^0.21.3",
     "@vue/compiler-sfc": "3.0.0-rc.12",
     "autoprefixer": "^9.8.5",
+    "cross-env": "^7.0.2",
     "highlight.js": "^10.2.0",
     "markdown-it": "^11.0.1",
     "markdown-it-anchor": "^5.3.0",

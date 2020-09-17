@@ -31,6 +31,10 @@
         } 
     }
 
+    export default {
+        name: 'KroIcon'
+    }
+
     watch(() => props.icon, update, { flush: 'post' });
     onMounted(update);
 </script>
@@ -40,11 +44,8 @@
         width: var(--kro-icon-size, 1.5rem);
         height: var(--kro-icon-size, 1.5rem);
 
-        fill: currentColor;
+        @apply fill-current;
 
-        svg {
-            width: 100%;
-            height: 100%;
-        }
+        svg { @apply w-full h-full; }
     }
 </style>

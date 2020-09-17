@@ -13,7 +13,6 @@
             'kro-alert--is-dismissible': dismissible,
         }">
         
-        
         <div class="kro-alert__icon">
             <kro-icon v-if="iconName" :icon="iconName"></kro-icon>
         </div>
@@ -111,15 +110,9 @@
         --kro-button-background: rgba(0, 0, 0, .12);
         --kro-button-foreground: var(--kro-alert-foreground);
 
-        border-radius: 0.25rem;
-        padding: 0 1rem;
-        height: 4rem;
-
-        display: grid;
-        grid-auto-flow: column;
-        grid-gap: 1rem;
-        align-items: center;
-        align-content: center;
+        @apply grid grid-flow-col gap-4 items-center content-center;
+        @apply rounded-md p-4;
+        @apply font-medium text-sm;
 
         background: var(--kro-alert-background, var(--kro-background-secondary));
         color: var(--kro-alert-foreground, var(--kro-foreground));
@@ -160,12 +153,11 @@
         }
 
     .kro-alert__icon {
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
+        @apply grid items-center justify-center;
+        @apply w-10 h-10;
+        @apply rounded-full;
+
         background: rgba(0, 0, 0, .12);
-        width: 2.75rem;
-        height: 2.75rem;
     }
 
 </style>

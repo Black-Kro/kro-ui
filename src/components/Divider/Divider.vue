@@ -18,23 +18,15 @@
 <style lang="scss">
 
     .kro-divider {
-        border: none;
+        @apply flex flex-row items-center justify-center;
+        @apply font-bold text-sm;
+        @apply border-none w-full my-4 mx-0;
+
         background: var(--kro-divider-color, var(--kro-divider));
-
-        height: 1px;
-        width: 100%;
-        margin: 1rem 0;
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
         color: var(--kro-foreground-secondary);
-        font-weight: 700;
-        font-size: 0.875rem;
+        height: 1px;
 
         span {
-            padding: 0 0.5rem;
             background: var(--kro-divider-label-background, var(--kro-background));
             margin-top: -0.125rem;
             user-select: none;
@@ -46,13 +38,8 @@
             height: 100%;
             margin: 0 1rem;
 
-            &.kro-divider--inset {
-                margin: 0.25rem 0;
-            }
+            &.kro-divider--inset { @apply my-1; }
         }
 
-        .kro-divider--inset {
-            margin: 0 0.25rem;
-        }
-
+        .kro-divider--inset { @apply mx-1; }
 </style>

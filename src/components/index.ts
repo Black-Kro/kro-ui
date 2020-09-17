@@ -16,6 +16,5 @@ export { KroMenu } from './Menu';
 export { KroAvatar } from './Avatar';
 export { KroProgressBar } from './ProgressBar';
 export { KroLayout } from './Layout';
-export { KroNavigation } from './Navigation';
 export { KroSelect } from './Select';
 export { KroSlider } from './Slider';

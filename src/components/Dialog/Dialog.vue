@@ -12,11 +12,11 @@
                 @click="() => { if (!persistent) { close(); } }"
                 class="kro-dialog__scrim fixed inset-0"></div>
         </transition>
-        <div tabindex="-1" ref="dialog" class="kro-dialog__container p-4 fixed inset-0 grid grid-cols-1 items-center justify-center pointer-events-none">
+        <div tabindex="-1" ref="dialog" class="kro-dialog__container">
             <transition appear name="kro-dialog" @after-leave="onDialogLeaveAnimationComplete">
                 <kro-surface
                     v-if="$attrs.modelValue"
-                    class="kro-dialog pointer-events-auto max-w-xl" 
+                    class="kro-dialog" 
                     v-bind="$attrs" >
 
                         <focus-trap v-model="$attrs.modelValue">
@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div 
-                                    class="kro-dialog__footer flex flex-row align-middle gap-4"
+                                    class="kro-dialog__footer"
                                     v-if="!!$slots.footer">
                                     <slot 
                                         name="footer"
@@ -155,14 +155,23 @@
     @import '../../styles/general/layers';
     
     .kro-dialog {
+        @apply pointer-events-auto max-w-xl;
 
         &__scrim {
             @include useLayer(dialog);
             background: rgba(0, 0, 0, .24);
         }
 
+        &__footer {
+            @apply flex flex-row align-middle gap-4;
+        }
+
         &__container {
             @include useLayer(dialog);
+
+            @apply fixed inset-0;
+            @apply grid grid-cols-1 items-center justify-center;
+            @apply p-4 pointer-events-none;
 
             place-items: center;
             place-content: center;

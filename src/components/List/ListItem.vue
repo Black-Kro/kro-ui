@@ -32,13 +32,6 @@
                 type: String,
                 default: 'div'
             },
-            href: {
-                type: String,
-                default: undefined
-            },
-            to: {
-                type: [String, Object],
-            }
         },
         setup(props) {
             const { tag, componentProps } = useRoutable(props);
@@ -56,43 +49,34 @@
 <style lang="scss">
 
     .kro-list-item {
-        display: flex;
-        padding: 0 1rem;
-        flex-direction: row;
-        align-items: center;
+        @apply flex flex-row items-center px-4;
         color: inherit;
     }
 
     .kro-list-item__icon {
-        display: grid;
-        align-items: center;
+        @apply grid items-center mr-4;
         width: var(--kro-list-item-icon-size);
-        margin-right: 1rem;
         color: var(--kro-list-item-icon-color, var(--kro-foreground-secondary));
     }
 
     .kro-list-item__content {
-        display: grid;
-        grid-auto-flow: row;
+        @apply grid grid-flow-row content-center py-3 flex-1;
+        @apply leading-normal;
         grid-auto-rows: min-content;
-        align-content: center;
-        line-height: 1.5;
-        padding: 0.75rem 0;
-        flex: 1;
         color: var(--kro-list-item-foreground, var(--kro-foreground))
     }
 
         .kro-list-item__title {
-            font-size: 1em;
+            @apply text-base;
         }
 
         .kro-list-item__subtitle {
-            font-size: 0.75em;
+            @apply text-xs;
             color: var(--kro-foreground-secondary);
         }
 
     .kro-list-item__action {
-        padding: 0.75rem 0;
+        @apply py-3;
         color: var(--kro-list-item-icon-color, var(--kro-foreground-secondary));
     }
 

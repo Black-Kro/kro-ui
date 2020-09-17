@@ -132,10 +132,7 @@
 
         .kro-menu__scrim {
             @include useLayer(menu);
-            
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
+            @apply fixed inset-0 pointer-events-none;
 
             &.kro-menu__scrim--is-open {
                 pointer-events: all;
@@ -145,8 +142,8 @@
         .kro-menu__content {
             @include useLayer(menu);
 
-            display: block;
-            pointer-events: none;
+            @apply block pointer-events-none absolute rounded-md overflow-hidden;
+            @apply overflow-hidden opacity-0;
 
             min-width: var(--kro-menu-min-with, 200px);
             max-width: var(--kro-menu-max-width, 300px);
@@ -155,12 +152,6 @@
             background: var(--kro-background-secondary);
             box-shadow: var(--kro-shadow);
 
-            position: absolute;
-
-            border-radius: 0.25rem;
-            overflow: hidden;
-
-            opacity: 0;
             transform: scale(0);
             transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1), opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
             transform-origin: var(--kro-menu-transform-origin-x) var(--kro-menu-transform-origin-y);

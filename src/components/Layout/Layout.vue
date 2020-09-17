@@ -69,52 +69,44 @@
     @import '../../styles/general/layers';
 
     .kro-layout {
-
         min-height: calc(100vh - var(--toolbarHeight));
 
         &__toolbar {
             @include useLayer(toolbar);
 
-            position: fixed;
-            top: 0; left: var(--toolbarLeftOffset); right: 0;
+            @apply fixed top-0 right-0;
+            left: var(--toolbarLeftOffset);
             height: var(--toolbarHeight);
         }
 
         &__drawer {
-            
-            overflow: auto;
-            position: fixed;
-            top: var(--drawerOffsetTop); left: 0; bottom: 0;
+            @apply overflow-auto fixed left-0 bottom-0 scrolling-touch;
+
+            top: var(--drawerOffsetTop);
             background: var(--kro-background);
             border-right: 1px solid var(--kro-divider);
             width: var(--drawerWidth);
 
             transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
-
             &--hidden {
-                transform: translateX(-100%);
                 @include useLayer(drawer);
+                @apply transform -translate-x-full;
             }
 
             &--is-open {
-                transform: translateX(0);                
+                @apply transform translate-x-0;          
             }
         }
 
         &__scrim {
             @include useLayer(drawer);
-
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, .24);
-            opacity: 0;
-            pointer-events: none;
+            @apply fixed inset-0 opacity-0 bg-black bg-opacity-25 pointer-events-none;
 
             transition: opacity 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 
             &--is-open {
-                opacity: 1;
+                @apply opacity-100;
                 pointer-events: all;
             }
         }
@@ -126,15 +118,6 @@
 
             display: grid;
             grid-template-rows: 1fr auto;
-        }
-
-        &__content {
-            // min-height: inherit;
-            
-        }
-
-        &__footer {
-
         }
 
     }
