@@ -2,7 +2,8 @@ import { UserConfig } from 'vite';
 import MarkdownIt from 'markdown-it';
 import MdAnchor from 'markdown-it-anchor';
 import path from 'path';
-import voie from 'vite-plugin-voie';
+import Voie from 'vite-plugin-voie';
+import PurgeIcons from 'vite-plugin-purge-icons';
 import hljs from 'highlight.js';
 
 const mdPlugin = require('@black-kro/vite-plugin-markdown');
@@ -37,10 +38,11 @@ const config: UserConfig = {
             mode: 'vue',
             markdownIt: md,
         }),
-        voie({
+        Voie({
             pagesDir: 'docs/pages',
             extensions: ['md', 'vue']
         }),
+        PurgeIcons(),
     ]
 }
 

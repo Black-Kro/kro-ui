@@ -1,10 +1,10 @@
 <template>
-    <router-link class="flex flex-row items-center text-current bg-secondary rounded-md p-4">
+    <router-link class="flex flex-row items-center bg-secondary rounded-md p-4">
         <div class="flex-1 flex flex-col">
             <span class="text-primary">{{title}}</span>
-            <span class="text-sm">{{subtitle}}</span>
+            <span class="text-sm text-secondary">{{subtitle}}</span>
         </div>
-        <kro-icon icon="arrow-right" />
+        <kro-icon class="text-secondary" icon="mdi:arrow-right" />
     </router-link>
 </template>
 

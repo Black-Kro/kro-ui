@@ -1,39 +1,38 @@
 <template>
-    <svg class="kro-icon" viewBox="0 0 24 24">
-        <path :d="iconDefinition"></path>
-    </svg>
+    <div ref="el" :class="$attrs.class" class="kro-icon"></div>
 </template>
 
-<script lang="ts">
-    import { computed } from 'vue';
-    import { useIcons } from '../../composables/icons';
+<script lang="ts" setup="props">
+    import { watch, ref, onMounted, nextTick } from 'vue';
+    import Iconify from '@purge-icons/generated';
 
-    export default {
-        name: 'KroIcon',
-        props: {
-            icon: {
-                type: String,
-                required: true,
-            },
-        },
-        setup(props) {
-
-            const { icons } = useIcons();
-
-            const iconDefinition = computed(() => {
-                if (icons && icons[props.icon])
-                    return icons[props.icon];
-
-                console.error(`Kro UI Error: No Icon Named "${props.icon}". Did you register your icon in the kro ui plugin?`)
-
-                return 'M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z';
-            });
-
-            return {
-                iconDefinition
-            }
-        }
+    declare const props: {
+        icon: string;
     }
+
+    export const el = ref<HTMLElement | null>(null);
+
+    const update = async() => {
+        if (el.value) {
+            await nextTick();
+
+            const svg = Iconify.renderSVG(props.icon, {});
+
+            if (svg) {
+                el.value.textContent = '';
+                el.value.appendChild(svg);
+            } else {
+                const span = document.createElement('span');
+                span.className = 'iconify';
+                span.dataset.icon = props.icon;
+                el.value.textContent = '';
+                el.value.appendChild(span);
+            }
+        } 
+    }
+
+    watch(() => props.icon, update, { flush: 'post' });
+    onMounted(update);
 </script>
 
 <style lang="scss">
@@ -42,5 +41,10 @@
         height: var(--kro-icon-size, 1.5rem);
 
         fill: currentColor;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 </style>

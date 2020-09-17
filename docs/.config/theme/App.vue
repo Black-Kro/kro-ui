@@ -12,8 +12,8 @@
                         </div>
                         <span class="flex-1"></span>
                         <div class="grid grid-flow-col gap-2">
-                            <kro-button icon="invert" @click="toggleTheme" />
-                            <kro-button icon="github" href="https://github.com/Black-Kro/kro-ui" />
+                            <kro-button icon="mdi:invert-colors" @click="toggleTheme" />
+                            <kro-button icon="mdi:github" href="https://github.com/Black-Kro/kro-ui" />
                         </div>
                     </div>
                 </kro-toolbar>

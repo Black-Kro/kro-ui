@@ -80,16 +80,16 @@
                     return icon;
 
                 if (type === 'warning')
-                    return 'warning';
+                    return 'mdi:alert-circle';
 
                 if (type === 'info')
-                    return 'info';
+                    return 'mdi:alert-circle';
 
                 if (type === 'error')
-                    return 'error';
+                    return 'mdi:alert';
 
                 if (type === 'success')
-                    return 'success';
+                    return 'mdi:check';
 
                 return null;
             });

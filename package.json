@@ -26,6 +26,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
+    "@iconify/iconify": "2.0.0-rc.1",
     "@vueuse/core": "^4.0.0-beta.2",
     "focus-trap": "^5.1.0",
     "vue": "3.0.0-rc.12",
@@ -34,6 +35,8 @@
   "devDependencies": {
     "@black-kro/vite-plugin-markdown": "^0.0.1",
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@iconify/json": "^1.1.224",
+    "@purge-icons/generated": "^0.4.1",
     "@rollup/plugin-buble": "^0.21.3",
     "@vue/compiler-sfc": "3.0.0-rc.12",
     "autoprefixer": "^9.8.5",
@@ -52,6 +55,7 @@
     "tslib": "^2.0.0",
     "typescript": "^3.9.7",
     "vite": "1.0.0-rc.4",
+    "vite-plugin-purge-icons": "^0.4.1",
     "vite-plugin-voie": "^0.4.0"
   },
   "vetur": {
