@@ -9,62 +9,41 @@ Next you will need to create a new vue project and install the [vue-next CLI plu
 ```bash
 npm install --save @black-kro/ui
 ```
+or using yarn 
+```bash
+yarn add @black-kro/ui
+```
 
 ## Usage
 You can use the Kro UI library by either installing everything or using the à la carte method. The first method will give you access
 to every component from the start and they will be globally accessible. The à la carte method will require to pick and choose which components you
 want to use and you will have to option to register them globally or on an individual component basis.
 
-### Everything
-
 ```js
 import { createApp } from 'vue';
+import { KroUIPlugin } from '@black-kro/ui';
 
 import App from './App.vue';
-
-// Import Kro UI Library
-import KroUI from '@black-kro/ui';
-
-// Base Styles for Kro UI
-import '@black-kro/ui/dist/kro-ui.common.css';
-
-// If using the Nord theme, import it from the package.
-import '@black-kro/ui/dist/themes/nord.scss';
+import '@black-kro/ui/dist/index.css';
+import '@black-kro/ui/dist/themes/default.scss';
 
 createApp(App)
-    .use(KroUI, {
-        icons: {
-            // Register Icons here
-        }
+    .use(KroUIPlugin, {
+        icons: {}
     })
     .mount('#app');
 ```
 
-### À la carte
-```js
-import { createApp } from 'vue';
+## Icons
+Kro UI uses Iconify along with [Purge Icons](https://github.com/antfu/purge-icons/tree/main/packages/vite-plugin-purge-icons) to give you access to a library of over 5,000 open-source icons. [Purge Icons](https://github.com/antfu/purge-icons/tree/main/packages/vite-plugin-purge-icons) will remove all of your unused
+icons so you only ship the icons you need.
 
-import App from './App.vue';
+```bash
+yarn add @iconify/iconify
+```
 
-// Import Kro UI Library
-import { ConfigureKroUIPluign, KroApp } from '@black-kro/ui';
-
-// Base Styles for Kro UI
-import '@black-kro/ui/dist/kro-ui.common.css';
-
-// If using the Nord theme, import it from the package.
-import '@black-kro/ui/dist/themes/nord.scss';
-
-createApp(App)
-    .use(KroUI, {
-        icons: {
-            // Register Icons here
-        },
-        components: {
-            KroApp
-        }
-    })
-    .mount('#app');
+```bash
+yarn add -D vite-purge-icons
 ```
 
 <up-next title="Theming" to="/theme" subtitle="Customize the theme of KroUI"></up-next>

@@ -1,5 +1,5 @@
 <template>
-    <nav class="the-sidebar pt-4">
+    <nav class="the-sidebar relative pt-4">
         <div class="the-sidebar-container flex flex-col sticky">
             <div v-for="(items, category) in menu" class="flex flex-col mb-4">
                 <span class="text-xs mb-2 tracking-wide font-medium text-secondary uppercase px-2">{{category}}</span>

@@ -82,7 +82,7 @@
 
         &__drawer {
             
-
+            overflow: auto;
             position: fixed;
             top: var(--drawerOffsetTop); left: 0; bottom: 0;
             background: var(--kro-background);
