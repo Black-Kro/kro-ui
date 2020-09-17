@@ -35,7 +35,7 @@
   "devDependencies": {
     "@black-kro/vite-plugin-markdown": "^0.0.1",
     "@iconify/json": "^1.1.224",
-    "@purge-icons/generated": "^0.4.1",
+    "@purge-icons/generated": "0.4.0",
     "@rollup/plugin-buble": "^0.21.3",
     "@vue/compiler-sfc": "3.0.0-rc.12",
     "autoprefixer": "^9.8.5",

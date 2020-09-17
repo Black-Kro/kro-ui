@@ -7,7 +7,7 @@ dependencies:
 devDependencies:
   '@black-kro/vite-plugin-markdown': 0.0.1_vite@1.0.0-rc.4
   '@iconify/json': 1.1.226
-  '@purge-icons/generated': 0.4.1
+  '@purge-icons/generated': 0.4.0
   '@rollup/plugin-buble': 0.21.3
   '@vue/compiler-sfc': 3.0.0-rc.12_vue@3.0.0-rc.12
   autoprefixer: 9.8.6
@@ -121,6 +121,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-lwXsu26evS88xKQVYAWGcM7C+zuy4oxqVxIaUymSpNud+N+oli0yoRDhYMcaaXZcj1NrfOtQls9WahytFo/74A==
+  /@purge-icons/generated/0.4.0:
+    dependencies:
+      '@iconify/iconify': 2.0.0-rc.1
+    dev: true
+    resolution:
+      integrity: sha512-NJHTc+5Va6zVhN8Xmdg9+tvOD/zFKyh4mbtdNzIlQHf6hhGhkV71DTqN0JM1ajJxvf86SByXkoI4C2SJ+3IZjQ==
   /@purge-icons/generated/0.4.1:
     dependencies:
       '@iconify/iconify': 2.0.0-rc.1
@@ -4089,7 +4095,7 @@ specifiers:
   '@black-kro/vite-plugin-markdown': ^0.0.1
   '@iconify/iconify': 2.0.0-rc.1
   '@iconify/json': ^1.1.224
-  '@purge-icons/generated': ^0.4.1
+  '@purge-icons/generated': 0.4.0
   '@rollup/plugin-buble': ^0.21.3
   '@vue/compiler-sfc': 3.0.0-rc.12
   '@vueuse/core': ^4.0.0-beta.2
