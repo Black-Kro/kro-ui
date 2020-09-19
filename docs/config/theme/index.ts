@@ -1,6 +1,7 @@
 import './style.scss'
 import '/~/styles/main.scss'
 import '/~/styles/themes/default.scss'
+import '@iconify/iconify'
 import '@purge-icons/generated'
 
 import { createApp } from 'vue'
