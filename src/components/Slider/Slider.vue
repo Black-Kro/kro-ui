@@ -1,143 +1,139 @@
 <template>
-        <div 
-            class="kro-slider"
-            @touchstart.passive="enableEditing" 
-            @mousedown="onSliderClick"
-            :style="{'--kro-slider-progress': `${($attrs.modelValue - min) / (max - min) * 100 - 100}%`}">
-
-            <div class="kro-slider__track-container">
-                <div ref="sliderRef" class="kro-slider__track">
-                    <div v-if="ticks" :style="{ '--kro-slider-tick-spacing': `${trackSpacing}px` }" class="kro-slider__markers"></div>
-                    <div class="kro-slider__progress"></div>
-                </div>
-                <div class="kro-slider__knob-container">
-                    <button ref="knobRef" class="kro-slider__knob" tabindex="0" @keydown="incrementValue" ></button>
-                    <div class="kro-slider__preview-value" :class="{ 'kro-slider__preview-value--is-active': isEditing }">
-                        <div class="kro-slider__thumb"></div>
-                        <span v-if="!$slots.thumb">{{$attrs.modelValue}}</span>
-                        <span v-else><slot :value="$attrs.modelValue" name="thumb"/></span>
-                    </div>
-                </div>
-            </div>
+  <div
+    class="kro-slider"
+    :style="{'--kro-slider-progress': `${($attrs.modelValue - min) / (max - min) * 100 - 100}%`}"
+    @touchstart.passive="enableEditing"
+    @mousedown="onSliderClick"
+  >
+    <div class="kro-slider__track-container">
+      <div ref="sliderRef" class="kro-slider__track">
+        <div v-if="ticks" :style="{ '--kro-slider-tick-spacing': `${trackSpacing}px` }" class="kro-slider__markers" />
+        <div class="kro-slider__progress" />
+      </div>
+      <div class="kro-slider__knob-container">
+        <button ref="knobRef" class="kro-slider__knob" tabindex="0" @keydown="incrementValue" />
+        <div class="kro-slider__preview-value" :class="{ 'kro-slider__preview-value--is-active': isEditing }">
+          <div class="kro-slider__thumb" />
+          <span v-if="!$slots.thumb">{{ $attrs.modelValue }}</span>
+          <span v-else><slot :value="$attrs.modelValue" name="thumb" /></span>
         </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-    import { computed, ref, watchEffect, onMounted } from 'vue';
-    import { useMouseInElement, useEventListener } from '@vueuse/core';
-    import { useWindow, useElement } from '../../composables';
+import { computed, ref, watchEffect, onMounted } from 'vue'
+import { useWindow, useElement } from '../../composables'
 
-    import { useSliderContainer } from './composables/slider';
+import { useSliderContainer } from './composables/slider'
 
-    export default {
-        name: 'KroSlider',
-        emits: ['update:modelValue'],
-        props: {
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            step: {
-                type: Number,
-                default: 1,
-            },
-            ticks: {
-                default: false,
-                type: [Boolean, String],
-            },
-            min: {
-                type: Number,
-                default: 0
-            },
-            max: {
-                type: Number,
-                default: 100,
-            }
-        },
-        setup(props, { emit, attrs }) {
-
-            /**
+export default {
+  name: 'KroSlider',
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    step: {
+      type: Number,
+      default: 1,
+    },
+    ticks: {
+      default: false,
+      type: [Boolean, String],
+    },
+    min: {
+      type: Number,
+      default: 0,
+    },
+    max: {
+      type: Number,
+      default: 100,
+    },
+  },
+  emits: ['update:modelValue'],
+  setup(props, { emit, attrs }) {
+    /**
              * General Setup
              */
-            const sliderRef = ref();
-            const knobRef = ref();
-            const { targetPercentage } = useSliderContainer(sliderRef);
-            const { elementWidth } = useElement(sliderRef);
+    const sliderRef = ref()
+    const knobRef = ref()
+    const { targetPercentage } = useSliderContainer(sliderRef)
+    const { elementWidth } = useElement(sliderRef)
 
-
-            /**
+    /**
              * Handle Editing State of element.
              */
-            const isEditing = ref(false);
-            const { disableDocumentSelect, enableDocumentSelect } = useWindow();
+    const isEditing = ref(false)
+    const { disableDocumentSelect, enableDocumentSelect } = useWindow()
 
-            const disableEditing = () => {
-                isEditing.value = false;
-                enableDocumentSelect();
-                removeEventListener('touchcancel', disableEditing);
-                removeEventListener('touchend', disableEditing);
-                removeEventListener('mouseup', disableEditing);
-            }
+    const disableEditing = () => {
+      isEditing.value = false
+      enableDocumentSelect()
+      removeEventListener('touchcancel', disableEditing)
+      removeEventListener('touchend', disableEditing)
+      removeEventListener('mouseup', disableEditing)
+    }
 
-            const enableEditing = () => {
-                isEditing.value = true;
-                disableDocumentSelect();
-                addEventListener('touchcancel', disableEditing);
-                addEventListener('touchend', disableEditing);
-                addEventListener('mouseup', disableEditing);                
-            }
+    const enableEditing = () => {
+      isEditing.value = true
+      disableDocumentSelect()
+      addEventListener('touchcancel', disableEditing)
+      addEventListener('touchend', disableEditing)
+      addEventListener('mouseup', disableEditing)
+    }
 
-            const trackSpacing = computed(() => elementWidth.value / Math.ceil((props.max - props.min) / (props.step)));
+    const trackSpacing = computed(() => elementWidth.value / Math.ceil((props.max - props.min) / (props.step)))
 
-            const subtractValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) - props.step))); };
-            const addValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) + props.step))); };
+    const subtractValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) - props.step))) }
+    const addValue = () => { emit('update:modelValue', Math.max(props.min, Math.min(props.max, (attrs.modelValue as number) + props.step))) }
 
-            const incrementValue = (e: KeyboardEvent) => {
-                if (e.key === 'ArrowLeft')
-                    subtractValue();
+    const incrementValue = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft')
+        subtractValue()
 
-                if (e.key === 'ArrowRight')
-                    addValue();
-            }
+      if (e.key === 'ArrowRight')
+        addValue()
+    }
 
-            const onSliderClick = () => {
-                setTimeout(() => {
-                    knobRef.value.focus();
-                }, 0);
-                enableEditing();
-            }
+    const onSliderClick = () => {
+      setTimeout(() => {
+        knobRef.value.focus()
+      }, 0)
+      enableEditing()
+    }
 
-            onMounted(() => {
-                /**
+    onMounted(() => {
+      /**
                  * Ensure the inital value is within the constratins of the slider
                  */
-                emit('update:modelValue', Math.max(props.min, Math.min(((attrs.modelValue as number) || 0), props.max)))
-            });
+      emit('update:modelValue', Math.max(props.min, Math.min(((attrs.modelValue as number) || 0), props.max)))
+    })
 
-            watchEffect(() => {
-                if (isEditing.value) {
-                    emit('update:modelValue', Math.max(props.min, Math.min(Math.round(targetPercentage.value * (props.max - props.min) / props.step) * props.step + props.min, props.max)));
-                }
-            });
+    watchEffect(() => {
+      if (isEditing.value)
+        emit('update:modelValue', Math.max(props.min, Math.min(Math.round(targetPercentage.value * (props.max - props.min) / props.step) * props.step + props.min, props.max)))
+    })
 
-            return {
-                knobRef,
-                sliderRef,
-                targetPercentage,
+    return {
+      knobRef,
+      sliderRef,
+      targetPercentage,
 
-                enableEditing,
+      enableEditing,
 
-                trackSpacing,
-                isEditing,
+      trackSpacing,
+      isEditing,
 
-                onSliderClick,
+      onSliderClick,
 
-                incrementValue,
-                subtractValue,
-                addValue,
-            }
-        }
+      incrementValue,
+      subtractValue,
+      addValue,
     }
+  },
+}
 </script>
 
 <style lang="scss">
@@ -188,7 +184,7 @@
 
                 background-repeat: no-repeat;
                 background-image: repeating-linear-gradient(90deg, var(--kro-slider-tick-color, rgba(0, 0, 0, .24)), var(--kro-slider-tick-color, rgba(0, 0, 0, .24)) 3px, transparent 3px, transparent var(--kro-slider-tick-spacing, 100px));
-                
+
             }
 
         .kro-slider__knob-container {

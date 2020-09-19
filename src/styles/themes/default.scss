@@ -1,63 +1,52 @@
-@import '_theme';
+@import "_theme";
 
 $DefaultTheme: (
-    light: (
-        'background': white,
-        'background-secondary': #F7FAFC,
-        
-        'foreground': hsla(0, 0%, 0%, 0.72),
-        'foreground-secondary': hsla(0, 0%, 0%, 0.56),
-        'foreground-disabled': hsla(0, 0%, 0%, 0.56),
-
-        'theme-bool': 1,
-        
-        'divider': #eaeaea,
-        'shadow': 0 0 0 1px rgba(0, 0, 0, .12),
-            
-        'primary': hsl(167, 52%, 50%),
-        'primary-lighten': hsl(167, 52%, 57%),
-        'primary-darken': hsl(167, 52%, 27%),
-        'primary-foreground': hsl(167, 52%, 15%),
-        'accent': #8fbcbb,
-
-        'error': hsl(0, 100%, 66%),
-        'error-foreground': hsl(218, 27%, 94%),
-        'info': hsl(207, 90%, 54%),
-        'info-foreground': hsl(218, 27%, 94%),
-        'success': hsl(122, 39%, 49%),
-        'success-foreground': hsl(218, 27%, 94%),
-        'warning': hsl(45, 100%, 51%),
-        'warning-foreground': hsl(45, 100%, 11%),
-    ),
-        
-    dark: (
-        'background': hsl(220, 16%, 22%),
-        'background-secondary': #3B4252,
-        
-        'foreground': hsl(218, 27%, 94%),
-        'foreground-secondary': hsla(0, 0%, 100%, 0.56),
-        'foreground-disabled': hsla(0, 0%, 100%, 0.24),
-        
-        'theme-bool': 0,
-
-        'divider': rgba(255, 255, 255, .075),
-        'shadow': rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,
-            
-        'primary': hsl(167, 52%, 50%),
-        'primary-lighten': hsl(167, 52%, 57%),
-        'primary-darken': hsl(167, 52%, 27%),
-        'primary-foreground': hsl(167, 52%, 15%),
-        'accent': #8fbcbb,
-
-        'error': hsl(0, 100%, 66%),
-        'error-foreground': hsl(218, 27%, 94%),
-        'info': hsl(207, 90%, 54%),
-        'info-foreground': hsl(218, 27%, 94%),
-        'success': hsl(122, 39%, 49%),
-        'success-foreground': hsl(218, 27%, 94%),
-        'warning': hsl(45, 100%, 51%),
-        'warning-foreground': hsl(45, 100%, 11%),
-    ),
+  light: (
+    "background": white,
+    "background-secondary": #f7fafc,
+    "foreground": hsla(0, 0%, 0%, 0.72),
+    "foreground-secondary": hsla(0, 0%, 0%, 0.56),
+    "foreground-disabled": hsla(0, 0%, 0%, 0.56),
+    "theme-bool": 1,
+    "divider": #eaeaea,
+    "shadow": 0 0 0 1px rgba(0, 0, 0, 0.12),
+    "primary": hsl(167, 52%, 50%),
+    "primary-lighten": hsl(167, 52%, 57%),
+    "primary-darken": hsl(167, 52%, 27%),
+    "primary-foreground": hsl(167, 52%, 15%),
+    "accent": #8fbcbb,
+    "error": hsl(0, 100%, 66%),
+    "error-foreground": hsl(218, 27%, 94%),
+    "info": hsl(207, 90%, 54%),
+    "info-foreground": hsl(218, 27%, 94%),
+    "success": hsl(122, 39%, 49%),
+    "success-foreground": hsl(218, 27%, 94%),
+    "warning": hsl(45, 100%, 51%),
+    "warning-foreground": hsl(45, 100%, 11%),
+  ),
+  dark: (
+    "background": hsl(220, 16%, 22%),
+    "background-secondary": #3b4252,
+    "foreground": hsl(218, 27%, 94%),
+    "foreground-secondary": hsla(0, 0%, 100%, 0.56),
+    "foreground-disabled": hsla(0, 0%, 100%, 0.24),
+    "theme-bool": 0,
+    "divider": rgba(255, 255, 255, 0.075),
+    "shadow": rgba(0, 0, 0, 0.12) 0px 3px 6px 0px,
+    "primary": hsl(167, 52%, 50%),
+    "primary-lighten": hsl(167, 52%, 57%),
+    "primary-darken": hsl(167, 52%, 27%),
+    "primary-foreground": hsl(167, 52%, 15%),
+    "accent": #8fbcbb,
+    "error": hsl(0, 100%, 66%),
+    "error-foreground": hsl(218, 27%, 94%),
+    "info": hsl(207, 90%, 54%),
+    "info-foreground": hsl(218, 27%, 94%),
+    "success": hsl(122, 39%, 49%),
+    "success-foreground": hsl(218, 27%, 94%),
+    "warning": hsl(45, 100%, 51%),
+    "warning-foreground": hsl(45, 100%, 11%),
+  ),
 );
 
 @include CompileTheme($DefaultTheme, "default");

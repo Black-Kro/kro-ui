@@ -1,1 +1,1 @@
-export { ToolitpDirective as Tooltip } from './Tooltip';
+export { ToolitpDirective as Tooltip } from './Tooltip'

@@ -1,67 +1,69 @@
 <template>
-    <div class="kro-select">
-        <div :class="{'kro-select__container': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">
-            <label :class="{'kro-select__label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }" :for="id">{{label}}</label>
-            <div class="kro-select__hidden-label">{{label}}</div>
-            <span :class="{'kro-select__pseudo-label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">{{label}}</span>
-            <select
-                class="kro-select__input"
-                ref="select"
-                :disabled="disabled"
-                :required="required"
-                :readonly="readonly"
-                :autofocus="autofocus"
-                :name="name"
-                :id="id"
-                :value="$attrs.modelValue"
+  <div class="kro-select">
+    <div :class="{'kro-select__container': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">
+      <label :class="{'kro-select__label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }" :for="id">{{ label }}</label>
+      <div class="kro-select__hidden-label">
+        {{ label }}
+      </div>
+      <span :class="{'kro-select__pseudo-label': true, 'kro-select--focused': focused, 'kro-select--has-text': $attrs.modelValue }">{{ label }}</span>
+      <select
+        :id="id"
+        ref="select"
+        class="kro-select__input"
+        :disabled="disabled"
+        :required="required"
+        :readonly="readonly"
+        :autofocus="autofocus"
+        :name="name"
+        :value="$attrs.modelValue"
 
-                @change="$emit('update:modelValue', $event.target.value)"
-                @focus="focused = true"
-                @blur="focused = false">
-                <option selected hidden></option>
-                <slot></slot>
-
-            </select>
-            <kro-icon class="kro-select__icon" icon="chevron-down"/>
-        </div>
+        @change="$emit('update:modelValue', $event.target.value)"
+        @focus="focused = true"
+        @blur="focused = false"
+      >
+        <option selected hidden />
+        <slot />
+      </select>
+      <kro-icon class="kro-select__icon" icon="mdi:chevron-down" />
     </div>
+  </div>
 </template>
 
 <script lang="ts">
-    import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
-    export default {
-        name: 'KroSelect',
-        emits: ['update:modeValue'],
-        props: {
-            label:      { type: String },
-            required:   { type: Boolean },
-            disabled:   { type: Boolean },
-            readonly:   { type: Boolean },
-            autofocus:  { type: Boolean },
-            name:       { type: String },
-            id:         { type: String },
-        },
+export default {
+  name: 'KroSelect',
+  props: {
+    label: { type: String },
+    required: { type: Boolean },
+    disabled: { type: Boolean },
+    readonly: { type: Boolean },
+    autofocus: { type: Boolean },
+    name: { type: String },
+    id: { type: String },
+  },
+  emits: ['update:modelValue'],
 
-        setup(props, { attrs }) {
-            const focused = ref(false);
-            const select = ref<HTMLSelectElement | null>(null);
+  setup(_, { attrs }) {
+    const focused = ref(false)
+    const select = ref<HTMLSelectElement | null>(null)
 
-            onMounted(() => {
-                if (select.value) {
-                    Array.from(select.value.options).forEach(option => {
-                        if (option.value === attrs.modelValue)
-                            option.selected = true;
-                    })
-                }
-            });
+    onMounted(() => {
+      if (select.value) {
+        Array.from(select.value.options).forEach((option) => {
+          if (option.value === attrs.modelValue)
+            option.selected = true
+        })
+      }
+    })
 
-            return {
-                focused,
-                select,
-            }
-        }
+    return {
+      focused,
+      select,
     }
+  },
+}
 </script>
 
 <style lang="scss">
@@ -163,7 +165,7 @@
         outline: none;
         cursor: pointer;
         appearance: none;
-        
+
         padding-right: 6.5rem;
 
         option {

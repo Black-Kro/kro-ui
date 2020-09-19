@@ -1,121 +1,129 @@
 <template>
-    <div ref="container" class="kro-menu">
-        <div @click="close" class="kro-menu__scrim" :class="{ 'kro-menu__scrim--is-open': isOpen }"></div>
-        <slot :open="open" name="activator"></slot>
-        
-        <div ref="menu" class="kro-menu__content" :class="{ ...classes, 'kro-menu__content--is-open': isOpen }">
-            <slot></slot>
-        </div>
+  <div ref="container" class="kro-menu">
+    <div class="kro-menu__scrim" :class="{ 'kro-menu__scrim--is-open': isOpen }" @click="close" />
+    <slot :open="open" name="activator" />
+
+    <div ref="menu" class="kro-menu__content" :class="{ ...classes, 'kro-menu__content--is-open': isOpen }">
+      <slot />
     </div>
+  </div>
 </template>
 
 <script lang="ts">
-    import { ref, reactive, toRefs } from 'vue';
-    import { usePositioning } from './composables/menu';
+import { ref, reactive } from 'vue'
+import { usePositioning } from './composables/menu'
 
-    export default {
-        name: 'KroMenu',
-        emits: ['open', 'close'],
-        props: { 
-            offsetX: {
-                type: Boolean,
-                default: false,
-            },
-            offsetY: {
-                type: Boolean,
-                default: false,
-            },
+export default {
+  name: 'KroMenu',
+  props: {
+    offsetX: {
+      type: Boolean,
+      default: false,
+    },
+    offsetY: {
+      type: Boolean,
+      default: false,
+    },
 
-            left: Boolean,
-            right: Boolean,
-            top: Boolean,
-            bottom: Boolean,
+    left: Boolean,
+    right: Boolean,
+    top: Boolean,
+    bottom: Boolean,
 
-        },
-        setup(props, { emit }) {
-            const isOpen = ref(false);
+  },
+  emits: ['open', 'close'],
+  setup(props, { emit }) {
+    const isOpen = ref(false)
 
-            const container = ref<HTMLElement | null>(null);
-            const menu = ref<HTMLElement | null>(null);
+    const container = ref<HTMLElement | null>(null)
+    const menu = ref<HTMLElement | null>(null)
 
-            const classes = reactive({
-                'kro-menu__content--y-bottom': false,
-                'kro-menu__content--y-bottom-offset': false,
+    const classes = reactive<{ [name: string]: boolean }>({
+      'kro-menu__content--y-bottom': false,
+      'kro-menu__content--y-bottom-offset': false,
 
-                'kro-menu__content--y-top': false,
-                'kro-menu__content--y-top-offset': false,
+      'kro-menu__content--y-top': false,
+      'kro-menu__content--y-top-offset': false,
 
-                'kro-menu__content--x-left': false,
-                'kro-menu__content--x-left-offset': false,
+      'kro-menu__content--x-left': false,
+      'kro-menu__content--x-left-offset': false,
 
-                'kro-menu__content--x-right': false,
-                'kro-menu__content--x-right-offset': false,
-            });
+      'kro-menu__content--x-right': false,
+      'kro-menu__content--x-right-offset': false,
+    })
 
-            const open = () => {
-                // Reset all classes on object.
-                Object.keys(classes).forEach(key => classes[key] = false);
+    const open = () => {
+      // Reset all classes on object.
+      Object.keys(classes).forEach((key: string) => classes[key] = false)
 
-                const { offsetX, offsetY, left, right, top, bottom } = props;
-                const { canFit } = usePositioning(container, menu, { offsetX, offsetY })
-            
-                /**
+      const { offsetX, offsetY, left, right, top, bottom } = props
+      const { canFit } = usePositioning(container, menu, { offsetX, offsetY })
+
+      /**
                  * Handle the vertical positioning of the menu.
                  */
-                if (canFit.top && top) {
-                    classes[`kro-menu__content--y-top${offsetY ? '-offset' : ''}`] = true;
-                } else if (canFit.bottom && bottom) {
-                    classes[`kro-menu__content--y-bottom${offsetY ? '-offset' : ''}`] = true;
-                } else if (canFit.bottom) {
-                    classes[`kro-menu__content--y-bottom${offsetY ? '-offset' : ''}`] = true;
-                } else if (canFit.top) {
-                    classes[`kro-menu__content--y-top${offsetY ? '-offset' : ''}`] = true;
-                } else {
-                }
+      if (canFit.top && top) {
+        classes[`kro-menu__content--y-top${offsetY ? '-offset' : ''}`] = true
+      }
+      else if (canFit.bottom && bottom) {
+        classes[`kro-menu__content--y-bottom${offsetY ? '-offset' : ''}`] = true
+      }
+      else if (canFit.bottom) {
+        classes[`kro-menu__content--y-bottom${offsetY ? '-offset' : ''}`] = true
+      }
+      else if (canFit.top) {
+        classes[`kro-menu__content--y-top${offsetY ? '-offset' : ''}`] = true
+      }
+      else {
+      }
 
-                /**
+      /**
                  * Handle the horizontal positioning of the menu.
                  */
-                if (canFit.left && left) {
-                    classes[`kro-menu__content--x-left${offsetX ? '-offset' : ''}`] = true;
-                } else if (canFit.right && right) {
-                    classes[`kro-menu__content--x-right${offsetX ? '-offset' : ''}`] = true;
-                } else if (canFit.right) {
-                    classes[`kro-menu__content--x-right${offsetX ? '-offset' : ''}`] = true;
-                } else if (canFit.left) {
-                    classes[`kro-menu__content--x-left${offsetX ? '-offset' : ''}`] = true;
-                } else {
+      if (canFit.left && left) {
+        classes[`kro-menu__content--x-left${offsetX ? '-offset' : ''}`] = true
+      }
+      else if (canFit.right && right) {
+        classes[`kro-menu__content--x-right${offsetX ? '-offset' : ''}`] = true
+      }
+      else if (canFit.right) {
+        classes[`kro-menu__content--x-right${offsetX ? '-offset' : ''}`] = true
+      }
+      else if (canFit.left) {
+        classes[`kro-menu__content--x-left${offsetX ? '-offset' : ''}`] = true
+      }
+      else {
 
-                }
-            
-                emit('open');
-                isOpen.value = true;
-            }
+      }
 
-            const close = () => { 
-                emit('close');
-                isOpen.value = false; 
-            }
-
-            const toggle = () => { isOpen.value ? close() : open(); }
-
-            return {
-                // Props
-                isOpen,
-
-                classes,
-
-                // Events
-                open,
-                close,
-                toggle,
-
-                // Refs
-                menu,
-                container,
-            }
-        }
+      emit('open')
+      isOpen.value = true
     }
+
+    const close = () => {
+      emit('close')
+      isOpen.value = false
+    }
+
+    const toggle = () => { isOpen.value ? close() : open() }
+
+    return {
+      // Props
+      isOpen,
+
+      classes,
+
+      // Events
+      open,
+      close,
+      toggle,
+
+      // Refs
+      menu,
+      container,
+    }
+  },
+}
 </script>
 
 <style lang="scss">

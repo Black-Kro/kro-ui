@@ -1,10 +1,4 @@
-$layers: (
-  'content',
-  'menu',
-  'toolbar',
-  'drawer',
-  'dialog'
-);
+$layers: ("content", "menu", "toolbar", "drawer", "dialog");
 
 @mixin useLayer($name) {
   @for $i from 1 through length($layers) {

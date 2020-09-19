@@ -1,117 +1,118 @@
 <template>
-    <component 
-        :class="{ 
-            'kro-button': true,
-            'kro-button--primary': primary,
-            'kro-button--outline': outline,
-            'kro-button--raised': raised,
-            'kro-button--warning': warning,
-            'kro-button--success': success,
-            'kro-button--error': error,
-            'kro-button--is-icon-button': icon && !$slots.default,
-        }" 
-        :is="componentType"
-         
-        rel="noreferrer"
-        
-        v-bind="componentProps"
-        :target="href ? target : ''">
-        <kro-squircle class="kro-button__squircle" v-if="icon && !$slots.default" />
-        <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
-            
-            <kro-icon class="kro-button__icon" v-if="icon" :icon="icon" />
+  <component
+    :is="componentType"
+    :class="{
+      'kro-button': true,
+      'kro-button--primary': primary,
+      'kro-button--outline': outline,
+      'kro-button--raised': raised,
+      'kro-button--warning': warning,
+      'kro-button--success': success,
+      'kro-button--error': error,
+      'kro-button--is-icon-button': icon && !$slots.default,
+    }"
 
+    rel="noreferrer"
 
-            <slot></slot>
-            <kro-icon 
-                v-if="href && !(icon && !$slots.default) && !hideExternalIcon"
-                icon="external" />
-        </span>
-        <span class="kro-button__spinner" v-show="loading"><kro-spinner /></span>
-    </component>
+    v-bind="componentProps"
+    :target="href ? target : ''"
+  >
+    <kro-squircle v-if="icon && !$slots.default" class="kro-button__squircle" />
+    <span :class="{'kro-button__content': true, 'kro-button__content--is-loading': loading }">
+
+      <kro-icon v-if="icon" class="kro-button__icon" :icon="icon" />
+
+      <slot />
+      <kro-icon
+        v-if="href && !(icon && !$slots.default) && !hideExternalIcon"
+        icon="external"
+      />
+    </span>
+    <span v-show="loading" class="kro-button__spinner"><kro-spinner /></span>
+  </component>
 </template>
 
 <script lang="ts">
-    import { computed } from 'vue';
+import { computed } from 'vue'
 
-    import { useRoutable, RoutableProps } from '../../composables/useRoutable';
+import { useRoutable, RoutableProps } from '../../composables/useRoutable'
 
-    import KroIcon from '../Icon/Icon.vue';
-    import KroSpinner from '../Spinner/Spinner.vue';
-    import KroSquircle from '../Squircle/Squircle.vue';
+import KroIcon from '../Icon/Icon.vue'
+import KroSpinner from '../Spinner/Spinner.vue'
+import KroSquircle from '../Squircle/Squircle.vue'
 
-    export default {
-        name: 'KroButton',
-        components: { KroIcon, KroSpinner, KroSquircle },
-        props: {
-            ...RoutableProps,
+export default {
+  name: 'KroButton',
+  components: { KroIcon, KroSpinner, KroSquircle },
+  props: {
+    ...RoutableProps,
 
-            /**
+    /**
              * Adds loading icon to the button
              */
-            loading: {
-                type: Boolean,
-                default: false
-            },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
 
-            /**
+    /**
              * The button type
              */
-            type: String,
-            
-            /**
+    type: String,
+
+    /**
              * Apply primary button styling to the button
              */
-            primary: Boolean,
+    primary: Boolean,
 
-            /**
+    /**
              * Gives the button an outline style
              */
-            outline: Boolean,
+    outline: Boolean,
 
-            /**
+    /**
              * Apply a shadow to the button
              */
-            raised: Boolean,
+    raised: Boolean,
 
-            /**
+    /**
              * Adds an icon to the button
              */
-            icon: String,
+    icon: String,
 
-            /**
+    /**
              * Hide the external icon
              */
-            hideExternalIcon: Boolean,
+    hideExternalIcon: Boolean,
 
-            warning: Boolean,
+    warning: Boolean,
 
-            error: Boolean,
+    error: Boolean,
 
-            success: Boolean,
+    success: Boolean,
 
-        },
+  },
 
-        setup(props) {
-            const { tag, componentProps } = useRoutable(props);
+  setup(props) {
+    const { tag, componentProps } = useRoutable(props)
 
-            const componentType = computed(() => {
-                return tag ? tag : 'button'
-            });
+    const componentType = computed(() => {
+      return tag || 'button'
+    })
 
-            return {
-                componentProps,
-                componentType
-            }
-        }
+    return {
+      componentProps,
+      componentType,
     }
+  },
+}
 
 </script>
 
 <style lang="scss">
     .kro-button {
         --kro-spinner-size: 1.25rem;
-        --kro-spinner-thickness: 0.25rem; 
+        --kro-spinner-thickness: 0.25rem;
 
         @apply relative inline-grid items-center content-center;
         @apply px-4 py-2 rounded-sm appearance-none text-sm;
@@ -124,10 +125,9 @@
         color: var(--kro-button-foreground, var(--kro-foreground));
 
         border: 1px solid var(--kro-button-border-color, transparent);
-        
+
         transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1),
                     filter 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
-
 
         &--warning {
             --kro-button-background: var(--kro-warning);
@@ -202,7 +202,6 @@
         .kro-button__icon {
             @apply relative;
         }
-
 
     .kro-button__spinner {
         @apply absolute top-0 left-0 w-full h-full;

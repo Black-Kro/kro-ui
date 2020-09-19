@@ -1,13 +1,13 @@
 <template>
-    <div class="kro-button-group">
-        <slot></slot>
-    </div>
+  <div class="kro-button-group">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
-    export default {
-        name: 'KroButtonGroup'
-    }
+export default {
+  name: 'KroButtonGroup',
+}
 </script>
 
 <style lang="scss">

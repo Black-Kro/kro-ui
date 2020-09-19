@@ -2,7 +2,6 @@
     <div>
         <div class="the-page-context sticky">
             <span class="text-xs mb-2 tracking-wide font-medium text-secondary uppercase px-2">On This Page</span>
-
         </div>
     </div>
 </template>

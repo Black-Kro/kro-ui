@@ -1,15 +1,14 @@
 $breakpoints: (
-    'extra-small': 600px,
-    'small': 768px,
-    'medium': 1264px,
-    'large': 1904px,
+  "extra-small": 600px,
+  "small": 768px,
+  "medium": 1264px,
+  "large": 1904px,
 ) !default;
 
-
 @mixin useBreakpoint($breakpoint) {
-    @if map-has-key($breakpoints, $breakpoint) {
-        @media (max-width: map-get($breakpoints, $breakpoint)) {
-            @content;
-        }
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
     }
+  }
 }

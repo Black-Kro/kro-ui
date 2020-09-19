@@ -1,8 +1,8 @@
-import { ComponentMetadata } from '../../types';
+import { ComponentMetadata } from '../../types'
 
-export { default as KroApp } from './App.vue';
+export { default as KroApp } from './App.vue'
 
 export const Metadata: ComponentMetadata = {
-    title: 'KroApp',
-    description: '',
+  title: 'KroApp',
+  description: '',
 }

@@ -1,49 +1,50 @@
 <template>
-    <component 
-        :is="componentType" 
-        v-bind="componentProps"
-        class="kro-list-item">
-        <div v-if="!!$slots.icon" class="kro-list-item__icon">
-            <slot name="icon"></slot>
-        </div>
-        <div class="kro-list-item__content">
-            <span class="kro-list-item__title">
-                <slot></slot>
-            </span>
-            <span v-if="!!$slots.subtitle" class="kro-list-item__subtitle">
-                <slot name="subtitle"></slot>
-            </span>
-        </div>
-        <div v-if="!!$slots.action" class="kro-list-item__action">
-            <slot name="action"></slot>
-        </div>
-    </component>
+  <component
+    :is="componentType"
+    v-bind="componentProps"
+    class="kro-list-item"
+  >
+    <div v-if="!!$slots.icon" class="kro-list-item__icon">
+      <slot name="icon" />
+    </div>
+    <div class="kro-list-item__content">
+      <span class="kro-list-item__title">
+        <slot />
+      </span>
+      <span v-if="!!$slots.subtitle" class="kro-list-item__subtitle">
+        <slot name="subtitle" />
+      </span>
+    </div>
+    <div v-if="!!$slots.action" class="kro-list-item__action">
+      <slot name="action" />
+    </div>
+  </component>
 </template>
 
 <script lang="ts">
-    import { computed, ref } from 'vue';
-    import { useRoutable, RoutableProps } from '../../composables/useRoutable';
+import { computed } from 'vue'
+import { useRoutable, RoutableProps } from '../../composables/useRoutable'
 
-    export default {
-        name: 'KroListItem',
-        props: {
-            ...RoutableProps,
-            tag: {
-                type: String,
-                default: 'div'
-            },
-        },
-        setup(props) {
-            const { tag, componentProps } = useRoutable(props);
+export default {
+  name: 'KroListItem',
+  props: {
+    ...RoutableProps,
+    tag: {
+      type: String,
+      default: 'div',
+    },
+  },
+  setup(props) {
+    const { tag, componentProps } = useRoutable(props)
 
-            const componentType = computed(() => { return tag ? tag : 'div' });
+    const componentType = computed(() => { return tag || 'div' })
 
-            return {
-                componentProps,
-                componentType
-            }
-        }
+    return {
+      componentProps,
+      componentType,
     }
+  },
+}
 </script>
 
 <style lang="scss">

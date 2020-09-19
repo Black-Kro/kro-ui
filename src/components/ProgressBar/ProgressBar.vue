@@ -1,40 +1,42 @@
 <template>
-    <div :class="{
-        'kro-progress-bar': true,
-        'kro-progress-bar--is-stream': stream,
-        'kro-progress-bar--is-indeterminate': indeterminate,
-        'kro-progress-bar--rounded': rounded,
-    }">
-        <div class="kro-progress-bar__stream">
-            <div class="kro-progress-bar__stream-content"></div>
-        </div>
-        <div class="kro-progress-bar__buffer" :style="{ '--kro-progress-bar-buffer-value': `${bufferValue - 100}%` }"></div>
-        <div class="kro-progress-bar__progress" :style="{ '--kro-progress-bar-value': `${value - 100}%` }"></div>
-        <div class="kro-progress-bar__indeterminate"></div>
+  <div
+    :class="{
+      'kro-progress-bar': true,
+      'kro-progress-bar--is-stream': stream,
+      'kro-progress-bar--is-indeterminate': indeterminate,
+      'kro-progress-bar--rounded': rounded,
+    }"
+  >
+    <div class="kro-progress-bar__stream">
+      <div class="kro-progress-bar__stream-content" />
     </div>
+    <div class="kro-progress-bar__buffer" :style="{ '--kro-progress-bar-buffer-value': `${bufferValue - 100}%` }" />
+    <div class="kro-progress-bar__progress" :style="{ '--kro-progress-bar-value': `${value - 100}%` }" />
+    <div class="kro-progress-bar__indeterminate" />
+  </div>
 </template>
 
 <script lang="ts">
-    export default {
-        name: 'KroProgressBar',
-        props: {
-            stream: Boolean,
-            indeterminate: Boolean,
-            rounded: {
-                type: Boolean,
-                default: true,
-            },
+export default {
+  name: 'KroProgressBar',
+  props: {
+    stream: Boolean,
+    indeterminate: Boolean,
+    rounded: {
+      type: Boolean,
+      default: true,
+    },
 
-            value: {
-                type: Number,
-                default: 0,
-            },
-            bufferValue: {
-                type: Number,
-                default: 100,
-            }
-        }
-    }
+    value: {
+      type: Number,
+      default: 0,
+    },
+    bufferValue: {
+      type: Number,
+      default: 100,
+    },
+  },
+}
 </script>
 
 <style lang="scss">
@@ -91,7 +93,6 @@
         height: 100%;
         width: 100%;
     }
-
 
     .kro-progress-bar__stream {
         height: var(--kro-progress-bar-stream-size);

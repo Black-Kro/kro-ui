@@ -2,69 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './general/typography';
-@import './general/layout';
-@import './general/helpers';
-
+@import "./general/typography";
+@import "./general/layout";
+@import "./general/helpers";
 
 * {
-    text-rendering: optimizeLegibility;
-    box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
 }
 
 .prevent-scrollbar-shift {
-    @media screen and (min-width: 960px) {
-        padding-left: calc(100vw - 100%);
-        margin-right: 0;
-    }
+  @media screen and (min-width: 960px) {
+    padding-left: calc(100vw - 100%);
+    margin-right: 0;
+  }
 }
 
 html,
 body {
-    margin: 0;
-    font-family: var(--kro-font-family, 'Rubik'), sans-serif;
+  margin: 0;
+  font-family: var(--kro-font-family, "Rubik"), sans-serif;
 
-    color: var(--kro-foreground);
-    background: var(--kro-background);
+  color: var(--kro-foreground);
+  background: var(--kro-background);
 
-    position: relative;
-    // overflow-x: hidden;
+  position: relative;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-    @media screen and (min-width: 960px) {
-        padding-left: calc(100vw - 100%);
-        margin-right: 0;
-    }
+  @media screen and (min-width: 960px) {
+    padding-left: calc(100vw - 100%);
+    margin-right: 0;
+  }
 }
 
 ::-webkit-scrollbar {
-    background: rgba(0, 0, 0, .56);
+  background: rgba(0, 0, 0, 0.56);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--kro-background-secondary);
+  background: var(--kro-background-secondary);
 }
 
 ::-webkit-resizer {
-    // background: red;
-    padding: 1rem;
+  // background: red;
+  padding: 1rem;
 }
-
 
 // Generate Classes
 @each $name, $value in $typography {
-    .font-#{$name} {
-        font-size: map-get($value, "size");
-        font-weight: map-get($value, "weight");
-        line-height: map-get($value, "line");
-    }
+  .font-#{$name} {
+    font-size: map-get($value, "size");
+    font-weight: map-get($value, "weight");
+    line-height: map-get($value, "line");
+  }
 }
 
 a {
-    color: var(--kro-accent);
-    text-decoration: none;
+  color: var(--kro-accent);
+  text-decoration: none;
 }

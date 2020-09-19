@@ -1,9 +1,9 @@
 @mixin CompileTheme($theme, $name, $prefix: "kro", $customPrefix: "kro") {
-    @each $type, $_ in $theme {
-        .#{$prefix}-theme__#{$name}-#{$type} {
-            @each $prop, $val in $_ {
-                #{--#{$customPrefix}-#{$prop}}: #{$val};
-            }
-        }
+  @each $type, $_ in $theme {
+    .#{$prefix}-theme__#{$name}-#{$type} {
+      @each $prop, $val in $_ {
+        #{--#{$customPrefix}-#{$prop}}: #{$val};
+      }
     }
+  }
 }

@@ -1,16 +1,14 @@
 <template>
-    <div>
-
-    </div>
+  <div />
 </template>
 
 <script lang="ts" setup>
-    export default {
-        name: 'KroTab',
-        props: {
-            icon: String,
-        }
-    }
+export default {
+  name: 'KroTab',
+  props: {
+    icon: String,
+  },
+}
 </script>
 
 <style>

@@ -1,40 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "ES5",
-      "module": "esnext",
-      "strict": true,
-      "jsx": "preserve",
-      "importHelpers": true,
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "noImplicitAny": false,
-      "sourceMap": true,
-      "declaration": true,
-      "baseUrl": ".",
-      "declarationDir": "./dist",
-      "removeComments": true,
-      "paths": {
-        "/~/*": ["src/*"],
-      },
-      "lib": [
-        "esnext",
-        "dom",
-        "dom.iterable",
-        "scripthost"
-      ]
-    },
-    "include": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "src/**/*.vue",
-      "docs/**/*.ts",
-      "docs/**/*.vue",
-      "docs/.config/**/*.vue",
-      "docs/.config/**/*.ts",
-    ],
-    "exclude": [
-      "node_modules"
-    ]
-  }
-  
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "es2016",
+    "lib": ["DOM", "ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
+    "paths": {
+      "/~/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue", "docs/**/*.ts", "docs/**/*.vue"],
+  "exclude": ["dist", "node_modules"]
+}

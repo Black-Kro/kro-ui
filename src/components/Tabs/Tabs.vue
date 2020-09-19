@@ -1,13 +1,11 @@
 <template>
-    <div>
-        
-    </div>
+  <div />
 </template>
 
 <script lang="ts" setup>
-    export default {
-        name: 'KroTabs'
-    }
+export default {
+  name: 'KroTabs',
+}
 </script>
 
 <style>

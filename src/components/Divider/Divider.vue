@@ -1,18 +1,18 @@
 <template>
-    <div class="kro-divider" :class="{ 'kro-divider--vertical': vertical, 'kro-divider--inset': inset, }">
-        <span v-if="label">{{label}}</span>
-    </div>
+  <div class="kro-divider" :class="{ 'kro-divider--vertical': vertical, 'kro-divider--inset': inset, }">
+    <span v-if="label">{{ label }}</span>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'KroDivider',
-        props: {
-            vertical: Boolean,
-            inset: Boolean,
-            label: String,
-        }
-    }
+export default {
+  name: 'KroDivider',
+  props: {
+    vertical: Boolean,
+    inset: Boolean,
+    label: String,
+  },
+}
 </script>
 
 <style lang="scss">

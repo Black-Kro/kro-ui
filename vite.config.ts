@@ -1,8 +1,8 @@
-import Markdown from './build/markdown';
 import PurgeIcons from 'vite-plugin-purge-icons';
-import { UserConfig } from 'vite';
+import ViteMarkdown from '@black-kro/vite-plugin-markdown';
 import Voie from 'vite-plugin-voie';
 import path from 'path';
+import { UserConfig } from 'vite';
 
 const alias = {
     '/~/': path.resolve(__dirname, 'src')
@@ -11,7 +11,7 @@ const alias = {
 const config: UserConfig = {
     alias,
     plugins: [
-        Markdown,
+        ViteMarkdown(),
         Voie({
             pagesDir: 'docs/pages',
             extensions: ['md', 'vue']

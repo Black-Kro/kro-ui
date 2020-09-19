@@ -1,42 +1,43 @@
 <template>
-    <div ref="el" :class="$attrs.class" class="kro-icon"></div>
+  <div ref="el" :class="$attrs.class" class="kro-icon" />
 </template>
 
 <script lang="ts" setup="props">
-    import { watch, ref, onMounted, nextTick } from 'vue';
-    import Iconify from '@purge-icons/generated';
+import { watch, ref, onMounted, nextTick } from 'vue'
+import Iconify from '@purge-icons/generated'
 
-    declare const props: {
-        icon: string;
+declare const props: {
+  icon: string
+}
+
+export const el = ref<HTMLElement | null>(null)
+
+const update = async() => {
+  if (el.value) {
+    await nextTick()
+
+    const svg = Iconify.renderSVG(props.icon, {})
+
+    if (svg) {
+      el.value.textContent = ''
+      el.value.appendChild(svg)
     }
-
-    export const el = ref<HTMLElement | null>(null);
-
-    const update = async() => {
-        if (el.value) {
-            await nextTick();
-
-            const svg = Iconify.renderSVG(props.icon, {});
-
-            if (svg) {
-                el.value.textContent = '';
-                el.value.appendChild(svg);
-            } else {
-                const span = document.createElement('span');
-                span.className = 'iconify';
-                span.dataset.icon = props.icon;
-                el.value.textContent = '';
-                el.value.appendChild(span);
-            }
-        } 
+    else {
+      const span = document.createElement('span')
+      span.className = 'iconify'
+      span.dataset.icon = props.icon
+      el.value.textContent = ''
+      el.value.appendChild(span)
     }
+  }
+}
 
-    export default {
-        name: 'KroIcon'
-    }
+export default {
+  name: 'KroIcon',
+}
 
-    watch(() => props.icon, update, { flush: 'post' });
-    onMounted(update);
+watch(() => props.icon, update, { flush: 'post' })
+onMounted(update)
 </script>
 
 <style lang="scss">
