@@ -1,0 +1,14 @@
+@tailwind base;
+@import "./markdown.scss";
+
+.text-primary {
+  color: var(--kro-foreground);
+}
+
+.text-secondary {
+  color: var(--kro-foreground-secondary);
+}
+
+.bg-secondary {
+  background: var(--kro-background-secondary);
+}

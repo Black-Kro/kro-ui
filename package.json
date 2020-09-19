@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.3.3",
-    "@black-kro/vite-plugin-markdown": "0.0.4",
+    "@black-kro/vite-plugin-markdown": "0.0.7",
     "@iconify/json": "^1.1.224",
     "@purge-icons/generated": "0.4.0",
     "@rollup/plugin-buble": "^0.21.3",
@@ -56,8 +56,10 @@
     "tailwindcss": "^1.6.0",
     "typescript": "^4.0.2",
     "vite": "1.0.0-rc.4",
+    "vite-plugin-components": "^0.2.13",
     "vite-plugin-purge-icons": "0.4.0",
     "vite-plugin-voie": "^0.4.0",
+    "vitepress": "^0.6.0",
     "voie-pages": "^0.4.0"
   },
   "vetur": {

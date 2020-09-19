@@ -8,3 +8,6 @@ export { useTheme, useDialog } from './composables'
 
 export * from './components'
 export * as Metadata from './components/metadata'
+
+// eslint-ignore-next-line
+import './styles/tailwind.scss'

@@ -16,6 +16,6 @@
       "/~/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "docs/**/*.ts", "docs/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.vue", "docs/**/*.ts", "docs/**/*.vue", "docs/.config/**/*.ts", "docs/.config/**/*.vue"],
   "exclude": ["dist", "node_modules"]
 }
