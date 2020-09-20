@@ -58,7 +58,7 @@ export default {
   },
   emits: ['dismissed', 'show'],
 
-  setup(props, { emit }) {
+  setup(props: any, { emit }: { emit: any }) {
     const isHidden = ref(false)
 
     const hide = () => {

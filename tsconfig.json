@@ -9,8 +9,11 @@
     "incremental": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "./dist",
     "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
     "paths": {
       "/~/*": ["src/*"]

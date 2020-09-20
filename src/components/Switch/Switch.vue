@@ -32,7 +32,7 @@ export default {
     value: String,
   },
   emits: ['update:modelValue'],
-  setup(props, { emit, attrs }) {
+  setup(props: any, { emit, attrs }: { emit: any, attrs: any }) {
     const update = (e: any) => {
       // Check if removing or adding state.
       if (e.target.checked) {
@@ -49,7 +49,7 @@ export default {
         // Remove item
         if (props.value) {
           if (Array.isArray(attrs.modelValue))
-            emit('update:modelValue', attrs.modelValue.filter(value => value !== props.value))
+            emit('update:modelValue', attrs.modelValue.filter((value: any) => value !== props.value))
         }
         else {
           emit('update:modelValue', false)

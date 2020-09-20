@@ -93,7 +93,7 @@ export default {
 
   },
 
-  setup(props) {
+  setup(props: any) {
     const { tag, componentProps } = useRoutable(props)
 
     const componentType = computed(() => {

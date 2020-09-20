@@ -1,4 +1,4 @@
-import { Plugin } from 'vue'
+import type { Plugin } from 'vue'
 import { registerThemeWatcher } from './composables/useTheme'
 
 import * as KroComponents from './components'

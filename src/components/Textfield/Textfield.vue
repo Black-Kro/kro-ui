@@ -80,7 +80,7 @@ export default {
   },
   emits: ['update:modelValue'],
 
-  setup(props) {
+  setup(props: any) {
     const focused = ref(false)
     const inputRef = ref<HTMLElement | null>()
 

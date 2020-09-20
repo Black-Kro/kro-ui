@@ -32,7 +32,7 @@ export default {
 
   },
   emits: ['open', 'close'],
-  setup(props, { emit }) {
+  setup(props: any, { emit }: { emit: any }) {
     const isOpen = ref(false)
 
     const container = ref<HTMLElement | null>(null)
