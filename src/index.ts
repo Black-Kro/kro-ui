@@ -9,5 +9,8 @@ export { useTheme, useDialog } from './composables'
 export * from './components'
 export * as Metadata from './components/metadata'
 
-// eslint-ignore-next-line
+/**
+ * This SCSS import should be below the components otherwise it will cause some problems.
+ */
+// eslint-disable-next-line
 import './styles/tailwind.scss'
