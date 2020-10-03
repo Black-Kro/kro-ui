@@ -23,7 +23,7 @@
     "dev": "vite --open",
     "build": "rm -rf ./dist && rollup -c && node ./build/vetur.js",
     "docs": "cross-env NODE_ENV=production vite build",
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "npm build",
     "lint": "eslint ./src --fix"
   },
   "dependencies": {

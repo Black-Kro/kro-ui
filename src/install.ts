@@ -1,5 +1,7 @@
 import type { Plugin } from 'vue'
+import type { IconifyGlobal } from '@purge-icons/generated'
 import { registerThemeWatcher } from './composables/useTheme'
+import { IconSymbol } from './composables/useIcon'
 
 import * as KroComponents from './components'
 import * as KroDirectives from './directives'
@@ -7,6 +9,10 @@ import * as KroDirectives from './directives'
 interface KroUIConfiguration {
   icons: string[]
   components: any
+}
+
+interface KroUIBaseConfiguration {
+  icons: IconifyGlobal
 }
 
 export const KroUIBaseConfigurationPlugin = (): Plugin => ({
@@ -22,7 +28,7 @@ export const KroUIBaseConfigurationPlugin = (): Plugin => ({
 })
 
 const KroUIPluginBase = (components: any, directives: any): Plugin => ({
-  install(app) {
+  install(app, config: KroUIBaseConfiguration) {
     /**
          * Register Components
          */
@@ -42,6 +48,8 @@ const KroUIPluginBase = (components: any, directives: any): Plugin => ({
           app.directive(key, value)
       })
     }
+
+    app.provide(IconSymbol, config.icons)
 
     /**
          * Register the theme watcher

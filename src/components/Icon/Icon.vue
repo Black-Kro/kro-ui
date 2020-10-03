@@ -4,7 +4,9 @@
 
 <script lang="ts" setup="props">
 import { watch, ref, onMounted, nextTick } from 'vue'
-import Iconify from '@purge-icons/generated'
+import { useIcons } from '../../composables/useIcon'
+
+const { icons } = useIcons()
 
 declare const props: {
   icon: string
@@ -13,10 +15,10 @@ declare const props: {
 export const el = ref<HTMLElement | null>(null)
 
 const update = async() => {
-  if (el.value) {
+  if (el.value && icons) {
     await nextTick()
 
-    const svg = Iconify.renderSVG(props.icon, {})
+    const svg = icons.renderSVG(props.icon, {})
 
     if (svg) {
       el.value.textContent = ''

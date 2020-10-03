@@ -4,6 +4,8 @@ import '/~/styles/themes/default.scss'
 import '@iconify/iconify'
 import '@purge-icons/generated'
 
+import Iconify from '@purge-icons/generated'
+
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -22,7 +24,9 @@ const router = createRouter({
 
 createApp(App)
   .use(router)
-  .use(KroUIPlugin)
+  .use(KroUIPlugin, {
+    icons: Iconify,
+  })
   .component('KroLogo', KroLogo)
   .component('TheSidebar', TheSidebar)
   .component('ThePageContext', ThePageContext)
