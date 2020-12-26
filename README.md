@@ -48,9 +48,9 @@ createApp(App)
     .mount('#app');
 ```
 ## Contributing
-Feel free to contirbue to the project. You can request new features by creating an issue or you can contribute your own features by creating a pull request. Before working on a feature it is a good idea to open an issue to ensure the feature fits the project.
+Feel free to contribute to the project. You can request new features by creating an issue or you can contribute your own features by creating a pull request. Before working on a feature it is a good idea to open an issue to ensure the feature fits the project.
 
-Bug reports are also appericated. When reporting a bug try to provide some information that can be used to help determine the issue. Things like erros messages, package version, and relevent code would be good things to include.
+Bug reports are also appreciated. When reporting a bug try to provide some information that can be used to help determine the issue. Things like error messages(s), package version, and relevant code would be good things to include.
 
 ## Development Setup
 You will need to install the latest version of Node.js before getting started.
@@ -65,7 +65,7 @@ $ npm install
 # watch and auto re-build docs
 $ npm run serve
 
-# Build library for produciton
+# Build library for production
 $ npm run build
 
 # Build docs for production
@@ -77,7 +77,7 @@ $ npm run docs
 - `dist`: Contains built files for distribution.
 - `docs`: Contains docs for the UI library.
 - `src`: Contains the source code for the UI components.
-    - `components`: Contains folders which each represent a different component.
+    - `components`: Contains folders that each represent a different component.
     - `styles`: Contains the base styles needed for the Kro UI library.
 
 ## License
