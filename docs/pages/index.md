@@ -1,4 +1,4 @@
-<kro-alert type="warning">Documentation Is Currently Under Development. Some parts my be incomplete or non-existent.</kro-alert>
+<kro-alert type="warning">Documentation Is Currently Under Development. Some parts may be incomplete or non-existent.</kro-alert>
 
 # Introduction
 
