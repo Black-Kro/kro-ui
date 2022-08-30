@@ -56,7 +56,7 @@
     "sass": "^1.26.10",
     "tailwindcss": "^1.6.0",
     "typescript": "^4.0.2",
-    "vite": "^1.0.0-rc.4",
+    "vite": "^2.9.13",
     "vite-plugin-components": "^0.2.13",
     "vite-plugin-purge-icons": "^0.4.0",
     "vite-plugin-voie": "^0.4.0",
